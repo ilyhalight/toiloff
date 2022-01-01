@@ -1,3 +1,11 @@
+#content_centered_flex {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
 #content_centered {
     position: fixed;
     top: 50%;
@@ -18,7 +26,8 @@
 }
 
 @media screen and (min-width: 1px) and (max-width: 999px) {
-    #content_centered {
+    #content_centered_flex {
+        position: fixed;
         top: 1vh;
         left: 1vh;
 
