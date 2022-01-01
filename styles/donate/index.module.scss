@@ -1,0 +1,48 @@
+.main_case {
+    max-width: 100vh;
+    width: 95vh;
+}
+
+.case {
+    display: flex;
+    flex-direction: row;
+}
+
+.case_name {
+    margin-top: 50px;
+}
+
+.option {
+    flex: 1 5%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.address {
+    flex: 1 30%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 1px) and (max-width: 999px) {
+    .case {
+        display: block;
+        margin-bottom: 30px;
+    }
+    .option {
+        word-break: break-all;
+        font-size: 16px;
+    }
+    
+    .address {
+        display: block;
+        font-size: 14px;
+    }
+    @media screen and (min-width: 1px) and (max-width: 374px) {
+        .address {
+            font-size: 13px;
+        }
+    }
+}
