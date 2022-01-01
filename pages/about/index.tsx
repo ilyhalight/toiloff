@@ -34,6 +34,9 @@ export default () => (
         <h4 className="databases">Open Source Projects:
           <a className={AboutStyles.links} href='https://github.com/ilyhalight/Aki-DiscordBot' target={'_blank'}> Aki-DiscordBot</a>
         </h4>
+        <h4 className="listen_music">Where I listen music:
+          <a className={AboutStyles.links} href='https://vk.com/toilofficial' target={'_blank'}> vk</a>
+        </h4>
         <h4 className="best_discord">Best discord server:
             <a className={AboutStyles.links} href='https://discord.gg/famesrv' target={'_blank'}> discord.gg/famesrv</a>
         </h4>
