@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import UsefullStyles from '/styles/usefull.module.scss'
-import AboutStyles from '/styles/general.module.scss'
+import AboutStyles from '/styles/about/index.module.scss'
 
 export default () => (
   <div className="div" id={UsefullStyles.overlay}>

@@ -17,6 +17,8 @@ export default () => (
         |
         <a className={GeneralStyles.links} href="https://fame-community.ru" target={"_blank"}> servers </a>
         |
+        <a className={GeneralStyles.links} href="/pc"> pc specs </a>
+        |
         <a className={GeneralStyles.links} href="/about"> about</a>
       </p>
     </div>
