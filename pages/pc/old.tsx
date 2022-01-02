@@ -10,7 +10,7 @@ export default () => (
       </Head>
     <div id={UsefullStyles.content_centered_flex}>
       <a className={AboutStyles.back} href="/">Назад</a>
-      <a className={AboutStyles.back} href="/pc/old">  Actual PC</a>
+      <a className={AboutStyles.back} href="/pc">  Actual PC</a>
       <h1 className={AboutStyles.case_name}>Old PC specs</h1>
       <div>
         <h4 className="cpu">CPU:
