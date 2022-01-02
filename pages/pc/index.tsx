@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import UsefullStyles from '/styles/usefull.module.scss'
-import AboutStyles from '/styles/general.module.scss'
+import PCStyles from '/styles/pc/index.module.scss'
 
 export default () => (
   <div className="div" id={UsefullStyles.overlay}>
@@ -9,9 +9,9 @@ export default () => (
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <div id={UsefullStyles.content_centered_flex}>
-      <a className={AboutStyles.back} href="/">Назад</a>
-      <a className={AboutStyles.back} href="/pc/old">  Old PC</a>
-      <h1 className={AboutStyles.case_name}>PC specs</h1>
+      <a className={PCStyles.back} href="/">Назад</a>
+      <a className={PCStyles.back} href="/pc/old">  Old PC</a>
+      <h1 className={PCStyles.case_name}>PC specs</h1>
       <div>
         <h4 className="cpu">CPU:
             <span> Ryzen 7 3700 PRO 4.2GHz</span>
@@ -39,7 +39,7 @@ export default () => (
         </h4>
       </div>
 
-      <h1 className={AboutStyles.case_name}>PC tests</h1>
+      <h1 className={PCStyles.case_name}>PC tests</h1>
       <h5>Ryzen 3700 & 1070 & 16GB RAM & Win11</h5>
       <div>
         <h4 className="farcry_newdown">Far Cry New Dawn:
