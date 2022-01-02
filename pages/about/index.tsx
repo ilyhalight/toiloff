@@ -12,9 +12,6 @@ export default () => (
       <a className={AboutStyles.back} href="/">Назад</a>
       <h1 className={AboutStyles.case_name}>About me</h1>
       <div>
-        <h4 className="years">Years:
-            <span> 16 y.o.</span>
-        </h4>
         <h4 className="city">City:
             <span> Voronezh</span>
         </h4>
