@@ -15,8 +15,6 @@ export default () => (
         <a className={DonateStyles.links} href="/donate/crypto">crypto </a>
         |
         <a className={DonateStyles.links} href="/donate/ecash"> ecash </a>
-        |
-        <a className={DonateStyles.links} href="/donate/services"> donation services</a>
       </p>
     </div>
   </div>

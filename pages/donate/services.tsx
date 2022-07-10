@@ -13,12 +13,10 @@ export default () => (
       <h1 className={DonateStyles.case_name}>Donation services</h1>
       <div>
         <div className={DonateStyles.case}>
-          <span className={DonateStyles.option}>DonationAlerts:</span>
-          <a href={"https://www.donationalerts.com/r/famesrv"} className={DonateStyles.address}>https://www.donationalerts.com/r/famesrv</a>
+          <span className={DonateStyles.option}>DonationAlerts: *BLOCKED*</span>
         </div>
         <div className={DonateStyles.case}>
-          <span className={DonateStyles.option}>DonatePay:</span>
-          <a href={"https://new.donatepay.ru/@fame"} className={DonateStyles.address}>https://new.donatepay.ru/@fame</a>
+          <span className={DonateStyles.option}>DonatePay: *BLOCKED*</span>
         </div>
       </div>
     </div>
