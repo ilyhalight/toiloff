@@ -1,0 +1,116 @@
+@import '~/assets/styles/colors.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  background: $background;
+  color: $white;
+}
+
+#__nuxt {
+  height: 100dvh;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: $white-600;
+  transition: all 0.3s ease;
+  &:hover {
+    color: $white;
+  }
+}
+
+.icon {
+  width: 1rem !important;
+  height: 1rem !important;
+  line-height: 1rem !important;
+  font-size: 1rem !important;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  .logo {
+    color: $primary;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    &:hover {
+      color: $white;
+    }
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+    .navbar-item {
+      margin-left: 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.btn-invisible {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  .icon.big-icon {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    line-height: 1.5rem !important;
+    font-size: 1.5rem !important;
+    margin-right: 0.5rem;
+  }
+  .text {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    .locales {
+      font-weight: 600;
+    }
+  }
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-content {
+  position: absolute;
+  margin-top: 40px;
+  visibility: hidden;
+  opacity: 0;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+  .dropdown-item {
+    cursor: pointer;
+    background: $background-second;
+    border-radius: 8px;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    * {
+      background: $background-second;
+      transition: all 0.3s ease;
+    }
+    &:hover {
+      background: $background-third;
+      * {
+        background: $background-third;
+      }
+    }
+  }
+}

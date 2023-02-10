@@ -1,0 +1,28 @@
+:root {
+    --background: rgb(5, 1, 13); // #05010d
+    --background-second: #1E1A25;
+    --background-third: #37343D;
+    --primary: #ff6363;
+    --white: rgba(255, 255, 255, 1);
+    --white-600: rgba(255, 255, 255, 0.6);
+    --white-800: rgba(255, 255, 255, 0.8);
+}
+
+
+.light-mode {
+    --background: #ffffff;
+    --background-second: #e5e5e5;
+    --background-third: #cccccc;
+    --white: rgb(5, 1, 13); // #05010d
+    --white-600: rgba(5, 1, 13, 0.6);
+    --white-800: rgba(5, 1, 13, 0.8);
+}
+
+$background: var(--background); // #05010d
+$background-second: var(--background-second);
+$background-third: var(--background-third);
+$primary: var(--primary);
+$white: var(--white);
+$white-600: var(--white-600);
+$white-800: var(--white-800);
+
