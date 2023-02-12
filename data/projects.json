@@ -3,7 +3,7 @@
         "id": "1",
         "name": "Feimisio Donate",
         "desc": "FeimisioDonate is a small donation system for CS:GO servers. The server part of the system is built in Python using Facetapi, and the client part on NuxtJS 3.0 using TailwindCSS and DaisyUI. The system supports several servers, as well as several payment systems",
-        "href": "#",
+        "href": "https://github.com/ilyhalight/FeimisioDonate",
         "tags": [
             {
                 "name": "Python",
@@ -44,7 +44,7 @@
         "id": "2",
         "name": "Simple MySQL Backuper",
         "desc": "Simple MySQL Backup is a small utility for backing up MySQL databases. The utility is written in Python and uses recursive selection to create backups",
-        "href": "#",
+        "href": "https://github.com/ilyhalight/simple-mysql-backuper",
         "tags": [
             {
                 "name": "Python",
@@ -65,7 +65,7 @@
         "id": "3",
         "name": "Toiloff Website",
         "desc": "Toiloff Website is my personal website with a little bit of information about me, my social networks and my projects",
-        "href": "#",
+        "href": "https://github.com/ilyhalight/toiloff.ru",
         "tags": [
             {
                 "name": "NuxtJS",
