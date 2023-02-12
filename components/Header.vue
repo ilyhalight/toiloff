@@ -1,6 +1,7 @@
 <script setup>
   import DropDownLocales from './DropDowns/DropDownLocales.vue';
   import ThemesButton from './Buttons/ThemesButton.vue';
+  import HeaderMenu from './Menus/HeaderMenu.vue';
 </script>
 
 <template>
@@ -18,5 +19,6 @@
       <themes-button class="navbar-item" />
       <drop-down-locales class="navbar-item" />
     </div>
+    <HeaderMenu/>
   </header>
 </template>
