@@ -31,7 +31,6 @@ const globalDropDownListener = (e) => {
         </template>
         <template #text>
           <slot name="text"></slot>
-          <Icon name="gg:chevron-down"/>
         </template>
       </invisible-button>
       <div class="dropdown-content" :class="dropdownState === true ? 'active' : ''">
