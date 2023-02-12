@@ -52,8 +52,8 @@ export default defineNuxtConfig({
             meta: [
                 { charset: 'utf-8' },
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-                { name: 'description', content: 'Toiloff - Это мой личный сайт, содержащий немного информации обо мне.' },
-                { name: 'og:description', content: 'Toiloff - Это мой личный сайт, содержащий немного информации обо мне.' },
+                { name: 'description', content: 'Toiloff - это мой личный сайт с небольшим количеством информации обо мне, моих социальных сетях и моих проектах.' },
+                { name: 'og:description', content: 'Toiloff - это мой личный сайт с небольшим количеством информации обо мне, моих социальных сетях и моих проектах.' },
                 { name: 'keywords', content: 'toiloff, toil, developer, dev, coder, personal, website, toil site' },
                 { name: 'og:locale', content: 'ru_RU' },
                 { name: 'og:type', content: 'website' },
