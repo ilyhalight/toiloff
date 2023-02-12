@@ -13,10 +13,13 @@
 
 #__nuxt {
   height: 100dvh;
-  max-width: 1280px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    max-width: 1280px;
+  }
 }
 
 a {
@@ -47,11 +50,11 @@ a {
   justify-content: space-between;
   align-items: center;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1279px) {
     padding: 1rem;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     padding: 1rem 0;
   }
 
@@ -184,13 +187,18 @@ a {
 
 .wrapper {
   margin-top: 50px;
+  @media screen and (max-width: 1279px) {
+    padding: 0 1rem;
+  }
 }
 
 .text-attractive {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 600;
   line-height: 3.5rem;
-  max-width: 850px;
+  @media screen and (min-width: 768px) {
+    max-width: 850px;
+  }
 }
 
 .subtext-attractive {
@@ -198,7 +206,9 @@ a {
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.5rem;
-  max-width: 1000px;
+  @media screen and (min-width: 768px) {
+    max-width: 1000px;
+  }
 }
 
 .title {
@@ -238,7 +248,15 @@ a {
     flex-wrap: wrap;
     .section-item {
       margin: 25px;
-      width: 45%;
+      @media screen and (max-width: 767px) {
+        width: 95%;
+      }
+      @media screen and (min-width: 768px) and (max-width: 1027px) {
+        width: 42.5%;
+      }
+      @media screen and (min-width: 1028px) {
+        width: 45%;
+      }
       .section-title {
         font-size: 1.5rem;
         font-weight: 600;
