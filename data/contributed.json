@@ -1,0 +1,48 @@
+[
+    {
+        "id": "1",
+        "name": "Voice Over Translation",
+        "desc": "Voice Over Translation is an extension that adds voice-over translation of videos from Yandex Browser to other browsers",
+        "href": "https://github.com/ilyhalight/voice-over-translation",
+        "tags": [
+            {
+                "name": "JavaScript",
+                "color": "#3776AB"
+            },
+            {
+                "name": "JQuery",
+                "color": "#339933"
+            },
+            {
+                "name": "Extension",
+                "color": "#3B82F6"
+            }
+        ],
+        "image": "https://github.com/ilyhalight/voice-over-translation/raw/master/img/example.png"
+    },
+    {
+        "id": "2",
+        "name": "SB-MaterialAdmin/NewServer",
+        "desc": "SB-MaterialAdmin/New Server is a plugin for CS:GO servers administrators, which allows you to punish violators with the help of bans and mutes",
+        "href": "https://github.com/SB-MaterialAdmin/NewServer",
+        "tags": [
+            {
+                "name": "SourcePawn",
+                "color": "#3776AB"
+            },
+            {
+                "name": "CS:GO",
+                "color": "#4F46E5"
+            },
+            {
+                "name": "Plugin",
+                "color": "#3B82F6"
+            },
+            {
+                "name": "MySQL",
+                "color": "#4479A1"
+            }
+        ],
+        "image": "https://camo.githubusercontent.com/53d2e61fb04effad19475216026225c844136ba8b1a33deac3f49bda181b000d/68747470733a2f2f692e696d6775722e636f6d2f346934314c69532e706e67"
+    }
+]
