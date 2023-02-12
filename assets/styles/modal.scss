@@ -1,0 +1,46 @@
+.vfm--fixed {
+  position: fixed;
+}
+
+.vfm--inset {
+  inset: 0;
+}
+
+.vfm--overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.vfm--prevent-none {
+  pointer-events: none;
+}
+
+.vfm--absolute {
+  position: absolute;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+}
+
+.modal-content {
+  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  background: $background-second;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  * {
+    background: $background-second;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.modal-content-full {
+  @extend .modal-content;
+  max-width: 100rem;
+}
