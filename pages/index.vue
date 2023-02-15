@@ -36,4 +36,5 @@
     <!-- <p>{{ $t('Current locale') }}: {{ locale }}</p>
     <p>{{ $t('Current theme') }}: {{ $colorMode.value }}</p> -->
   </main>
+  <Footer/>
 </template>
