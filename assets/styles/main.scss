@@ -89,6 +89,14 @@ a {
   }
 }
 
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
 .btn-invisible {
   border: none;
   cursor: pointer;
