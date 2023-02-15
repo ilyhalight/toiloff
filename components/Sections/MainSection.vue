@@ -32,23 +32,19 @@
 </script>
 
 <template>
-  <section class="sections">
-    <h1 class="title">
+    <section class="sections">
       <slot name="title"></slot>
-    </h1>
-    <p class="subtitle">
       <slot name="subtitle"></slot>
-    </p>
-    <div class="sections-items" v-if="items.length">
-      <div class="section-item" v-for="item in items" :key="item.id">
-        <a class="section-title" :href="item.href" target="_blank">{{ item.name }}</a>
-        <div class="tags">
-          <p class="tag" v-for="tag in item.tags" :key="tag" :style="'background: ' + tag.color">{{ tag.name }}</p>
+      <div class="sections-items" v-if="items.length">
+        <div class="section-item" v-for="item in items" :key="item.id">
+          <a class="section-title" :href="item.href" target="_blank">{{ item.name }}</a>
+          <div class="tags">
+            <p class="tag" v-for="tag in item.tags" :key="tag" :style="'background: ' + tag.color">{{ tag.name }}</p>
+          </div>
+          <p class="section-description">{{ $t(item.desc) }}.</p>
+          <nuxt-img class="section-image" :src="item.image" :alt="item.name" quality="80" loading="lazy" @click="imageLink = item.image; imageAlt = item.name; open()"/>
         </div>
-        <p class="section-description">{{ $t(item.desc) }}.</p>
-        <nuxt-img class="section-image" :src="item.image" :alt="item.name" quality="80" loading="lazy" @click="imageLink = item.image; imageAlt = item.name; open()"/>
       </div>
-    </div>
-  </section>
-  <ModalsContainer />
+    </section>
+    <ModalsContainer />
 </template>
