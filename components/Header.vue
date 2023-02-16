@@ -12,7 +12,7 @@
     <nav class="navbar">
       <NuxtLink class="navbar-item" to="/about"> {{ $t('About me') }} </NuxtLink>
       <NuxtLink class="navbar-item" to="/donate"> {{ $t('Donate') }} </NuxtLink>
-      <NuxtLink class="navbar-item" to="/blog"> {{ $t('Blog') }} </NuxtLink>
+      <!-- <NuxtLink class="navbar-item" to="/blog"> {{ $t('Blog') }} </NuxtLink> -->
       <NuxtLink class="navbar-item" to="/social"> {{ $t('Social') }} </NuxtLink>
     </nav>
     <div class="navbar">
