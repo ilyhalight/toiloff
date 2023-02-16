@@ -242,14 +242,6 @@ a {
   margin-bottom: 20px;
 }
 
-.section-group-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: $white-800;
-  line-height: 1.5rem;
-  margin: 20px 0;
-}
-
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -366,17 +358,24 @@ a {
   }
 }
 
-.skills-section {
+.visual-section {
   margin-top: 50px;
-  .skills-group {
+  .visual-group {
     margin: 25px 0;
-    .skills-items {
+    .visual-group-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: $white-800;
+      line-height: 1.5rem;
+      margin: 20px 0;
+    }
+    .visual-items {
       display: flex;
       flex-wrap: wrap;
       @media screen and (max-width: 449px){
         flex-direction: column;
       }
-      .skill-item {
+      .visual-item {
         display: flex;
         align-items: center;
         margin: 10px 0;
@@ -398,7 +397,7 @@ a {
           line-height: 3rem !important;
           font-size: 3rem !important;
         }
-        p {
+        p, a {
           margin-left: 15px;
           font-size: 1.5rem;
           line-height: 1.5rem;
