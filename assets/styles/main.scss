@@ -242,6 +242,14 @@ a {
   margin-bottom: 20px;
 }
 
+.section-group-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $white-800;
+  line-height: 1.5rem;
+  margin: 20px 0;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -319,15 +327,74 @@ a {
   height: 100%;
 }
 
-.info-group {
+.info-section {
   display: flex;
-  align-items: center;
-  font-size: 24px;
-  margin: 16px 0;
-  .info-text-group {
+  flex-wrap: wrap;
+  .info-column {
     display: flex;
-    .info-text {
-      margin: 0 5px
+    flex-direction: column;
+    margin-top: 25px;
+    @media screen and (max-width: 767px) {
+      width: 95%;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1027px) {
+      width: 42.5%;
+    }
+    @media screen and (min-width: 1028px) {
+      width: 45%;
+    }
+    .info-group {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      @media screen and (max-width: 767px) {
+        font-size: 18px;
+      }
+      @media screen and (min-width: 768px) and (max-width: 1027px) {
+        font-size: 20px;
+      }
+      @media screen and (min-width: 1028px) {
+        font-size: 24px;
+      }
+      .info-text-group {
+        display: flex;
+        .info-text {
+          margin: 0 5px
+        }
+      }
+    }
+  }
+}
+
+.skills-section {
+  margin-top: 50px;
+  .skills-group {
+    margin: 25px 0;
+    .skills-items {
+      display: flex;
+      flex-wrap: wrap;
+      @media screen and (max-width: 768px){
+        flex-direction: column;
+      }
+      .skill-item {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+        @media screen and (min-width: 768px){
+          width: 20%;
+        }
+        .icon {
+          width: 3rem !important;
+          height: 3rem !important;
+          line-height: 3rem !important;
+          font-size: 3rem !important;
+        }
+        p {
+          margin-left: 15px;
+          font-size: 1.5rem;
+          line-height: 1.5rem;
+        }
+      }
     }
   }
 }
