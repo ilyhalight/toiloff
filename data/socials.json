@@ -1,0 +1,107 @@
+{
+    "Socials": [
+        {
+            "name": "VK",
+            "href": "https://vk.com/toilofficial",
+            "icon": "mdi:vk"
+        },
+        {
+            "name": "Discord",
+            "href": "https://discord.com/users/551653500216672256/",
+            "icon": "simple-icons:discord"
+        },
+        {
+            "name": "Telegram",
+            "href": "https://t.me/ToilOfficial",
+            "icon": "simple-icons:telegram"
+        }
+    ],
+    "Programming": [
+        {
+            "name": "Github",
+            "href": "https://github.com/ilyhalight",
+            "icon": "mdi:github"
+        },
+        {
+            "name": "Wakatime",
+            "href": "https://wakatime.com/@Toil",
+            "icon": "simple-icons:wakatime"
+        }
+    ],
+    "Forums": [
+        {
+            "name": "Lolzteam",
+            "href": "https://zelenka.guru/toil/",
+            "icon": "mdi:forum"
+        },
+        {
+            "name": "YouGame",
+            "href": "https://yougame.biz/members/205775/",
+            "icon": "mdi:forum"
+        },
+        {
+            "name": "HLmod",
+            "href": "https://hlmod.ru/members/toil.141276/",
+            "icon": "mdi:forum"
+        }
+    ],
+    "Games": [
+        {
+            "name": "Steam",
+            "href": "https://steamcommunity.com/id/ToilOfficial",
+            "icon": "mdi:steam"
+        },
+        {
+            "name": "GOG",
+            "href": "https://www.gog.com/u/ilyhalight",
+            "icon": "mdi:gog"
+        },
+        {
+            "name": "Xbox",
+            "href": "https://account.xbox.com/ru-ru/profile?gamertag=Toil3204",
+            "icon": "mdi:microsoft-xbox"
+        },
+        {
+            "name": "Epic Games",
+            "href": "https://launcher.store.epicgames.com/u/fabc0af5d26e45c1aac722f300968562",
+            "icon": "simple-icons:epicgames"
+        },
+        {
+            "name": "Ubisoft",
+            "href": "https://ubisoftconnect.com/ru-RU/profile/ilyhalight",
+            "icon": "mdi:ubisoft"
+        },
+        {
+            "name": "VK Play",
+            "href": "https://profile.vkplay.ru/profile/ge4dgmzqgu4taobrgizdqnjqgy4tgmzs/games",
+            "icon": "mdi:vk"
+        },
+        {
+            "name": "VK Play (Warface)",
+            "href": "https://profile.vkplay.ru/profile/ha3danzwgm3tkojsg4ytqmbxgq4do/games",
+            "icon": "mdi:vk"
+        },
+        {
+            "name": "Genshin Impact",
+            "href": "https://act.hoyolab.com/app/community-game-records-sea/index.html?bbs_presentation_style=fullscreen&bbs_auth_required=true&gid=2&user_id=40847872&utm_source=share&utm_medium=link&bbs_theme=dark&bbs_theme_device=1&utm_campaign=web#/ys",
+            "icon": "arcticons:genshin-impact"
+        }
+    ],
+    "Anime & Manga": [
+        {
+            "name": "Shikimori",
+            "href": "https://shikimori.one/Toil/",
+            "icon": "simple-icons:shikimori"
+        },
+        {
+            "name": "MangaLib",
+            "href": "https://mangalib.me/user/679978",
+            "icon": "mdi:book-multiple"
+        },
+        {
+            "name": "MangaDex (rarely)",
+            "href": "https://mangadex.org/user/b9f770ef-cc80-4b07-b9b0-8561837eda70",
+            "icon": "mdi:book-multiple"
+        }
+    ]
+}
