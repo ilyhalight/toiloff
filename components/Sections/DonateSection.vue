@@ -4,7 +4,6 @@
 
   const donateName = ref('');
   const donateValue = ref('');
-  console.log(donateValue)
   const { open, close } = useModal({
     component: ModalFull,
     attrs: {
