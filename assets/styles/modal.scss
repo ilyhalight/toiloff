@@ -43,4 +43,10 @@
 .modal-content-full {
   @extend .modal-content;
   max-width: 100rem;
+  @media screen and (max-width: 768px) {
+    max-width: 100%;
+  }
+  .modal-text {
+    word-wrap: anywhere;
+  }
 }
