@@ -1,7 +1,6 @@
 <script setup>
   import { ModalsContainer, useModal, useModalSlot } from 'vue-final-modal';
   import ModalFull from '~/components/Modals/ModalFull.vue';
-  import ModalText from '~/components/Modals/ModalText.vue';
 
   const donateName = ref('');
   const donateValue = ref('');
