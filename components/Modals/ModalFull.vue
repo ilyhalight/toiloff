@@ -6,6 +6,10 @@ const props = defineProps({
     type: String,
     required: false,
   },
+  text: {
+    type: String,
+    required: false
+  }
 });
 </script>
 
@@ -14,9 +18,10 @@ const props = defineProps({
     class="modal"
     content-class="modal-content-full"
   >
-    <h1 class="title">
+    <h1 class="title" v-if="title">
       {{ title }}
     </h1>
+    <p class="modal-text" v-if="text">{{ text }}</p>
     <slot />
   </VueFinalModal>
 </template>
