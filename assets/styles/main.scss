@@ -373,14 +373,23 @@ a {
     .skills-items {
       display: flex;
       flex-wrap: wrap;
-      @media screen and (max-width: 768px){
+      @media screen and (max-width: 449px){
         flex-direction: column;
       }
       .skill-item {
         display: flex;
         align-items: center;
         margin: 10px 0;
-        @media screen and (min-width: 768px){
+        @media screen and (max-width: 449px) {
+          width: 80%;
+        }
+        @media screen and (min-width: 450px) and (max-width: 767px) {
+          width: 50%;
+        }
+        @media screen and (min-width: 768px) and (max-width: 1027px) {
+          width: 25%;
+        }
+        @media screen and (min-width: 1028px) {
           width: 20%;
         }
         .icon {
