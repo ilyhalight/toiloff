@@ -15,9 +15,9 @@
     <div class="visual-group" v-for="group of Object.entries(items)" :key="group[0]">
       <p class="visual-group-title">{{ $t(group[0]) }}</p>
       <div class="visual-items">
-        <div class="visual-item" v-for="skill in group[1]" :key="skill.name">
-          <Icon :name="skill.icon"/>
-          <p>{{ skill.name }}</p>
+        <div class="visual-item" v-for="visual in group[1]" :key="visual.name">
+          <Icon :name="visual.icon"/>
+          <p>{{ visual.name }}</p>
         </div>
       </div>
     </div>
