@@ -1,0 +1,108 @@
+{
+    "Programming": [
+        {
+            "name": "Python",
+            "icon": "vscode-icons:file-type-python"
+        },
+        {
+            "name": "JavaScript",
+            "icon": "vscode-icons:file-type-js-official"
+        },
+        {
+            "name": "SourcePawn",
+            "icon": "mdi:chess-pawn"
+        }
+    ],
+    "Full-Stack Development": [
+        {
+            "name": "HTML5",
+            "icon": "vscode-icons:file-type-html"
+        },
+        {
+            "name": "CSS3",
+            "icon": "vscode-icons:file-type-css"
+        },
+        {
+            "name": "SASS",
+            "icon": "vscode-icons:file-type-sass"
+        },
+        {
+            "name": "TailwindCSS",
+            "icon": "logos:tailwindcss-icon"
+        },
+        {
+            "name": "Bootstrap",
+            "icon": "skill-icons:bootstrap"
+        },
+        {
+            "name": "Node.js",
+            "icon": "vscode-icons:file-type-node"
+        },
+        {
+            "name": "Vue.js v3",
+            "icon": "vscode-icons:file-type-vue"
+        },
+        {
+            "name": "Nuxt v3",
+            "icon": "vscode-icons:file-type-nuxt"
+        },
+        {
+            "name": "JQuery",
+            "icon": "mdi:jquery"
+        },
+        {
+            "name": "FastAPI",
+            "icon": "skill-icons:fastapi"
+        },
+        {
+            "name": "Express.js",
+            "icon": "skill-icons:expressjs-dark"
+        }
+    ],
+    "Databases": [
+        {
+            "name": "MySQL",
+            "icon": "vscode-icons:file-type-mysql"
+        },
+        {
+            "name": "Redis",
+            "icon": "logos:redis"
+        },
+        {
+            "name": "SQLite",
+            "icon": "vscode-icons:file-type-sqlite"
+        }
+    ],
+    "DevOps": [
+        {
+            "name": "Cloudflare",
+            "icon": "logos:cloudflare"
+        },
+        {
+            "name": "Nginx",
+            "icon": "vscode-icons:file-type-nginx"
+        },
+        {
+            "name": "Git",
+            "icon": "vscode-icons:file-type-git"
+        },
+        {
+            "name": "GitHub",
+            "icon": "mdi:github"
+        }
+    ],
+    "Tools": [
+        {
+            "name": "VS Code",
+            "icon": "logos:visual-studio-code"
+        },
+        {
+            "name": "Postman",
+            "icon": "logos:postman-icon"
+        },
+        {
+            "name": "Figma",
+            "icon": "logos:figma"
+        }
+    ]
+}
