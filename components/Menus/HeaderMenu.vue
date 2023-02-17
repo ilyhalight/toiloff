@@ -12,8 +12,8 @@
     <template #content>
       <NuxtLink class="menu-item" to="/about"> {{ $t('About me') }} </NuxtLink>
       <NuxtLink class="menu-item" to="/donate"> {{ $t('Donate') }} </NuxtLink>
-      <NuxtLink class="menu-item" to="/blog"> {{ $t('Blog') }} </NuxtLink>
       <NuxtLink class="menu-item" to="/social"> {{ $t('Social') }} </NuxtLink>
+      <a class="navbar-item" href="https://akibot.ru">Aki</a>
       <themes-button class="menu-item" />
       <locales-menu class="menu-item" />
     </template>
