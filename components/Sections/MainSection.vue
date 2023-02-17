@@ -17,6 +17,9 @@
     component: ModalFull,
     attrs: {
       title: '',
+      onClose() {
+        close();
+      },
     },
     slots: {
       default: useModalSlot({
@@ -32,10 +35,10 @@
 </script>
 
 <template>
-  <section class="sections">
+  <section class="sections" v-if="items.length">
     <slot name="title"></slot>
     <slot name="subtitle"></slot>
-    <div class="sections-items" v-if="items.length">
+    <div class="sections-items">
       <div class="section-item" v-for="item in items" :key="item.id">
         <a class="section-title" :href="item.href" target="_blank">{{ item.name }}</a>
         <div class="tags">
