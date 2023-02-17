@@ -14,7 +14,6 @@
 </script>
 
 <template>
-  <Header/>
   <main class="wrapper">
     <h1 class="text-attractive center">
       {{ $t('Social network') }}
@@ -31,5 +30,4 @@
       </template>
     </visual-links-section>
   </main>
-  <Footer/>
 </template>
