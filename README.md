@@ -1,11 +1,12 @@
-# Nuxt 3 Minimal Starter
+# Toiloff.ru
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+**Toiloff.ru** - это мой персональный сайт, единственная цель которого рассказать немного обо мне и моих проектах. Сайт написан с помощью **Nuxt 3.1** и препроцессора **SASS**. На сайте имеется перевод на русский и английский языки, смена темы, а так же оптимизация изображений с помощью **NuxtImage**.
 
-## Setup
+---
 
-Make sure to install the dependencies:
+## Установка
 
+1. Установите зависимости
 ```bash
 # yarn
 yarn install
@@ -16,27 +17,39 @@ npm install
 # pnpm
 pnpm install
 ```
+2. Заполните порт сервера в .env
 
-## Development Server
+## Разработка
 
-Start the development server on http://localhost:3000
+Запустите сервер разработки на http://localhost:3000
 
 ```bash
 npm run dev
 ```
 
-## Production
+## Продакшен
 
-Build the application for production:
+Создайте приложение для продакшена:
 
 ```bash
 npm run build
 ```
 
-Locally preview production build:
+Локальный предварительный просмотр продакшен сборки:
 
 ```bash
 npm run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Запуск с помощью PM2:
+1. Установите зависимости:
+```bash
+npm install pm2 -g && pm2 install pm2-logrotate
+```
+2. Запустите сервер
+```bash
+pm2 start ecosystem.config.js
+```
+3. [Если пользуетесь Cloudflare] Отключить Minify HTML в Cloudflare для избежания ошибок
+
+Ознакомьтесь с [документацией по развертыванию](https://nuxt.com/docs/getting-started/deployment ) для получения дополнительной информации.
