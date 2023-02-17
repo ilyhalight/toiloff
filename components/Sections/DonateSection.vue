@@ -8,7 +8,10 @@
     component: ModalFull,
     attrs: {
       title: donateName,
-      text: donateValue
+      text: donateValue,
+      onClose() {
+        close();
+      },
     },
   });
 
