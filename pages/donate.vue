@@ -14,7 +14,6 @@
 </script>
 
 <template>
-  <Header/>
   <main class="wrapper">
     <h1 class="text-attractive center">
       {{ $t('Donate') }}
@@ -24,5 +23,4 @@
     </h2>
     <donate-section :items="donate"/>
   </main>
-  <Footer/>
 </template>

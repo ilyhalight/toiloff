@@ -7,7 +7,6 @@
 </script>
 
 <template>
-  <Header/>
   <main class="wrapper">
     <h1 class="text-attractive">
       {{ $t('Hello') }},
@@ -36,5 +35,4 @@
     <!-- <p>{{ $t('Current locale') }}: {{ locale }}</p>
     <p>{{ $t('Current theme') }}: {{ $colorMode.value }}</p> -->
   </main>
-  <Footer/>
 </template>

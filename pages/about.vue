@@ -16,7 +16,6 @@
 </script>
 
 <template>
-  <Header/>
   <main class="wrapper">
     <h1 class="text-attractive center">
       {{ $t('About me') }}
@@ -27,5 +26,4 @@
     <info-section :items="about"/>
     <visual-section :items="skills"/>
   </main>
-  <Footer/>
 </template>
