@@ -1,23 +1,3 @@
-.vfm--fixed {
-  position: fixed;
-}
-
-.vfm--inset {
-  inset: 0;
-}
-
-.vfm--overlay {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.vfm--prevent-none {
-  pointer-events: none;
-}
-
-.vfm--absolute {
-  position: absolute;
-}
-
 .modal {
   display: flex;
   justify-content: center;
@@ -46,6 +26,7 @@
   @media screen and (max-width: 768px) {
     max-width: 100%;
   }
+
   .modal-text {
     word-wrap: anywhere;
   }
