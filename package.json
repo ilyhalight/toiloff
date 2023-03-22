@@ -16,5 +16,8 @@
     "sass": "^1.58.0",
     "sass-loader": "^13.2.0",
     "vue-final-modal": "^4.0.3"
+  },
+  "dependencies": {
+    "vue-toastification": "^2.0.0-rc.5"
   }
 }
