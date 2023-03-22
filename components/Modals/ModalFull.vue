@@ -1,6 +1,7 @@
 <script setup>
 import { VueFinalModal } from 'vue-final-modal'
 import InvisibleButton from '../Buttons/InvisibleButton.vue';
+import CopyToClipboard from '~/components/Buttons/CopyToClipboard.vue';
 
 const props = defineProps({
   title: {
@@ -10,6 +11,11 @@ const props = defineProps({
   text: {
     type: String,
     required: false
+  },
+  copyButton: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 });
 const emit = defineEmits(['close']);
@@ -20,16 +26,22 @@ const emit = defineEmits(['close']);
     class="modal"
     content-class="modal-content-full"
   >
-    <invisible-button @click="emit('close')" style="justify-content: end;margin:5px">
-      <template #icon>
-        <Icon class="big-icon" name="material-symbols:close-rounded"/>
-      </template>
-    </invisible-button>
-    <h1 class="title" v-if="title">
-      {{ title }}
-    </h1>
+    <div class="modal-header">
+      <h1 class="title" v-if="title">
+        {{ title }}
+      </h1>
+      <invisible-button class="modal-exit" @click="emit('close')">
+        <template #icon>
+          <Icon class="big-icon" name="material-symbols:close-rounded"/>
+        </template>
+      </invisible-button>
+    </div>
 
-    <p class="modal-text" v-if="text">{{ text }}</p>
+    <div v-if="text" class="modal-text-block">
+      <p class="modal-text">{{ text }}</p>
+      <copy-to-clipboard :text="text"/>
+    </div>
+
     <slot />
   </VueFinalModal>
 </template>
