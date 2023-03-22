@@ -26,6 +26,11 @@
             "name": "Wakatime",
             "href": "https://wakatime.com/@Toil",
             "icon": "simple-icons:wakatime"
+        },
+        {
+            "name": "Hugging Face",
+            "href": "https://huggingface.co/Toil",
+            "icon": "emojione-monotone:hugging-face"
         }
     ],
     "Forums": [
@@ -42,6 +47,11 @@
         {
             "name": "HLmod",
             "href": "https://hlmod.ru/members/toil.141276/",
+            "icon": "mdi:forum"
+        },
+        {
+            "name": "CSDevs",
+            "href": "https://csdevs.net/members/toil.36/",
             "icon": "mdi:forum"
         }
     ],
