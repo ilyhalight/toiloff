@@ -18,14 +18,6 @@
                 "color": "#00C58E"
             },
             {
-                "name": "TailwindCSS",
-                "color": "#38B2AC"
-            },
-            {
-                "name": "DaisyUI",
-                "color": "#A78BFA"
-            },
-            {
                 "name": "FastAPI",
                 "color": "#009688"
             },
@@ -46,6 +38,10 @@
         "desc": "Toiloff Website is my personal website with a little bit of information about me, my social networks and my projects",
         "href": "https://github.com/ilyhalight/toiloff.ru",
         "tags": [
+            {
+                "name": "NodeJS",
+                "color": "#339933"
+            },
             {
                 "name": "NuxtJS",
                 "color": "#3776AB"
