@@ -27,7 +27,33 @@
     max-width: 100%;
   }
 
-  .modal-text {
-    word-wrap: anywhere;
+  .modal-text-block {
+    display: flex;
+    flex-wrap: wrap;
+    .modal-text {
+      word-wrap: anywhere;
+    }
+    button {
+      margin-left: 0.25rem;
+    }
+  }
+
+  .modal-header {
+    margin-bottom: 20px;
+    position: relative;
+    .modal-exit {
+      z-index: 10;
+      position: absolute;
+      float: right;
+      right: 0rem;
+      top: 0.5rem;
+      :hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .image-viewer {
+    margin-top: 20px;
   }
 }
