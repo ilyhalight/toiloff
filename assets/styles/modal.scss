@@ -15,16 +15,42 @@
   * {
     background: $background-second;
   }
+  .light-mode {
+    background: $background;
+    * {
+      background: $background;
+    }
+  }
   &:focus {
     outline: none;
   }
+  .title {
+    font-weight: 600;
+    line-height: 1.5rem;
+    margin: 5px;
+    margin-right: 24px;
+    text-align: center;
+    @media screen and (min-width: 768px) {
+      font-size: 1.5rem;
+    }
+    @media screen and (max-width: 767px) {
+      font-size: 1.25rem;
+    }
+  } 
+}
+
+.vfm__overlay[aria-hidden=true] {
+  display: block !important;
 }
 
 .modal-content-full {
   @extend .modal-content;
   max-width: 100rem;
+  max-height: 100svh;
   @media screen and (max-width: 768px) {
     max-width: 100%;
+    transform: scale(0.9);
+    overflow-y: auto;
   }
 
   .modal-text-block {
