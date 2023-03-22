@@ -7,19 +7,27 @@
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 1px;
+}
+
+body {
   background: $background;
   color: $white;
 }
 
 #__nuxt {
-  height: 100dvh;
+  height: 100%;
+  height: 100svh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     max-width: 1280px;
   }
+}
+
+#__nuxt > .font-sans {
+  background: transparent;
 }
 
 a {
@@ -106,6 +114,8 @@ a {
 }
 
 .btn-invisible {
+  background: transparent;
+  color: $white;
   border: none;
   cursor: pointer;
   display: flex;
@@ -152,6 +162,7 @@ a {
   margin-top: 40px;
   visibility: hidden;
   opacity: 0;
+  background: $background;
   &.active {
     visibility: visible;
     opacity: 1;
