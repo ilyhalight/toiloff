@@ -9,6 +9,7 @@
     attrs: {
       title: donateName,
       text: donateValue,
+      copyButton: true,
       onClose() {
         close();
       },
