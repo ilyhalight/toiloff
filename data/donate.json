@@ -67,6 +67,12 @@
             "icon": "twemoji:letter-p",
             "type": "modal",
             "text": "P1014846551"
+        },
+        {
+            "name": "Boosty",
+            "icon": "skill-icons:rocket",
+            "type": "link",
+            "text": "https://boosty.to/toil"
         }
     ]
 }

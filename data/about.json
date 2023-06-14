@@ -1,13 +1,11 @@
 [
     [
         {
-            "id": "1",
             "name": "Name",
             "value": "Ilya",
             "icon": "material-symbols:tag-rounded"
         },
         {
-            "id": "2",
             "name": "Birthday",
             "value": "14 September",
             "icon": "mdi:calendar"
@@ -15,13 +13,11 @@
     ],
     [
         {
-            "id": "3",
             "name": "Country",
             "value": "Russia",
             "icon": "mdi:map-marker-radius"
         },
         {
-            "id": "4",
             "name": "City",
             "value": "Voronezh",
             "icon": "mdi:city-variant-outline"
