@@ -1,0 +1,56 @@
+@import '~/assets/styles/functions.scss';
+
+@keyframes gradientEffectOpacity {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+
+
+@keyframes gradientEffectMove {
+  0%, 100% {
+    transform: translate(-150px) scale(0.8);
+  }
+  25% {
+    transform: translateY(150px) scale(1);
+  }
+  50% {
+    transform: translate(150px) scale(1.2);
+  }
+  75% {
+    transform: translateY(-150px) scale(1);
+  }
+}
+
+// gradient effect
+.gradient-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: -1;
+  .gradient-element {
+    --opacity-delay: #{randomNum(-8, 2)}s;
+    --move-delay: #{randomNum(-20, 4)}s;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255, 174, 0, 0.7);
+    filter: blur(64px);
+    // randomize animation delay
+    animation: gradientEffectOpacity 8s ease-in-out var(--opacity-delay) infinite alternate, gradientEffectMove 20s ease-in-out var(--move-delay) infinite alternate;
+    position: absolute;
+
+    .small {
+      width: 200px;
+      height: 200px;
+    }
+    .large {
+      width: 600px;
+      height: 600px;
+    }
+  }
+}
