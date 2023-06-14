@@ -3,7 +3,7 @@
   import VisualSection from '~/components/Sections/VisualSection.vue';
   import about from "~/data/about.json";
   import skills from "~/data/skills.json";
-  
+
   useHead({
     title: "Обо мне · Toiloff",
     meta: [

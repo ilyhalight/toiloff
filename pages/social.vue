@@ -23,10 +23,10 @@
     </h2>
     <visual-links-section :items="socials">
       <template #title>
-        <h1 class="title text-gradient">{{ $t('Social network') }}</h1>
+        <h1 class="title center text-gradient">{{ $t('Social network') }}</h1>
       </template>
       <template #subtitle>
-        <p class="subtitle">{{ $t('Socials, Programming, Forums, Games and etc') }}.</p>
+        <p class="subtitle center">{{ $t('Socials, Programming, Forums, Games and etc') }}.</p>
       </template>
     </visual-links-section>
   </main>
