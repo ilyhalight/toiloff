@@ -10,8 +10,8 @@
 
 <template>
   <section class="visual-section" v-if="items">
-    <h1 class="title text-gradient">{{ $t('Skills') }}</h1>
-    <p class="subtitle">{{ $t('Databases and Algorithms, Frontend Development, Backend Development, Database Management') }}.</p>
+    <h1 class="title center text-gradient">{{ $t('Skills') }}</h1>
+    <p class="subtitle center">{{ $t('Databases and Algorithms, Frontend Development, Backend Development, Database Management') }}.</p>
     <div class="visual-group" v-for="group of Object.entries(items)" :key="group[0]">
       <p class="visual-group-title">{{ $t(group[0]) }}</p>
       <div class="visual-items">
