@@ -34,7 +34,13 @@
       <div class="visual-items">
         <div class="visual-item" v-for="visual in group[1]" :key="visual.name">
           <Icon :name="visual.icon"/>
-          <a :href="visual.type === 'link' ? visual.text : '#'" :target="visual.type === 'link' ? '_blank' : '_self'" @click="visual.type === 'modal' ? (donateName = visual.name, donateValue = visual.text, open()) : ''">{{ visual.name }}</a>
+          <a
+            :href="visual.type === 'link' ? visual.text : '#'"
+            :target="visual.type === 'link' ? '_blank' : '_self'"
+            @click="visual.type === 'modal' ? (donateName = visual.name, donateValue = visual.text, open()) : ''"
+          >
+            {{ visual.name }}
+          </a>
         </div>
       </div>
     </div>
