@@ -56,7 +56,7 @@ export default defineNuxtConfig({
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
                 { name: 'description', content: 'Toiloff - это мой личный сайт с небольшим количеством информации обо мне, моих социальных сетях и моих проектах.' },
                 { name: 'og:description', content: 'Toiloff - это мой личный сайт с небольшим количеством информации обо мне, моих социальных сетях и моих проектах.' },
-                { name: 'keywords', content: 'toiloff, toil, developer, dev, coder, personal, website, toil site' },
+                { name: 'keywords', content: 'toiloff, toil, developer, dev, coder, personal, website, toil site, тоил, сайт' },
                 { name: 'og:locale', content: 'ru_RU' },
                 { name: 'og:type', content: 'website' },
                 { name: 'og:title', content: 'Сайт - Toiloff' },
@@ -66,7 +66,7 @@ export default defineNuxtConfig({
             link: [
                 { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
                 { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
-                { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap'}
+                { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'}
             ]
             // link: [
             //     { rel: 'icon', type: 'image/png', href: '/favicon.png' }
