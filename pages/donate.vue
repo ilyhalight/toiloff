@@ -1,26 +1,31 @@
 <script setup>
-  import DonateSection from '~/components/Sections/DonateSection.vue';
+  import VisualLinksSection from '~/components/Sections/VisualLinksSection.vue';
   import donate from "~/data/donate.json";
-  
-  useHead({
-    title: "Донат · Toiloff",
-    meta: [
-      {
-        name: "og:title",
-        content: "Донат - Toiloff"
-      },
-    ]
+  import getTitle from '~/utils/title.js';
+
+  const { t } = useI18n();
+  const title = computed(() => getTitle(t('pages.donate')));
+
+  useSeoMeta({
+    title: title,
+    ogTitle: title,
   });
+
+  useSchemaOrg([
+    defineWebPage({
+      name: title
+    }),
+  ]);
 </script>
 
 <template>
   <main class="wrapper">
     <h1 class="text-attractive center">
-      {{ $t('Donate') }}
+      {{ $t('content.pages.donate.title') }}
     </h1>
     <h2 class="subtext-attractive center">
-      {{ $t('On this page you can see a little information about the opportunity to donate to me') }}.
+      {{ $t('content.pages.donate.desc') }}
     </h2>
-    <donate-section :items="donate"/>
+    <visual-links-section :items="donate"/>
   </main>
 </template>
