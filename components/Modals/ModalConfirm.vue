@@ -21,7 +21,7 @@ const emit = defineEmits(['confirm']);
     </h1>
     <slot />
     <button class="button" @click="emit('confirm')">
-      {{ $t('Confirm') }}
+      {{ $t('modals.confirm') }}
     </button>
   </VueFinalModal>
 </template>

@@ -10,9 +10,9 @@
       <Icon class="big-icon" name="gg:menu" />
     </template>
     <template #content>
-      <NuxtLink class="menu-item" to="/about"> {{ $t('About me') }} </NuxtLink>
-      <NuxtLink class="menu-item" to="/donate"> {{ $t('Donate') }} </NuxtLink>
-      <NuxtLink class="menu-item" to="/social"> {{ $t('Social') }} </NuxtLink>
+      <NuxtLink class="menu-item" to="/about"> {{ $t('pages.about') }} </NuxtLink>
+      <NuxtLink class="menu-item" to="/donate"> {{ $t('pages.donate') }} </NuxtLink>
+      <NuxtLink class="menu-item" to="/social"> {{ $t('pages.social') }} </NuxtLink>
       <a class="menu-item" href="https://akibot.ru">Aki</a>
       <themes-button class="menu-item" />
       <locales-menu class="menu-item" />
