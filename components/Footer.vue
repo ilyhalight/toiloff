@@ -4,7 +4,7 @@
 
 <template>
   <footer class="footer">
-    <p>{{ $t('Made with ❤️ by') }}</p>
+    <p>{{ $t('footer.made_with_love') }}</p>
     <NuxtLink to="/">Toil</NuxtLink>
   </footer>
 </template>
