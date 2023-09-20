@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/devtools',
     '@nuxtjs/i18n',
     '@nuxtjs/color-mode',
-    '@nuxt/image-edge',
+    '@nuxt/image',
     'nuxt-icon',
     'nuxt-icons',
     'nuxt-simple-sitemap',
@@ -58,6 +58,10 @@ export default defineNuxtConfig({
   },
   sitemap: {
     enabled: true
+  },
+  image: {
+    quality: 80,
+    format: ['avif', 'webp', 'png'],
   },
   robots: {
     enabled: true,

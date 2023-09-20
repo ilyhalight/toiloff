@@ -9,7 +9,6 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "^0.8.0",
-    "@nuxt/image-edge": "^1.0.0-rc.1-28217290.de85e17",
     "@nuxtjs/color-mode": "^3.3.0",
     "@nuxtjs/i18n": "^8.0.0-beta.9",
     "nuxt": "^3.7.0",
@@ -25,6 +24,7 @@
     "vue-final-modal": "^4.4.5"
   },
   "dependencies": {
+    "@nuxt/image": "^1.0.0-rc.2",
     "vue-toastification": "^2.0.0-rc.5"
   }
 }
