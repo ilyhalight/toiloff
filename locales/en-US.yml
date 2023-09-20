@@ -1,50 +1,84 @@
-About me: 'About me'
-Donate: 'Donate'
-Blog: 'Blog'
-Social: 'Social'
+layouts.main: 'Site'
+
+
+pages.index: 'Main'
+pages.social: 'Social'
+pages.donate: 'Donate'
+pages.about: 'About me'
+
+
+modals.confirm: 'Confirm'
+
+
+toasts.copied: 'Copied to clipboard!'
+
+
+footer.made_with_love: 'Made with ❤️ by'
+
+
+content.pages.index.title.part1: 'Welcome'
+content.pages.index.title.highlighted: 'to my website.'
+content.pages.index.title.part2: 'Make yourself at home.'
+content.pages.index.desc: 'Here you will find information about my projects. Also, you can find out a little about me, my social networks or give me a call. Thank you for your interest.'
+content.pages.index.projects.title: 'My Projects'
+content.pages.index.projects.desc: 'Probably, there is nothing more exciting than seeing your ideas embodied in reality. In this section, I present to you some of these ideas that have been implemented by me.'
+content.pages.index.contributed.title: 'Contributed'
+content.pages.index.contributed.desc: 'A little below you can see the projects to which I have made any contribution.'
+
+
+content.pages.about.title: 'About me'
+content.pages.about.desc: 'On this page you can see some information about me.'
+content.pages.about.skills.title: 'Skills'
+content.pages.about.skills.desc: 'Databases and Algorithms, Frontend Development, Backend Development, Database Management.'
+
+content.pages.donate.title: 'Donate'
+content.pages.donate.desc: 'On this page you can see a little information about the opportunity to donate to me.'
+
+content.pages.social.title: 'Social network'
+content.pages.social.desc: 'On this page you can see some information about my social networks.'
+content.pages.social.links.title: 'Social network'
+content.pages.social.links.desc: 'Socials, Programming, Forums, Games and etc.'
+
+
+content.projects.vot-cli.desc: "voice-over-translation but it's a CLI."
+content.projects.summarize-articles.desc: "A small extension that allows you to quickly retell articles."
+content.projects.feimisio-donate.desc: 'FeimisioDonate is a small donation system for CS:GO servers. The server part of the system is built in Python using FastAPI, and the client part is based on NuxtJS 3.0. The system supports several servers, as well as several payment systems.'
+content.projects.toiloff.desc: 'Toiloff Website is my personal website with a little bit of information about me, my social networks and my projects.'
+content.projects.lztupgrade.desc: 'LZT Upgrade (or LZTUp) is my implementation of useful or just interesting scripts for the Lolzteam forum.'
+
+
+content.contributed.vot.desc: 'Voice Over Translation is an extension that adds voice-over translation of videos from Yandex Browser to other browsers.'
+content.contributed.materialadmin-newserver.desc: 'SB-MaterialAdmin/New Server is a plugin for CS:GO servers administrators, which allows you to punish violators with the help of bans and mutes.'
+
+
+сontent.about.name.title: 'Name'
+сontent.about.name.value: 'Ilya'
+сontent.about.birthday.title: 'Birthday'
+сontent.about.birthday.value: '14 September'
+сontent.about.country.title: 'Country'
+сontent.about.country.value: 'Russia'
+сontent.about.city.title: 'City'
+сontent.about.city.value: 'Voronezh'
+
+
+content.skills.programming_languages: 'Programming languages'
+content.skills.fullstack_development: 'Full-Stack Development'
+content.skills.databases: 'Databases'
+content.skills.devops: 'DevOps'
+content.skills.tools: 'Tools'
+
+
+content.socials.socials: 'Socials'
+content.socials.programming: 'Programming'
+content.socials.forums: 'Forums'
+content.socials.games: 'Socials'
+content.socials.anime_manga: 'Anime & Manga'
+content.socials.other: 'Other'
+
+
+content.donate.crypto: 'Crypto'
+content.donate.platforms: 'Platforms'
+
+
 en: 'English'
 ru: 'Русский'
-Welcome: 'Welcome'
-to my website: "to my website"
-Make yourself at home: 'Make yourself at home'
-a developer from Russia: 'a developer from Russia'
-Here you will find information about my projects. Also, you can find out a little about me, my social networks or give me a call. Thank you for your interest: 'Here you will find information about my projects. Also, you can find out a little about me, my social networks or give me a call. Thank you for your interest'
-My Projects: 'My Projects'
-Probably, there is nothing more exciting than seeing your ideas embodied in reality. In this section, I present to you some of these ideas that have been implemented by me: 'PrProbably, there is nothing more exciting than seeing your ideas embodied in reality. In this section, I present to you some of these ideas that have been implemented by me'
-FeimisioDonate is a small donation system for CS:GO servers. The server part of the system is built in Python using FastAPI, and the client part is based on NuxtJS 3.0. The system supports several servers, as well as several payment systems: 'FeimisioDonate is a small donation system for CS:GO servers. The server part of the system is built in Python using FastAPI, and the client part is based on NuxtJS 3.0. The system supports several servers, as well as several payment systems'
-Simple MySQL Backup is a small utility for backing up MySQL databases. The utility is written in Python and uses recursive selection to create backups: 'Simple MySQL Backup is a small utility for backing up MySQL databases. The utility is written in Python and uses recursive selection to create backups'
-Toiloff Website is my personal website with a little bit of information about me, my social networks and my projects: 'Toiloff Website is my personal website with a little bit of information about me, my social networks and my projects'
-LZT Upgrade (or LZTUp) is my implementation of useful or just interesting scripts for the Lolzteam forum: 'LZT Upgrade (or LZTUp) is my implementation of useful or just interesting scripts for the Lolzteam forum'
-Confirm: 'Confirm'
-Contributed: 'Contributed'
-A little below you can see the projects to which I have made any contribution: 'A little below you can see the projects to which I have made any contribution'
-Voice Over Translation is an extension that adds voice-over translation of videos from Yandex Browser to other browsers: 'Voice Over Translation is an extension that adds voice-over translation of videos from Yandex Browser to other browsers'
-SB-MaterialAdmin/New Server is a plugin for CS:GO servers administrators, which allows you to punish violators with the help of bans and mutes: 'SB-MaterialAdmin/New Server is a plugin for CS:GO servers administrators, which allows you to punish violators with the help of bans and mutes'
-Made with ❤️ by: 'Made with ❤️ by'
-On this page you can see some information about me: 'On this page you can see some information about me'
-Name: 'Name'
-Ilya: 'Ilya'
-Birthday: 'Birthday'
-14 September: '14 September'
-Country: 'Country'
-Russia: 'Russia'
-City: 'City'
-Voronezh: 'Voronezh'
-Skills: 'Skills'
-Databases and Algorithms, Frontend Development, Backend Development, Database Management: 'Databases and Algorithms, Frontend Development, Backend Development, Database Management'
-Programming: 'Programming'
-Full-Stack Development: 'Full-Stack Development'
-Databases: 'Databases'
-DevOps: 'DevOps'
-Tools: 'Tools'
-Social network: 'Social network'
-On this page you can see some information about my social networks: 'On this page you can see some information about my social networks'
-Socials, Programming, Forums, Games and etc: 'Socials, Programming, Forums, Games and etc'
-Socials: 'Socials'
-Forums: 'Forums'
-Games: 'Games'
-Anime & Manga: 'Anime & Manga'
-On this page you can see a little information about the opportunity to donate to me: 'On this page you can see a little information about the opportunity to donate to me'
-Crypto: 'Crypto'
-Platforms: 'Platforms'
-Copied to clipboard!: 'Copied to clipboard!'

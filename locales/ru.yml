@@ -1,50 +1,82 @@
-About me: 'Обо мне'
-Donate: 'Донат'
-Blog: 'Блог'
-Social: "Соц. сети"
+layouts.main: 'Сайт'
+
+
+pages.index: 'Главная'
+pages.social: 'Соц. сети'
+pages.donate: 'Донат'
+pages.about: 'Обо мне'
+
+
+modals.confirm: 'Подтвердить'
+
+
+toasts.copied: 'Скопировано в буфер обмена!'
+
+
+footer.made_with_love: Сделано с ❤️'
+
+
+content.pages.index.title.part1: 'Добро пожаловать'
+content.pages.index.title.highlighted: 'на мой сайт.'
+content.pages.index.title.part2: 'Чувствуй себя как дома.'
+content.pages.index.desc: 'Здесь вы найдете информацию о моих проектах. Также, вы сможете узнать немного обо мне, моих социальных сетях или задонатить мне. Спасибо за ваш интерес.'
+content.pages.index.projects.title: 'Мои проекты'
+content.pages.index.projects.desc: 'Наверное, нет ничего более захватывающего, чем увидеть свои идеи воплощенными в реальности. В этой секции я представляю вам некоторые из таких идей, которые были реализованы мной.'
+content.pages.index.contributed.title: 'Внес вклад'
+content.pages.index.contributed.desc: 'Немного ниже вы можете увидеть проекты, в которые я внес какой-либо вклад.'
+
+content.pages.about.title: 'Обо мне'
+content.pages.about.desc: 'На этой странице можно увидеть немного информации обо мне.'
+content.pages.about.skills.title: 'Навыки'
+content.pages.about.skills.desc: 'Базы данных и Алгоритмы, Фронтенд, Бекенд, Управление базами данных.'
+
+content.pages.donate.title: 'Донат'
+content.pages.donate.desc: 'На этой странице вы можете увидеть немного информации о возможности задонатить мне.'
+
+content.pages.social.title: 'Социальные сети'
+content.pages.social.desc: 'На этой странице можно увидеть немного информации о моих социальных сетях.'
+content.pages.social.links.title: 'Социальные сети'
+content.pages.social.links.desc: 'Социальные сети, Программирование, Форумы, Игры и другое.'
+
+
+content.projects.vot-cli.desc: "voice-over-translation, но это CLI."
+content.projects.summarize-articles.desc: "Небольшое расширение, позволяющее быстро пересказывать статьи."
+content.projects.feimisio-donate.desc: 'FeimisioDonate  — Это небольшая система доната для CS:GO серверов. Серверная часть системы построена на Python с использованием FastAPI, а клиентская часть на NuxtJS 3.0. Система поддерживает несколько серверов, а также несколько платежных систем.'
+content.projects.toiloff.desc: 'Сайт Toiloff - это мой личный сайт с небольшой информацией обо мне, моих социальных сетях и моих проектах.'
+content.projects.lztupgrade.desc: 'LZT Upgrade (или LZTUp) является моей реализацией полезных или просто интересных скриптов для форума Lolzteam.'
+
+
+content.contributed.vot.desc: 'Voice Over Translation  - расширение, которое добавляет закадровый перевод видео из Yandex Browser в другие браузеры.'
+content.contributed.materialadmin-newserver.desc: 'SB-MaterialAdmin/New Server  - это плагин для администраторов CS:GO серверов, позволяющий наказывать нарушителей с помощью банов и мутов.'
+
+
+сontent.about.name.title: 'Имя'
+сontent.about.name.value: 'Илья'
+сontent.about.birthday.title: 'День рождения'
+сontent.about.birthday.value: '14 Сентября'
+сontent.about.country.title: 'Страна'
+сontent.about.country.value: 'Россия'
+сontent.about.city.title: 'Город'
+сontent.about.city.value: 'Воронеж'
+
+
+content.skills.programming_languages: 'Языки программирования'
+content.skills.fullstack_development: 'Фуллстек разработка'
+content.skills.databases: 'Базы данных'
+content.skills.devops: 'DevOps'
+content.skills.tools: 'Инструменты'
+
+
+content.socials.socials: 'Общение'
+content.socials.programming: 'Программирование'
+content.socials.forums: 'Форумы'
+content.socials.games: 'Игры'
+content.socials.anime_manga: 'Аниме & Манга'
+content.socials.other: 'Другое'
+
+
+content.donate.crypto: 'Криптовалюты'
+content.donate.platforms: 'Платформы'
+
 en: 'English'
 ru: 'Русский'
-Welcome: 'Добро пожаловать'
-to my website: 'на мой сайт'
-Make yourself at home: 'Чувствуй себя как дома'
-a developer from Russia: 'разработчик из России'
-Here you will find information about my projects. Also, you can find out a little about me, my social networks or give me a call. Thank you for your interest: 'Здесь вы найдете информацию о моих проектах. Также, вы сможете узнать немного обо мне, моих социальных сетях или задонатить мне. Спасибо за ваш интерес'
-My Projects: 'Мои проекты'
-Probably, there is nothing more exciting than seeing your ideas embodied in reality. In this section, I present to you some of these ideas that have been implemented by me: 'Наверное, нет ничего более захватывающего, чем увидеть свои идеи воплощенными в реальности. В этой секции я представляю вам некоторые из таких идей, которые были реализованы мной'
-FeimisioDonate is a small donation system for CS:GO servers. The server part of the system is built in Python using FastAPI, and the client part is based on NuxtJS 3.0. The system supports several servers, as well as several payment systems: 'FeimisioDonate — Это небольшая система доната для CS:GO серверов. Серверная часть системы построена на Python с использованием FastAPI, а клиентская часть на NuxtJS 3.0. Система поддерживает несколько серверов, а также несколько платежных систем'
-Simple MySQL Backup is a small utility for backing up MySQL databases. The utility is written in Python and uses recursive selection to create backups: 'Simple MySQL Backup - это небольшая утилита для резервного копирования баз данных MySQL. Утилита написана на Python и использует рекурсивный выбор для создания резервных копий'
-Toiloff Website is my personal website with a little bit of information about me, my social networks and my projects: 'Toiloff Website - это мой личный сайт с небольшим количеством информации обо мне, моих социальных сетях и моих проектах'
-LZT Upgrade (or LZTUp) is my implementation of useful or just interesting scripts for the Lolzteam forum: 'LZT Upgrade (или же LZTUp) — Это моя реализация полезных или просто интересных мне скриптов для форума Lolzteam'
-Confirm: 'Подтвердить'
-Contributed: 'Внес вклад'
-A little below you can see the projects to which I have made any contribution: 'Немного ниже вы можете увидеть проекты, в которые я внес какой-либо вклад'
-Voice Over Translation is an extension that adds voice-over translation of videos from Yandex Browser to other browsers: 'Voice Over Translation - расширение, которое добавляет закадровый перевод видео из Yandex Browser в другие браузеры'
-SB-MaterialAdmin/New Server is a plugin for CS:GO servers administrators, which allows you to punish violators with the help of bans and mutes: 'SB-MaterialAdmin/New Server - это плагин для администраторов CS:GO серверов, позволяющий наказывать нарушителей с помощью банов и мутов'
-Made with ❤️ by: 'Сделано с ❤️'
-On this page you can see some information about me: 'На этой странице можно увидеть немного информации обо мне'
-Name: 'Имя'
-Ilya: 'Илья'
-Birthday: 'День рождения'
-14 September: '14 Сентября'
-Country: 'Страна'
-Russia: 'Россия'
-City: 'Город'
-Voronezh: 'Воронеж'
-Skills: 'Навыки'
-Databases and Algorithms, Frontend Development, Backend Development, Database Management: 'Базы данных и Алгоритмы, Фронтенд, Бекенд, Управление базами данных'
-Programming: 'Программирование'
-Full-Stack Development: 'Фуллстек разработка'
-Databases: 'Базы данных'
-DevOps: 'DevOps'
-Tools: 'Инструменты'
-Social network: 'Социальные сети'
-On this page you can see some information about my social networks: 'На этой странице можно увидеть немного информации о моих социальных сетях'
-Socials, Programming, Forums, Games and etc: 'Социальные сети, Программирование, Форумы, Игры и другое'
-Socials: 'Общение'
-Forums: 'Форумы'
-Games: 'Игры'
-Anime & Manga: 'Аниме & Манга'
-On this page you can see a little information about the opportunity to donate to me: 'На этой странице вы можете увидеть немного информации о возможности задонатить мне'
-Crypto: 'Криптовалюты'
-Platforms: 'Платформы'
-Copied to clipboard!: 'Скопировано в буфер обмена!'
