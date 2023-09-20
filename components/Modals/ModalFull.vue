@@ -1,21 +1,11 @@
 <script setup>
 import { VueFinalModal } from 'vue-final-modal'
-import InvisibleButton from '../Buttons/InvisibleButton.vue';
-import CopyToClipboard from '~/components/Buttons/CopyToClipboard.vue';
+import InvisibleButton from '~/components/Buttons/InvisibleButton.vue';
 
 const props = defineProps({
   title: {
     type: String,
     required: false,
-  },
-  text: {
-    type: String,
-    required: false
-  },
-  copyButton: {
-    type: Boolean,
-    required: false,
-    default: false
   }
 });
 const emit = defineEmits(['close']);
@@ -36,12 +26,8 @@ const emit = defineEmits(['close']);
         </template>
       </invisible-button>
     </div>
-
-    <div v-if="text" class="modal-text-block">
-      <p class="modal-text">{{ text }}</p>
-      <copy-to-clipboard :text="text"/>
+    <div class="modal-body">
+      <slot />
     </div>
-
-    <slot />
   </VueFinalModal>
 </template>
