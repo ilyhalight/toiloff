@@ -4,11 +4,6 @@ import DropDown from '~/components/DropDowns/DropDown.vue';
 
 const { locale, locales, setLocale } = useI18n();
 
-const availableLocales = computed(() => {
-  return (locales.value).filter(i => i.code !== locale.value)
-});
-
-
 const currentLocale = computed(() => {
   return (locales.value).find(i => i.code === locale.value)
 });
