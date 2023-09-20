@@ -1,78 +1,118 @@
 {
-    "Crypto": [
+    "content.donate.crypto": [
         {
             "name": "Bitcoin",
-            "icon": "logos:bitcoin",
-            "type": "modal",
-            "text": "bc1qrg8l33t5hxnmur94z968fsvzwvfxr77zr2sl4c"
+            "icon": "cryptocurrency-color:btc",
+            "icon_type": "icon",
+            "action_type": "modal",
+            "content": "bc1qrg8l33t5hxnmur94z968fsvzwvfxr77zr2sl4c"
         },
         {
             "name": "Ethereum",
-            "icon": "logos:ethereum",
-            "type": "modal",
-            "text": "0x7E668a8bD524136E00eEC996a24ac18BC89Ab135"
+            "icon": "cryptocurrency-color:eth",
+            "icon_type": "icon",
+            "action_type": "modal",
+            "content": "0x7E668a8bD524136E00eEC996a24ac18BC89Ab135"
         },
         {
-            "name": "USDT ERC-20",
-            "icon": "cryptocurrency-color:usdt",
-            "type": "modal",
-            "text": "0x7E668a8bD524136E00eEC996a24ac18BC89Ab135"
+            "name": "USDT (ERC-20)",
+            "icon": "usdt-erc",
+            "icon_type": "local-color",
+            "action_type": "modal",
+            "content": "0x7E668a8bD524136E00eEC996a24ac18BC89Ab135"
+        },
+        {
+            "name": "USDT (TRC-20)",
+            "icon": "usdt-trc",
+            "icon_type": "local-color",
+            "action_type": "modal",
+            "content": "TVGKnJenkhxAnpUd1wK4tLuTHYsXRU48WL"
+        },
+        {
+            "name": "USDT (SOL)",
+            "icon": "usdt-sol",
+            "icon_type": "local-color",
+            "action_type": "modal",
+            "content": "EmSjEWffYaLaRRWZgD69eF4HMLmnSZdzcffWFj2gG8Mn"
+        },
+        {
+            "name": "USDT (Polygon)",
+            "icon": "usdt-polygon",
+            "icon_type": "local-color",
+            "action_type": "modal",
+            "content": "0x71DCaF7EeEfBAFc3305f12EB1ccBD815d8AB0E4b"
         },
         {
             "name": "DOGE",
             "icon": "cryptocurrency-color:doge",
-            "type": "modal",
-            "text": "DNEYjT6DxDnJADZviKGcKkYt3BtKtuPthy"
+            "icon_type": "icon",
+            "action_type": "modal",
+            "content": "DNEYjT6DxDnJADZviKGcKkYt3BtKtuPthy"
         },
         {
             "name": "TRON",
             "icon": "cryptocurrency-color:trx",
-            "type": "modal",
-            "text": "TLT9h7uLNaz2MAKaRMDNhptppG8qjCcazF"
+            "icon_type": "icon",
+            "action_type": "modal",
+            "content": "TLT9h7uLNaz2MAKaRMDNhptppG8qjCcazF"
         },
         {
             "name": "MATIC (Polygon)",
             "icon": "cryptocurrency-color:matic",
-            "type": "modal",
-            "text": "0x71DCaF7EeEfBAFc3305f12EB1ccBD815d8AB0E4b"
+            "icon_type": "icon",
+            "action_type": "modal",
+            "content": "0x71DCaF7EeEfBAFc3305f12EB1ccBD815d8AB0E4b"
         },
         {
             "name": "XRP",
             "icon": "cryptocurrency-color:xrp",
-            "type": "modal",
-            "text": "r4cQ1o6kVumEo9B5ioF5ZDYg8tv3d5EfuM"
+            "icon_type": "icon",
+            "action_type": "modal",
+            "content": "r4cQ1o6kVumEo9B5ioF5ZDYg8tv3d5EfuM"
         },
         {
             "name": "Litecoin",
             "icon": "cryptocurrency-color:ltc",
-            "type": "modal",
-            "text": "LNk6nfDd5LPT9T6cDTo9ZfiyRrrfyU7oXM"
+            "icon_type": "icon",
+            "action_type": "modal",
+            "content": "LNk6nfDd5LPT9T6cDTo9ZfiyRrrfyU7oXM"
         },
         {
             "name": "Monero",
-            "icon": "logos:monero",
-            "type": "modal",
-            "text": "4AAiA4SVTUhdmtYBM4JqCyS4UkxEVfYqqWHhEsD9WFoNYzduGDbGwnvFaa2ptmkivdPLVvxfTfHUrTyRiVDVHYnM74iWq4v"
+            "icon": "cryptocurrency-color:xmr",
+            "icon_type": "icon",
+            "action_type": "modal",
+            "content": "4AAiA4SVTUhdmtYBM4JqCyS4UkxEVfYqqWHhEsD9WFoNYzduGDbGwnvFaa2ptmkivdPLVvxfTfHUrTyRiVDVHYnM74iWq4v"
+        },
+        {
+            "name": "TON",
+            "icon": "toncoin",
+            "icon_type": "local-color",
+            "action_type": "modal",
+            "content": "EQAXhR8661KAbOVPTvE1PtKuEJ5QK6bx9308M--ujEPYQ7sr"
         }
     ],
-    "Platforms": [
+    "content.donate.platforms": [
         {
             "name": "Lolzteam",
-            "icon": "fa6-solid:coins",
-            "type": "link",
-            "text": "https://lzt.market/balance/transfer?redirect=https%3A%2F%2Ftoiloff.ru&username=Toil"
+            "icon": "lolzteam",
+            "icon_type": "local-color",
+            "action_type": "link",
+            "content": "https://lzt.market/balance/transfer?redirect=https%3A%2F%2Ftoiloff.ru&username=Toil"
         },
         {
             "name": "Payeer",
             "icon": "twemoji:letter-p",
-            "type": "modal",
-            "text": "P1014846551"
+            "icon_type": "icon",
+            "action_type": "modal",
+            "content": "P1014846551"
         },
         {
             "name": "Boosty",
-            "icon": "skill-icons:rocket",
-            "type": "link",
-            "text": "https://boosty.to/toil"
+            "icon": "boosty",
+            "icon_type": "local-color",
+            "action_type": "link",
+            "content": "https://boosty.to/toil"
         }
     ]
 }

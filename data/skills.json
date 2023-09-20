@@ -1,108 +1,137 @@
 {
-    "Programming": [
+    "content.skills.programming_languages": [
         {
             "name": "Python",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-python"
         },
         {
             "name": "JavaScript",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-js-official"
         },
         {
             "name": "SourcePawn",
+            "icon_type": "icon",
             "icon": "mdi:chess-pawn"
         }
     ],
-    "Full-Stack Development": [
+    "content.skills.fullstack_development": [
         {
             "name": "HTML5",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-html"
         },
         {
             "name": "CSS3",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-css"
         },
         {
             "name": "SASS",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-sass"
         },
         {
-            "name": "TailwindCSS",
+            "name": "Tailwind CSS",
+            "icon_type": "icon",
             "icon": "logos:tailwindcss-icon"
         },
         {
             "name": "Bootstrap",
+            "icon_type": "icon",
             "icon": "skill-icons:bootstrap"
         },
         {
             "name": "Node.js",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-node"
         },
         {
             "name": "Vue.js v3",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-vue"
         },
         {
             "name": "Nuxt v3",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-nuxt"
         },
         {
             "name": "JQuery",
+            "icon_type": "icon",
             "icon": "mdi:jquery"
         },
         {
             "name": "FastAPI",
+            "icon_type": "icon",
             "icon": "skill-icons:fastapi"
         },
         {
-            "name": "Express.js",
-            "icon": "skill-icons:expressjs-dark"
+            "name": "Webpack",
+            "icon_type": "icon",
+            "icon": "vscode-icons:file-type-webpack"
         }
     ],
-    "Databases": [
+    "content.skills.databases": [
         {
             "name": "MySQL",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-mysql"
         },
         {
             "name": "Redis",
+            "icon_type": "icon",
             "icon": "logos:redis"
         },
         {
             "name": "SQLite",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-sqlite"
         }
     ],
-    "DevOps": [
+    "content.skills.devops": [
         {
             "name": "Cloudflare",
+            "icon_type": "icon",
             "icon": "logos:cloudflare"
         },
         {
             "name": "Nginx",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-nginx"
         },
         {
             "name": "Git",
+            "icon_type": "icon",
             "icon": "vscode-icons:file-type-git"
         },
         {
             "name": "GitHub",
+            "icon_type": "icon",
             "icon": "mdi:github"
         }
     ],
-    "Tools": [
+    "content.skills.tools": [
         {
             "name": "VS Code",
+            "icon_type": "icon",
             "icon": "logos:visual-studio-code"
         },
         {
             "name": "Postman",
+            "icon_type": "icon",
             "icon": "logos:postman-icon"
         },
         {
             "name": "Figma",
+            "icon_type": "icon",
             "icon": "logos:figma"
+        },
+        {
+            "name": "Fiddler",
+            "icon_type": "local-color",
+            "icon": "fiddler"
         }
     ]
 }

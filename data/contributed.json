@@ -1,16 +1,12 @@
 [
     {
         "name": "Voice Over Translation",
-        "desc": "Voice Over Translation is an extension that adds voice-over translation of videos from Yandex Browser to other browsers",
+        "desc": "content.contributed.vot.desc",
         "href": "https://github.com/ilyhalight/voice-over-translation",
         "tags": [
             {
                 "name": "JavaScript",
                 "color": "#3776AB"
-            },
-            {
-                "name": "JQuery",
-                "color": "#339933"
             },
             {
                 "name": "Webpack",
@@ -25,7 +21,7 @@
     },
     {
         "name": "SB-MaterialAdmin/NewServer",
-        "desc": "SB-MaterialAdmin/New Server is a plugin for CS:GO servers administrators, which allows you to punish violators with the help of bans and mutes",
+        "desc": "content.contributed.materialadmin-newserver.desc",
         "href": "https://github.com/SB-MaterialAdmin/NewServer",
         "tags": [
             {

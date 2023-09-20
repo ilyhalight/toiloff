@@ -1,25 +1,25 @@
 [
     [
         {
-            "name": "Name",
-            "value": "Ilya",
+            "name": "сontent.about.name.title",
+            "value": "сontent.about.name.value",
             "icon": "material-symbols:tag-rounded"
         },
         {
-            "name": "Birthday",
-            "value": "14 September",
+            "name": "сontent.about.birthday.title",
+            "value": "сontent.about.birthday.value",
             "icon": "mdi:calendar"
         }
     ],
     [
         {
-            "name": "Country",
-            "value": "Russia",
+            "name": "сontent.about.country.title",
+            "value": "сontent.about.country.value",
             "icon": "mdi:map-marker-radius"
         },
         {
-            "name": "City",
-            "value": "Voronezh",
+            "name": "сontent.about.city.title",
+            "value": "сontent.about.city.value",
             "icon": "mdi:city-variant-outline"
         }
     ]
