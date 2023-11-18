@@ -26,13 +26,6 @@
     <h2 class="subtext-attractive center">
       {{ $t('content.pages.social.desc') }}.
     </h2>
-    <visual-links-section :items="socials">
-      <template #title>
-        <h1 class="title center text-gradient">{{ $t('content.pages.social.links.title') }}</h1>
-      </template>
-      <template #subtitle>
-        <p class="subtitle center">{{ $t('content.pages.social.links.desc') }}.</p>
-      </template>
-    </visual-links-section>
+    <visual-links-section :items="socials"/>
   </main>
 </template>
