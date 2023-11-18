@@ -35,8 +35,6 @@ content.pages.donate.desc: 'On this page you can see a little information about 
 
 content.pages.social.title: 'Social network'
 content.pages.social.desc: 'On this page you can see some information about my social networks.'
-content.pages.social.links.title: 'Social network'
-content.pages.social.links.desc: 'Socials, Programming, Forums, Games and etc.'
 
 
 content.projects.vot-cli.desc: "voice-over-translation but it's a CLI."
