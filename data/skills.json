@@ -94,7 +94,7 @@
         {
             "name": "Cloudflare",
             "icon_type": "icon",
-            "icon": "logos:cloudflare"
+            "icon": "logos:cloudflare-icon"
         },
         {
             "name": "Nginx",
