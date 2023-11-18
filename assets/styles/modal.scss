@@ -45,6 +45,7 @@
 
 .modal-content-full {
   @extend .modal-content;
+  min-width: 300px;
   max-width: 100rem;
   max-height: 100svh;
   overflow: auto;
@@ -58,9 +59,6 @@
     flex-wrap: wrap;
     .modal-text {
       word-wrap: anywhere;
-    }
-    button {
-      margin-left: 0.25rem;
     }
   }
 
