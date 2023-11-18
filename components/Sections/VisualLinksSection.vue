@@ -37,9 +37,9 @@
 
   function modalLinkCallback(visualItem) {
     if (visualItem.action_type === "modal") {
-      this.visualName = visualItem.name;
-      this.visualValue = visualItem.content;
-      this.open();
+      visualName.value = visualItem.name;
+      visualValue.value = visualItem.content;
+      open();
     }
 
     return;
