@@ -112,8 +112,8 @@ export default defineNuxtConfig({
   // vite: {
       // server: {
       //     https: {
-      //         key: fs.readFileSync('/etc/letsencrypt/live/toiloff.ru/privkey.pem'),
-      //         cert: fs.readFileSync('/etc/letsencrypt/live/toiloff.ru/fullchain.pem'),
+      //         key: fs.readFileSync('/etc/letsencrypt/live/toil.cc/privkey.pem'),
+      //         cert: fs.readFileSync('/etc/letsencrypt/live/toil.cc/fullchain.pem'),
       //     },
       //     hmr: {
       //         protocol: 'wss',
