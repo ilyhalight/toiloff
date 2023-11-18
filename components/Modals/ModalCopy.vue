@@ -11,7 +11,9 @@
 
 <template>
   <div class="modal-text-block">
-    <p class="modal-text">{{ text }}</p>
-    <copy-to-clipboard :text="text"/>
+    <p class="modal-text">
+      {{ text }}
+      <copy-to-clipboard :text="text" style="display: inline-block;"/>
+    </p>
   </div>
 </template>
