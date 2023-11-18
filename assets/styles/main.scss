@@ -196,21 +196,32 @@ a {
     opacity: 1;
     transition: all 0.3s ease;
   }
+
   .dropdown-item {
     cursor: pointer;
     background: $background-second;
-    border-radius: 8px;
     padding: 10px 15px;
     transition: all 0.3s ease;
     * {
       background: $background-second;
       transition: all 0.3s ease;
     }
+
     &:hover {
       background: $background-third;
       * {
         background: $background-third;
       }
+    }
+
+    &:first-of-type {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    &:last-of-type {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
     }
   }
 }
@@ -396,6 +407,9 @@ a {
       color: $white-800;
       line-height: 1.5rem;
       margin: 20px 0;
+      @media screen and (max-width: 767px) {
+        text-align: center;
+      }
     }
     .visual-items {
       display: flex;
@@ -403,22 +417,43 @@ a {
       @media screen and (max-width: 449px){
         flex-direction: column;
       }
+      @media screen and (max-width: 1028px){
+        justify-content: space-between;
+      }
       .visual-item {
         display: flex;
         align-items: center;
-        margin: 10px 0;
+        margin: 5px;
+        padding: 10px;
+        transition: all 0.3s ease;
+        border-radius: 8px;
         @media screen and (max-width: 449px) {
           width: 80%;
         }
         @media screen and (min-width: 450px) and (max-width: 767px) {
-          width: 50%;
+          width: 47.5%;
         }
         @media screen and (min-width: 768px) and (max-width: 1027px) {
-          width: 25%;
+          width: 24.5%;
         }
+
         @media screen and (min-width: 1028px) {
-          width: 20%;
+          width: 19%;
         }
+
+        &.visual-link {
+          &:hover {
+            background: $background-second;
+            cursor: pointer;
+            a {
+              color: $white;
+            }
+          }
+          svg {
+            color: $white;
+          }
+        }
+
         .icon, .nuxt-icon {
           width: 3rem !important;
           height: 3rem !important;
@@ -428,7 +463,7 @@ a {
         p, a {
           margin-left: 15px;
           font-size: 1.5rem;
-          line-height: 1.5rem;
+          line-height: 1.75rem;
         }
       }
     }
