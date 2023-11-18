@@ -13,7 +13,7 @@ modals.confirm: 'Подтвердить'
 toasts.copied: 'Скопировано в буфер обмена!'
 
 
-footer.made_with_love: Сделано с ❤️'
+footer.made_with_love: 'Сделано с ❤️'
 
 
 content.pages.index.title.part1: 'Добро пожаловать'
@@ -35,8 +35,6 @@ content.pages.donate.desc: 'На этой странице вы можете у�
 
 content.pages.social.title: 'Социальные сети'
 content.pages.social.desc: 'На этой странице можно увидеть немного информации о моих социальных сетях.'
-content.pages.social.links.title: 'Социальные сети'
-content.pages.social.links.desc: 'Социальные сети, Программирование, Форумы, Игры и другое.'
 
 
 content.projects.vot-cli.desc: "voice-over-translation, но это CLI."
