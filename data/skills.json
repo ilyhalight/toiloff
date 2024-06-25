@@ -1,6 +1,5 @@
 {
-    "content.skills.programming_languages": [
-        {
+    "content.skills.programming_languages": [{
             "name": "Python",
             "icon_type": "icon",
             "icon": "vscode-icons:file-type-python"
@@ -9,15 +8,9 @@
             "name": "JavaScript",
             "icon_type": "icon",
             "icon": "vscode-icons:file-type-js-official"
-        },
-        {
-            "name": "SourcePawn",
-            "icon_type": "icon",
-            "icon": "mdi:chess-pawn"
         }
     ],
-    "content.skills.fullstack_development": [
-        {
+    "content.skills.fullstack_development": [{
             "name": "HTML5",
             "icon_type": "icon",
             "icon": "vscode-icons:file-type-html"
@@ -73,8 +66,7 @@
             "icon": "vscode-icons:file-type-webpack"
         }
     ],
-    "content.skills.databases": [
-        {
+    "content.skills.databases": [{
             "name": "MySQL",
             "icon_type": "icon",
             "icon": "vscode-icons:file-type-mysql"
@@ -90,8 +82,7 @@
             "icon": "vscode-icons:file-type-sqlite"
         }
     ],
-    "content.skills.devops": [
-        {
+    "content.skills.devops": [{
             "name": "Cloudflare",
             "icon_type": "icon",
             "icon": "logos:cloudflare-icon"
@@ -100,6 +91,12 @@
             "name": "Nginx",
             "icon_type": "icon",
             "icon": "vscode-icons:file-type-nginx"
+        }
+    ],
+    "content.skills.tools": [{
+            "name": "VS Code",
+            "icon_type": "icon",
+            "icon": "logos:visual-studio-code"
         },
         {
             "name": "Git",
@@ -110,13 +107,6 @@
             "name": "GitHub",
             "icon_type": "icon",
             "icon": "mdi:github"
-        }
-    ],
-    "content.skills.tools": [
-        {
-            "name": "VS Code",
-            "icon_type": "icon",
-            "icon": "logos:visual-studio-code"
         },
         {
             "name": "Postman",
