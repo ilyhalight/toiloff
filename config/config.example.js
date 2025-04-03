@@ -6,7 +6,6 @@ const config = () => {
       "Toiloff - это мой личный сайт с небольшим количеством информации обо мне, моих социальных сетях и моих проектах.",
     personName: "Toil",
     titleSeparator: "·",
-    umamiAnalytics: "",
   };
 };
 

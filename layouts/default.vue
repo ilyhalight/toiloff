@@ -7,9 +7,7 @@ const route = useRoute();
 const { t, locales } = useI18n();
 
 const head = useLocaleHead({
-  addDirAttribute: true,
-  identifierAttribute: 'id',
-  addSeoAttributes: true
+  key: 'id',
 });
 
 const title = computed(() => getTitle(t(route.meta.title ?? 'layouts.main')));
@@ -33,6 +31,7 @@ useSchemaOrg([
   definePerson({
     name: config.personName,
     image: '/images/me.jpg',
+    url: config.baseUrl,
     sameAs: sameAs.value
   }),
   defineWebSite({
@@ -47,7 +46,7 @@ useSchemaOrg([
 ]);
 
 defineOgImage({
-  siteName: config.siteName
+  siteLogo: "/favicon.svg"
 });
 </script>
 
@@ -62,7 +61,6 @@ defineOgImage({
     <template v-for="meta in head.meta" :key="meta.id">
       <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
     </template>
-    <Script defer src="https://analytics.arctic.pw/script.js" :data-website-id="config.umamiAnalytics"></Script>
   </Head>
 
   <Body>
