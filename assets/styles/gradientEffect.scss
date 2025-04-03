@@ -1,4 +1,4 @@
-@import '~/assets/styles/functions.scss';
+@use "~/assets/styles/functions.scss";
 
 @keyframes gradientEffectOpacity {
   0% {
@@ -9,10 +9,9 @@
   }
 }
 
-
-
 @keyframes gradientEffectMove {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(-150px) scale(0.8);
   }
   25% {
@@ -41,7 +40,9 @@
     background: rgba(255, 174, 0, 0.7);
     filter: blur(64px);
     // randomize animation delay
-    animation: gradientEffectOpacity 8s ease-in-out var(--opacity-delay) infinite alternate, gradientEffectMove 20s ease-in-out var(--move-delay) infinite alternate;
+    animation: gradientEffectOpacity 8s ease-in-out var(--opacity-delay)
+        infinite alternate,
+      gradientEffectMove 20s ease-in-out var(--move-delay) infinite alternate;
     position: absolute;
 
     .small {
