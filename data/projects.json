@@ -1,110 +1,186 @@
 [
-    {
-        "name": "VOT-CLI",
-        "desc": "content.projects.vot-cli.desc",
-        "href": "https://github.com/FOSWLY/vot-cli",
-        "tags": [
-            {
-                "name": "JavaScript",
-                "color": "#3776AB"
-            },
-            {
-                "name": "CLI",
-                "color": "#9D76C1"
-            }
-        ],
-        "image": "https://github.com/FOSWLY/vot-cli/raw/main/img/example.png"
-    },
-    {
-        "name": "Summarize Articles",
-        "desc": "content.projects.summarize-articles.desc",
-        "href": "https://github.com/FOSWLY/summarize-articles",
-        "tags": [
-            {
-                "name": "JavaScript",
-                "color": "#3776AB"
-            },
-            {
-                "name": "Vue",
-                "color": "#A2C579"
-            },
-            {
-                "name": "Extension",
-                "color": "#3B82F6"
-            }
-        ],
-        "image": "https://github.com/FOSWLY/summarize-articles/raw/main/gh/screenshot.png"
-    },
-    {
-        "name": "Feimisio Donate",
-        "desc": "content.projects.feimisio-donate.desc",
-        "href": "https://github.com/ilyhalight/FeimisioDonate",
-        "tags": [
-            {
-                "name": "Python",
-                "color": "#3776AB"
-            },
-            {
-                "name": "NodeJS",
-                "color": "#339933"
-            },
-            {
-                "name": "NuxtJS",
-                "color": "#00C58E"
-            },
-            {
-                "name": "FastAPI",
-                "color": "#009688"
-            },
-            {
-                "name": "MySQL",
-                "color": "#4479A1"
-            },
-            {
-                "name": "Website",
-                "color": "#3B82F6"
-            }
-        ],
-        "image": "https://i.imgur.com/A2Q5nIC.png"
-    },
-    {
-        "name": "Toiloff Website",
-        "desc": "content.projects.toiloff.desc",
-        "href": "https://github.com/ilyhalight/toiloff.ru",
-        "tags": [
-            {
-                "name": "NodeJS",
-                "color": "#339933"
-            },
-            {
-                "name": "NuxtJS",
-                "color": "#3776AB"
-            },
-            {
-                "name": "Website",
-                "color": "#3B82F6"
-            }
-        ],
-        "image": "https://i.imgur.com/tAAgh8I.png"
-    },
-    {
-        "name": "LZT Upgrade",
-        "desc": "content.projects.lztupgrade.desc",
-        "href": "https://github.com/ilyhalight/lzt-upgrade",
-        "tags": [
-            {
-                "name": "JavaScript",
-                "color": "#3776AB"
-            },
-            {
-                "name": "JQuery",
-                "color": "#339933"
-            },
-            {
-                "name": "Extension",
-                "color": "#3B82F6"
-            }
-        ],
-        "image": "https://i.imgur.com/ZROxuNa.png"
-    }
+  {
+    "name": "Voice Over Translation",
+    "desc": "content.projects.vot.desc",
+    "href": "https://github.com/ilyhalight/voice-over-translation",
+    "tags": [
+      {
+        "name": "JS | TS",
+        "color": "linear-gradient(90deg, rgb(206, 166, 48) 0%, rgb(206, 166, 48) 45%, #007ACC 60%, #007ACC 100%)"
+      },
+      {
+        "name": "UserScript",
+        "color": "rgb(122, 157, 205)"
+      }
+    ],
+    "image": "https://github.com/ilyhalight/voice-over-translation/raw/master/img/example.png"
+  },
+  {
+    "name": "vot.js",
+    "desc": "content.projects.votjs.desc",
+    "href": "https://github.com/FOSWLY/vot.js",
+    "tags": [
+      {
+        "name": "TypeScript",
+        "color": "#007ACC"
+      },
+      {
+        "name": "Lib",
+        "color": "#9D76C1"
+      }
+    ],
+    "image": "https://i.imgur.com/kDkHovP.png"
+  },
+  {
+    "name": "Summarize Articles",
+    "desc": "content.projects.summarize-articles.desc",
+    "href": "https://github.com/FOSWLY/summarize-articles",
+    "tags": [
+      {
+        "name": "TypeScript",
+        "color": "#007ACC"
+      },
+      {
+        "name": "Svelte",
+        "color": "#FF3E00"
+      },
+      {
+        "name": "Extension",
+        "color": "#643BF6"
+      }
+    ],
+    "image": "https://raw.githubusercontent.com/FOSWLY/summarize/refs/heads/main/repo/screenshot.png"
+  },
+  {
+    "name": "Stats Cards",
+    "desc": "content.projects.stats-cards.desc",
+    "href": "https://stats-cards.toil.cc/",
+    "tags": [
+      {
+        "name": "Rust",
+        "color": "#F5A97F"
+      },
+      {
+        "name": "Axum",
+        "color": "#5A67D8"
+      },
+      {
+        "name": "Backend",
+        "color": "#2D3748"
+      }
+    ],
+    "image": "https://i.imgur.com/AgIU4Ug.png"
+  },
+  {
+    "name": "VOT CLI",
+    "desc": "content.projects.vot-cli.desc",
+    "href": "https://github.com/FOSWLY/vot-cli",
+    "tags": [
+      {
+        "name": "JavaScript",
+        "color": "rgb(206, 166, 48)"
+      },
+      {
+        "name": "CLI",
+        "color": "#C17676"
+      }
+    ],
+    "image": "https://github.com/FOSWLY/vot-cli/raw/main/img/example.png"
+  },
+  {
+    "name": "Elysia Protobuf",
+    "desc": "content.projects.elysia-protobuf.desc",
+    "href": "https://github.com/ilyhalight/elysia-protobuf",
+    "tags": [
+      {
+        "name": "TypeScript",
+        "color": "#007ACC"
+      },
+      {
+        "name": "Lib",
+        "color": "#9D76C1"
+      }
+    ],
+    "image": "https://i.imgur.com/Z2y5ac5.png"
+  },
+  {
+    "name": "Feimisio Donate",
+    "desc": "content.projects.feimisio-donate.desc",
+    "href": "https://github.com/ilyhalight/FeimisioDonate",
+    "tags": [
+      {
+        "name": "Python",
+        "color": "#3776AB"
+      },
+      {
+        "name": "NuxtJS",
+        "color": "#00DC82"
+      },
+      {
+        "name": "FastAPI",
+        "color": "#009688"
+      },
+      {
+        "name": "MySQL",
+        "color": "#4479A1"
+      },
+      {
+        "name": "Website",
+        "color": "#3B82F6"
+      }
+    ],
+    "image": "https://i.imgur.com/A2Q5nIC.png"
+  },
+  {
+    "name": "Toiloff Website",
+    "desc": "content.projects.toiloff.desc",
+    "href": "https://github.com/ilyhalight/toiloff",
+    "tags": [
+      {
+        "name": "NuxtJS",
+        "color": "#00DC82"
+      },
+      {
+        "name": "Website",
+        "color": "#3B82F6"
+      }
+    ],
+    "image": "https://i.imgur.com/3FUvzo3.png"
+  },
+  {
+    "name": "JMAP YACL",
+    "desc": "content.projects.jmap-yacl.desc",
+    "href": "https://github.com/ilyhalight/jmap-yacl",
+    "tags": [
+      {
+        "name": "TypeScript",
+        "color": "#007ACC"
+      },
+      {
+        "name": "Lib",
+        "color": "#9D76C1"
+      }
+    ],
+    "image": "https://i.imgur.com/O7GZv9c.png"
+  },
+  {
+    "name": "LZT Upgrade",
+    "desc": "content.projects.lztupgrade.desc",
+    "href": "https://github.com/ilyhalight/lzt-upgrade",
+    "tags": [
+      {
+        "name": "JavaScript",
+        "color": "rgb(206, 166, 48)"
+      },
+      {
+        "name": "JQuery",
+        "color": "#339933"
+      },
+      {
+        "name": "UserScript",
+        "color": "rgb(122, 157, 205)"
+      }
+    ],
+    "image": "https://i.imgur.com/ZROxuNa.png"
+  }
 ]

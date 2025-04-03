@@ -1,127 +1,142 @@
 {
-    "content.skills.programming_languages": [{
-            "name": "Python",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-python"
-        },
-        {
-            "name": "JavaScript",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-js-official"
-        }
-    ],
-    "content.skills.fullstack_development": [{
-            "name": "HTML5",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-html"
-        },
-        {
-            "name": "CSS3",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-css"
-        },
-        {
-            "name": "SASS",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-sass"
-        },
-        {
-            "name": "Tailwind CSS",
-            "icon_type": "icon",
-            "icon": "logos:tailwindcss-icon"
-        },
-        {
-            "name": "Bootstrap",
-            "icon_type": "icon",
-            "icon": "skill-icons:bootstrap"
-        },
-        {
-            "name": "Node.js",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-node"
-        },
-        {
-            "name": "Vue.js v3",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-vue"
-        },
-        {
-            "name": "Nuxt v3",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-nuxt"
-        },
-        {
-            "name": "JQuery",
-            "icon_type": "icon",
-            "icon": "mdi:jquery"
-        },
-        {
-            "name": "FastAPI",
-            "icon_type": "icon",
-            "icon": "skill-icons:fastapi"
-        },
-        {
-            "name": "Webpack",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-webpack"
-        }
-    ],
-    "content.skills.databases": [{
-            "name": "MySQL",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-mysql"
-        },
-        {
-            "name": "Redis",
-            "icon_type": "icon",
-            "icon": "logos:redis"
-        },
-        {
-            "name": "SQLite",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-sqlite"
-        }
-    ],
-    "content.skills.devops": [{
-            "name": "Cloudflare",
-            "icon_type": "icon",
-            "icon": "logos:cloudflare-icon"
-        },
-        {
-            "name": "Nginx",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-nginx"
-        }
-    ],
-    "content.skills.tools": [{
-            "name": "VS Code",
-            "icon_type": "icon",
-            "icon": "logos:visual-studio-code"
-        },
-        {
-            "name": "Git",
-            "icon_type": "icon",
-            "icon": "vscode-icons:file-type-git"
-        },
-        {
-            "name": "GitHub",
-            "icon_type": "icon",
-            "icon": "mdi:github"
-        },
-        {
-            "name": "Postman",
-            "icon_type": "icon",
-            "icon": "logos:postman-icon"
-        },
-        {
-            "name": "Figma",
-            "icon_type": "icon",
-            "icon": "logos:figma"
-        },
-        {
-            "name": "Fiddler",
-            "icon_type": "local-color",
-            "icon": "fiddler"
-        }
-    ]
+  "content.skills.programming_languages": [
+    {
+      "name": "TypeScript",
+      "icon_type": "icon",
+      "icon": "skill-icons:typescript"
+    },
+    {
+      "name": "JavaScript",
+      "icon_type": "icon",
+      "icon": "skill-icons:javascript"
+    },
+    {
+      "name": "Python",
+      "icon_type": "icon",
+      "icon": "vscode-icons:file-type-python"
+    }
+  ],
+  "content.skills.backend_frontend": [
+    {
+      "name": "Elysia",
+      "icon_type": "local-color",
+      "icon": "elysia"
+    },
+    {
+      "name": "Svelte",
+      "icon_type": "icon",
+      "icon": "devicon:svelte"
+    },
+    {
+      "name": "SCSS",
+      "icon_type": "icon",
+      "icon": "vscode-icons:file-type-sass"
+    },
+    {
+      "name": "Nuxt",
+      "icon_type": "icon",
+      "icon": "logos:nuxt-icon"
+    },
+    {
+      "name": "Vue.js",
+      "icon_type": "icon",
+      "icon": "devicon:vuejs"
+    },
+    {
+      "name": "FastAPI",
+      "icon_type": "icon",
+      "icon": "devicon:fastapi"
+    }
+  ],
+  "content.skills.data": [
+    {
+      "name": "PostgreSQL",
+      "icon_type": "icon",
+      "icon": "devicon:postgresql"
+    },
+    {
+      "name": "MySQL",
+      "icon_type": "icon",
+      "icon": "devicon:mysql"
+    },
+    {
+      "name": "Redis",
+      "icon_type": "icon",
+      "icon": "logos:redis"
+    },
+    {
+      "name": "S3",
+      "icon_type": "local-color",
+      "icon": "s3"
+    }
+  ],
+  "content.skills.infra": [
+    {
+      "name": "Nginx",
+      "icon_type": "icon",
+      "icon": "vscode-icons:file-type-nginx"
+    },
+    {
+      "name": "Cloudflare",
+      "icon_type": "icon",
+      "icon": "devicon:cloudflare"
+    },
+    {
+      "name": "Docker",
+      "icon_type": "icon",
+      "icon": "devicon:docker"
+    },
+    {
+      "name": "Prometheus",
+      "icon_type": "icon",
+      "icon": "devicon:prometheus"
+    }
+  ],
+  "content.skills.tools": [
+    {
+      "name": "VS Code",
+      "icon_type": "icon",
+      "icon": "devicon:vscode"
+    },
+    {
+      "name": "Git",
+      "icon_type": "icon",
+      "icon": "devicon:git"
+    },
+    {
+      "name": "Bun",
+      "icon_type": "icon",
+      "icon": "devicon:bun"
+    },
+    {
+      "name": "Termius",
+      "icon_type": "icon",
+      "icon": "simple-icons:termius"
+    },
+    {
+      "name": "Postman",
+      "icon_type": "icon",
+      "icon": "logos:postman-icon"
+    },
+    {
+      "name": "Figma",
+      "icon_type": "icon",
+      "icon": "logos:figma"
+    },
+    {
+      "name": "Fiddler",
+      "icon_type": "local-color",
+      "icon": "fiddler"
+    },
+    {
+      "name": "Webpack",
+      "icon_type": "icon",
+      "icon": "vscode-icons:file-type-webpack"
+    },
+    {
+      "name": "Node.js",
+      "icon_type": "icon",
+      "icon": "vscode-icons:file-type-node"
+    }
+  ]
 }
