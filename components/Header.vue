@@ -7,7 +7,7 @@
 <template>
   <header class="header">
     <NuxtLink to="/" class="logo">
-      {{ '</' }}<span>ToilDev</span>>
+      {{ '<' }}<span>Toiloff</span>/>
     </NuxtLink>
     <nav class="navbar">
       <NuxtLink class="navbar-item" to="/about"> {{ $t('pages.about') }} </NuxtLink>

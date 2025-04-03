@@ -45,7 +45,7 @@
           <p class="tag" v-for="tag in item.tags" :key="tag" :style="'background: ' + tag.color">{{ tag.name }}</p>
         </div>
         <p class="section-description">{{ $t(item.desc) }}</p>
-        <nuxt-img class="section-image" :src="item.image" :alt="item.name" quality="80" loading="lazy" @click="imageLink = item.image; imageAlt = item.name; open()"/>
+        <nuxt-img class="section-image" :src="item.image" :alt="item.name + ' preview'" quality="80" loading="lazy" @click="imageLink = item.image; imageAlt = item.name; open()"/>
       </div>
     </div>
   </section>

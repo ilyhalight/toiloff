@@ -3,7 +3,6 @@
   import GradientEffect from '~/components/effects/GradientEffect.vue';
 
   import projects from "~/data/projects.json";
-  import contributed from "~/data/contributed.json";
 
   import getTitle from '~/utils/title.js';
 
@@ -34,8 +33,6 @@
       </gradient-effect>
       <h1 class="text-attractive center">
         {{ $t('content.pages.index.title.part1') }} <span class="text-gradient">{{ $t('content.pages.index.title.highlighted') }}</span>
-        <br>
-        {{ $t('content.pages.index.title.part2') }}
       </h1>
       <p class="subtext-attractive center">
         {{ $t('content.pages.index.desc') }}
@@ -49,15 +46,5 @@
         <p class="subtitle center">{{ $t('content.pages.index.projects.desc') }}</p>
       </template>
     </main-section>
-    <main-section :items="contributed">
-      <template #title>
-        <h2 class="title center">{{ $t('content.pages.index.contributed.title') }}</h2>
-      </template>
-      <template #subtitle>
-        <p class="subtitle center">{{ $t('content.pages.index.contributed.desc') }}</p>
-      </template>
-    </main-section>
-    <!-- <p>{{ $t('Current locale') }}: {{ locale }}</p>
-    <p>{{ $t('Current theme') }}: {{ $colorMode.value }}</p> -->
   </main>
 </template>

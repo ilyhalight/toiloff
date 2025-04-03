@@ -24,7 +24,7 @@
       {{ $t('content.pages.social.title') }}
     </h1>
     <h2 class="subtext-attractive center">
-      {{ $t('content.pages.social.desc') }}.
+      {{ $t('content.pages.social.desc') }}
     </h2>
     <visual-links-section :items="socials"/>
   </main>
