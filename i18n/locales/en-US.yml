@@ -1,0 +1,101 @@
+layouts.main: Site
+modals.confirm: Confirm
+toasts.copied: Copied to clipboard!
+
+footer:
+  actual-info:
+    title: About relevance
+    desc: >-
+      When I was creating my website, I made a few strange decisions that are now easier to rewrite than try to fix.
+      Although I've already made mockups of a new design for a long time, which looks a bit better, but I still can't get around to making it up.
+
+      Even so, after a long time, I finally updated the information at 03.04.2025 and fixed some bugs, because I don't know how much longer I will defer the full recode.
+  made_with_love: Made with ❤️ by
+
+pages:
+  index: Main
+  social: Social
+  donate: Donate
+  about: About me
+
+content:
+  pages:
+    index:
+      title:
+        part1: Welcome
+        highlighted: "to\_my website"
+      desc: Check out my projects, learn more about me, or support me
+      projects:
+        title: My Projects
+        desc: Here are some of my implemented ideas that I’d like to share.
+    about:
+      title: About me
+      desc: On this page you can see some information about me
+      skills:
+        title: My skills
+        desc: Here is everything I use at least occasionally and consider worth mentioning.
+    donate:
+      title: Donate
+      desc: Here are several ways you can donate to me.
+    social:
+      title: Socials
+      desc: Here are a few of my social media profiles and other places where I occasionally appear.
+  projects:
+    vot:
+      desc: >-
+        Voice Over Translation is an extension that adds voice-over translation of
+        videos from Yandex Browser to other browsers.
+    votjs:
+      desc: An unofficial library for interacting with the Yandex VOT API.
+    stats-cards:
+      desc: Blazing fast stats cards for various services. Supports customization and themes.
+    vot-cli:
+      desc: vot-cli is a tool for translating videos or downloading subtitles using vot.js.
+    summarize-articles:
+      desc: A small extension that allows you to quickly retell articles.
+    feimisio-donate:
+      desc: >-
+        A small donation system for CS:GO servers with support for multiple servers and payment systems.
+    elysia-protobuf:
+      desc: >-
+        Plugin for integrating Protobuf with ElysiaJS. It supports custom schemas and optional request body signature verification.
+    toiloff:
+      desc: >-
+        My personal website with a little bit of information about me, my socials and my projects.
+    jmap-yacl:
+      desc: Another lightweight client library for working with the JMAP
+    lztupgrade:
+      desc: >-
+        LZT Upgrade (or LZTUp) is my implementation of useful or just interesting
+        scripts for the Lolzteam forum.
+  about:
+    name:
+      title: Name
+      value: Ilya
+    birthday:
+      title: Birthday
+      value: 14 September
+    country:
+      title: Country
+      value: Russia
+    city:
+      title: City
+      value: Voronezh
+  skills:
+    programming_languages: Programming languages
+    backend_frontend: Backend & Frontend
+    data: Data
+    tools: Tools
+    infra: Infra
+  socials:
+    contacts: Contacts
+    programming: Programming
+    forums: Forums
+    games: Games
+    anime_manga: Anime & Manga
+  donate:
+    crypto: Crypto
+    platforms: Platforms
+
+en: English
+ru: Русский
