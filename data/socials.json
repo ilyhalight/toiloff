@@ -125,14 +125,14 @@
       "icon": "simple-icons:shikimori",
       "icon_type": "icon",
       "action_type": "link",
-      "content": "https://shikimori.me/Toil"
+      "content": "https://shikimori.one/Toil"
     },
     {
       "name": "MangaLib",
       "icon": "mangalib",
       "icon_type": "local",
       "action_type": "link",
-      "content": "https://mangalib.me/user/679978"
+      "content": "https://mangalib.me/ru/user/679978"
     },
     {
       "name": "MangaDex (rarely)",
