@@ -1,6 +1,6 @@
 <script setup>
   import VisualLinksSection from '~/components/Sections/VisualLinksSection.vue';
-  import socials from "~/data/socials.json";
+  import DecryptButton from '~/components/Buttons/DecryptButton.vue';
   import getTitle from '~/utils/title.js';
 
   const { t } = useI18n();
@@ -26,6 +26,6 @@
     <h2 class="subtext-attractive center">
       {{ $t('content.pages.social.desc') }}
     </h2>
-    <visual-links-section :items="socials"/>
+    <decrypt-button/>
   </main>
 </template>

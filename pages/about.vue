@@ -1,8 +1,7 @@
 <script setup>
   import InfoSection from '~/components/Sections/InfoSection.vue';
   import VisualSection from '~/components/Sections/VisualSection.vue';
-  import about from "~/data/about.json";
-  import skills from "~/data/skills.json";
+  import DecryptButton from '~/components/Buttons/DecryptButton.vue';
   import getTitle from '~/utils/title.js';
 
   const { t } = useI18n();
@@ -28,7 +27,7 @@
     <h2 class="subtext-attractive center">
       {{ $t('content.pages.about.desc') }}
     </h2>
-    <info-section :items="about"/>
-    <visual-section :items="skills"/>
+
+    <decrypt-button/>
   </main>
 </template>

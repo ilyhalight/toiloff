@@ -1,6 +1,6 @@
 <script setup>
   import VisualLinksSection from '~/components/Sections/VisualLinksSection.vue';
-  import donate from "~/data/donate.json";
+  import DecryptButton from '~/components/Buttons/DecryptButton.vue';
   import getTitle from '~/utils/title.js';
 
   const { t } = useI18n();
@@ -26,6 +26,6 @@
     <h2 class="subtext-attractive center">
       {{ $t('content.pages.donate.desc') }}
     </h2>
-    <visual-links-section :items="donate"/>
+    <decrypt-button/>
   </main>
 </template>

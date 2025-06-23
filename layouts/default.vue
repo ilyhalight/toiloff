@@ -1,7 +1,6 @@
 <script setup>
 import config from '~/config/config.js';
 import getTitle from '~/utils/title.js';
-import socials from "~/data/socials.json";
 
 const route = useRoute();
 const { t, locales } = useI18n();
@@ -18,21 +17,12 @@ useSeoMeta({
   ogDescription: config.siteDesc,
 });
 
-const sameAs = computed(() => {
-  let sameArray = [];
-  for (const social of Object.entries(socials)) {
-    const socialArray = social[1].map(s => s.href);
-    sameArray = sameArray.concat(socialArray);
-  }
-  return sameArray;
-});
 
 useSchemaOrg([
   definePerson({
     name: config.personName,
     image: '/images/me.jpg',
     url: config.baseUrl,
-    sameAs: sameAs.value
   }),
   defineWebSite({
     url: config.baseUrl,

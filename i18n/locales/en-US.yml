@@ -3,13 +3,6 @@ modals.confirm: Confirm
 toasts.copied: Copied to clipboard!
 
 footer:
-  actual-info:
-    title: About relevance
-    desc: >-
-      When I was creating my website, I made a few strange decisions that are now easier to rewrite than try to fix.
-      Although I've already made mockups of a new design for a long time, which looks a bit better, but I still can't get around to making it up.
-
-      Even so, after a long time, I finally updated the information at 03.04.2025 and fixed some bugs, because I don't know how much longer I will defer the full recode.
   made_with_love: Made with ❤️ by
 
 pages:
@@ -68,34 +61,21 @@ content:
       desc: >-
         LZT Upgrade (or LZTUp) is my implementation of useful or just interesting
         scripts for the Lolzteam forum.
-  about:
-    name:
-      title: Name
-      value: Ilya
-    birthday:
-      title: Birthday
-      value: 14 September
-    country:
-      title: Country
-      value: Russia
-    city:
-      title: City
-      value: Voronezh
   skills:
     programming_languages: Programming languages
     backend_frontend: Backend & Frontend
     data: Data
     tools: Tools
     infra: Infra
-  socials:
-    contacts: Contacts
-    programming: Programming
-    forums: Forums
-    games: Games
-    anime_manga: Anime & Manga
-  donate:
-    crypto: Crypto
-    platforms: Platforms
+  decrypt:
+    completed: DATA RECEIVED
+    text: Decrypt
+    processing: Decoding...
+    success: Decryption is complete!
+    redirecting: Going through
+    step1: Initialization...
+    step2: Cipher analysis...
+    step3: Decryption is complete
 
 en: English
 ru: Русский

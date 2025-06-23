@@ -13,7 +13,6 @@
       <NuxtLink class="navbar-item" to="/about"> {{ $t('pages.about') }} </NuxtLink>
       <NuxtLink class="navbar-item" to="/donate"> {{ $t('pages.donate') }} </NuxtLink>
       <NuxtLink class="navbar-item" to="/social"> {{ $t('pages.social') }} </NuxtLink>
-      <a class="navbar-item" href="https://akibot.ru" target="_blank">Aki</a>
     </nav>
     <div class="navbar">
       <themes-button class="navbar-item" />
