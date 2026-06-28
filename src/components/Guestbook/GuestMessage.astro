@@ -44,7 +44,7 @@ const getIcon = () => {
     return TelegramIcon;
   } else if (/https?:\/\/x\.com\/.*/.exec(href)) {
     return XIcon;
-  } else if (/https?:\/\/(m\.)?.vk\.(com|ru)\/.*/.exec(href)) {
+  } else if (/https?:\/\/(m\.)?vk\.(com|ru)\/.*/.exec(href)) {
     return VKIcon;
   } else if (/https?:\/\/twitch\.tv\/.*/.exec(href)) {
     return TwitchIcon;
