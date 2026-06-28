@@ -1,0 +1,48 @@
+---
+import { getEntry } from "astro:content";
+import { Font } from "astro:assets";
+import Header from "../components/Header.astro";
+import GlobalStyle from "../components/GlobalStyle.astro";
+
+const settings = await getEntry("settings", "settings");
+const title = `${Astro.props.title ?? "Main"}${settings?.data.defaultDelimiter}${settings?.data.defaultTitle}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta name="generator" content={Astro.generator} />
+    <GlobalStyle />
+    <Font cssVariable="--font-poppins" />
+  </head>
+  <body>
+    <div class="app">
+      <Header />
+      <main>
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>
+
+<style>
+  .app {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    min-height: 100svh;
+    max-width: 1280px;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+</style>

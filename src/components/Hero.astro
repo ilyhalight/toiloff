@@ -1,0 +1,89 @@
+---
+
+---
+
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Make yourself at home</h1>
+    <p class="hero-subtitle">
+      A quiet place on the web where I keep my projects and ideas.
+    </p>
+    <ul class="hero-actions">
+      <li class="hero-actions__item">
+        <a href="/" class="hero-actions__item-link button">Contact Me</a>
+      </li>
+      <li class="hero-actions__item">
+        <a href="/" class="hero-actions__item-link button button_outline"
+          >View CV</a
+        >
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100svh - 100px);
+  }
+
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 720px;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+  }
+
+  .hero-subtitle {
+    font-size: 2.75rem;
+  }
+
+  .hero-actions {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+
+  .hero-actions__item {
+    display: flex;
+  }
+
+  @media screen and (max-width: 768px) {
+    .hero {
+      padding: 1.5rem;
+      min-height: calc(100svh - 80px);
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .hero-actions__item-link.button {
+      font-size: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    .hero-actions {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-actions__item-link {
+      width: 100%;
+    }
+  }
+</style>

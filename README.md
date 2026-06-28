@@ -1,62 +1,46 @@
-# Toiloff
+# Astro Starter Kit: Basics
 
-**Toiloff** - это мой персональный сайт, единственная цель которого рассказать немного обо мне и моих проектах. Сайт написан с помощью **Nuxt 3.16** и препроцессора **SASS**. На сайте имеется перевод на русский и английский языки, смена темы, а так же оптимизация изображений с помощью **NuxtImage**.
-
----
-
-## Установка
-
-1. Установите зависимости
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
+```sh
+bun create astro@latest -- --template basics
 ```
 
-2. Заполните порт сервера в .env
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-## Разработка
+## 🚀 Project Structure
 
-Запустите сервер разработки на http://localhost:3000
+Inside of your Astro project, you'll see the following folders and files:
 
-```bash
-npm run dev
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
 ```
 
-## Продакшен
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-Создайте приложение для продакшена:
+## 🧞 Commands
 
-```bash
-npm run build
-```
+All commands are run from the root of the project, from a terminal:
 
-Локальный предварительный просмотр продакшен сборки:
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `bun install`             | Installs dependencies                            |
+| `bun dev`             | Starts local dev server at `localhost:4321`      |
+| `bun build`           | Build your production site to `./dist/`          |
+| `bun preview`         | Preview your build locally, before deploying     |
+| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun astro -- --help` | Get help using the Astro CLI                     |
 
-```bash
-npm run preview
-```
+## 👀 Want to learn more?
 
-Запуск с помощью PM2:
-
-1. Установите зависимости:
-
-```bash
-npm install pm2 -g && pm2 install pm2-logrotate
-```
-
-2. Запустите сервер
-
-```bash
-pm2 start ecosystem.config.js
-```
-
-3. [Если пользуетесь Cloudflare] Отключить Minify HTML в Cloudflare для избежания ошибок
-
-Ознакомьтесь с [документацией по развертыванию](https://nuxt.com/docs/getting-started/deployment) для получения дополнительной информации.
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

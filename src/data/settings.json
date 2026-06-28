@@ -1,0 +1,7 @@
+{
+    "$schema": "../../.astro/collections/settings.schema.json",
+    "settings": {
+        "defaultTitle": "Toiloff",
+        "defaultDelimiter": " · "
+    }
+}
