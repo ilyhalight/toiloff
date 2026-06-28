@@ -1,20 +1,30 @@
+---
+import StatsLines from "./StatsLines.astro";
+---
+
 <ul class="stats">
   <li class="stats-row">
-    <div class="stats-item stats-item--tokens">
-      <div class="stats-item__lines" aria-hidden="true">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="none">
-          <path
-            class="stats-line stats-line--1"
-            d="M0 250 Q 100 150 200 200 T 400 80"></path>
-          <path
-            class="stats-line stats-line--2"
-            d="M0 200 Q 80 280 180 180 T 400 40"></path>
-          <path
-            class="stats-line stats-line--3"
-            d="M0 280 Q 120 100 220 220 T 400 120"></path>
-        </svg>
-      </div>
-      <h3 class="stats-item__title">Tokens wasted</h3>
+    <div class="stats-item stats-item--wasted">
+      <StatsLines
+        line1="M0 80 Q 60 120 120 100 T 240 160 T 400 240"
+        line2="M0 140 Q 80 60 160 180 T 320 200 T 400 270"
+        line3="M0 200 Q 100 140 200 220 T 400 290"
+      />
+      <h3 class="stats-item__title">
+        <span class="stats-item__title-icon" id="stats-bolt" aria-hidden="true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+            ><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
+            <path
+              fill="currentColor"
+              d="M9 15H5.9q-.6 0-.888-.537t.063-1.038l7.475-10.75q.25-.35.65-.487t.825.012t.625.525t.15.8L14 10h3.875q.65 0 .913.575t-.163 1.075L10.4 21.5q-.275.325-.675.425t-.775-.075t-.587-.537t-.163-.788z"
+            ></path></svg
+          ></span
+        > Tokens wasted
+      </h3>
       <div class="stats-item__content">
         <div>
           <h4>past 30d: 1.3M</h4>
@@ -25,21 +35,31 @@
     </div>
   </li>
   <li class="stats-row">
-    <div class="stats-item stats-item--tokens">
-      <div class="stats-item__lines" aria-hidden="true">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="none">
-          <path
-            class="stats-line stats-line--1"
-            d="M0 250 Q 100 150 200 200 T 400 80"></path>
-          <path
-            class="stats-line stats-line--2"
-            d="M0 200 Q 80 280 180 180 T 400 40"></path>
-          <path
-            class="stats-line stats-line--3"
-            d="M0 280 Q 120 100 220 220 T 400 120"></path>
-        </svg>
-      </div>
-      <h3 class="stats-item__title">Github stats</h3>
+    <div class="stats-item stats-item--github">
+      <StatsLines
+        line1="M0 220 Q 80 200 160 160 T 320 100 T 400 60"
+        line2="M0 250 Q 100 230 200 190 T 400 110"
+        line3="M0 280 Q 120 260 240 220 T 400 160"
+      />
+      <h3 class="stats-item__title">
+        <span
+          class="stats-item__title-icon"
+          id="stats-github"
+          aria-hidden="true"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+            ><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
+            <path
+              fill="currentColor"
+              d="M2.75 17.75q-.325-.325-.325-.75t.325-.75l5.325-5.325q.575-.575 1.425-.575t1.425.575L13.5 13.5l6.4-7.225q.275-.325.713-.325t.737.3q.275.275.287.662t-.262.688L14.9 14.9q-.575.65-1.425.688T12 15l-2.5-2.5l-5.25 5.25q-.325.325-.75.325t-.75-.325"
+            ></path></svg
+          ></span
+        > Github stats
+      </h3>
       <div class="stats-item__content">
         <div>
           <h4>commits: 2.7k</h4>
@@ -50,21 +70,31 @@
     </div>
   </li>
   <li class="stats-row">
-    <div class="stats-item stats-item--tokens">
-      <div class="stats-item__lines" aria-hidden="true">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="none">
-          <path
-            class="stats-line stats-line--1"
-            d="M0 250 Q 100 150 200 200 T 400 80"></path>
-          <path
-            class="stats-line stats-line--2"
-            d="M0 200 Q 80 280 180 180 T 400 40"></path>
-          <path
-            class="stats-line stats-line--3"
-            d="M0 280 Q 120 100 220 220 T 400 120"></path>
-        </svg>
-      </div>
-      <h3 class="stats-item__title">Favorite languages</h3>
+    <div class="stats-item stats-item--languages">
+      <StatsLines
+        line1="M0 150 C 60 50, 140 250, 200 150 C 260 50, 340 250, 400 150"
+        line2="M0 180 C 80 110, 120 230, 200 180 C 280 130, 320 210, 400 180"
+        line3="M0 210 C 50 160, 170 260, 240 210 C 310 160, 350 240, 400 210"
+      />
+      <h3 class="stats-item__title">
+        <span
+          class="stats-item__title-icon"
+          id="stats-langs"
+          aria-hidden="true"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+            ><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
+            <path
+              fill="currentColor"
+              d="M19 15q.3-.3.713-.3t.712.3L22 16.6q.3.3.3.7t-.3.7t-.7.3t-.7-.3L19 16.425q-.3-.3-.3-.712T19 15m1-12q.3.3.3.713t-.3.712L18.425 6q-.3.3-.712.3T17 6t-.3-.712t.3-.713L18.6 3q.3-.3.7-.3t.7.3M4 3q.3-.3.713-.3t.712.3L7 4.6q.3.3.3.7T7 6t-.712.3t-.713-.3L4 4.425q-.3-.3-.3-.712T4 3m1 12q.3.3.3.713t-.3.712L3.425 18q-.3.3-.712.3T2 18t-.3-.712t.3-.713L3.6 15q.3-.3.7-.3t.7.3m7 2.275l-4.15 2.5q-.275.175-.575.15t-.525-.2t-.35-.437t-.05-.588l1.1-4.725L3.775 10.8q-.25-.225-.312-.513t.037-.562t.3-.45t.55-.225l4.85-.425l1.875-4.45q.125-.3.388-.45t.537-.15t.537.15t.388.45l1.875 4.45l4.85.425q.35.05.55.225t.3.45t.038.563t-.313.512l-3.675 3.175l1.1 4.725q.075.325-.05.588t-.35.437t-.525.2t-.575-.15z"
+            ></path></svg
+          ></span
+        > Favorite languages
+      </h3>
       <div class="stats-item__content">
         <div>
           <h4 style="color: lightblue">TypeScript</h4>
@@ -98,55 +128,49 @@
     width: 100%;
     border-radius: 1rem;
     background: var(--surface-bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #stats-bolt,
+  #stats-langs {
+    color: orange;
   }
 
   .stats-item__content-image {
     height: 240px;
   }
 
+  .stats-item__title {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .stats-item__title-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
   .stats-item__content h4 {
     font-size: 2rem;
   }
 
-  .stats-item--tokens {
-    position: relative;
-    overflow: hidden;
+  .stats-item--wasted {
+    --line-color: var(--primary-color);
   }
 
-  .stats-item__lines {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: visible;
+  .stats-item--github {
+    --line-color: #4ade80;
   }
 
-  .stats-item__lines svg {
-    width: 100%;
-    height: 100%;
+  .stats-item--languages {
+    --line-color: #c084fc;
   }
 
-  .stats-line {
-    fill: none;
-    opacity: 0.06;
-  }
-
-  .stats-line--1 {
-    stroke: var(--primary-color);
-    stroke-width: 2;
-  }
-
-  .stats-line--2 {
-    stroke: var(--text-color);
-    stroke-width: 1;
-  }
-
-  .stats-line--3 {
-    stroke: var(--primary-color);
-    stroke-width: 0.5;
-    stroke-dasharray: 6 5;
-  }
-
-  @media screen and (max-width: 764) {
+  @media screen and (max-width: 764px) {
     .stats {
       grid-template-columns: repeat(1, 1fr);
     }
