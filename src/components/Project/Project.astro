@@ -1,0 +1,12 @@
+<ul class="projects">
+  <slot />
+</ul>
+
+<style>
+  .projects {
+    display: grid;
+    gap: 1rem;
+    list-style: none;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+</style>

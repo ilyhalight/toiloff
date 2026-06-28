@@ -1,0 +1,154 @@
+<ul class="stats">
+  <li class="stats-row">
+    <div class="stats-item stats-item--tokens">
+      <div class="stats-item__lines" aria-hidden="true">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="none">
+          <path
+            class="stats-line stats-line--1"
+            d="M0 250 Q 100 150 200 200 T 400 80"></path>
+          <path
+            class="stats-line stats-line--2"
+            d="M0 200 Q 80 280 180 180 T 400 40"></path>
+          <path
+            class="stats-line stats-line--3"
+            d="M0 280 Q 120 100 220 220 T 400 120"></path>
+        </svg>
+      </div>
+      <h3 class="stats-item__title">Tokens wasted</h3>
+      <div class="stats-item__content">
+        <div>
+          <h4>past 30d: 1.3M</h4>
+          <h4>all time: 1.3M</h4>
+          <h5>Used model: Qwen3.5 (local)</h5>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="stats-row">
+    <div class="stats-item stats-item--tokens">
+      <div class="stats-item__lines" aria-hidden="true">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="none">
+          <path
+            class="stats-line stats-line--1"
+            d="M0 250 Q 100 150 200 200 T 400 80"></path>
+          <path
+            class="stats-line stats-line--2"
+            d="M0 200 Q 80 280 180 180 T 400 40"></path>
+          <path
+            class="stats-line stats-line--3"
+            d="M0 280 Q 120 100 220 220 T 400 120"></path>
+        </svg>
+      </div>
+      <h3 class="stats-item__title">Github stats</h3>
+      <div class="stats-item__content">
+        <div>
+          <h4>commits: 2.7k</h4>
+          <h4>stars: 7k</h4>
+          <h5>followers: 322</h5>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="stats-row">
+    <div class="stats-item stats-item--tokens">
+      <div class="stats-item__lines" aria-hidden="true">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="none">
+          <path
+            class="stats-line stats-line--1"
+            d="M0 250 Q 100 150 200 200 T 400 80"></path>
+          <path
+            class="stats-line stats-line--2"
+            d="M0 200 Q 80 280 180 180 T 400 40"></path>
+          <path
+            class="stats-line stats-line--3"
+            d="M0 280 Q 120 100 220 220 T 400 120"></path>
+        </svg>
+      </div>
+      <h3 class="stats-item__title">Favorite languages</h3>
+      <div class="stats-item__content">
+        <div>
+          <h4 style="color: lightblue">TypeScript</h4>
+          <h4 style="color: var(--primary-color)">Rust</h4>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<style>
+  .stats {
+    display: grid;
+    gap: 1rem;
+    list-style: none;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .stats-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 100%;
+    padding: 1rem 1.25rem;
+    width: 100%;
+    border-radius: 1rem;
+    background: var(--surface-bg);
+  }
+
+  .stats-item__content-image {
+    height: 240px;
+  }
+
+  .stats-item__content h4 {
+    font-size: 2rem;
+  }
+
+  .stats-item--tokens {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stats-item__lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  .stats-item__lines svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .stats-line {
+    fill: none;
+    opacity: 0.06;
+  }
+
+  .stats-line--1 {
+    stroke: var(--primary-color);
+    stroke-width: 2;
+  }
+
+  .stats-line--2 {
+    stroke: var(--text-color);
+    stroke-width: 1;
+  }
+
+  .stats-line--3 {
+    stroke: var(--primary-color);
+    stroke-width: 0.5;
+    stroke-dasharray: 6 5;
+  }
+
+  @media screen and (max-width: 764) {
+    .stats {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+</style>

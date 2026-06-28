@@ -1,8 +1,24 @@
 ---
-
+import { fade } from "astro:transitions";
 ---
 
-<section class="hero">
+<section class="hero" transition:animate="fade">
+  <div class="hero-shapes" aria-hidden="true">
+    <div class="hero-shape hero-shape--1"></div>
+    <div class="hero-shape hero-shape--2"></div>
+    <div class="hero-shape hero-shape--3"></div>
+    <svg class="hero-lines" viewBox="0 0 1280 800" preserveAspectRatio="none">
+      <path
+        class="hero-line hero-line--1"
+        d="M0 600 Q 320 300 640 500 T 1284 200"></path>
+      <path
+        class="hero-line hero-line--2"
+        d="M0 500 Q 300 700 600 400 T 1280 300"></path>
+      <path
+        class="hero-line hero-line--3"
+        d="M0 700 Q 400 500 800 600 T 1280 100"></path>
+    </svg>
+  </div>
   <div class="hero-content">
     <h1 class="hero-title">
       Make yourself at home
@@ -42,7 +58,6 @@
     flex: 1;
     padding: 2rem;
     position: relative;
-    overflow: hidden;
     min-height: calc(100svh - 100px);
   }
 
@@ -73,6 +88,76 @@
     right: 0;
   }
 
+  .hero-shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.12;
+  }
+
+  .hero-shape--1 {
+    width: 300px;
+    height: 300px;
+    background: rgb(220, 90, 91);
+    top: 5%;
+    right: 0;
+    border-radius: 60% 40% 50% 30% / 40% 50% 60% 50%;
+  }
+
+  .hero-shape--2 {
+    width: 250px;
+    height: 250px;
+    background: rgb(110, 41, 255);
+    bottom: 10%;
+    left: 5%;
+    border-radius: 50% 40% 30% 60% / 60% 30% 50% 40%;
+  }
+
+  .hero-shape--3 {
+    width: 200px;
+    height: 200px;
+    background: rgb(255, 174, 0);
+    top: 55%;
+    left: 10%;
+    border-radius: 40% 60% 50% 40% / 50% 40% 60% 50%;
+  }
+
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .hero-line {
+    fill: none;
+    stroke-width: 1;
+    opacity: 0.08;
+  }
+
+  .hero-line--1 {
+    stroke: var(--primary-color);
+    stroke-width: 2;
+  }
+
+  .hero-line--2 {
+    stroke: var(--text-color);
+    stroke-width: 1;
+  }
+
+  .hero-line--3 {
+    stroke: var(--primary-color);
+    stroke-width: 0.5;
+    stroke-dasharray: 8 6;
+  }
+
   .hero-subtitle {
     font-size: 2.75rem;
   }
@@ -86,12 +171,35 @@
 
   .hero-actions__item {
     display: flex;
+    user-select: none;
   }
 
   @media screen and (max-width: 768px) {
     .hero {
       padding: 1.5rem;
       min-height: calc(100svh - 80px);
+    }
+
+    .hero-shape {
+      opacity: 0.2;
+    }
+
+    .hero-shape--1 {
+      width: 200px;
+      height: 200px;
+    }
+
+    .hero-shape--2 {
+      width: 160px;
+      height: 160px;
+    }
+
+    .hero-shape--3 {
+      display: none;
+    }
+
+    .hero-lines {
+      display: none;
     }
   }
 

@@ -7,6 +7,7 @@
 
   :root {
     --background: #05010d;
+    --surface-bg: #131317;
     --text-color: rgb(220, 220, 230);
     --text-muted: rgb(130, 130, 150);
     --text-hover-color: #fff;
@@ -28,6 +29,7 @@
 
   [data-theme="light"] {
     --background: #fff;
+    --surface-bg: #f5f5f5;
     --text-color: #0a0a0f;
     --text-muted-color: #616171;
     --text-hover-color: #302f2f;
@@ -45,6 +47,23 @@
     --button-text-color: var(--background);
     --button_outline-border-color: var(--stroke-color);
     --button_outline-bg: #f0f0f0;
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+  [data-reveal].visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      transition: none;
+    }
   }
 
   body {

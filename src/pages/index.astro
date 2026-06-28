@@ -1,8 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import ProjectItem from "../components/Project/ProjectItem.astro";
+import MainPageSection from "../components/MainPage/MainPageSection.astro";
+import Project from "../components/Project/Project.astro";
+import Stats from "../components/Stats/Stats.astro";
 ---
 
 <Layout title="Home">
   <Hero />
+  <MainPageSection
+    title="Projects"
+    link={{
+      href: "hello",
+      name: "View all",
+    }}
+  >
+    <Project>
+      <ProjectItem />
+      <ProjectItem />
+      <ProjectItem />
+      <ProjectItem />
+    </Project>
+  </MainPageSection>
+  <MainPageSection title="Stats">
+    <Stats />
+  </MainPageSection>
 </Layout>

@@ -1,0 +1,85 @@
+<li class="project-item">
+  <div class="project-item__image-wrapper">
+    <img
+      class="project-item__image"
+      src="https://github.com/ilyhalight/voice-over-translation/raw/master/img/example.png"
+      alt=""
+    />
+  </div>
+  <a class="project-item__link" href="/">
+    <h3>Not-a-single-title-but-it-can-very-very-very-very-big</h3>
+    <span class="project-item__link-icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        ><!-- Icon from Stash Icons by Pingback LLC - https://github.com/stash-ui/icons/blob/master/LICENSE -->
+        <path
+          fill="currentColor"
+          d="M12.884 5.116a1.253 1.253 0 0 0-1.768 0l-5 5a1.25 1.25 0 0 0 1.768 1.768l2.866-2.866V18a1.25 1.25 0 1 0 2.5 0V9.018l2.866 2.866a1.25 1.25 0 1 0 1.768-1.768z"
+        ></path></svg
+      >
+    </span>
+  </a>
+  <p class="project-item__desc">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita nam vero
+    ratione. Magnam laboriosam animi laudantium unde. Eligendi recusandae quae
+    possimus soluta natus similique omnis, quod repellendus.
+  </p>
+</li>
+
+<style>
+  .project-item {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.25rem;
+    max-width: 450px;
+    border-radius: 1rem;
+    background: var(--surface-bg);
+  }
+
+  @media screen and (min-width: 501px) and (max-width: 703px) {
+    .project-item {
+      max-width: 100%;
+    }
+  }
+
+  .project-item__image-wrapper {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .project-item__image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  .project-item__top {
+    display: flex;
+  }
+
+  .project-item__link {
+    display: flex;
+    transition: color 0.25s ease;
+  }
+
+  .project-item__link-icon svg {
+    transform: rotate(45deg);
+    will-change: transform;
+    transition: transform 0.25s ease;
+  }
+
+  .project-item__link:hover {
+    color: var(--primary-color);
+  }
+
+  .project-item__link:hover .project-item__link-icon svg {
+    transform: rotate(90deg);
+  }
+
+  .project-item__desc {
+    color: var(--text-muted);
+  }
+</style>

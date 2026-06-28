@@ -3,6 +3,7 @@ import { getEntry } from "astro:content";
 import { Font } from "astro:assets";
 import Header from "../components/Header.astro";
 import GlobalStyle from "../components/GlobalStyle.astro";
+import { ClientRouter } from "astro:transitions";
 
 const settings = await getEntry("settings", "settings");
 const title = `${Astro.props.title ?? "Main"}${settings?.data.defaultDelimiter}${settings?.data.defaultTitle}`;
@@ -20,6 +21,7 @@ const title = `${Astro.props.title ?? "Main"}${settings?.data.defaultDelimiter}$
     <meta name="generator" content={Astro.generator} />
     <GlobalStyle />
     <Font cssVariable="--font-poppins" />
+    <ClientRouter />
   </head>
   <body>
     <div class="app">
@@ -46,3 +48,26 @@ const title = `${Astro.props.title ?? "Main"}${settings?.data.defaultDelimiter}$
     flex: 1;
   }
 </style>
+
+<script>
+  function initReveal() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((el) => {
+          if (el.isIntersecting) {
+            el.target.classList.add("visible");
+            observer.unobserve(el.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document
+      .querySelectorAll("[data-reveal]")
+      .forEach((el) => observer.observe(el));
+  }
+
+  // Runs on first load and every ClientRouter navigation
+  document.addEventListener("astro:page-load", initReveal);
+</script>
