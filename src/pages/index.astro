@@ -5,6 +5,7 @@ import ProjectItem from "../components/Project/ProjectItem.astro";
 import MainPageSection from "../components/MainPage/MainPageSection.astro";
 import Project from "../components/Project/Project.astro";
 import Stats from "../components/Stats/Stats.astro";
+import Guestbook from "../components/Guestbook/Guestbook.astro";
 ---
 
 <Layout title="Home">
@@ -26,4 +27,13 @@ import Stats from "../components/Stats/Stats.astro";
   <MainPageSection title="Stats">
     <Stats />
   </MainPageSection>
+  <MainPageSection
+    title="Guestbook"
+    link={{
+      href: "guestbook",
+      name: "View all",
+    }}
+  >
+    <Guestbook /></MainPageSection
+  >
 </Layout>

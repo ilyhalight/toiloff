@@ -1,0 +1,220 @@
+---
+import IncognitoIcon from "./icones/IncognitoIcon.astro";
+import TelegramIcon from "./icones/TelegramIcon.astro";
+import VKIcon from "./icones/VKIcon.astro";
+import WebIcon from "./icones/WebIcon.astro";
+import XIcon from "./icones/XIcon.astro";
+import TwitchIcon from "./icones/TwitchIcon.astro";
+import GithubIcon from "./icones/GithubIcon.astro";
+import GuestMessageReply from "./GuestMessageReply.astro";
+
+type GuestMessage = {
+  username: string;
+  content: string;
+  href?: string;
+  hrefText?: string;
+  avatarUrl?: string;
+  replyText?: string;
+  createdAt: string;
+  approvedAt: string;
+};
+
+interface Props {
+  message: GuestMessage;
+}
+
+const {
+  message: {
+    username,
+    content,
+    href,
+    hrefText,
+    replyText,
+    createdAt,
+    avatarUrl,
+  },
+} = Astro.props;
+
+const getIcon = () => {
+  if (!href) {
+    return IncognitoIcon;
+  }
+
+  if (/https?:\/\/t\.me\/.*/.exec(href)) {
+    return TelegramIcon;
+  } else if (/https?:\/\/x\.com\/.*/.exec(href)) {
+    return XIcon;
+  } else if (/https?:\/\/(m\.)?.vk\.(com|ru)\/.*/.exec(href)) {
+    return VKIcon;
+  } else if (/https?:\/\/twitch\.tv\/.*/.exec(href)) {
+    return TwitchIcon;
+  } else if (/https?:\/\/github\.com\/.*/.exec(href)) {
+    return GithubIcon;
+  }
+
+  return WebIcon;
+};
+
+const getMessageLink = () => {
+  if (!href) {
+    return "#";
+  }
+
+  if (/https?:\/\/.*/.exec(href)) {
+    return href;
+  }
+
+  return !href.includes("://") ? `https://${href}` : "#";
+};
+
+const MessageIcon = getIcon();
+const messageLink = getMessageLink();
+const hrefContent = hrefText ?? href;
+
+const dateFormatter = Intl.DateTimeFormat("en", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+});
+
+const messageDate = dateFormatter.format(new Date(createdAt));
+---
+
+<li class="guestbook-message">
+  <div class="guestbook-message__head">
+    <div class="guestbook-message__head-item">
+      {
+        avatarUrl && (
+          <div class="guestbook-message__avatar" aria-hidden="true">
+            <img
+              class="guestbook-message__avatar-image"
+              alt={`${username}'s avatar`}
+              src={avatarUrl}
+            />
+          </div>
+        )
+      }
+
+      <div class="guestbook-message__info">
+        <h5 class="guestbook-message__info-title text-truncate">{username}</h5>
+        {
+          hrefContent && (
+            <a class="guestbook-message__info-link" href={messageLink}>
+              {hrefContent}
+            </a>
+          )
+        }
+      </div>
+    </div>
+    <div class="guestbook-message__head-item">
+      {
+        href ? (
+          <a
+            class="guestbook-message__icon guestbook-message__icon-link"
+            href={messageLink}
+          >
+            <MessageIcon />
+          </a>
+        ) : (
+          <span class="guestbook-message__icon">
+            <MessageIcon />
+          </span>
+        )
+      }
+    </div>
+  </div>
+  <div class="guestbook-message__content text-wrap">
+    {content}
+    {replyText && <GuestMessageReply content={replyText} />}
+  </div>
+  <div class="guestbook-message__date">
+    {messageDate}
+  </div>
+</li>
+
+<style>
+  .guestbook-message {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface-bg);
+    border-radius: 1rem;
+  }
+
+  .guestbook-message__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .guestbook-message__head-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 32px;
+    overflow: hidden;
+  }
+
+  .guestbook-message__head-item:first-of-type {
+    width: 100%;
+  }
+
+  .guestbook-message__avatar-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    user-select: none;
+  }
+
+  .guestbook-message__info {
+    max-width: calc(100% - 64px);
+  }
+
+  .guestbook-message__info-title {
+    font-size: 1.25rem;
+  }
+
+  .guestbook-message__info:not(:has(.guestbook-message__info-link))
+    .guestbook-message__info-title {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    .guestbook-message__info-title {
+      font-size: 1rem;
+    }
+
+    .guestbook-message__info:not(:has(.guestbook-message__info-link))
+      .guestbook-message__info-title {
+      font-size: 1.25rem;
+    }
+  }
+
+  .guestbook-message__info-link,
+  .guestbook-message__icon {
+    color: var(--text-muted);
+    transition: color 0.25s ease;
+  }
+
+  .guestbook-message__info-link:hover,
+  .guestbook-message__icon-link:hover,
+  .guestbook-message__head:has(.guestbook-message__info-link:hover)
+    .guestbook-message__icon-link,
+  .guestbook-message__head:has(.guestbook-message__icon-link:hover)
+    .guestbook-message__info-link {
+    color: var(--text-hover-color);
+  }
+
+  .guestbook-message__date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+  }
+</style>

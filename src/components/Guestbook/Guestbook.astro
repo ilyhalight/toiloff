@@ -1,0 +1,102 @@
+---
+import GuestMessage from "./GuestMessage.astro";
+---
+
+<div class="guestbook">
+  <p class="guestbook-desc">
+    Share your thoughts. All messages are <b>pre-moderated</b>!
+  </p>
+  <ul class="guestbook-list">
+    <GuestMessage
+      message={{
+        username: "Рандомный пользователь",
+        content:
+          "lorem ipsum is the most better way to test your interfaces with big messages",
+        avatarUrl:
+          "https://avatars.mds.yandex.net/get-yapic/28053/j1duaPzJgWRpMrtUhuf8hHUKhQ-1/islands-retina-middle",
+        href: "ya.ru",
+        createdAt: "2026-06-28T21:51:34.432Z",
+        approvedAt: "2026-06-28T21:51:34.432Z",
+        replyText: "how sad :(",
+      }}
+    />
+    <GuestMessage
+      message={{
+        username: "Anonymous",
+        content:
+          "lorem ipsum is the most better way to test your interfaces with big messages",
+        href: "https://t.me/test",
+        hrefText: "i hate tg",
+        createdAt: "2026-06-28T21:51:34.432Z",
+        approvedAt: "2026-06-28T21:51:34.432Z",
+      }}
+    />
+    <GuestMessage
+      message={{
+        username: "Anonymous :3",
+        content:
+          "lorem ipsum is the most better way to test your interfaces with big messages",
+        avatarUrl:
+          "https://avatars.mds.yandex.net/get-yapic/28053/j1duaPzJgWRpMrtUhuf8hHUKhQ-1/islands-retina-middle",
+        href: "https://x.com/test",
+        createdAt: "2026-06-28T21:51:34.432Z",
+        approvedAt: "2026-06-28T21:51:34.432Z",
+      }}
+    />
+    <GuestMessage
+      message={{
+        username: "Anonymous :3",
+        content:
+          "lorem ipsum is the most better way to test your interfaces with big messages",
+        href: "https://vk.com/test",
+        avatarUrl:
+          "https://avatars.mds.yandex.net/get-yapic/28053/j1duaPzJgWRpMrtUhuf8hHUKhQ-1/islands-retina-middle",
+        createdAt: "2026-06-28T21:51:34.432Z",
+        approvedAt: "2026-06-28T21:51:34.432Z",
+      }}
+    />
+    <GuestMessage
+      message={{
+        username: "Рандомный пользователь",
+        content:
+          "lorem ipsum is the most better way to test your interfaces with big messages",
+        href: "https://twitch.tv/test",
+        hrefText: "Best streamer -> @test",
+        replyText: "i too!!!!",
+        avatarUrl:
+          "https://avatars.mds.yandex.net/get-yapic/28053/j1duaPzJgWRpMrtUhuf8hHUKhQ-1/islands-retina-middle",
+        createdAt: "2026-06-28T21:51:34.432Z",
+        approvedAt: "2026-06-28T21:51:34.432Z",
+      }}
+    />
+    <GuestMessage
+      message={{
+        username: "Рандомный пользователь",
+        content:
+          "lorem ipsum is the most better way to test your interfaces with big messages",
+        href: "https://github.com/test",
+        hrefText: "@test",
+        createdAt: "2026-06-28T21:51:34.432Z",
+        approvedAt: "2026-06-28T21:51:34.432Z",
+      }}
+    />
+    <GuestMessage
+      message={{
+        username: "Рандомный пользователь",
+        content:
+          "lorem ipsum is the most better way to test your interfaces with big messages",
+        createdAt: "2026-06-28T21:51:34.432Z",
+        approvedAt: "2026-06-28T21:51:34.432Z",
+      }}
+    />
+  </ul>
+</div>
+
+<style>
+  .guestbook-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 1rem;
+  }
+</style>
