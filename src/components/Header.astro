@@ -1,5 +1,11 @@
 ---
 import Logo from "./Logo.astro";
+import MobileNav from "./MobileNav.astro";
+
+const navItems = [
+  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "About" },
+];
 ---
 
 <header class="header-container">
@@ -10,14 +16,17 @@ import Logo from "./Logo.astro";
       </span>
       <span class="logo-text">Toiloff</span>
     </a>
-    <nav class="header-nav">
+    <nav class="header-nav" aria-label="Primary navigation">
       <ul class="nav-list">
-        <li class="nav-list__item">
-          <a class="nav-list__item-link" href="/blog">Blog</a>
-        </li>
-        <li class="nav-list__item">
-          <a class="nav-list__item-link" href="/about">About</a>
-        </li>
+        {
+          navItems.map((item) => (
+            <li class="nav-list__item">
+              <a class="nav-list__item-link" href={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
         <!-- <li class="nav-list__item">
           <a class="nav-list__item-link" href="/">Donate</a>
         </li> -->
@@ -25,33 +34,34 @@ import Logo from "./Logo.astro";
           <a class="nav-list__item-link" href="/">Tools</a>
         </li> -->
         <li class="nav-list__item">
-          <a class="nav-list__item-link" href="/" id="theme-changer"
+          <a class="nav-list__item-link" href="#" data-theme-toggle
             >Theme tester :></a
           >
         </li>
       </ul>
-      <span class="nav-menu"
-        ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+      <button
+        class="nav-menu"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="mobile-nav"
+        aria-expanded="false"
+      >
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
           ><!-- Icon from Stash Icons by Pingback LLC - https://github.com/stash-ui/icons/blob/master/LICENSE -->
           <path
             fill="currentColor"
             d="M4 6a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1m0 6a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1m1 5a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2z"
           ></path></svg
-        ></span
-      >
+        >
+      </button>
     </nav>
   </div>
 </header>
 
-<script>
-  const themeBtn = document.getElementById("theme-changer");
-  themeBtn?.addEventListener("click", (e) => {
-    e.preventDefault();
-    const nextTheme =
-      document.body.dataset.theme === "light" ? "dark" : "light";
-    document.body.dataset.theme = nextTheme;
-  });
-</script>
+<MobileNav items={navItems} />
 
 <style>
   .header-container {
@@ -122,8 +132,18 @@ import Logo from "./Logo.astro";
 
     .nav-menu {
       display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       width: 2.25rem;
+      height: 2.25rem;
+      color: var(--text-color);
+      background: transparent;
+    }
+
+    .nav-menu svg {
+      width: 100%;
+      height: 100%;
     }
   }
 

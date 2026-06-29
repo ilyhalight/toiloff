@@ -1,0 +1,299 @@
+---
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  items: NavItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="mobile-nav" id="mobile-nav" hidden aria-hidden="true">
+  <button
+    class="mobile-nav__backdrop"
+    type="button"
+    aria-label="Close navigation menu"
+    data-mobile-nav-close></button>
+  <div
+    class="mobile-nav__sheet"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation menu"
+  >
+    <span class="mobile-nav__grabber" aria-hidden="true"></span>
+    <div class="mobile-nav__header">
+      <span class="mobile-nav__title">Menu</span>
+      <button
+        class="mobile-nav__close"
+        type="button"
+        aria-label="Close navigation menu"
+        data-mobile-nav-close
+      >
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M6.4 5.2 12 10.8l5.6-5.6 1.2 1.2-5.6 5.6 5.6 5.6-1.2 1.2-5.6-5.6-5.6 5.6-1.2-1.2 5.6-5.6-5.6-5.6z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <ul class="mobile-nav__list">
+      {
+        items.map((item) => (
+          <li class="mobile-nav__item">
+            <a class="mobile-nav__link" href={item.href}>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="mobile-nav__item">
+        <button
+          class="mobile-nav__link mobile-nav__link_button"
+          type="button"
+          data-theme-toggle
+        >
+          Theme tester :>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function initMobileNav() {
+    const menuButton = document.querySelector<HTMLButtonElement>(".nav-menu");
+    const mobileNav = document.getElementById("mobile-nav");
+    const themeButtons = document.querySelectorAll<HTMLElement>("[data-theme-toggle]");
+
+    for (const themeBtn of themeButtons) {
+      themeBtn.onclick = (e) => {
+        e.preventDefault();
+        const nextTheme =
+          document.body.dataset.theme === "light" ? "dark" : "light";
+        document.body.dataset.theme = nextTheme;
+
+        if (themeBtn.closest(".mobile-nav")) {
+          closeNav();
+        }
+      };
+    }
+
+    if (!menuButton || !mobileNav) {
+      return;
+    }
+
+    const closeControls = mobileNav.querySelectorAll<HTMLElement>(
+      "[data-mobile-nav-close], .mobile-nav__link[href]"
+    );
+
+    function onEscape(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        closeNav();
+      }
+    }
+
+    function openNav() {
+      if (!mobileNav || !menuButton) {
+        return;
+      }
+
+      mobileNav.hidden = false;
+      mobileNav.setAttribute("aria-hidden", "false");
+      menuButton.setAttribute("aria-expanded", "true");
+      menuButton.setAttribute("aria-label", "Close navigation menu");
+      document.body.classList.add("mobile-nav-open");
+
+      requestAnimationFrame(() => {
+        mobileNav.classList.add("mobile-nav_open");
+      });
+
+      document.addEventListener("keydown", onEscape);
+    }
+
+    function closeNav() {
+      if (!mobileNav || !menuButton) {
+        return;
+      }
+
+      mobileNav.classList.remove("mobile-nav_open");
+      mobileNav.setAttribute("aria-hidden", "true");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open navigation menu");
+      document.body.classList.remove("mobile-nav-open");
+      document.removeEventListener("keydown", onEscape);
+
+      window.setTimeout(() => {
+        if (!mobileNav.classList.contains("mobile-nav_open")) {
+          mobileNav.hidden = true;
+        }
+      }, 200);
+    }
+
+    menuButton.onclick = () => {
+      if (mobileNav.classList.contains("mobile-nav_open")) {
+        closeNav();
+        return;
+      }
+
+      openNav();
+    };
+
+    for (const control of closeControls) {
+      control.onclick = () => closeNav();
+    }
+
+    closeNav();
+  }
+
+  document.addEventListener("astro:page-load", initMobileNav);
+</script>
+
+<style>
+  .mobile-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 1400;
+    display: grid;
+    align-items: end;
+  }
+
+  .mobile-nav[hidden] {
+    display: none;
+  }
+
+  .mobile-nav__backdrop {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    background: rgba(5, 1, 13, 0.62);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .mobile-nav__sheet {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    padding: 0.75rem 1rem max(1rem, env(safe-area-inset-bottom));
+    border: 1px solid var(--stroke-color);
+    border-bottom: none;
+    border-radius: 1.75rem 1.75rem 0 0;
+    background: var(--header-bg);
+    box-shadow: 0 -1.5rem 4rem rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(64px);
+    transform: translateY(100%);
+    transition: transform 0.2s ease;
+  }
+
+  .mobile-nav_open .mobile-nav__backdrop {
+    opacity: 1;
+  }
+
+  .mobile-nav_open .mobile-nav__sheet {
+    transform: translateY(0);
+  }
+
+  .mobile-nav__grabber {
+    align-self: center;
+    width: 3rem;
+    height: 0.25rem;
+    border-radius: 999px;
+    background: var(--stroke-color);
+  }
+
+  .mobile-nav__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-nav__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .mobile-nav__close {
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: var(--text-color);
+    background: var(--onsurface-bg);
+    cursor: pointer;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .mobile-nav__close:hover {
+    color: var(--text-hover-color);
+    background: var(--onsurface-hover-bg);
+  }
+
+  .mobile-nav__close svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .mobile-nav__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+  }
+
+  .mobile-nav__link {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: var(--text-color);
+    background: var(--onsurface-bg);
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .mobile-nav__link:hover {
+    color: var(--text-hover-color);
+    background: var(--onsurface-hover-bg);
+  }
+
+  .mobile-nav__link_button {
+    text-align: left;
+  }
+
+  :global(body.mobile-nav-open) {
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-nav__backdrop,
+    .mobile-nav__sheet {
+      transition: none;
+    }
+  }
+
+  @media screen and (min-width: 501px) {
+    .mobile-nav {
+      display: none;
+    }
+  }
+</style>
