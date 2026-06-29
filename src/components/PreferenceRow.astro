@@ -1,0 +1,43 @@
+---
+interface Props {
+  name: string;
+  description: string;
+}
+
+const { name, description } = Astro.props;
+---
+
+<div class="preference-row">
+  <div class="preference-row__copy">
+    <span class="preference-row__name">{name}</span>
+    <span class="preference-row__description">{description}</span>
+  </div>
+  <slot />
+</div>
+
+<style>
+  .preference-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .preference-row__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .preference-row__name {
+    font-weight: 700;
+  }
+
+  .preference-row__description {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 400;
+    white-space: normal;
+  }
+</style>

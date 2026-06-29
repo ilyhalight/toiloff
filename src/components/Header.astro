@@ -1,6 +1,9 @@
 ---
 import Logo from "./Logo.astro";
 import MobileNav from "./MobileNav.astro";
+import Preferences from "./Preferences.astro";
+import PreferenceRow from "./PreferenceRow.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 
 const navItems = [
   { href: "/blog", label: "Blog" },
@@ -34,9 +37,14 @@ const navItems = [
           <a class="nav-list__item-link" href="/">Tools</a>
         </li> -->
         <li class="nav-list__item">
-          <a class="nav-list__item-link" href="#" data-theme-toggle
-            >Theme tester :></a
-          >
+          <Preferences>
+            <PreferenceRow
+              name="Theme"
+              description="Switch between dark and light mode."
+            >
+              <ThemeSwitcher id="desktop" />
+            </PreferenceRow>
+          </Preferences>
         </li>
       </ul>
       <button
@@ -148,6 +156,8 @@ const navItems = [
   }
 
   .nav-list__item {
+    display: flex;
+    align-items: center;
     font-weight: bold;
     text-wrap: nowrap;
     letter-spacing: 0.2px;

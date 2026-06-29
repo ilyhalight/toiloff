@@ -1,4 +1,7 @@
 ---
+import PreferenceRow from "./PreferenceRow.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+
 interface NavItem {
   href: string;
   label: string;
@@ -54,14 +57,14 @@ const { items } = Astro.props;
           </li>
         ))
       }
-      <li class="mobile-nav__item">
-        <button
-          class="mobile-nav__link mobile-nav__link_button"
-          type="button"
-          data-theme-toggle
+      <li class="mobile-nav__item mobile-nav__preferences">
+        <span class="mobile-nav__preferences-title">Preferences</span>
+        <PreferenceRow
+          name="Theme"
+          description="Switch between dark and light mode."
         >
-          Theme tester :>
-        </button>
+          <ThemeSwitcher id="mobile" />
+        </PreferenceRow>
       </li>
     </ul>
   </div>
@@ -71,20 +74,6 @@ const { items } = Astro.props;
   function initMobileNav() {
     const menuButton = document.querySelector<HTMLButtonElement>(".nav-menu");
     const mobileNav = document.getElementById("mobile-nav");
-    const themeButtons = document.querySelectorAll<HTMLElement>("[data-theme-toggle]");
-
-    for (const themeBtn of themeButtons) {
-      themeBtn.onclick = (e) => {
-        e.preventDefault();
-        const nextTheme =
-          document.body.dataset.theme === "light" ? "dark" : "light";
-        document.body.dataset.theme = nextTheme;
-
-        if (themeBtn.closest(".mobile-nav")) {
-          closeNav();
-        }
-      };
-    }
 
     if (!menuButton || !mobileNav) {
       return;
@@ -93,6 +82,7 @@ const { items } = Astro.props;
     const closeControls = mobileNav.querySelectorAll<HTMLElement>(
       "[data-mobile-nav-close], .mobile-nav__link[href]"
     );
+    const desktopQuery = window.matchMedia("(min-width: 501px)");
 
     function onEscape(e: KeyboardEvent) {
       if (e.key === "Escape") {
@@ -148,6 +138,20 @@ const { items } = Astro.props;
 
     for (const control of closeControls) {
       control.onclick = () => closeNav();
+    }
+
+    if (mobileNav.dataset.resizeCloseBound !== "true") {
+      mobileNav.dataset.resizeCloseBound = "true";
+      desktopQuery.addEventListener("change", (e) => {
+        if (e.matches) {
+          closeNav();
+        }
+      });
+    }
+
+    if (desktopQuery.matches) {
+      closeNav();
+      return;
     }
 
     closeNav();
@@ -210,6 +214,10 @@ const { items } = Astro.props;
     height: 0.25rem;
     border-radius: 999px;
     background: var(--stroke-color);
+  }
+
+  :global([data-theme="light"]) .mobile-nav__grabber {
+    background: var(--background);
   }
 
   .mobile-nav__header {
@@ -278,6 +286,24 @@ const { items } = Astro.props;
 
   .mobile-nav__link_button {
     text-align: left;
+  }
+
+  .mobile-nav__preferences {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: var(--onsurface-bg);
+  }
+
+  .mobile-nav__preferences-title {
+    align-self: flex-start;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-muted);
   }
 
   :global(body.mobile-nav-open) {
