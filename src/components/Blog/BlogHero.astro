@@ -1,0 +1,346 @@
+---
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<header class="blog-hero">
+  <h1 class="blog-hero__title">Blog</h1>
+
+  <form class="blog-filters" role="search">
+    <div class="blog-filter">
+      <label class="blog-filter__label" for="blog-search-input">
+        Search posts
+      </label>
+      <input
+        class="blog-filter__control"
+        id="blog-search-input"
+        name="search"
+        type="search"
+        placeholder="Search by title, theme, date..."
+        autocomplete="off"
+        data-blog-search
+      />
+    </div>
+
+    <div class="blog-filter blog-filter_tag">
+      <span class="blog-filter__label" id="blog-tag-label">Tag</span>
+      <div class="blog-dropdown" data-blog-dropdown>
+        <button
+          class="blog-dropdown__trigger"
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-labelledby="blog-tag-label blog-tag-value"
+          data-blog-dropdown-trigger
+        >
+          <span id="blog-tag-value" data-blog-dropdown-label>All tags</span>
+          <span class="blog-dropdown__arrow" aria-hidden="true"></span>
+        </button>
+
+        <ul class="blog-dropdown__list" role="listbox" aria-labelledby="blog-tag-label">
+          <li class="blog-dropdown__item" role="presentation">
+            <button
+              class="blog-dropdown__option is-selected"
+              type="button"
+              role="option"
+              aria-selected="true"
+              data-blog-tag-option
+              data-value="all"
+            >
+              All tags
+            </button>
+          </li>
+          {
+            tags.map((tag) => (
+              <li class="blog-dropdown__item" role="presentation">
+                <button
+                  class="blog-dropdown__option"
+                  type="button"
+                  role="option"
+                  aria-selected="false"
+                  data-blog-tag-option
+                  data-value={tag.toLowerCase()}
+                >
+                  {tag}
+                </button>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </form>
+</header>
+
+<script>
+  function initBlogSearch() {
+    const input =
+      document.querySelector<HTMLInputElement>("[data-blog-search]");
+    const dropdown =
+      document.querySelector<HTMLElement>("[data-blog-dropdown]");
+    const dropdownTrigger = document.querySelector<HTMLButtonElement>(
+      "[data-blog-dropdown-trigger]"
+    );
+    const dropdownLabel = document.querySelector<HTMLElement>(
+      "[data-blog-dropdown-label]"
+    );
+    const tagOptions = Array.from(
+      document.querySelectorAll<HTMLButtonElement>("[data-blog-tag-option]")
+    );
+    const posts = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-blog-post]")
+    );
+    const empty = document.querySelector<HTMLElement>("[data-blog-empty]");
+
+    if (!input || !dropdown || !dropdownTrigger || !dropdownLabel || !empty) {
+      return;
+    }
+
+    let selectedTag = "all";
+
+    const setDropdownOpen = (isOpen: boolean) => {
+      dropdown.classList.toggle("is-open", isOpen);
+      dropdownTrigger.setAttribute("aria-expanded", String(isOpen));
+    };
+
+    const updatePosts = () => {
+      const query = input.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      posts.forEach((post) => {
+        const matchesSearch = post.dataset.searchText?.includes(query) ?? false;
+        const matchesTag =
+          selectedTag === "all" || post.dataset.tag === selectedTag;
+        const isVisible = matchesSearch && matchesTag;
+        post.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      empty.hidden = visibleCount > 0;
+    };
+
+    dropdownTrigger.addEventListener("click", () => {
+      setDropdownOpen(!dropdown.classList.contains("is-open"));
+    });
+
+    tagOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        selectedTag = option.dataset.value ?? "all";
+        dropdownLabel.textContent = option.textContent?.trim() ?? "All tags";
+
+        tagOptions.forEach((item) => {
+          const isSelected = item === option;
+          item.classList.toggle("is-selected", isSelected);
+          item.setAttribute("aria-selected", String(isSelected));
+        });
+
+        setDropdownOpen(false);
+        updatePosts();
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!dropdown.contains(event.target as Node)) {
+        setDropdownOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setDropdownOpen(false);
+        dropdownTrigger.focus();
+      }
+    });
+
+    input.addEventListener("input", updatePosts);
+    updatePosts();
+  }
+
+  document.addEventListener("astro:page-load", initBlogSearch);
+</script>
+
+<style>
+  .blog-hero {
+    position: relative;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border-radius: 1.5rem;
+    background: var(--surface-bg);
+  }
+
+  .blog-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      linear-gradient(120deg, transparent 0 34%, color-mix(in srgb, var(--stroke-color), transparent 45%) 34% 34.35%, transparent 34.35% 100%),
+      repeating-linear-gradient(90deg, transparent 0 4.75rem, color-mix(in srgb, var(--stroke-color), transparent 70%) 4.75rem 4.8rem);
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  .blog-hero::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 1.25rem;
+    width: min(36rem, 70%);
+    height: 10rem;
+    border-top: 1px solid color-mix(in srgb, var(--stroke-color), transparent 25%);
+    border-bottom: 1px solid color-mix(in srgb, var(--stroke-color), transparent 55%);
+    transform: rotate(-8deg);
+    pointer-events: none;
+  }
+
+  .blog-hero__title {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    font-size: clamp(3.5rem, 12vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: -0.08em;
+  }
+
+  .blog-filters {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(12rem, 18rem);
+    gap: 0.75rem;
+    align-items: end;
+  }
+
+  .blog-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .blog-filter__label {
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .blog-filter__control {
+    width: 100%;
+    min-width: 0;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    background: var(--onsurface-bg);
+    transition: background-color 0.25s ease;
+  }
+
+  .blog-filter__control:focus {
+    background: var(--onsurface-hover-bg);
+    box-shadow: 0 0 0 0.2rem var(--onsurface-bg);
+  }
+
+  .blog-dropdown {
+    position: relative;
+    z-index: 2;
+  }
+
+  .blog-dropdown__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    background: var(--onsurface-bg);
+    cursor: pointer;
+    font-weight: 500;
+    transition:
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .blog-dropdown__trigger:hover,
+  .blog-dropdown.is-open .blog-dropdown__trigger {
+    background: var(--onsurface-hover-bg);
+  }
+
+  .blog-dropdown__trigger:focus {
+    box-shadow: 0 0 0 0.2rem var(--onsurface-bg);
+  }
+
+  .blog-dropdown__arrow {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: translateY(-20%) rotate(45deg);
+    transition:
+      border-color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .blog-dropdown.is-open .blog-dropdown__arrow {
+    border-color: var(--text-color);
+    transform: translateY(20%) rotate(225deg);
+  }
+
+  .blog-dropdown__list {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.35rem;
+    border-radius: 1rem;
+    background: var(--onsurface-bg);
+    list-style: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-0.35rem) scale(0.98);
+    transform-origin: top;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .blog-dropdown.is-open .blog-dropdown__list {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .blog-dropdown__option {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border-radius: 0.75rem;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-align: left;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .blog-dropdown__option:hover,
+  .blog-dropdown__option:focus,
+  .blog-dropdown__option.is-selected {
+    background: var(--onsurface-hover-bg);
+    color: var(--text-color);
+  }
+
+  @media screen and (max-width: 760px) {
+    .blog-filters {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

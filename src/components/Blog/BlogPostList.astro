@@ -1,0 +1,39 @@
+---
+import BlogPostCard from "./BlogPostCard.astro";
+import type { BlogPost } from "./types";
+
+interface Props {
+  posts: BlogPost[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ul class="blog-list">
+  {posts.map((post) => <BlogPostCard post={post} />)}
+</ul>
+
+<p class="blog-empty" hidden>No posts found.</p>
+
+<style>
+  .blog-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .blog-empty {
+    padding: 1.25rem;
+    border: 1px dashed var(--stroke-color);
+    border-radius: 1rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  @media screen and (max-width: 760px) {
+    .blog-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+import BlogHero from "../components/Blog/BlogHero.astro";
+import BlogPostList from "../components/Blog/BlogPostList.astro";
+import type { BlogPost } from "../components/Blog/types";
+import Layout from "../layouts/Layout.astro";
+
+const posts: BlogPost[] = [
+  {
+    id: "astro-page-transitions",
+    title: "Making Astro Transitions Feel Native",
+    tag: "Frontend",
+    createdAt: "2026-06-18",
+    readingTime: "6 min read",
+    description:
+      "Notes about route transitions, reveal animations, and keeping tiny details smooth without adding a heavy client runtime.",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+    href: "/blog/astro-page-transitions",
+  },
+  {
+    id: "api-first-personal-site",
+    title: "API-first Personal Website Content",
+    tag: "Architecture",
+    createdAt: "2026-05-27",
+    readingTime: "4 min read",
+    description:
+      "How I want to keep posts, guestbook data, and site experiments outside the frontend while preserving a fast static shell.",
+    image:
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80",
+    href: "/blog/api-first-personal-site",
+  },
+  {
+    id: "small-ui-systems",
+    title: "Small UI Systems That Do Not Fight You",
+    tag: "Design",
+    createdAt: "2026-04-09",
+    readingTime: "8 min read",
+    description:
+      "A practical look at tokens, rounded cards, glass headers, and the point where a design system becomes ceremony.",
+    image:
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+    href: "/blog/small-ui-systems",
+  },
+];
+
+const tags = Array.from(new Set(posts.map((post) => post.tag)));
+---
+
+<Layout title="Blog">
+  <section class="blog-page" data-reveal>
+    <BlogHero tags={tags} />
+    <BlogPostList posts={posts} />
+  </section>
+</Layout>
+
+<style>
+  .blog-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+</style>

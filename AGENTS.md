@@ -21,7 +21,7 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 ## Architecture
 
 - Main layout: `src/layouts/Layout.astro`.
-- Pages live in `src/pages/`; current routes are `/` (`index.astro`) and `/about` (`about.astro`).
+- Pages live in `src/pages/`; current routes are `/` (`index.astro`), `/about` (`about.astro`), and `/blog` (`blog.astro`).
 - Global reset, design tokens, utility classes, and shared button styles live in `src/components/GlobalStyle.astro`.
 - Site title metadata comes from `getEntry("settings", "settings")`, backed by `src/data/settings.json` through `src/content.config.ts`.
 - `Layout.astro` includes `Header`, `Footer`, global styles, the Poppins font, Astro `ClientRouter`, and fade transitions for route changes.
@@ -96,17 +96,22 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 | GuestMessage      | `src/components/Guestbook/GuestMessage.astro`      | Guestbook message card, link normalization, platform icon selection |
 | GuestMessageReply | `src/components/Guestbook/GuestMessageReply.astro` | Reply block inside a guestbook message                              |
 | AboutCard         | `src/components/About/AboutCard.astro`             | About card component placeholder                                    |
+| BlogHero          | `src/components/Blog/BlogHero.astro`               | Blog page title, search input, custom tag dropdown, and filter script |
+| BlogPostList      | `src/components/Blog/BlogPostList.astro`           | Blog post grid and empty search state                               |
+| BlogPostCard      | `src/components/Blog/BlogPostCard.astro`           | Blog post card with image, tag, title, description, date, and reading time |
 | Icones            | `src/components/Icones/*.astro`                    | Inline SVG icon components                                          |
 
 ## Pages
 
 - `src/pages/index.astro`: home page with hero, projects, stats, and guestbook sections.
 - `src/pages/about.astro`: about page with profile cards, social links, and tech stack icons.
+- `src/pages/blog.astro`: blog list page with API-shaped placeholder posts, hero search, tag filtering, and post cards.
 
 ## Data And Content
 
 - `src/content.config.ts` defines the `settings` collection using Astro's `file()` loader.
 - `src/data/settings.json` stores `defaultTitle` and `defaultDelimiter`.
+- Blog list data currently uses local API-shaped placeholders in `src/pages/blog.astro`; keep the `BlogPost` shape in `src/components/Blog/types.ts` aligned with the future API response.
 - Keep structured site-wide settings in `src/data/settings.json` and update the schema in `src/content.config.ts` when adding fields.
 
 ## Documentation
