@@ -7,7 +7,7 @@ Personal website frontend for Toiloff, built with Astro 7 and Bun.
 - Use Bun for package management and scripts.
 - Required Node version: `>=22.12.0`.
 - Install dependencies with `bun install`.
-- Run production checks with `bun build`.
+- Run production checks with `bun run build`.
 - Preview production output with `bun preview`.
 
 When starting the dev server, use Astro background mode:
@@ -43,27 +43,27 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 
 ### Design Tokens
 
-| Token | Dark | Light |
-|---|---|---|
-| `--background` | `#05010d` | `#fff` |
-| `--surface-bg` | `#131317` | `#f5f5f5` |
-| `--onsurface-bg` | `#27272a` | `#eaeaea` |
-| `--onsurface-hover-bg` | `#1d1d1d` | `#dddddd` |
-| `--text-color` | `rgb(220, 220, 230)` | `#0a0a0f` |
-| `--text-muted` | `rgb(130, 130, 150)` | `#616171` |
-| `--text-hover-color` | `#fff` | `#302f2f` |
-| `--primary-color` | `#ff6363` | `#ff6363` |
-| `--logo-color` | `#fff` | `#0a0a0f` |
-| `--stroke-color` | `#3a3a3f` | `#c0c0c0` |
-| `--header-bg` | `#1a1a1aa3` | `#edededa3` |
-| `--header-link-color` | `var(--text-color)` | `var(--text-color)` |
-| `--header-link-hover-color` | `var(--text-hover-color)` | `var(--text-muted)` |
-| `--button-bg` | `#e6e6e6` | `#05010d` |
-| `--button-shadow-color` | `var(--text-color)` | `var(--text-color)` |
-| `--button-hover-color` | `var(--text-hover-color)` | `var(--text-hover-color)` |
-| `--button-text-color` | `var(--background)` | `var(--background)` |
-| `--button_outline-border-color` | `var(--stroke-color)` | `var(--stroke-color)` |
-| `--button_outline-bg` | `#28292e` | `#f0f0f0` |
+| Token                           | Dark                      | Light                     |
+| ------------------------------- | ------------------------- | ------------------------- |
+| `--background`                  | `#05010d`                 | `#fff`                    |
+| `--surface-bg`                  | `#131317`                 | `#f5f5f5`                 |
+| `--onsurface-bg`                | `#27272a`                 | `#eaeaea`                 |
+| `--onsurface-hover-bg`          | `#1d1d1d`                 | `#dddddd`                 |
+| `--text-color`                  | `rgb(220, 220, 230)`      | `#0a0a0f`                 |
+| `--text-muted`                  | `rgb(130, 130, 150)`      | `#616171`                 |
+| `--text-hover-color`            | `#fff`                    | `#302f2f`                 |
+| `--primary-color`               | `#ff6363`                 | `#ff6363`                 |
+| `--logo-color`                  | `#fff`                    | `#0a0a0f`                 |
+| `--stroke-color`                | `#3a3a3f`                 | `#c0c0c0`                 |
+| `--header-bg`                   | `#1a1a1aa3`               | `#edededa3`               |
+| `--header-link-color`           | `var(--text-color)`       | `var(--text-color)`       |
+| `--header-link-hover-color`     | `var(--text-hover-color)` | `var(--text-muted)`       |
+| `--button-bg`                   | `#e6e6e6`                 | `#05010d`                 |
+| `--button-shadow-color`         | `var(--text-color)`       | `var(--text-color)`       |
+| `--button-hover-color`          | `var(--text-hover-color)` | `var(--text-hover-color)` |
+| `--button-text-color`           | `var(--background)`       | `var(--background)`       |
+| `--button_outline-border-color` | `var(--stroke-color)`     | `var(--stroke-color)`     |
+| `--button_outline-bg`           | `#28292e`                 | `#f0f0f0`                 |
 
 ### Typography
 
@@ -80,23 +80,23 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 
 ## Components
 
-| Component | File | Purpose |
-|---|---|---|
-| GlobalStyle | `src/components/GlobalStyle.astro` | Global reset, tokens, utilities, shared button styles |
-| Header | `src/components/Header.astro` | Fixed glass navigation and theme toggle |
-| Footer | `src/components/Footer.astro` | Site footer |
-| Logo | `src/components/Logo.astro` | Inline SVG logo |
-| Hero | `src/components/Hero.astro` | Home hero with decorative shapes and actions |
-| PageSection | `src/components/PageSection/PageSection.astro` | Reusable revealed section wrapper with optional CTA link |
-| Project | `src/components/Project/Project.astro` | Project grid wrapper |
-| ProjectItem | `src/components/Project/ProjectItem.astro` | Project card |
-| Stats | `src/components/Stats/Stats.astro` | Stats card grid |
-| StatsLines | `src/components/Stats/StatsLines.astro` | Decorative SVG line background for stats cards |
-| Guestbook | `src/components/Guestbook/Guestbook.astro` | Guestbook list and intro copy |
-| GuestMessage | `src/components/Guestbook/GuestMessage.astro` | Guestbook message card, link normalization, platform icon selection |
-| GuestMessageReply | `src/components/Guestbook/GuestMessageReply.astro` | Reply block inside a guestbook message |
-| AboutCard | `src/components/About/AboutCard.astro` | About card component placeholder |
-| Icones | `src/components/Icones/*.astro` | Inline SVG icon components |
+| Component         | File                                               | Purpose                                                             |
+| ----------------- | -------------------------------------------------- | ------------------------------------------------------------------- |
+| GlobalStyle       | `src/components/GlobalStyle.astro`                 | Global reset, tokens, utilities, shared button styles               |
+| Header            | `src/components/Header.astro`                      | Fixed glass navigation and theme toggle                             |
+| Footer            | `src/components/Footer.astro`                      | Site footer                                                         |
+| Logo              | `src/components/Logo.astro`                        | Inline SVG logo                                                     |
+| Hero              | `src/components/Hero.astro`                        | Home hero with decorative shapes and actions                        |
+| PageSection       | `src/components/PageSection/PageSection.astro`     | Reusable revealed section wrapper with optional CTA link            |
+| Project           | `src/components/Project/Project.astro`             | Project grid wrapper                                                |
+| ProjectItem       | `src/components/Project/ProjectItem.astro`         | Project card                                                        |
+| Stats             | `src/components/Stats/Stats.astro`                 | Stats card grid                                                     |
+| StatsLines        | `src/components/Stats/StatsLines.astro`            | Decorative SVG line background for stats cards                      |
+| Guestbook         | `src/components/Guestbook/Guestbook.astro`         | Guestbook list and intro copy                                       |
+| GuestMessage      | `src/components/Guestbook/GuestMessage.astro`      | Guestbook message card, link normalization, platform icon selection |
+| GuestMessageReply | `src/components/Guestbook/GuestMessageReply.astro` | Reply block inside a guestbook message                              |
+| AboutCard         | `src/components/About/AboutCard.astro`             | About card component placeholder                                    |
+| Icones            | `src/components/Icones/*.astro`                    | Inline SVG icon components                                          |
 
 ## Pages
 

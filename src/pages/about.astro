@@ -1,5 +1,8 @@
 ---
 import AboutCard from "../components/About/AboutCard.astro";
+import AboutSocialItem from "../components/About/AboutSocialItem.astro";
+import PageSection from "../components/PageSection/PageSection.astro";
+import Layout from "../layouts/Layout.astro";
 import TelegramIcon from "../components/Icones/TelegramIcon.astro";
 import EmailIcon from "../components/Icones/EmailIcon.astro";
 import GithubFillIcon from "../components/Icones/GithubFillIcon.astro";
@@ -8,8 +11,6 @@ import MangalibIcon from "../components/Icones/MangalibIcon.astro";
 import ShikimoriIcon from "../components/Icones/ShikimoriIcon.astro";
 import SteamIcon from "../components/Icones/SteamIcon.astro";
 import VKIcon from "../components/Icones/VKIcon.astro";
-import PageSection from "../components/PageSection/PageSection.astro";
-import Layout from "../layouts/Layout.astro";
 import TypeScriptColorIcon from "../components/Icones/TypeScriptColorIcon.astro";
 import JavaScriptColorIcon from "../components/Icones/JavaScriptColorIcon.astro";
 import PythonColorIcon from "../components/Icones/PythonColorIcon.astro";
@@ -25,126 +26,73 @@ import GitIcon from "../components/Icones/GitColorIcon.astro";
 import BunIcon from "../components/Icones/BunColorIcon.astro";
 import WebpackIcon from "../components/Icones/WebpackColorIcon.astro";
 import MySQLIcon from "../components/Icones/MySQLColorIcon.astro";
+import RustColorIcon from "../components/Icones/RustColorIcon.astro";
+
+const socials = [
+  { id: "telegram", label: "Telegram", href: "#", Icon: TelegramIcon },
+  { id: "github", label: "Github", href: "#", Icon: GithubFillIcon },
+  { id: "steam", label: "Steam", href: "#", Icon: SteamIcon },
+  { id: "shikimori", label: "Shikimori", href: "#", Icon: ShikimoriIcon },
+  { id: "mangalib", label: "Mangalib", href: "#", Icon: MangalibIcon },
+  { id: "lastfm", label: "last.fm", href: "#", Icon: LastfmIcon },
+  { id: "vk", label: "VKONTAKTE", href: "#", Icon: VKIcon },
+  { id: "email", label: "Email", href: "#", Icon: EmailIcon },
+];
 ---
 
 <Layout title="About">
   <PageSection title="About">
     <ul class="about-list">
-      <li class="about-card">
-        <h3 class="about-card__title">WHOAMI</h3>
-        <p class="about-card__content">Ilya</p>
-        <p class="about-card__subcontent">Fullstack dev</p>
-      </li>
-      <li class="about-card">
-        <h3 class="about-card__title">BIRTHDAY</h3>
-        <p class="about-card__content">Sep 14</p>
-        <p class="about-card__subcontent">77 days away</p>
-      </li>
-      <li class="about-card">
-        <h3 class="about-card__title">LOCATION</h3>
-        <p class="about-card__content">Russia</p>
-        <p class="about-card__subcontent">& web</p>
-      </li>
-      <li class="about-card">
-        <h3 class="about-card__title">FAV MUSIC</h3>
-        <p class="about-card__content">idk, maybe indie</p>
-        <p class="about-card__subcontent">& nightcore remixes</p>
-      </li>
-      <li class="about-card">
-        <h3 class="about-card__title">FAV EDITOR</h3>
-        <p class="about-card__content">VS CODE</p>
-        <p class="about-card__subcontent">since 2020</p>
-      </li>
-      <li class="about-card">
-        <h3 class="about-card__title">FAV LANG</h3>
-        <p class="about-card__content">TypeScript</p>
-        <p class="about-card__subcontent">since 2024</p>
-      </li>
+      <AboutCard title="WHOAMI" content="Ilya" subcontent="Fullstack dev" />
+      <AboutCard title="BIRTHDAY" content="Sep 14" subcontent="77 days away" />
+      <AboutCard title="LOCATION" content="Russia" subcontent="& web" />
+      <AboutCard
+        title="FAV MUSIC"
+        content="idk, maybe indie"
+        subcontent="& nightcore remixes"
+      />
+      <AboutCard title="FAV EDITOR" content="VS CODE" subcontent="since 2020" />
+      <AboutCard
+        title="FAV LANG"
+        content="TypeScript"
+        subcontent="since 2024"
+      />
     </ul>
-    <ul class="about-list">
-      <li class="about-card">
-        <h3 class="about-card__title">Find me online</h3>
-        <ul class="about-socials">
-          <li class="about-socials__item" id="social-telegram">
-            <a class="about-socials__item-link" href="#">
-              <span class="about-socials__item-link-icon"
-                ><TelegramIcon />
-              </span>Telegram</a
-            >
-          </li>
-          <li class="about-socials__item" id="social-github">
-            <a class="about-socials__item-link" href="#">
-              <span class="about-socials__item-link-icon"
-                ><GithubFillIcon />
-              </span>Github</a
-            >
-          </li>
-          <li class="about-socials__item" id="social-steam">
-            <a class="about-socials__item-link" href="#">
-              <span class="about-socials__item-link-icon"
-                ><SteamIcon />
-              </span>Steam</a
-            >
-          </li>
-          <li class="about-socials__item" id="social-shikimori">
-            <a class="about-socials__item-link" href="#">
-              <span class="about-socials__item-link-icon">
-                <ShikimoriIcon />
-              </span>Shikimori</a
-            >
-          </li>
-          <li class="about-socials__item" id="social-mangalib">
-            <a class="about-socials__item-link" href="#">
-              <span class="about-socials__item-link-icon"
-                ><MangalibIcon />
-              </span>Mangalib</a
-            >
-          </li>
-          <li class="about-socials__item" id="social-lastfm">
-            <a class="about-socials__item-link" href="#">
-              <span class="about-socials__item-link-icon"
-                ><LastfmIcon />
-              </span>last.fm</a
-            >
-          </li>
-          <li class="about-socials__item" id="social-vk">
-            <a class="about-socials__item-link" href="#">
-              <span class="about-socials__item-link-icon"><VKIcon /></span
-              >VKONTAKTE</a
-            >
-          </li>
-          <li class="about-socials__item">
-            <a class="about-socials__item-link" href="#"
-              ><span class="about-socials__item-link-icon"
-                ><EmailIcon />
-              </span>Email</a
-            >
-          </li>
-        </ul>
-      </li>
-    </ul>
-
-    <PageSection title="Tech Stack">
-      <ul class="tech-stack">
-        <li class="tech-stack__item"><TypeScriptColorIcon /> TypeScript</li>
-        <li class="tech-stack__item"><JavaScriptColorIcon /> JavaScript</li>
-        <li class="tech-stack__item"><BunIcon /> Bun</li>
-
-        <li class="tech-stack__item"><ElysiaIcon /> Elysia</li>
-        <li class="tech-stack__item"><SvelteIcon /> Svelte</li>
-        <li class="tech-stack__item"><PostgreSQLIcon /> PostgreSQL</li>
-        <li class="tech-stack__item"><RedisIcon /> Redis</li>
-        <li class="tech-stack__item"><AstroIcon /> Astro</li>
-        <li class="tech-stack__item"><NuxtIcon /> Nuxt</li>
-        <li class="tech-stack__item"><VueIcon /> Vue</li>
-        <li class="tech-stack__item"><PythonColorIcon /> Python</li>
-
-        <li class="tech-stack__item"><S3Icon /> S3</li>
-        <li class="tech-stack__item"><GitIcon /> Git</li>
-        <li class="tech-stack__item"><WebpackIcon /> Webpack</li>
-        <li class="tech-stack__item"><MySQLIcon /> MySQL</li>
+    <section class="about-section">
+      <h3 class="about-section__title">Find me online</h3>
+      <ul class="about-socials">
+        {
+          socials.map((social) => (
+            <AboutSocialItem
+              id={social.id}
+              label={social.label}
+              href={social.href}
+              Icon={social.Icon}
+            />
+          ))
+        }
       </ul>
-    </PageSection>
+    </section>
+  </PageSection>
+  <PageSection title="Tech Stack">
+    <ul class="tech-stack">
+      <li class="tech-stack__item"><TypeScriptColorIcon /> TypeScript</li>
+      <li class="tech-stack__item"><JavaScriptColorIcon /> JavaScript</li>
+      <li class="tech-stack__item"><BunIcon /> Bun</li>
+      <li class="tech-stack__item"><ElysiaIcon /> Elysia</li>
+      <li class="tech-stack__item"><SvelteIcon /> Svelte</li>
+      <li class="tech-stack__item"><PostgreSQLIcon /> PostgreSQL</li>
+      <li class="tech-stack__item"><RedisIcon /> Redis</li>
+      <li class="tech-stack__item"><AstroIcon /> Astro</li>
+      <li class="tech-stack__item"><NuxtIcon /> Nuxt</li>
+      <li class="tech-stack__item"><VueIcon /> Vue</li>
+      <li class="tech-stack__item"><PythonColorIcon /> Python</li>
+      <li class="tech-stack__item"><RustColorIcon /> Rust</li>
+      <li class="tech-stack__item"><S3Icon /> S3</li>
+      <li class="tech-stack__item"><GitIcon /> Git</li>
+      <li class="tech-stack__item"><WebpackIcon /> Webpack</li>
+      <li class="tech-stack__item"><MySQLIcon /> MySQL</li>
+    </ul>
   </PageSection>
 </Layout>
 
@@ -179,32 +127,17 @@ import MySQLIcon from "../components/Icones/MySQLColorIcon.astro";
     gap: 1rem;
   }
 
-  .about-card {
+  .about-section {
     background: var(--surface-bg);
     padding: 1rem 1.25rem;
     border-radius: 1rem;
   }
 
-  @media screen and (max-width: 500px) {
-    .about-card {
-      width: 100%;
-    }
-
-    .about-socials__item {
-      width: 100%;
-    }
-  }
-
-  .about-card__title {
+  .about-section__title {
     color: var(--text-muted);
     font-weight: 600;
     font-size: 1.5rem;
     text-transform: uppercase;
-  }
-
-  .about-card__content {
-    font-size: 1.5rem;
-    font-weight: 700;
   }
 
   .about-socials {
@@ -214,90 +147,9 @@ import MySQLIcon from "../components/Icones/MySQLColorIcon.astro";
     gap: 0.5rem;
   }
 
-  .about-socials__item {
-    border-radius: 0.75rem;
-    background: var(--onsurface-bg);
-    user-select: none;
-    transition: background 0.25s ease;
-  }
-
-  .about-socials__item-link {
-    display: flex;
-    padding: 0.5rem 1.25rem;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 1.5rem;
-    font-weight: 500;
-  }
-
-  .about-socials__item:hover {
-    background: var(--onsurface-hover-bg);
-  }
-
-  #social-telegram {
-    background: #24a1de;
-  }
-
-  #social-vk {
-    background: #0077ff;
-  }
-
-  #social-steam {
-    background: #2c2e35;
-  }
-
-  #social-shikimori {
-    background: #343434;
-  }
-
-  #social-mangalib {
-    background: #ef6c00;
-  }
-
-  #social-lastfm {
-    background: #d1170e;
-  }
-
-  :global([data-theme="light"] #social-telegram),
-  :global([data-theme="light"] #social-vk),
-  :global([data-theme="light"] #social-steam),
-  :global([data-theme="light"] #social-shikimori),
-  :global([data-theme="light"] #social-mangalib),
-  :global([data-theme="light"] #social-lastfm) {
-    color: #fff;
-  }
-
-  #social-telegram:hover {
-    background: #4290b8;
-  }
-
-  #social-vk:hover {
-    background: #348bee;
-  }
-
-  #social-steam:hover {
-    background: #3e4047;
-  }
-
-  #social-shikimori:hover {
-    background: #494848;
-  }
-
-  #social-mangalib:hover {
-    background: #ec7c1f;
-  }
-
-  #social-lastfm:hover {
-    background: #e73930;
-  }
-
-  .about-socials__item-link-icon {
-    width: 28px;
-    height: 28px;
-  }
-
-  :global(.about-socials__item-link-icon svg) {
-    width: 28px;
-    height: 28px;
+  @media screen and (max-width: 500px) {
+    .about-section {
+      width: 100%;
+    }
   }
 </style>

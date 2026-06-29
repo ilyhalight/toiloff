@@ -1,16 +1,41 @@
-<div class="about-card">
-  <h2>About me</h2>
-  <p>My name is <span style="color: var(--primary-color)">Ilya</span></p>
-  <p>
-    My birthday is <span style="color: var(--primary-color)"
-      >September 14th</span>
-  </p>
-</div>
+---
+interface Props {
+  title: string;
+  content: string;
+  subcontent?: string;
+}
+
+const { title, content, subcontent } = Astro.props;
+---
+
+<li class="about-card">
+  <h3 class="about-card__title">{title}</h3>
+  <p class="about-card__content">{content}</p>
+  {subcontent && <p class="about-card__subcontent">{subcontent}</p>}
+</li>
 
 <style>
   .about-card {
     background: var(--surface-bg);
     padding: 1rem 1.25rem;
     border-radius: 1rem;
+  }
+
+  .about-card__title {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .about-card__content {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 500px) {
+    .about-card {
+      width: 100%;
+    }
   }
 </style>
