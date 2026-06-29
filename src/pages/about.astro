@@ -10,21 +10,21 @@ import SteamIcon from "../components/Icones/SteamIcon.astro";
 import VKIcon from "../components/Icones/VKIcon.astro";
 import PageSection from "../components/PageSection/PageSection.astro";
 import Layout from "../layouts/Layout.astro";
-import TypeScriptIcon from "../components/Icones/TypeScriptIcon.astro";
-import JavaScriptIcon from "../components/Icones/JavaScriptIcon.astro";
-import PythonIcon from "../components/Icones/PythonIcon.astro";
-import AstroIcon from "../components/Icones/AstroIcon.astro";
-import ElysiaIcon from "../components/Icones/ElysiaIcon.astro";
-import SvelteIcon from "../components/Icones/SvelteIcon.astro";
-import NuxtIcon from "../components/Icones/NuxtIcon.astro";
-import VueIcon from "../components/Icones/VueIcon.astro";
-import PostgreSQLIcon from "../components/Icones/PostgreSQLIcon.astro";
-import RedisIcon from "../components/Icones/RedisIcon.astro";
-import S3Icon from "../components/Icones/S3Icon.astro";
-import GitIcon from "../components/Icones/GitIcon.astro";
-import BunIcon from "../components/Icones/BunIcon.astro";
-import WebpackIcon from "../components/Icones/WebpackIcon.astro";
-import MySQLIcon from "../components/Icones/MySQLIcon.astro";
+import TypeScriptColorIcon from "../components/Icones/TypeScriptColorIcon.astro";
+import JavaScriptColorIcon from "../components/Icones/JavaScriptColorIcon.astro";
+import PythonColorIcon from "../components/Icones/PythonColorIcon.astro";
+import AstroIcon from "../components/Icones/AstroColorIcon.astro";
+import ElysiaIcon from "../components/Icones/ElysiaColorIcon.astro";
+import SvelteIcon from "../components/Icones/SvelteColorIcon.astro";
+import NuxtIcon from "../components/Icones/NuxtColorIcon.astro";
+import VueIcon from "../components/Icones/VueColorIcon.astro";
+import PostgreSQLIcon from "../components/Icones/PostgreSQLColorIcon.astro";
+import RedisIcon from "../components/Icones/RedisColorIcon.astro";
+import S3Icon from "../components/Icones/S3ColorIcon.astro";
+import GitIcon from "../components/Icones/GitColorIcon.astro";
+import BunIcon from "../components/Icones/BunColorIcon.astro";
+import WebpackIcon from "../components/Icones/WebpackColorIcon.astro";
+import MySQLIcon from "../components/Icones/MySQLColorIcon.astro";
 ---
 
 <Layout title="About">
@@ -126,19 +126,21 @@ import MySQLIcon from "../components/Icones/MySQLIcon.astro";
 
     <PageSection title="Tech Stack">
       <ul class="tech-stack">
-        <li class="tech-stack__item"><TypeScriptIcon /> TypeScript</li>
-        <li class="tech-stack__item"><JavaScriptIcon /> JavaScript</li>
-        <li class="tech-stack__item"><PythonIcon /> Python</li>
+        <li class="tech-stack__item"><TypeScriptColorIcon /> TypeScript</li>
+        <li class="tech-stack__item"><JavaScriptColorIcon /> JavaScript</li>
+        <li class="tech-stack__item"><BunIcon /> Bun</li>
+
         <li class="tech-stack__item"><ElysiaIcon /> Elysia</li>
-        <li class="tech-stack__item"><AstroIcon /> Astro</li>
         <li class="tech-stack__item"><SvelteIcon /> Svelte</li>
-        <li class="tech-stack__item"><NuxtIcon /> Nuxt</li>
-        <li class="tech-stack__item"><VueIcon /> Vue</li>
         <li class="tech-stack__item"><PostgreSQLIcon /> PostgreSQL</li>
         <li class="tech-stack__item"><RedisIcon /> Redis</li>
+        <li class="tech-stack__item"><AstroIcon /> Astro</li>
+        <li class="tech-stack__item"><NuxtIcon /> Nuxt</li>
+        <li class="tech-stack__item"><VueIcon /> Vue</li>
+        <li class="tech-stack__item"><PythonColorIcon /> Python</li>
+
         <li class="tech-stack__item"><S3Icon /> S3</li>
         <li class="tech-stack__item"><GitIcon /> Git</li>
-        <li class="tech-stack__item"><BunIcon /> Bun</li>
         <li class="tech-stack__item"><WebpackIcon /> Webpack</li>
         <li class="tech-stack__item"><MySQLIcon /> MySQL</li>
       </ul>
@@ -165,7 +167,7 @@ import MySQLIcon from "../components/Icones/MySQLIcon.astro";
     gap: 0.5rem;
   }
 
-  .tech-stack__item :global(svg) {
+  :global(.tech-stack__item svg) {
     width: 20px;
     height: 20px;
   }
