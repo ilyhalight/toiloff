@@ -1,0 +1,243 @@
+---
+import AboutCard from "../components/About/AboutCard.astro";
+import TelegramIcon from "../components/Icones/TelegramIcon.astro";
+import EmailIcon from "../components/Icones/EmailIcon.astro";
+import GithubFillIcon from "../components/Icones/GithubFillIcon.astro";
+import LastfmIcon from "../components/Icones/LastfmIcon.astro";
+import MangalibIcon from "../components/Icones/MangalibIcon.astro";
+import ShikimoriIcon from "../components/Icones/ShikimoriIcon.astro";
+import SteamIcon from "../components/Icones/SteamIcon.astro";
+import VKIcon from "../components/Icones/VKIcon.astro";
+import PageSection from "../components/PageSection/PageSection.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Home">
+  <PageSection title="About">
+    <ul class="about-list">
+      <li class="about-card">
+        <h3 class="about-card__title">WHOAMI</h3>
+        <p class="about-card__content">Ilya</p>
+        <p class="about-card__subcontent">Fullstack dev</p>
+      </li>
+      <li class="about-card">
+        <h3 class="about-card__title">BIRTHDAY</h3>
+        <p class="about-card__content">Sep 14</p>
+        <p class="about-card__subcontent">77 days away</p>
+      </li>
+      <li class="about-card">
+        <h3 class="about-card__title">LOCATION</h3>
+        <p class="about-card__content">Russia</p>
+        <p class="about-card__subcontent">& web</p>
+      </li>
+      <li class="about-card">
+        <h3 class="about-card__title">FAV MUSIC</h3>
+        <p class="about-card__content">idk, maybe indie</p>
+        <p class="about-card__subcontent">& nightcore remixes</p>
+      </li>
+      <li class="about-card">
+        <h3 class="about-card__title">FAV EDITOR</h3>
+        <p class="about-card__content">VS CODE</p>
+        <p class="about-card__subcontent">since 2020</p>
+      </li>
+      <li class="about-card">
+        <h3 class="about-card__title">FAV LANG</h3>
+        <p class="about-card__content">TypeScript</p>
+        <p class="about-card__subcontent">since 2024</p>
+      </li>
+    </ul>
+    <ul class="about-list">
+      <li class="about-card">
+        <h3 class="about-card__title">Find me online</h3>
+        <ul class="about-socials">
+          <li class="about-socials__item" id="social-telegram">
+            <a class="about-socials__item-link" href="#">
+              <span class="about-socials__item-link-icon"
+                ><TelegramIcon />
+              </span>Telegram</a
+            >
+          </li>
+          <li class="about-socials__item" id="social-github">
+            <a class="about-socials__item-link" href="#">
+              <span class="about-socials__item-link-icon"
+                ><GithubFillIcon />
+              </span>Github</a
+            >
+          </li>
+          <li class="about-socials__item" id="social-steam">
+            <a class="about-socials__item-link" href="#">
+              <span class="about-socials__item-link-icon"
+                ><SteamIcon />
+              </span>Steam</a
+            >
+          </li>
+          <li class="about-socials__item" id="social-shikimori">
+            <a class="about-socials__item-link" href="#">
+              <span class="about-socials__item-link-icon">
+                <ShikimoriIcon />
+              </span>Shikimori</a
+            >
+          </li>
+          <li class="about-socials__item" id="social-mangalib">
+            <a class="about-socials__item-link" href="#">
+              <span class="about-socials__item-link-icon"
+                ><MangalibIcon />
+              </span>Mangalib</a
+            >
+          </li>
+          <li class="about-socials__item" id="social-lastfm">
+            <a class="about-socials__item-link" href="#">
+              <span class="about-socials__item-link-icon"
+                ><LastfmIcon />
+              </span>last.fm</a
+            >
+          </li>
+          <li class="about-socials__item" id="social-vk">
+            <a class="about-socials__item-link" href="#">
+              <span class="about-socials__item-link-icon"><VKIcon /></span
+              >VKONTAKTE</a
+            >
+          </li>
+          <li class="about-socials__item">
+            <a class="about-socials__item-link" href="#"
+              ><span class="about-socials__item-link-icon"
+                ><EmailIcon />
+              </span>Email</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </PageSection>
+</Layout>
+
+<style>
+  .about-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .about-card {
+    background: var(--surface-bg);
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    .about-card {
+      width: 100%;
+    }
+
+    .about-socials__item {
+      width: 100%;
+    }
+  }
+
+  .about-card__title {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .about-card__content {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .about-socials {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 0.5rem;
+  }
+
+  .about-socials__item {
+    border-radius: 0.75rem;
+    background: var(--onsurface-bg);
+    user-select: none;
+    transition: background 0.25s ease;
+  }
+
+  .about-socials__item-link {
+    display: flex;
+    padding: 0.5rem 1.25rem;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .about-socials__item:hover {
+    background: var(--onsurface-hover-bg);
+  }
+
+  #social-telegram {
+    background: #24a1de;
+  }
+
+  #social-vk {
+    background: #0077ff;
+  }
+
+  #social-steam {
+    background: #2c2e35;
+  }
+
+  #social-shikimori {
+    background: #343434;
+  }
+
+  #social-mangalib {
+    background: #ef6c00;
+  }
+
+  #social-lastfm {
+    background: #d1170e;
+  }
+
+  :global([data-theme="light"] #social-telegram),
+  :global([data-theme="light"] #social-vk),
+  :global([data-theme="light"] #social-steam),
+  :global([data-theme="light"] #social-shikimori),
+  :global([data-theme="light"] #social-mangalib),
+  :global([data-theme="light"] #social-lastfm) {
+    color: #fff;
+  }
+
+  #social-telegram:hover {
+    background: #4290b8;
+  }
+
+  #social-vk:hover {
+    background: #348bee;
+  }
+
+  #social-steam:hover {
+    background: #3e4047;
+  }
+
+  #social-shikimori:hover {
+    background: #494848;
+  }
+
+  #social-mangalib:hover {
+    background: #ec7c1f;
+  }
+
+  #social-lastfm:hover {
+    background: #e73930;
+  }
+
+  .about-socials__item-link-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  :global(.about-socials__item-link-icon svg) {
+    width: 28px;
+    height: 28px;
+  }
+</style>

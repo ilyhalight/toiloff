@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import ProjectItem from "../components/Project/ProjectItem.astro";
-import MainPageSection from "../components/MainPage/MainPageSection.astro";
+import PageSection from "../components/PageSection/PageSection.astro";
 import Project from "../components/Project/Project.astro";
 import Stats from "../components/Stats/Stats.astro";
 import Guestbook from "../components/Guestbook/Guestbook.astro";
@@ -10,7 +10,7 @@ import Guestbook from "../components/Guestbook/Guestbook.astro";
 
 <Layout title="Home">
   <Hero />
-  <MainPageSection
+  <PageSection
     title="Projects"
     link={{
       href: "hello",
@@ -23,17 +23,17 @@ import Guestbook from "../components/Guestbook/Guestbook.astro";
       <ProjectItem />
       <ProjectItem />
     </Project>
-  </MainPageSection>
-  <MainPageSection title="Stats">
+  </PageSection>
+  <PageSection title="Stats">
     <Stats />
-  </MainPageSection>
-  <MainPageSection
+  </PageSection>
+  <PageSection
     title="Guestbook"
     link={{
       href: "guestbook",
       name: "View all",
     }}
   >
-    <Guestbook /></MainPageSection
+    <Guestbook /></PageSection
   >
 </Layout>

@@ -1,11 +1,11 @@
 ---
-import IncognitoIcon from "./icones/IncognitoIcon.astro";
-import TelegramIcon from "./icones/TelegramIcon.astro";
-import VKIcon from "./icones/VKIcon.astro";
-import WebIcon from "./icones/WebIcon.astro";
-import XIcon from "./icones/XIcon.astro";
-import TwitchIcon from "./icones/TwitchIcon.astro";
-import GithubIcon from "./icones/GithubIcon.astro";
+import IncognitoIcon from "../Icones/IncognitoIcon.astro";
+import TelegramIcon from "../Icones/TelegramIcon.astro";
+import VKIcon from "../Icones/VKIcon.astro";
+import WebIcon from "../Icones/WebIcon.astro";
+import XIcon from "../Icones/XIcon.astro";
+import TwitchIcon from "../Icones/TwitchIcon.astro";
+import GithubIcon from "../Icones/GithubIcon.astro";
 import GuestMessageReply from "./GuestMessageReply.astro";
 
 type GuestMessage = {
@@ -194,6 +194,16 @@ const messageDate = dateFormatter.format(new Date(createdAt));
       .guestbook-message__info-title {
       font-size: 1.25rem;
     }
+  }
+
+  .guestbook-message__icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  :global(.guestbook-message__icon > svg) {
+    width: 32px;
+    height: 32px;
   }
 
   .guestbook-message__info-link,
