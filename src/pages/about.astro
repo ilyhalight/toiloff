@@ -10,9 +10,24 @@ import SteamIcon from "../components/Icones/SteamIcon.astro";
 import VKIcon from "../components/Icones/VKIcon.astro";
 import PageSection from "../components/PageSection/PageSection.astro";
 import Layout from "../layouts/Layout.astro";
+import TypeScriptIcon from "../components/Icones/TypeScriptIcon.astro";
+import JavaScriptIcon from "../components/Icones/JavaScriptIcon.astro";
+import PythonIcon from "../components/Icones/PythonIcon.astro";
+import AstroIcon from "../components/Icones/AstroIcon.astro";
+import ElysiaIcon from "../components/Icones/ElysiaIcon.astro";
+import SvelteIcon from "../components/Icones/SvelteIcon.astro";
+import NuxtIcon from "../components/Icones/NuxtIcon.astro";
+import VueIcon from "../components/Icones/VueIcon.astro";
+import PostgreSQLIcon from "../components/Icones/PostgreSQLIcon.astro";
+import RedisIcon from "../components/Icones/RedisIcon.astro";
+import S3Icon from "../components/Icones/S3Icon.astro";
+import GitIcon from "../components/Icones/GitIcon.astro";
+import BunIcon from "../components/Icones/BunIcon.astro";
+import WebpackIcon from "../components/Icones/WebpackIcon.astro";
+import MySQLIcon from "../components/Icones/MySQLIcon.astro";
 ---
 
-<Layout title="Home">
+<Layout title="About">
   <PageSection title="About">
     <ul class="about-list">
       <li class="about-card">
@@ -108,10 +123,53 @@ import Layout from "../layouts/Layout.astro";
         </ul>
       </li>
     </ul>
+
+    <PageSection title="Tech Stack">
+      <ul class="tech-stack">
+        <li class="tech-stack__item"><TypeScriptIcon /> TypeScript</li>
+        <li class="tech-stack__item"><JavaScriptIcon /> JavaScript</li>
+        <li class="tech-stack__item"><PythonIcon /> Python</li>
+        <li class="tech-stack__item"><ElysiaIcon /> Elysia</li>
+        <li class="tech-stack__item"><AstroIcon /> Astro</li>
+        <li class="tech-stack__item"><SvelteIcon /> Svelte</li>
+        <li class="tech-stack__item"><NuxtIcon /> Nuxt</li>
+        <li class="tech-stack__item"><VueIcon /> Vue</li>
+        <li class="tech-stack__item"><PostgreSQLIcon /> PostgreSQL</li>
+        <li class="tech-stack__item"><RedisIcon /> Redis</li>
+        <li class="tech-stack__item"><S3Icon /> S3</li>
+        <li class="tech-stack__item"><GitIcon /> Git</li>
+        <li class="tech-stack__item"><BunIcon /> Bun</li>
+        <li class="tech-stack__item"><WebpackIcon /> Webpack</li>
+        <li class="tech-stack__item"><MySQLIcon /> MySQL</li>
+      </ul>
+    </PageSection>
   </PageSection>
 </Layout>
 
 <style>
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 0.75rem;
+  }
+
+  .tech-stack__item {
+    background: var(--surface-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    border: 1px solid var(--stroke-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tech-stack__item :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+
   .about-list {
     list-style: none;
     display: flex;
