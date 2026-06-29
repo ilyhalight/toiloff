@@ -18,6 +18,10 @@ bun astro dev --background
 
 Manage the background server with `bun astro dev stop`, `bun astro dev status`, and `bun astro dev logs`.
 
+## Code Style
+
+- Prefer `for...of` loops over `.forEach()` for iteration.
+
 ## Architecture
 
 - Main layout: `src/layouts/Layout.astro`.
@@ -39,6 +43,7 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 - The theme tester in `Header.astro` toggles `document.body.dataset.theme`.
 - Use BEM-like class names with kebab-case and `__` for elements, e.g. `.nav-list__item-link`.
 - Prefer existing utility classes: `.button`, `.button_outline`, `.text-truncate`, and `.text-wrap`.
+- Do not add unused `data-*` attributes; every data hook should be read by CSS or JavaScript.
 - Preserve the current rounded-card, glass-header, soft-gradient, dark-first visual language unless explicitly redesigning.
 
 ### Design Tokens
@@ -99,6 +104,11 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 | BlogHero          | `src/components/Blog/BlogHero.astro`               | Blog page title, search input, custom tag dropdown, and filter script |
 | BlogPostList      | `src/components/Blog/BlogPostList.astro`           | Blog post grid and empty search state                               |
 | BlogPostCard      | `src/components/Blog/BlogPostCard.astro`           | Blog post card with image, tag, title, description, date, and reading time |
+| BlogPostHero      | `src/components/Blog/BlogPostHero.astro`           | Blog detail hero with dark image background and post metadata        |
+| BlogPostLayout    | `src/components/Blog/BlogPostLayout.astro`         | Blog detail 70/30 content and sidebar grid                          |
+| BlogPostContent   | `src/components/Blog/BlogPostContent.astro`        | Blog detail article sections                                        |
+| BlogPostSidebar   | `src/components/Blog/BlogPostSidebar.astro`        | Blog detail authors and content anchor links                        |
+| BlogPostAuthorCard | `src/components/Blog/BlogPostAuthorCard.astro`    | Blog detail author/member card                                      |
 | Icones            | `src/components/Icones/*.astro`                    | Inline SVG icon components                                          |
 
 ## Pages
@@ -106,12 +116,13 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 - `src/pages/index.astro`: home page with hero, projects, stats, and guestbook sections.
 - `src/pages/about.astro`: about page with profile cards, social links, and tech stack icons.
 - `src/pages/blog.astro`: blog list page with API-shaped placeholder posts, hero search, tag filtering, and post cards.
+- `src/pages/blog/[slug].astro`: blog detail page generated from placeholder post records.
 
 ## Data And Content
 
 - `src/content.config.ts` defines the `settings` collection using Astro's `file()` loader.
 - `src/data/settings.json` stores `defaultTitle` and `defaultDelimiter`.
-- Blog list data currently uses local API-shaped placeholders in `src/pages/blog.astro`; keep the `BlogPost` shape in `src/components/Blog/types.ts` aligned with the future API response.
+- Blog data currently uses local API-shaped placeholders in `src/data/blog.ts`; keep `BlogPost` and `BlogPostDetail` in `src/components/Blog/types.ts` aligned with the future API response.
 - Keep structured site-wide settings in `src/data/settings.json` and update the schema in `src/content.config.ts` when adding fields.
 
 ## Documentation

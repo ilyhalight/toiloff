@@ -1,0 +1,47 @@
+---
+import BlogPostContent from "./BlogPostContent.astro";
+import BlogPostSidebar from "./BlogPostSidebar.astro";
+import type { BlogPostDetail } from "./types";
+
+interface Props {
+  post: BlogPostDetail;
+}
+
+const { post } = Astro.props;
+---
+
+<div class="blog-post-layout">
+  <div class="blog-post-layout__content">
+    <BlogPostContent sections={post.sections} />
+  </div>
+  <div class="blog-post-layout__sidebar">
+    <BlogPostSidebar authors={post.authors} sections={post.sections} />
+  </div>
+</div>
+
+<style>
+  .blog-post-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(16rem, 3fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .blog-post-layout__content {
+    min-width: 0;
+  }
+
+  .blog-post-layout__sidebar {
+    min-width: 0;
+  }
+
+  @media screen and (max-width: 820px) {
+    .blog-post-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-post-layout__sidebar {
+      order: -1;
+    }
+  }
+</style>

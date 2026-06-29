@@ -1,9 +1,15 @@
 ---
+import Dropdown from "../Dropdown/Dropdown.astro";
+
 interface Props {
   tags: string[];
 }
 
 const { tags } = Astro.props;
+const tagOptions = [
+  { label: "All tags", value: "all" },
+  ...tags.map((tag) => ({ label: tag, value: tag.toLowerCase() })),
+];
 ---
 
 <header class="blog-hero">
@@ -27,50 +33,12 @@ const { tags } = Astro.props;
 
     <div class="blog-filter blog-filter_tag">
       <span class="blog-filter__label" id="blog-tag-label">Tag</span>
-      <div class="blog-dropdown" data-blog-dropdown>
-        <button
-          class="blog-dropdown__trigger"
-          type="button"
-          aria-haspopup="listbox"
-          aria-expanded="false"
-          aria-labelledby="blog-tag-label blog-tag-value"
-          data-blog-dropdown-trigger
-        >
-          <span id="blog-tag-value" data-blog-dropdown-label>All tags</span>
-          <span class="blog-dropdown__arrow" aria-hidden="true"></span>
-        </button>
-
-        <ul class="blog-dropdown__list" role="listbox" aria-labelledby="blog-tag-label">
-          <li class="blog-dropdown__item" role="presentation">
-            <button
-              class="blog-dropdown__option is-selected"
-              type="button"
-              role="option"
-              aria-selected="true"
-              data-blog-tag-option
-              data-value="all"
-            >
-              All tags
-            </button>
-          </li>
-          {
-            tags.map((tag) => (
-              <li class="blog-dropdown__item" role="presentation">
-                <button
-                  class="blog-dropdown__option"
-                  type="button"
-                  role="option"
-                  aria-selected="false"
-                  data-blog-tag-option
-                  data-value={tag.toLowerCase()}
-                >
-                  {tag}
-                </button>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+      <Dropdown
+        labelId="blog-tag-label"
+        name="blog-tag"
+        valueId="blog-tag-value"
+        options={tagOptions}
+      />
     </div>
   </form>
 </header>
@@ -79,32 +47,24 @@ const { tags } = Astro.props;
   function initBlogSearch() {
     const input =
       document.querySelector<HTMLInputElement>("[data-blog-search]");
-    const dropdown =
-      document.querySelector<HTMLElement>("[data-blog-dropdown]");
-    const dropdownTrigger = document.querySelector<HTMLButtonElement>(
-      "[data-blog-dropdown-trigger]"
-    );
-    const dropdownLabel = document.querySelector<HTMLElement>(
-      "[data-blog-dropdown-label]"
-    );
-    const tagOptions = Array.from(
-      document.querySelectorAll<HTMLButtonElement>("[data-blog-tag-option]")
+    const tagDropdown = document.querySelector<HTMLElement>(
+      '[data-dropdown-name="blog-tag"]'
     );
     const posts = Array.from(
       document.querySelectorAll<HTMLElement>("[data-blog-post]")
     );
     const empty = document.querySelector<HTMLElement>("[data-blog-empty]");
 
-    if (!input || !dropdown || !dropdownTrigger || !dropdownLabel || !empty) {
+    if (!input || !tagDropdown || !empty) {
       return;
     }
 
-    let selectedTag = "all";
+    if (input.dataset.blogSearchReady === "true") {
+      return;
+    }
 
-    const setDropdownOpen = (isOpen: boolean) => {
-      dropdown.classList.toggle("is-open", isOpen);
-      dropdownTrigger.setAttribute("aria-expanded", String(isOpen));
-    };
+    input.dataset.blogSearchReady = "true";
+    let selectedTag = tagDropdown.dataset.value ?? "all";
 
     const updatePosts = () => {
       const query = input.value.trim().toLowerCase();
@@ -122,37 +82,10 @@ const { tags } = Astro.props;
       empty.hidden = visibleCount > 0;
     };
 
-    dropdownTrigger.addEventListener("click", () => {
-      setDropdownOpen(!dropdown.classList.contains("is-open"));
-    });
-
-    tagOptions.forEach((option) => {
-      option.addEventListener("click", () => {
-        selectedTag = option.dataset.value ?? "all";
-        dropdownLabel.textContent = option.textContent?.trim() ?? "All tags";
-
-        tagOptions.forEach((item) => {
-          const isSelected = item === option;
-          item.classList.toggle("is-selected", isSelected);
-          item.setAttribute("aria-selected", String(isSelected));
-        });
-
-        setDropdownOpen(false);
-        updatePosts();
-      });
-    });
-
-    document.addEventListener("click", (event) => {
-      if (!dropdown.contains(event.target as Node)) {
-        setDropdownOpen(false);
-      }
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        setDropdownOpen(false);
-        dropdownTrigger.focus();
-      }
+    tagDropdown.addEventListener("dropdown:change", (event) => {
+      selectedTag =
+        (event as CustomEvent<{ value?: string }>).detail.value ?? "all";
+      updatePosts();
     });
 
     input.addEventListener("input", updatePosts);
@@ -243,99 +176,6 @@ const { tags } = Astro.props;
   .blog-filter__control:focus {
     background: var(--onsurface-hover-bg);
     box-shadow: 0 0 0 0.2rem var(--onsurface-bg);
-  }
-
-  .blog-dropdown {
-    position: relative;
-    z-index: 2;
-  }
-
-  .blog-dropdown__trigger {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    width: 100%;
-    padding: 1rem 1.25rem;
-    border-radius: 1rem;
-    background: var(--onsurface-bg);
-    cursor: pointer;
-    font-weight: 500;
-    transition:
-      background-color 0.25s ease,
-      box-shadow 0.25s ease;
-  }
-
-  .blog-dropdown__trigger:hover,
-  .blog-dropdown.is-open .blog-dropdown__trigger {
-    background: var(--onsurface-hover-bg);
-  }
-
-  .blog-dropdown__trigger:focus {
-    box-shadow: 0 0 0 0.2rem var(--onsurface-bg);
-  }
-
-  .blog-dropdown__arrow {
-    width: 0.55rem;
-    height: 0.55rem;
-    border-right: 2px solid var(--text-muted);
-    border-bottom: 2px solid var(--text-muted);
-    transform: translateY(-20%) rotate(45deg);
-    transition:
-      border-color 0.25s ease,
-      transform 0.25s ease;
-  }
-
-  .blog-dropdown.is-open .blog-dropdown__arrow {
-    border-color: var(--text-color);
-    transform: translateY(20%) rotate(225deg);
-  }
-
-  .blog-dropdown__list {
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    left: 0;
-    right: 0;
-    overflow: hidden;
-    display: grid;
-    gap: 0.25rem;
-    padding: 0.35rem;
-    border-radius: 1rem;
-    background: var(--onsurface-bg);
-    list-style: none;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-0.35rem) scale(0.98);
-    transform-origin: top;
-    transition:
-      opacity 0.2s ease,
-      transform 0.2s ease;
-  }
-
-  .blog-dropdown.is-open .blog-dropdown__list {
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
-  }
-
-  .blog-dropdown__option {
-    width: 100%;
-    padding: 0.75rem 0.9rem;
-    border-radius: 0.75rem;
-    background: transparent;
-    color: var(--text-muted);
-    cursor: pointer;
-    text-align: left;
-    transition:
-      background-color 0.2s ease,
-      color 0.2s ease;
-  }
-
-  .blog-dropdown__option:hover,
-  .blog-dropdown__option:focus,
-  .blog-dropdown__option.is-selected {
-    background: var(--onsurface-hover-bg);
-    color: var(--text-color);
   }
 
   @media screen and (max-width: 760px) {

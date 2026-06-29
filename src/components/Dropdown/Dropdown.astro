@@ -1,0 +1,243 @@
+---
+type DropdownOption = {
+  label: string;
+  value: string;
+};
+
+interface Props {
+  labelId: string;
+  options: DropdownOption[];
+  defaultValue?: string;
+  name?: string;
+  valueId?: string;
+}
+
+const {
+  labelId,
+  options,
+  defaultValue = options[0]?.value ?? "",
+  name,
+  valueId = `${labelId}-value`,
+} = Astro.props;
+const selectedOption =
+  options.find((option) => option.value === defaultValue) ?? options[0];
+---
+
+<div
+  class="dropdown"
+  data-dropdown
+  data-dropdown-name={name}
+  data-value={selectedOption?.value ?? ""}
+>
+  <button
+    class="dropdown__trigger"
+    type="button"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-labelledby={`${labelId} ${valueId}`}
+    data-dropdown-trigger
+  >
+    <span id={valueId} data-dropdown-label>{selectedOption?.label}</span>
+    <span class="dropdown__arrow" aria-hidden="true"></span>
+  </button>
+
+  <ul class="dropdown__list" role="listbox" aria-labelledby={labelId}>
+    {
+      options.map((option) => {
+        const isSelected = option.value === selectedOption?.value;
+
+        return (
+          <li class="dropdown__item" role="presentation">
+            <button
+              class={`dropdown__option${isSelected ? " is-selected" : ""}`}
+              type="button"
+              role="option"
+              aria-selected={isSelected}
+              data-dropdown-option
+              data-value={option.value}
+            >
+              {option.label}
+            </button>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>
+
+<script>
+  function initDropdowns() {
+    const dropdowns = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-dropdown]")
+    );
+
+    for (const dropdown of dropdowns) {
+      if (dropdown.dataset.dropdownReady === "true") {
+        continue;
+      }
+
+      const trigger = dropdown.querySelector<HTMLButtonElement>(
+        "[data-dropdown-trigger]"
+      );
+      const label = dropdown.querySelector<HTMLElement>(
+        "[data-dropdown-label]"
+      );
+      const options = Array.from(
+        dropdown.querySelectorAll<HTMLButtonElement>("[data-dropdown-option]")
+      );
+
+      if (!trigger || !label) {
+        continue;
+      }
+
+      dropdown.dataset.dropdownReady = "true";
+
+      const setOpen = (isOpen: boolean) => {
+        dropdown.classList.toggle("is-open", isOpen);
+        trigger.setAttribute("aria-expanded", String(isOpen));
+      };
+
+      trigger.addEventListener("click", () => {
+        setOpen(!dropdown.classList.contains("is-open"));
+      });
+
+      for (const option of options) {
+        option.addEventListener("click", () => {
+          const value = option.dataset.value ?? "";
+          const optionLabel = option.textContent?.trim() ?? "";
+
+          dropdown.dataset.value = value;
+          label.textContent = optionLabel;
+
+          for (const item of options) {
+            const isSelected = item === option;
+            item.classList.toggle("is-selected", isSelected);
+            item.setAttribute("aria-selected", String(isSelected));
+          }
+
+          setOpen(false);
+          dropdown.dispatchEvent(
+            new CustomEvent("dropdown:change", {
+              bubbles: true,
+              detail: {
+                label: optionLabel,
+                name: dropdown.dataset.dropdownName,
+                value,
+              },
+            })
+          );
+        });
+      }
+
+      document.addEventListener("click", (event) => {
+        if (!dropdown.contains(event.target as Node)) {
+          setOpen(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && dropdown.classList.contains("is-open")) {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+    }
+  }
+
+  document.addEventListener("astro:page-load", initDropdowns);
+</script>
+
+<style>
+  .dropdown {
+    position: relative;
+    z-index: 2;
+  }
+
+  .dropdown__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    background: var(--onsurface-bg);
+    cursor: pointer;
+    font-weight: 500;
+    transition:
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .dropdown__trigger:hover,
+  .dropdown.is-open .dropdown__trigger {
+    background: var(--onsurface-hover-bg);
+  }
+
+  .dropdown__trigger:focus {
+    box-shadow: 0 0 0 0.2rem var(--onsurface-bg);
+  }
+
+  .dropdown__arrow {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: translateY(-20%) rotate(45deg);
+    transition:
+      border-color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .dropdown.is-open .dropdown__arrow {
+    border-color: var(--text-color);
+    transform: translateY(20%) rotate(225deg);
+  }
+
+  .dropdown__list {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.35rem;
+    border-radius: 1rem;
+    background: var(--onsurface-bg);
+    list-style: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-0.35rem) scale(0.98);
+    transform-origin: top;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .dropdown.is-open .dropdown__list {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .dropdown__option {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border-radius: 0.75rem;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-align: left;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .dropdown__option:hover,
+  .dropdown__option:focus,
+  .dropdown__option.is-selected {
+    background: var(--onsurface-hover-bg);
+    color: var(--text-color);
+  }
+</style>

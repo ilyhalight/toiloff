@@ -13,7 +13,7 @@ const { posts } = Astro.props;
   {posts.map((post) => <BlogPostCard post={post} />)}
 </ul>
 
-<p class="blog-empty" hidden>No posts found.</p>
+<p class="blog-empty" data-blog-empty hidden>No posts found.</p>
 
 <style>
   .blog-list {

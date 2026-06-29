@@ -1,0 +1,36 @@
+---
+import BlogPostHero from "../../components/Blog/BlogPostHero.astro";
+import BlogPostLayout from "../../components/Blog/BlogPostLayout.astro";
+import type { BlogPostDetail } from "../../components/Blog/types";
+import { blogPosts } from "../../data/blog";
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: BlogPostDetail;
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title={post.title}>
+  <article class="blog-post-page" data-reveal>
+    <BlogPostHero post={post} />
+    <BlogPostLayout post={post} />
+  </article>
+</Layout>
+
+<style>
+  .blog-post-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+</style>
