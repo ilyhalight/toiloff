@@ -1,0 +1,38 @@
+<div class="guestbook-placeholder" data-guestbook-placeholder hidden>
+  <span class="guestbook-placeholder__card"></span>
+  <span class="guestbook-placeholder__card"></span>
+</div>
+
+<style>
+  .guestbook-placeholder {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .guestbook-placeholder[hidden] {
+    display: none;
+  }
+
+  .guestbook-placeholder__card {
+    min-height: 8.5rem;
+    border-radius: 1rem;
+    background: linear-gradient(
+      90deg,
+      var(--surface-bg),
+      var(--onsurface-bg),
+      var(--surface-bg)
+    );
+    background-size: 220% 100%;
+    animation: guestbook-loading 1.1s ease-in-out infinite;
+  }
+
+  @keyframes guestbook-loading {
+    from {
+      background-position: 100% 0;
+    }
+
+    to {
+      background-position: -100% 0;
+    }
+  }
+</style>

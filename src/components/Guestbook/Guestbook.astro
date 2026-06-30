@@ -1,102 +1,134 @@
 ---
+import { guestbookMessages, type GuestbookMessage } from "../../data/guestbook";
 import GuestMessage from "./GuestMessage.astro";
+import GuestbookPlaceholder from "./GuestbookPlaceholder.astro";
+
+interface Props {
+  messages?: GuestbookMessage[];
+  visibleCount?: number;
+  increment?: number;
+}
+
+const {
+  messages = guestbookMessages,
+  visibleCount = messages.length,
+  increment = 3,
+} = Astro.props;
+
+const hasMore = messages.length > visibleCount;
 ---
 
-<div class="guestbook">
-  <p class="guestbook-desc">
-    Share your thoughts. All messages are <b>pre-moderated</b>!
-  </p>
-  <ul class="guestbook-list">
-    <GuestMessage
-      message={{
-        username: "Рандомный пользователь",
-        content:
-          "lorem ipsum is the most better way to test your interfaces with big messages",
-        avatarUrl:
-          "https://avatars.mds.yandex.net/get-yapic/28053/j1duaPzJgWRpMrtUhuf8hHUKhQ-1/islands-retina-middle",
-        href: "ya.ru",
-        createdAt: "2026-06-28T21:51:34.432Z",
-        approvedAt: "2026-06-28T21:51:34.432Z",
-        replyText: "how sad :(",
-      }}
-    />
-    <GuestMessage
-      message={{
-        username: "Anonymous",
-        content:
-          "lorem ipsum is the most better way to test your interfaces with big messages",
-        href: "https://t.me/test",
-        hrefText: "i hate tg",
-        createdAt: "2026-06-28T21:51:34.432Z",
-        approvedAt: "2026-06-28T21:51:34.432Z",
-      }}
-    />
-    <GuestMessage
-      message={{
-        username: "Anonymous :3",
-        content:
-          "lorem ipsum is the most better way to test your interfaces with big messages",
-        avatarUrl:
-          "https://avatars.mds.yandex.net/get-yapic/28053/j1duaPzJgWRpMrtUhuf8hHUKhQ-1/islands-retina-middle",
-        href: "https://x.com/test",
-        createdAt: "2026-06-28T21:51:34.432Z",
-        approvedAt: "2026-06-28T21:51:34.432Z",
-      }}
-    />
-    <GuestMessage
-      message={{
-        username: "Anonymous :3",
-        content:
-          "lorem ipsum is the most better way to test your interfaces with big messages",
-        href: "https://vk.com/test",
-        avatarUrl:
-          "https://avatars.mds.yandex.net/get-yapic/28053/j1duaPzJgWRpMrtUhuf8hHUKhQ-1/islands-retina-middle",
-        createdAt: "2026-06-28T21:51:34.432Z",
-        approvedAt: "2026-06-28T21:51:34.432Z",
-      }}
-    />
-    <GuestMessage
-      message={{
-        username: "Рандомный пользователь",
-        content:
-          "lorem ipsum is the most better way to test your interfaces with big messages",
-        href: "https://twitch.tv/test",
-        hrefText: "Best streamer -> @test",
-        replyText: "i too!!!!",
-        avatarUrl:
-          "https://avatars.mds.yandex.net/get-yapic/28053/j1duaPzJgWRpMrtUhuf8hHUKhQ-1/islands-retina-middle",
-        createdAt: "2026-06-28T21:51:34.432Z",
-        approvedAt: "2026-06-28T21:51:34.432Z",
-      }}
-    />
-    <GuestMessage
-      message={{
-        username: "Рандомный пользователь",
-        content:
-          "lorem ipsum is the most better way to test your interfaces with big messages",
-        href: "https://github.com/test",
-        hrefText: "@test",
-        createdAt: "2026-06-28T21:51:34.432Z",
-        approvedAt: "2026-06-28T21:51:34.432Z",
-      }}
-    />
-    <GuestMessage
-      message={{
-        username: "Рандомный пользователь",
-        content:
-          "lorem ipsum is the most better way to test your interfaces with big messages",
-        createdAt: "2026-06-28T21:51:34.432Z",
-        approvedAt: "2026-06-28T21:51:34.432Z",
-      }}
-    />
+<div class="guestbook" data-guestbook data-guestbook-increment={increment}>
+  <ul class="guestbook-list" data-guestbook-list>
+    {
+      messages.map((message, index) => (
+        <GuestMessage message={message} hidden={index >= visibleCount} />
+      ))
+    }
   </ul>
+
+  <GuestbookPlaceholder />
+
+  <button
+    class="button button_outline guestbook__load-more"
+    type="button"
+    data-guestbook-load-more
+    hidden={!hasMore}
+  >
+    Load more messages
+  </button>
 </div>
 
+<script>
+  function initGuestbookLists() {
+    const roots = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-guestbook]")
+    );
+
+    for (const root of roots) {
+      if (root.dataset.guestbookReady === "true") {
+        continue;
+      }
+
+      const list = root.querySelector<HTMLElement>("[data-guestbook-list]");
+      const button = root.querySelector<HTMLButtonElement>(
+        "[data-guestbook-load-more]"
+      );
+      const placeholder = root.querySelector<HTMLElement>(
+        "[data-guestbook-placeholder]"
+      );
+
+      if (!list || !button) {
+        continue;
+      }
+
+      const increment = Number(root.dataset.guestbookIncrement ?? "3");
+      const items = Array.from(
+        list.querySelectorAll<HTMLElement>("[data-guestbook-item]")
+      );
+
+      root.dataset.guestbookReady = "true";
+
+      const updateButton = () => {
+        button.hidden = items.every((item) => !item.hidden);
+      };
+
+      button.addEventListener("click", () => {
+        button.disabled = true;
+
+        if (placeholder) {
+          placeholder.hidden = false;
+        }
+
+        window.setTimeout(() => {
+          let revealed = 0;
+
+          for (const item of items) {
+            if (!item.hidden || revealed >= increment) {
+              continue;
+            }
+
+            item.hidden = false;
+            revealed += 1;
+          }
+
+          if (placeholder) {
+            placeholder.hidden = true;
+          }
+
+          button.disabled = false;
+          updateButton();
+        }, 320);
+      });
+
+      updateButton();
+    }
+  }
+
+  document.addEventListener("astro:page-load", initGuestbookLists);
+</script>
+
 <style>
+  .guestbook {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   .guestbook-list {
     display: flex;
     flex-direction: column;
     list-style: none;
     gap: 1rem;
   }
+
+  .guestbook__load-more {
+    align-self: center;
+  }
+
+  .guestbook__load-more:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
+
 </style>

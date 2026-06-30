@@ -25,7 +25,7 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 ## Architecture
 
 - Main layout: `src/layouts/Layout.astro`.
-- Pages live in `src/pages/`; current routes are `/` (`index.astro`), `/about` (`about.astro`), and `/blog` (`blog.astro`).
+- Pages live in `src/pages/`; current routes are `/` (`index.astro`), `/about` (`about.astro`), `/blog` (`blog.astro`), `/blog/[slug]` (`blog/[slug].astro`), and `/guestbook` (`guestbook.astro`).
 - Global reset, design tokens, utility classes, and shared button styles live in `src/components/GlobalStyle.astro`.
 - Site title metadata comes from `getEntry("settings", "settings")`, backed by `src/data/settings.json` through `src/content.config.ts`.
 - `Layout.astro` includes `Header`, `Footer`, global styles, the Poppins font, Astro `ClientRouter`, and fade transitions for route changes.
@@ -97,7 +97,11 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 | ProjectItem       | `src/components/Project/ProjectItem.astro`         | Project card                                                        |
 | Stats             | `src/components/Stats/Stats.astro`                 | Stats card grid                                                     |
 | StatsLines        | `src/components/Stats/StatsLines.astro`            | Decorative SVG line background for stats cards                      |
-| Guestbook         | `src/components/Guestbook/Guestbook.astro`         | Guestbook list and intro copy                                       |
+| Guestbook         | `src/components/Guestbook/Guestbook.astro`         | Guestbook message list with optional load-more placeholders         |
+| GuestbookContent  | `src/components/Guestbook/GuestbookContent.astro`  | Reusable guestbook form and message-list grid                       |
+| GuestbookHero     | `src/components/Guestbook/GuestbookHero.astro`     | Guestbook page title and intro copy                                 |
+| GuestbookForm     | `src/components/Guestbook/GuestbookForm.astro`     | Frontend mock create-message form with moderation success state      |
+| GuestbookPlaceholder | `src/components/Guestbook/GuestbookPlaceholder.astro` | Skeleton cards shown during guestbook load-more reveal           |
 | GuestMessage      | `src/components/Guestbook/GuestMessage.astro`      | Guestbook message card, link normalization, platform icon selection |
 | GuestMessageReply | `src/components/Guestbook/GuestMessageReply.astro` | Reply block inside a guestbook message                              |
 | AboutCard         | `src/components/About/AboutCard.astro`             | About card component placeholder                                    |
@@ -117,12 +121,14 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 - `src/pages/about.astro`: about page with profile cards, social links, and tech stack icons.
 - `src/pages/blog.astro`: blog list page with API-shaped placeholder posts, hero search, tag filtering, and post cards.
 - `src/pages/blog/[slug].astro`: blog detail page generated from placeholder post records.
+- `src/pages/guestbook.astro`: guestbook page with hero, frontend mock create-message form, and load-more message list.
 
 ## Data And Content
 
 - `src/content.config.ts` defines the `settings` collection using Astro's `file()` loader.
 - `src/data/settings.json` stores `defaultTitle` and `defaultDelimiter`.
 - Blog data currently uses local API-shaped placeholders in `src/data/blog.ts`; keep `BlogPost` and `BlogPostDetail` in `src/components/Blog/types.ts` aligned with the future API response.
+- Guestbook data currently uses local API-shaped placeholders in `src/data/guestbook.ts`; keep `GuestbookMessage` aligned with the future API response.
 - Keep structured site-wide settings in `src/data/settings.json` and update the schema in `src/content.config.ts` when adding fields.
 
 ## Documentation

@@ -7,23 +7,15 @@ import XIcon from "../Icones/XIcon.astro";
 import TwitchIcon from "../Icones/TwitchIcon.astro";
 import GithubIcon from "../Icones/GithubIcon.astro";
 import GuestMessageReply from "./GuestMessageReply.astro";
-
-type GuestMessage = {
-  username: string;
-  content: string;
-  href?: string;
-  hrefText?: string;
-  avatarUrl?: string;
-  replyText?: string;
-  createdAt: string;
-  approvedAt: string;
-};
+import type { GuestbookMessage } from "../../data/guestbook";
 
 interface Props {
-  message: GuestMessage;
+  message: GuestbookMessage;
+  hidden?: boolean;
 }
 
 const {
+  hidden = false,
   message: {
     username,
     content,
@@ -83,7 +75,7 @@ const dateFormatter = Intl.DateTimeFormat("en", {
 const messageDate = dateFormatter.format(new Date(createdAt));
 ---
 
-<li class="guestbook-message">
+<li class="guestbook-message" data-guestbook-item hidden={hidden}>
   <div class="guestbook-message__head">
     <div class="guestbook-message__head-item">
       {
@@ -143,6 +135,10 @@ const messageDate = dateFormatter.format(new Date(createdAt));
     padding: 1rem 1.25rem;
     background: var(--surface-bg);
     border-radius: 1rem;
+  }
+
+  .guestbook-message[hidden] {
+    display: none;
   }
 
   .guestbook-message__head {

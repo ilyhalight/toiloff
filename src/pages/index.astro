@@ -5,7 +5,8 @@ import ProjectItem from "../components/Project/ProjectItem.astro";
 import PageSection from "../components/PageSection/PageSection.astro";
 import Project from "../components/Project/Project.astro";
 import Stats from "../components/Stats/Stats.astro";
-import Guestbook from "../components/Guestbook/Guestbook.astro";
+import GuestbookContent from "../components/Guestbook/GuestbookContent.astro";
+import GuestbookHero from "../components/Guestbook/GuestbookHero.astro";
 ---
 
 <Layout title="Home">
@@ -27,13 +28,24 @@ import Guestbook from "../components/Guestbook/Guestbook.astro";
   <PageSection title="Stats">
     <Stats />
   </PageSection>
-  <PageSection
-    title="Guestbook"
-    link={{
-      href: "guestbook",
-      name: "View all",
-    }}
-  >
-    <Guestbook /></PageSection
-  >
+
+  <section class="guestbook-section" data-reveal>
+    <GuestbookHero />
+    <GuestbookContent />
+  </section>
 </Layout>
+
+<style>
+  .guestbook-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    .guestbook-section {
+      padding: 0.5rem;
+    }
+  }
+</style>
