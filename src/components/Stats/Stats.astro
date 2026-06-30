@@ -1,4 +1,6 @@
 ---
+import RustIcon from "../Icones/RustIcon.astro";
+import TypeScriptIcon from "../Icones/TypeScriptIcon.astro";
 import StatsLines from "./StatsLines.astro";
 ---
 
@@ -26,10 +28,37 @@ import StatsLines from "./StatsLines.astro";
         > Tokens wasted
       </h3>
       <div class="stats-item__content">
-        <div>
-          <h4>past 30d: 1.3M</h4>
-          <h4>all time: 1.3M</h4>
-          <h5>Used model: Qwen3.5 (local)</h5>
+        <div class="tokens-card" aria-label="Token usage statistics">
+          <div class="tokens-card__hero">
+            <span class="tokens-card__mark" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M9 15H5.9q-.6 0-.888-.537t.063-1.038l7.475-10.75q.25-.35.65-.487t.825.012t.625.525t.15.8L14 10h3.875q.65 0 .913.575t-.163 1.075L10.4 21.5q-.275.325-.675.425t-.775-.075t-.587-.537t-.163-.788z"
+                ></path>
+              </svg>
+            </span>
+            <div>
+              <span class="tokens-card__eyebrow">past 30 days</span>
+              <h4>1.3M</h4>
+            </div>
+          </div>
+          <div class="tokens-card__details">
+            <div class="tokens-card__detail">
+              <span class="tokens-card__detail-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2m1 10.59 3.29 3.3-1.41 1.41L11 13.41V6h2z"
+                  ></path>
+                </svg>
+              </span>
+              <span class="tokens-card__detail-copy">
+                <span>all time</span>
+                <strong>1.3M</strong>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -61,10 +90,37 @@ import StatsLines from "./StatsLines.astro";
         > Github stats
       </h3>
       <div class="stats-item__content">
-        <div>
-          <h4>commits: 2.7k</h4>
-          <h4>stars: 7k</h4>
-          <h5>followers: 322</h5>
+        <div class="github-card" aria-label="GitHub profile statistics">
+          <div class="github-card__hero">
+            <span class="github-card__mark" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.13c-3.2.7-3.87-1.36-3.87-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18A10.97 10.97 0 0 1 12 6.06c.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.14c0 .31.21.68.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
+                ></path>
+              </svg>
+            </span>
+            <div>
+              <span class="github-card__eyebrow">open source pulse</span>
+              <h4>2.7k commits</h4>
+            </div>
+          </div>
+          <div class="github-card__metrics">
+            <div class="github-card__metric">
+              <span class="github-card__metric-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="m12 17.27 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72 3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41-1.89-4.46c-.35-.81-1.49-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08z"
+                  ></path>
+                </svg>
+              </span>
+              <span class="github-card__metric-copy">
+                <span class="github-card__metric-label">stars</span>
+                <strong>7k</strong>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -96,9 +152,33 @@ import StatsLines from "./StatsLines.astro";
         > Favorite languages
       </h3>
       <div class="stats-item__content">
-        <div>
-          <h4 style="color: lightblue">TypeScript</h4>
-          <h4 style="color: var(--primary-color)">Rust</h4>
+        <div class="language-stack" aria-label="Favorite programming languages">
+          <div class="language-stack__item language-stack__item--typescript">
+            <div class="language-stack__header">
+              <span class="language-stack__icon" aria-hidden="true">
+                <TypeScriptIcon />
+              </span>
+              <div class="language-stack__copy">
+                <h4>TypeScript</h4>
+                <span>Fell in love</span>
+              </div>
+            </div>
+          </div>
+          <div class="language-stack__item language-stack__item--rust">
+            <div class="language-stack__header">
+              <span
+                class="language-stack__icon"
+                aria-hidden="true"
+                id="stact-rust"
+              >
+                <RustIcon />
+              </span>
+              <div class="language-stack__copy">
+                <h4>Rust</h4>
+                <span>Various experiments</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -162,12 +242,362 @@ import StatsLines from "./StatsLines.astro";
     --line-color: var(--primary-color);
   }
 
+  .tokens-card {
+    --tokens-color: var(--primary-color);
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .tokens-card__hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem;
+    border: 1px solid color-mix(in srgb, var(--tokens-color) 36%, transparent);
+    border-radius: 1rem;
+    background:
+      radial-gradient(
+        circle at 14% 18%,
+        color-mix(in srgb, var(--tokens-color) 24%, transparent),
+        transparent 38%
+      ),
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--tokens-color) 12%, transparent),
+        transparent 54%
+      ),
+      color-mix(in srgb, var(--onsurface-bg) 72%, transparent);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 0.75rem 2rem color-mix(in srgb, var(--tokens-color) 10%, transparent);
+  }
+
+  .tokens-card__mark {
+    display: grid;
+    position: relative;
+    flex: 0 0 auto;
+    width: 3.75rem;
+    height: 3.75rem;
+    place-items: center;
+    border-radius: 1rem;
+    color: var(--background);
+    background: var(--tokens-color);
+    filter: drop-shadow(
+      0 0.5rem 1rem color-mix(in srgb, var(--tokens-color) 32%, transparent)
+    );
+  }
+
+  .tokens-card__mark svg {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+
+  .tokens-card__eyebrow {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: color-mix(in srgb, var(--tokens-color) 74%, var(--text-color));
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .tokens-card__hero h4 {
+    color: var(--tokens-color);
+    font-size: 2.15rem;
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .tokens-card__hero div > span:not(.tokens-card__eyebrow) {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  .tokens-card__details {
+    display: grid;
+  }
+
+  .tokens-card__detail {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--stroke-color) 62%, transparent);
+    border-radius: 0.85rem;
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--tokens-color) 8%, transparent),
+        transparent 58%
+      ),
+      color-mix(in srgb, var(--onsurface-bg) 60%, transparent);
+  }
+
+  .tokens-card__detail-icon {
+    display: grid;
+    flex: 0 0 auto;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border-radius: 0.9rem;
+    color: var(--tokens-color);
+    background: color-mix(in srgb, var(--tokens-color) 10%, transparent);
+  }
+
+  .tokens-card__detail-icon svg {
+    width: 1.55rem;
+    height: 1.55rem;
+  }
+
+  .tokens-card__detail-copy {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .tokens-card__detail-copy span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .tokens-card__detail-copy strong {
+    display: block;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    line-height: 1;
+    text-align: right;
+  }
+
   .stats-item--github {
     --line-color: #4ade80;
   }
 
+  .github-card {
+    --github-color: #4ade80;
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .github-card__hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem;
+    border: 1px solid color-mix(in srgb, var(--github-color) 34%, transparent);
+    border-radius: 1rem;
+    background:
+      radial-gradient(
+        circle at 12% 14%,
+        color-mix(in srgb, var(--github-color) 22%, transparent),
+        transparent 38%
+      ),
+      color-mix(in srgb, var(--onsurface-bg) 72%, transparent);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 0.75rem 2rem color-mix(in srgb, var(--github-color) 10%, transparent);
+  }
+
+  .github-card__hero::after {
+    content: "";
+    position: absolute;
+    right: 0.9rem;
+    bottom: 0.9rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--github-color) 12%, transparent);
+    filter: blur(1px);
+    pointer-events: none;
+  }
+
+  .github-card__mark {
+    display: grid;
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 3rem;
+    place-items: center;
+    border-radius: 1rem;
+    color: var(--background);
+    background: var(--github-color);
+    filter: drop-shadow(
+      0 0.5rem 1rem color-mix(in srgb, var(--github-color) 30%, transparent)
+    );
+  }
+
+  .github-card__mark svg {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .github-card__hero h4 {
+    color: var(--github-color);
+    font-size: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .github-card__eyebrow {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: color-mix(in srgb, var(--github-color) 74%, var(--text-color));
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .github-card__hero div > span:not(.github-card__eyebrow) {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  .github-card__metric {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--stroke-color) 62%, transparent);
+    border-radius: 0.85rem;
+    background: color-mix(in srgb, var(--onsurface-bg) 60%, transparent);
+  }
+
+  .github-card__metric-icon {
+    display: grid;
+    flex: 0 0 auto;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border-radius: 0.9rem;
+    color: var(--github-color);
+    background: color-mix(in srgb, var(--github-color) 10%, transparent);
+  }
+
+  .github-card__metric-icon svg {
+    width: 1.55rem;
+    height: 1.55rem;
+  }
+
+  .github-card__metric-copy {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .github-card__metric-label {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .github-card__metric strong {
+    display: block;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    line-height: 1;
+    text-align: right;
+  }
+
   .stats-item--languages {
     --line-color: #c084fc;
+  }
+
+  .language-stack {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .language-stack__item {
+    --language-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid color-mix(in srgb, var(--language-color) 34%, transparent);
+    border-radius: 1rem;
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--language-color) 16%, transparent),
+        transparent 46%
+      ),
+      radial-gradient(
+        circle at 12% 16%,
+        color-mix(in srgb, var(--language-color) 24%, transparent),
+        transparent 34%
+      ),
+      color-mix(in srgb, var(--onsurface-bg) 70%, transparent);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 0.75rem 2rem color-mix(in srgb, var(--language-color) 12%, transparent);
+  }
+
+  .language-stack__item--typescript {
+    --language-color: #5ecbff;
+  }
+
+  .language-stack__item--rust {
+    --language-color: var(--primary-color);
+  }
+
+  .language-stack__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .language-stack__icon {
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 3rem;
+    color: var(--language-color);
+    filter: drop-shadow(
+      0 0.5rem 1rem color-mix(in srgb, var(--language-color) 30%, transparent)
+    );
+  }
+
+  :global(.language-stack__icon > svg) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .language-stack__copy {
+    min-width: 0;
+  }
+
+  .language-stack__copy h4 {
+    color: var(--language-color);
+    font-size: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .language-stack__copy span {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
   }
 
   @media screen and (max-width: 764px) {
