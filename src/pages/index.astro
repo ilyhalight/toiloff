@@ -8,6 +8,9 @@ import Stats from "../components/Stats/Stats.astro";
 import GuestbookContent from "../components/Guestbook/GuestbookContent.astro";
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
+import { projects } from "../data/projects";
+
+const featuredProjects = projects.slice(0, 6);
 ---
 
 <Layout title="Home">
@@ -15,15 +18,12 @@ import SectionWrapper from "../components/Section/SectionWrapper.astro";
   <PageSection
     title="Projects"
     link={{
-      href: "hello",
+      href: "/projects",
       name: "View all",
     }}
   >
     <Project>
-      <ProjectItem />
-      <ProjectItem />
-      <ProjectItem />
-      <ProjectItem />
+      {featuredProjects.map((project) => <ProjectItem {...project} />)}
     </Project>
   </PageSection>
   <PageSection title="Stats">
