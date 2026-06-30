@@ -135,24 +135,28 @@ const gradientId = `theme-switcher-gradient-${safeId}`;
 </button>
 
 <script>
-  const themeButtons = document.querySelectorAll<HTMLElement>(
-    "[data-theme-switcher]"
-  );
+  function initThemeSwitchers() {
+    const themeButtons = document.querySelectorAll<HTMLElement>(
+      "[data-theme-switcher]"
+    );
 
-  for (const themeBtn of themeButtons) {
-    if (themeBtn.dataset.themeSwitcherBound === "true") {
-      continue;
+    for (const themeBtn of themeButtons) {
+      if (themeBtn.dataset.themeSwitcherBound === "true") {
+        continue;
+      }
+
+      themeBtn.dataset.themeSwitcherBound = "true";
+      themeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const nextTheme =
+          document.body.dataset.theme === "light" ? "dark" : "light";
+
+        document.body.dataset.theme = nextTheme;
+      });
     }
-
-    themeBtn.dataset.themeSwitcherBound = "true";
-    themeBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const nextTheme =
-        document.body.dataset.theme === "light" ? "dark" : "light";
-
-      document.body.dataset.theme = nextTheme;
-    });
   }
+
+  document.addEventListener("astro:page-load", initThemeSwitchers);
 </script>
 
 <style>

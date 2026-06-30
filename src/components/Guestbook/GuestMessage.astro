@@ -107,6 +107,7 @@ const messageDate = dateFormatter.format(new Date(createdAt));
           <a
             class="guestbook-message__icon guestbook-message__icon-link"
             href={messageLink}
+            aria-label={`Open ${username}'s link`}
           >
             <MessageIcon />
           </a>

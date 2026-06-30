@@ -27,6 +27,8 @@ import BunIcon from "../components/Icones/BunColorIcon.astro";
 import WebpackIcon from "../components/Icones/WebpackColorIcon.astro";
 import MySQLIcon from "../components/Icones/MySQLColorIcon.astro";
 import RustColorIcon from "../components/Icones/RustColorIcon.astro";
+import SectionHero from "../components/Section/SectionHero.astro";
+import SectionWrapper from "../components/Section/SectionWrapper.astro";
 
 const socials = [
   { id: "telegram", label: "Telegram", href: "#", Icon: TelegramIcon },
@@ -41,7 +43,12 @@ const socials = [
 ---
 
 <Layout title="About">
-  <PageSection title="About">
+  <SectionWrapper>
+    <SectionHero
+      title={"About"}
+      description={"Small info about me"}
+      eyebrow={"Personal"}
+    />
     <ul class="about-list">
       <AboutCard title="WHOAMI" content="Ilya" subcontent="Fullstack dev" />
       <AboutCard title="BIRTHDAY" content="Sep 14" subcontent="77 days away" />
@@ -73,8 +80,6 @@ const socials = [
         }
       </ul>
     </section>
-  </PageSection>
-  <PageSection title="Tech Stack">
     <ul class="tech-stack">
       <li class="tech-stack__item"><TypeScriptColorIcon /> TypeScript</li>
       <li class="tech-stack__item"><JavaScriptColorIcon /> JavaScript</li>
@@ -93,7 +98,7 @@ const socials = [
       <li class="tech-stack__item"><WebpackIcon /> Webpack</li>
       <li class="tech-stack__item"><MySQLIcon /> MySQL</li>
     </ul>
-  </PageSection>
+  </SectionWrapper>
 </Layout>
 
 <style>

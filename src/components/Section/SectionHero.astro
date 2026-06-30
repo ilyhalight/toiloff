@@ -1,15 +1,25 @@
-<header class="guestbook-hero">
-  <div class="guestbook-hero__content">
-    <p class="guestbook-hero__eyebrow">Public notes</p>
-    <h1 class="guestbook-hero__title">Guestbook</h1>
-    <p class="guestbook-hero__description">
-      Leave a small message, or just say hi.
+---
+interface Props {
+  eyebrow: String;
+  title: String;
+  description: String;
+}
+
+const { eyebrow, title, description } = Astro.props;
+---
+
+<header class="section-hero">
+  <div class="section-hero__content">
+    <p class="section-hero__eyebrow">{eyebrow}</p>
+    <h2 class="section-hero__title">{title}</h2>
+    <p class="section-hero__description">
+      {description}
     </p>
   </div>
 </header>
 
 <style>
-  .guestbook-hero {
+  .section-hero {
     position: relative;
     display: flex;
     padding: clamp(1.5rem, 4vw, 2.5rem);
@@ -27,7 +37,7 @@
       );
   }
 
-  .guestbook-hero::before {
+  .section-hero::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -47,27 +57,27 @@
     pointer-events: none;
   }
 
-  .guestbook-hero__content {
+  .section-hero__content {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
     z-index: 1;
   }
 
-  .guestbook-hero__eyebrow {
+  .section-hero__eyebrow {
     color: var(--primary-color);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.12em;
   }
 
-  .guestbook-hero__title {
+  .section-hero__title {
     font-size: clamp(3.5rem, 12vw, 8rem);
     line-height: 0.9;
     letter-spacing: -0.08em;
   }
 
-  .guestbook-hero__description {
+  .section-hero__description {
     max-width: 44rem;
     color: var(--text-muted);
     font-size: clamp(1rem, 2vw, 1.2rem);

@@ -1,11 +1,11 @@
 {
   "version": 1,
   "skills": {
-    "code-review-expert": {
-      "source": "sanyuan0704/sanyuan-skills",
+    "frontend-design-review": {
+      "source": "microsoft/skills",
       "sourceType": "github",
-      "skillPath": "skills/code-review-expert/SKILL.md",
-      "computedHash": "6c2fe31851a34e63e033257527eab04eea835ca1cf4c4276d1392a323e36e377"
+      "skillPath": ".github/skills/frontend-design-review/SKILL.md",
+      "computedHash": "bdfcadec9604ec0225f337ffbcecb8c8a5ddf69b6b1a1335963df97a0665472e"
     }
   }
 }

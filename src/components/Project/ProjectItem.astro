@@ -46,14 +46,17 @@
   }
 
   .project-item__image-wrapper {
+    overflow: hidden;
     cursor: pointer;
     user-select: none;
+    border-radius: 0.85rem;
+    aspect-ratio: 16 / 9;
   }
 
   .project-item__image {
     width: 100%;
     object-fit: cover;
-    border-radius: 0.5rem;
+    transition: transform 0.3s ease;
   }
 
   .project-item__top {
@@ -77,6 +80,10 @@
 
   .project-item__link:hover .project-item__link-icon svg {
     transform: rotate(90deg);
+  }
+
+  .project-item:hover .project-item__image {
+    transform: scale(1.035);
   }
 
   .project-item__desc {
