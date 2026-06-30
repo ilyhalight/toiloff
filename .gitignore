@@ -1,5 +1,6 @@
 # ai slop
 opencode.json
+.agents/
 
 # build output
 dist/

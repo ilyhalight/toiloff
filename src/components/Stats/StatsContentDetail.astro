@@ -1,0 +1,83 @@
+---
+interface Props {
+  label: string;
+  value: string;
+  accent?: string;
+}
+
+const { label, value, accent } = Astro.props;
+---
+
+<div
+  class="stats-content-detail"
+  style={accent ? `--stats-content-color: ${accent};` : ""}
+>
+  <span class="stats-content-detail__icon" aria-hidden="true">
+    <slot name="icon" />
+  </span>
+  <span class="stats-content-detail__copy">
+    <span>{label}</span>
+    <strong>{value}</strong>
+  </span>
+</div>
+
+<style>
+  .stats-content-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--stroke-color) 62%, transparent);
+    border-radius: 0.85rem;
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--stats-content-color) 8%, transparent),
+        transparent 58%
+      ),
+      color-mix(in srgb, var(--onsurface-bg) 60%, transparent);
+  }
+
+  .stats-content-detail__icon {
+    display: grid;
+    flex: 0 0 auto;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border-radius: 0.9rem;
+    color: var(--stats-content-color);
+    background: color-mix(in srgb, var(--stats-content-color) 10%, transparent);
+  }
+
+  :global(.stats-content-detail__icon > svg) {
+    width: 1.55rem;
+    height: 1.55rem;
+  }
+
+  .stats-content-detail__copy {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .stats-content-detail__copy span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .stats-content-detail__copy strong {
+    display: block;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    line-height: 1;
+    text-align: right;
+  }
+</style>

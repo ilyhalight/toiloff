@@ -1,0 +1,70 @@
+---
+import StatsLines from "./StatsLines.astro";
+
+interface Lines {
+  line1: string;
+  line2: string;
+  line3: string;
+}
+
+interface Props {
+  title: string;
+  variant: "wasted" | "github" | "languages";
+  lines: Lines;
+}
+
+const { title, variant, lines } = Astro.props;
+---
+
+<li class="stats-row">
+  <div class={`stats-item stats-item--${variant}`}>
+    <StatsLines line1={lines.line1} line2={lines.line2} line3={lines.line3} />
+    <h3 class="stats-item__title">
+      {title}
+    </h3>
+    <div class="stats-item__content">
+      <slot />
+    </div>
+  </div>
+</li>
+
+<style>
+  .stats-row {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .stats-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 100%;
+    padding: 1rem 1.25rem;
+    width: 100%;
+    border-radius: 1rem;
+    background: var(--surface-bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stats-item__title {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .stats-item--wasted {
+    --line-color: var(--primary-color);
+  }
+
+  .stats-item--github {
+    --line-color: #4ade80;
+  }
+
+  .stats-item--languages {
+    --line-color: #c084fc;
+  }
+</style>
