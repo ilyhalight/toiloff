@@ -1,24 +1,24 @@
 ---
+import { getLiveCollection } from "astro:content";
 import { guestbookMessages, type GuestbookMessage } from "../../data/guestbook";
 import Guestbook from "./Guestbook.astro";
-import GuestbookForm from "./GuestbookForm.astro";
+import GuestbookSystemMessage from "./GuestbookSystemMessage.astro";
+import GuestbookForm from "./GuestbookForm/GuestbookForm.svelte";
 
 interface Props {
-  messages?: GuestbookMessage[];
   visibleCount?: number;
   increment?: number;
 }
 
-const {
-  messages = guestbookMessages,
-  visibleCount = 4,
-  increment = 3,
-} = Astro.props;
+const { visibleCount = 4, increment = 3 } = Astro.props;
+
+const { entries: messages } = await getLiveCollection("guestbook");
+console.log(messages);
 ---
 
 <div class="guestbook-page__content">
   <aside class="guestbook-page__form" aria-label="Create guestbook message">
-    <GuestbookForm />
+    <GuestbookForm client:load />
   </aside>
 
   <div class="guestbook-page__messages">
@@ -29,11 +29,21 @@ const {
       </p>
     </div>
 
-    <Guestbook
-      messages={messages}
-      visibleCount={visibleCount}
-      increment={increment}
-    />
+    {
+      messages ? (
+        <Guestbook
+          messages={messages}
+          visibleCount={visibleCount}
+          increment={increment}
+        />
+      ) : (
+        <GuestbookSystemMessage
+          title="Guestbook is offline"
+          description="The guestbook isn't available right now. Please try again in a few minutes."
+          isError={true}
+        />
+      )
+    }
   </div>
 </div>
 

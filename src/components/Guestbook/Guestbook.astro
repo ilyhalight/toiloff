@@ -1,19 +1,17 @@
 ---
-import { guestbookMessages, type GuestbookMessage } from "../../data/guestbook";
+import type { LiveDataEntry } from "astro";
 import GuestMessage from "./GuestMessage.astro";
+import GuestZeroMessage from "./GuestZeroMessage.astro";
 import GuestbookPlaceholder from "./GuestbookPlaceholder.astro";
+import type { GuestbookEntry } from "../../lib/api";
 
 interface Props {
-  messages?: GuestbookMessage[];
+  messages: LiveDataEntry<GuestbookEntry>[];
   visibleCount?: number;
   increment?: number;
 }
 
-const {
-  messages = guestbookMessages,
-  visibleCount = messages.length,
-  increment = 3,
-} = Astro.props;
+const { messages, visibleCount = messages.length, increment = 3 } = Astro.props;
 
 const hasMore = messages.length > visibleCount;
 ---
@@ -21,9 +19,13 @@ const hasMore = messages.length > visibleCount;
 <div class="guestbook" data-guestbook data-guestbook-increment={increment}>
   <ul class="guestbook-list" data-guestbook-list>
     {
-      messages.map((message, index) => (
-        <GuestMessage message={message} hidden={index >= visibleCount} />
-      ))
+      messages.length ? (
+        messages.map((message, index) => (
+          <GuestMessage message={message.data} hidden={index >= visibleCount} />
+        ))
+      ) : (
+        <GuestZeroMessage />
+      )
     }
   </ul>
 
@@ -42,7 +44,7 @@ const hasMore = messages.length > visibleCount;
 <script>
   function initGuestbookLists() {
     const roots = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-guestbook]")
+      document.querySelectorAll<HTMLElement>("[data-guestbook]"),
     );
 
     for (const root of roots) {
@@ -52,10 +54,10 @@ const hasMore = messages.length > visibleCount;
 
       const list = root.querySelector<HTMLElement>("[data-guestbook-list]");
       const button = root.querySelector<HTMLButtonElement>(
-        "[data-guestbook-load-more]"
+        "[data-guestbook-load-more]",
       );
       const placeholder = root.querySelector<HTMLElement>(
-        "[data-guestbook-placeholder]"
+        "[data-guestbook-placeholder]",
       );
 
       if (!list || !button) {
@@ -64,7 +66,7 @@ const hasMore = messages.length > visibleCount;
 
       const increment = Number(root.dataset.guestbookIncrement ?? "3");
       const items = Array.from(
-        list.querySelectorAll<HTMLElement>("[data-guestbook-item]")
+        list.querySelectorAll<HTMLElement>("[data-guestbook-item]"),
       );
 
       root.dataset.guestbookReady = "true";
@@ -130,5 +132,4 @@ const hasMore = messages.length > visibleCount;
     cursor: wait;
     opacity: 0.7;
   }
-
 </style>

@@ -1,11 +1,13 @@
 # Toiloff — Personal Website
 
-My personal website, built with with [Astro 7](https://astro.build) and [Bun](https://bun.sh).
+My personal website, built with [Astro 7](https://astro.build) and [Bun](https://bun.sh).
 
 ## Getting Started
 
+Also, you need [toiloff-backend](https://github.com/ilyhalight/toiloff-backend)!
+
 ```sh
-git clone <repo-url>
+git clone https://github.com/ilyhalight/toiloff
 bun install
 bun dev
 ```

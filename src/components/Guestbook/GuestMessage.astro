@@ -7,10 +7,10 @@ import XIcon from "../Icones/XIcon.astro";
 import TwitchIcon from "../Icones/TwitchIcon.astro";
 import GithubIcon from "../Icones/GithubIcon.astro";
 import GuestMessageReply from "./GuestMessageReply.astro";
-import type { GuestbookMessage } from "../../data/guestbook";
+import type { GuestbookEntry } from "../../lib/api";
 
 interface Props {
-  message: GuestbookMessage;
+  message: GuestbookEntry;
   hidden?: boolean;
 }
 
