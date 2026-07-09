@@ -31,13 +31,48 @@ import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
 
 const socials = [
-  { id: "telegram", label: "Telegram", href: "#", Icon: TelegramIcon },
-  { id: "github", label: "Github", href: "#", Icon: GithubFillIcon },
-  { id: "steam", label: "Steam", href: "#", Icon: SteamIcon },
-  { id: "shikimori", label: "Shikimori", href: "#", Icon: ShikimoriIcon },
-  { id: "mangalib", label: "Mangalib", href: "#", Icon: MangalibIcon },
-  { id: "lastfm", label: "last.fm", href: "#", Icon: LastfmIcon },
-  { id: "vk", label: "VKONTAKTE", href: "#", Icon: VKIcon },
+  {
+    id: "telegram",
+    label: "Telegram",
+    href: "https://t.me/cutecoder",
+    Icon: TelegramIcon,
+  },
+  {
+    id: "github",
+    label: "Github",
+    href: "https://github.com/ilyhalight",
+    Icon: GithubFillIcon,
+  },
+  {
+    id: "steam",
+    label: "Steam",
+    href: "https://steamcommunity.com/id/ToilOfficial/",
+    Icon: SteamIcon,
+  },
+  {
+    id: "shikimori",
+    label: "Shikimori",
+    href: "https://shikimori.io/Toil",
+    Icon: ShikimoriIcon,
+  },
+  {
+    id: "mangalib",
+    label: "Mangalib",
+    href: "https://mangalib.me/ru/user/679978?",
+    Icon: MangalibIcon,
+  },
+  {
+    id: "scrobbles",
+    label: "Scrobbles",
+    href: "https://scrobbles.nirel.cc/",
+    Icon: LastfmIcon,
+  },
+  {
+    id: "vk",
+    label: "VKONTAKTE",
+    href: "https://vk.com/toilofficial",
+    Icon: VKIcon,
+  },
   { id: "email", label: "Email", href: "#", Icon: EmailIcon },
 ];
 ---
@@ -101,6 +136,27 @@ const socials = [
   </SectionWrapper>
 </Layout>
 
+<script>
+  // btoa("<your_email>")
+  const ENCODED_EMAIL = "dG9pbC5jb250YWN0QHlhbmRleC5jb20=";
+
+  function main() {
+    const emailItem = document.querySelector('[data-social="email"]');
+    if (!emailItem) {
+      return;
+    }
+
+    emailItem.addEventListener("click", (e) => {
+      e.preventDefault();
+      navigator.clipboard.writeText(atob(ENCODED_EMAIL));
+      // TODO: Replace with a toast
+      alert("Email address copied.");
+    });
+  }
+
+  main();
+</script>
+
 <style>
   .tech-stack {
     display: flex;
@@ -114,7 +170,6 @@ const socials = [
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-weight: 500;
-    border: 1px solid var(--stroke-color);
     display: flex;
     align-items: center;
     gap: 0.5rem;
