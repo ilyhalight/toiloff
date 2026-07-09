@@ -3,10 +3,10 @@ import type { LiveDataEntry } from "astro";
 import GuestMessage from "./GuestMessage.astro";
 import GuestZeroMessage from "./GuestZeroMessage.astro";
 import GuestbookPlaceholder from "./GuestbookPlaceholder.astro";
-import type { GuestbookEntry } from "../../lib/api";
+import type { GuestbookEntry } from "../../lib/api/guestbook";
 
 interface Props {
-  messages: LiveDataEntry<GuestbookEntry>[];
+  messages: GuestbookEntry[];
   visibleCount?: number;
   increment?: number;
 }
@@ -21,7 +21,7 @@ const hasMore = messages.length > visibleCount;
     {
       messages.length ? (
         messages.map((message, index) => (
-          <GuestMessage message={message.data} hidden={index >= visibleCount} />
+          <GuestMessage message={message} hidden={index >= visibleCount} />
         ))
       ) : (
         <GuestZeroMessage />

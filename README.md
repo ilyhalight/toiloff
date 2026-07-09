@@ -13,3 +13,9 @@ bun dev
 ```
 
 Open [localhost:4321](http://localhost:4321).
+
+## Admin
+
+To use the admin panel, you need to log in. You can do this by visiting the `/admin/login` page and entering your credentials.
+
+If you open the admin panel without being logged in, you will be redirected to the login page.

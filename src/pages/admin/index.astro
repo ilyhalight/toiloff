@@ -1,0 +1,55 @@
+---
+export const prerender = false;
+
+import Layout from "../../layouts/Layout.astro";
+import SectionHero from "../../components/Section/SectionHero.astro";
+import SectionWrapper from "../../components/Section/SectionWrapper.astro";
+import { AUTH_LOGIN_PAGE } from "../../lib/api/auth";
+
+const user = Astro.locals.user;
+
+if (!user) {
+  return Astro.redirect(AUTH_LOGIN_PAGE);
+}
+---
+
+<Layout title="Admin">
+  <SectionWrapper>
+    <SectionHero
+      title={"Dashboard"}
+      description={`Welcome back, ${user.username}!`}
+      eyebrow={"Admin"}
+    />
+    <h2>Availabled links</h2>
+    <ul class="admin-links">
+      <li class="admin-links__item-wrapper">
+        <a class="admin-links__item" href="/admin/guestbook">Guestbook</a>
+      </li>
+      <li class="admin-links__item-wrapper">
+        <a class="admin-links__item" href="/admin/logout">Logout</a>
+      </li>
+    </ul>
+  </SectionWrapper>
+</Layout>
+
+<style>
+  .admin-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .admin-links__item-wrapper {
+    border-radius: 0.5rem;
+    background: var(--surface-bg);
+    user-select: none;
+  }
+
+  .admin-links__item {
+    display: flex;
+    padding: 0.5rem 1.25rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+</style>

@@ -2,7 +2,6 @@
     "$schema": "../../.astro/collections/settings.schema.json",
     "settings": {
         "defaultTitle": "Toiloff",
-        "defaultDelimiter": " · ",
-        "captchaChallengeUrl": "http://127.0.0.1:3001/v1/captcha/challenge"
+        "defaultDelimiter": " · "
     }
 }

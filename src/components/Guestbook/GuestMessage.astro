@@ -7,7 +7,7 @@ import XIcon from "../Icones/XIcon.astro";
 import TwitchIcon from "../Icones/TwitchIcon.astro";
 import GithubIcon from "../Icones/GithubIcon.astro";
 import GuestMessageReply from "./GuestMessageReply.astro";
-import type { GuestbookEntry } from "../../lib/api";
+import type { GuestbookEntry } from "../../lib/api/guestbook";
 
 interface Props {
   message: GuestbookEntry;
@@ -162,8 +162,8 @@ const messageDate = dateFormatter.format(new Date(createdAt));
   }
 
   .guestbook-message__avatar-image {
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 0.5rem;
     object-fit: cover;
     user-select: none;

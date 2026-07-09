@@ -1,9 +1,10 @@
 ---
 import { getLiveCollection } from "astro:content";
-import { guestbookMessages, type GuestbookMessage } from "../../data/guestbook";
 import Guestbook from "./Guestbook.astro";
 import GuestbookSystemMessage from "./GuestbookSystemMessage.astro";
-import GuestbookForm from "./GuestbookForm/GuestbookForm.svelte";
+import SectionCard from "../Section/SectionCard.svelte";
+import GuestbookForm from "./GuestbookForm.svelte";
+import { BackendAPI } from "../../lib/api";
 
 interface Props {
   visibleCount?: number;
@@ -12,8 +13,7 @@ interface Props {
 
 const { visibleCount = 4, increment = 3 } = Astro.props;
 
-const { entries: messages } = await getLiveCollection("guestbook");
-console.log(messages);
+const { items: publicMessages } = await BackendAPI.guestbook.load();
 ---
 
 <div class="guestbook-page__content">
@@ -22,17 +22,15 @@ console.log(messages);
   </aside>
 
   <div class="guestbook-page__messages">
-    <div class="guestbook-page__messages-head">
-      <h2 class="guestbook-page__title">Recent messages</h2>
-      <p class="guestbook-page__description">
-        All guestbook messages are moderated before they appear here.
-      </p>
-    </div>
+    <SectionCard
+      title="Recent messages"
+      description="All guestbook messages are moderated before they appear here."
+    />
 
     {
-      messages ? (
+      publicMessages ? (
         <Guestbook
-          messages={messages}
+          messages={publicMessages}
           visibleCount={visibleCount}
           increment={increment}
         />
@@ -65,25 +63,6 @@ console.log(messages);
     flex-direction: column;
     gap: 1rem;
     min-width: 0;
-  }
-
-  .guestbook-page__messages-head {
-    padding: 1.25rem;
-    border-radius: 1.5rem;
-    background: var(--surface-bg);
-  }
-
-  .guestbook-page__title {
-    margin-top: 0.25rem;
-    font-size: clamp(1.9rem, 5vw, 3.5rem);
-    line-height: 1;
-    letter-spacing: -0.04em;
-  }
-
-  .guestbook-page__description {
-    margin-top: 0.75rem;
-    max-width: 38rem;
-    color: var(--text-muted);
   }
 
   @media screen and (max-width: 860px) {
