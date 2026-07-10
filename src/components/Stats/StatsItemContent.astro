@@ -1,0 +1,63 @@
+---
+type Props = {
+  value: string;
+  label: string;
+  dataItem?: string;
+};
+
+const { value, label, dataItem } = Astro.props;
+---
+
+<div class="stats-content__item" data-item={dataItem}>
+  <div class="stats-item__icon">
+    <slot />
+  </div>
+  <div class="stats-item__data">
+    <div class="stats-item__value">{value}</div>
+    <div class="stats-item__label">{label}</div>
+  </div>
+</div>
+
+<style>
+  .stats-content__item {
+    --stats-icon-color: var(--primary-color);
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .stats-item__icon {
+    display: flex;
+    flex: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.75rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.9rem;
+    color: var(--stats-icon-color);
+    background: color-mix(in srgb, var(--stats-icon-color) 10%, transparent);
+  }
+
+  .stats-item__value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+  }
+
+  .stats-item__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .stats-content__item[data-item="typescript"] {
+    --stats-icon-color: #5ecbff;
+  }
+
+  .stats-content__item[data-item="typescript"] .stats-item__value {
+    color: var(--stats-icon-color);
+  }
+</style>
