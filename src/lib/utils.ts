@@ -10,3 +10,12 @@ export const toFormData = (obj: Record<string, unknown>): FormData => {
 
   return formData;
 };
+
+export const dateFormatter = Intl.DateTimeFormat("en", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+});

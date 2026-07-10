@@ -3,25 +3,16 @@
   import type { GuestbookEntry } from "../../lib/api/guestbook";
   import { BackendAPI } from "../../lib/api";
   import GuestbookMessageIcon from "./GuestbookMessageIcon.svelte";
+  import GuestMessageDate from "./GuestMessageDate.svelte";
 
   interface Props {
     message: GuestbookEntry;
     hidden?: boolean;
   }
 
-  const dateFormatter = Intl.DateTimeFormat("en", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
-
   const { hidden = false, message }: Props = $props();
   const { username, content, href, hrefText, replyText, createdAt, avatarUrl } =
     $derived(message);
-  const messageDate = $derived(dateFormatter.format(new Date(createdAt)));
   const messageAvatarUrl = $derived(BackendAPI.guestbook.getAvatar(avatarUrl));
   const hrefContent = $derived(hrefText ?? href);
   const messageLink = $derived.by(() => {
@@ -78,9 +69,7 @@
       <GuestMessageReply content={replyText} />
     {/if}
   </div>
-  <div class="guestbook-message__date">
-    {messageDate}
-  </div>
+  <GuestMessageDate dateTime={createdAt} />
 </li>
 
 <style>
@@ -150,35 +139,16 @@
     }
   }
 
-  .guestbook-message__icon {
-    width: 32px;
-    height: 32px;
-  }
-
-  :global(.guestbook-message__icon > svg) {
-    width: 32px;
-    height: 32px;
-  }
-
-  .guestbook-message__info-link,
-  .guestbook-message__icon {
+  .guestbook-message__info-link {
     color: var(--text-muted);
     transition: color 0.25s ease;
   }
 
   .guestbook-message__info-link:hover,
-  .guestbook-message__icon-link:hover,
-  .guestbook-message__head:has(.guestbook-message__info-link:hover)
-    .guestbook-message__icon-link,
-  .guestbook-message__head:has(.guestbook-message__icon-link:hover)
+  .guestbook-message__head:has(:global(.guestbook-message__info-link:hover))
+    :global(.guestbook-message__icon-link),
+  .guestbook-message__head:has(:global(.guestbook-message__icon-link:hover))
     .guestbook-message__info-link {
     color: var(--text-hover-color);
-  }
-
-  .guestbook-message__date {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-muted);
   }
 </style>

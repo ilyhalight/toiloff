@@ -7,6 +7,7 @@
   } from "../../lib/api/guestbook";
   import FormField from "../Form/FormField.svelte";
   import GuestbookMessageStatus from "./GuestbookMessageStatus.svelte";
+  import GuestMessageDate from "./GuestMessageDate.svelte";
 
   type Props = {
     message: GuestbookEntry;
@@ -98,10 +99,14 @@
       isTextarea={true}
     />
     <div class="message-data">
-      <p>ID: {message.id}</p>
-      <p>Created: {new Date(message.createdAt).toLocaleString()}</p>
+      <p class="message-data__item">ID: <span>{message.id}</span></p>
+      <p class="message-data__item">
+        Created: <GuestMessageDate dateTime={message.createdAt} />
+      </p>
       {#if message.updatedAt !== message.createdAt}
-        <p>Updated: {new Date(message.updatedAt).toLocaleString()}</p>
+        <p class="message-data__item">
+          Updated: <GuestMessageDate dateTime={message.updatedAt} />
+        </p>
       {/if}
     </div>
   </div>
@@ -210,6 +215,12 @@
     font-size: 0.8rem;
     color: var(--text-muted);
     font-weight: 700;
+  }
+
+  .message-data__item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
   }
 
   .message-actions {

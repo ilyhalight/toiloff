@@ -49,3 +49,22 @@
     <MessageIcon />
   </span>
 {/if}
+
+<style>
+  .guestbook-message__icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 2rem;
+    color: var(--text-muted);
+    transition: color 0.25s ease;
+  }
+
+  .guestbook-message__icon > :global(svg) {
+    width: 32px;
+    height: 32px;
+  }
+
+  .guestbook-message__icon-link:hover {
+    color: var(--text-hover-color);
+  }
+</style>
