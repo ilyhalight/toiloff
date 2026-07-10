@@ -11,7 +11,6 @@
   let content = $state("");
   let link: string | undefined = $state(undefined);
   let linkLabel: string | undefined = $state(undefined);
-  let avatarUrl: string | undefined = $state(undefined);
   let avatar: File | undefined = $state(undefined);
 
   const MAX_AVATAR_SIZE = 1024 * 1024 * 5; // 5MB
@@ -112,16 +111,6 @@
       maxLength={32}
       placeholder="@username"
       bind:value={linkLabel}
-    ></FormField>
-
-    <FormField
-      title="Avatar url"
-      name="avatarUrl"
-      type="url"
-      inputmode="url"
-      maxLength={512}
-      placeholder="https://example.com/image.png"
-      bind:value={avatarUrl}
     ></FormField>
 
     <FormDropzone
