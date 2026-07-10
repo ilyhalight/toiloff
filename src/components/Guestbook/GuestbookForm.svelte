@@ -6,6 +6,7 @@
   import { BackendAPI } from "../../lib/api/";
   import Form from "../Form/Form.svelte";
   import FormDropzone from "../Form/FormDropzone.svelte";
+  import FormLabel from "../Form/FormLabel.svelte";
 
   let username = $state("");
   let content = $state("");
@@ -113,11 +114,22 @@
       bind:value={linkLabel}
     ></FormField>
 
-    <FormDropzone
-      infoText="Поддерживаемые форматы: PNG, JPEG, GIF, WEBP"
-      maxFileText="5MB"
-      accept="image/png, image/jpeg, image/gif, image/webp"
-      oninput={inputAvatarHandle}
-    />
+    <div class="form-dropzone__wrapper">
+      <FormLabel title="Avatar" />
+      <FormDropzone
+        infoText="Поддерживаемые форматы: PNG, JPEG, GIF, WEBP"
+        maxFileText="5MB"
+        accept="image/png, image/jpeg, image/gif, image/webp"
+        oninput={inputAvatarHandle}
+      />
+    </div>
   {/snippet}
 </Form>
+
+<style>
+  .form-dropzone__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+</style>

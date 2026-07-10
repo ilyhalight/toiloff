@@ -1,4 +1,6 @@
 <script lang="ts">
+  import FormLabel from "./FormLabel.svelte";
+
   interface Props {
     title: string;
     name: string;
@@ -36,12 +38,7 @@
 </script>
 
 <label class="form__field" for="form-{name}">
-  <span class="form__label">
-    {title}
-    {#if !required}
-      <small>optional</small>
-    {/if}
-  </span>
+  <FormLabel {title} {required} />
   {#if isTextarea}
     <textarea
       class="form__control form__control_textarea"
@@ -77,21 +74,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-  }
-
-  .form__label {
-    color: var(--text-muted);
-    font-weight: 700;
-    user-select: none;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .form__label small {
-    color: var(--text-muted);
-    font-weight: 500;
-    text-transform: none;
-    letter-spacing: 0;
   }
 
   .form__control {
