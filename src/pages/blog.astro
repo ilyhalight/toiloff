@@ -8,7 +8,7 @@ const tags = Array.from(new Set(blogPosts.map((post) => post.tag)));
 ---
 
 <Layout title="Blog">
-  <section class="blog-page" data-reveal>
+  <section class="blog-page">
     <BlogHero tags={tags} />
     <BlogPostList posts={blogPosts} />
   </section>
