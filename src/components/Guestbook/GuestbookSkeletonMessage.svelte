@@ -1,19 +1,23 @@
-<div class="guestbook-placeholder" data-guestbook-placeholder hidden>
-  <span class="guestbook-placeholder__card"></span>
-  <span class="guestbook-placeholder__card"></span>
+<script lang="ts">
+  let { hidden = false }: { hidden?: boolean } = $props();
+</script>
+
+<div class="guestbook-skeleton" {hidden}>
+  <span class="guestbook-skeleton__card"></span>
+  <span class="guestbook-skeleton__card"></span>
 </div>
 
 <style>
-  .guestbook-placeholder {
+  .guestbook-skeleton {
     display: grid;
     gap: 1rem;
   }
 
-  .guestbook-placeholder[hidden] {
+  .guestbook-skeleton[hidden] {
     display: none;
   }
 
-  .guestbook-placeholder__card {
+  .guestbook-skeleton__card {
     min-height: 8.5rem;
     border-radius: 1rem;
     background: linear-gradient(

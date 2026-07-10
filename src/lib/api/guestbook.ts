@@ -62,7 +62,14 @@ export const GuestbookRouteAPI = {
 
     return `${AVATAR_BASE_URL}${encodeURIComponent(avatarId)}`;
   },
-  load: async () => await fetchFromAPI<GuestbookData>("guestbook"),
+  load: async (cursor?: string | null) => {
+    const query = new URLSearchParams();
+    if (cursor) {
+      query.append("cursor", cursor);
+    }
+
+    return await fetchFromAPI<GuestbookData>(`guestbook?${query.toString()}`);
+  },
   createMessage: async (item: NewGuestbook, captchaPayload?: string) => {
     const body = toFormData(item);
     console.log(body);

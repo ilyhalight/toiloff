@@ -40,16 +40,6 @@
     })();
   });
 
-  const hrefTextWithLink = (message: GuestbookEntry) => {
-    if (message.hrefText && message.href) {
-      return `${message.hrefText} (${message.href})`;
-    } else if (message.href) {
-      return message.href;
-    }
-
-    return "";
-  };
-
   async function loadMessages(status?: string, cursor?: string | null) {
     const result = await BackendAPI.guestbook.loadAdmin(status, cursor);
     filters = filters.map((filter) => {

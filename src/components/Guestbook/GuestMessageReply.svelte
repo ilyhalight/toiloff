@@ -1,12 +1,12 @@
----
-import ReplyIcon from "../Icones/ReplyIcon.astro";
+<script lang="ts">
+  import ReplyIcon from "../Icones/ReplyIcon.svelte";
 
-interface Props {
-  content: string;
-}
+  interface Props {
+    content: string;
+  }
 
-const { content } = Astro.props;
----
+  const { content } = $props();
+</script>
 
 <div class="guestbook-message__reply">
   <div class="guestbook-message__reply-title">Replied:</div>

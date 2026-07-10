@@ -1,18 +1,11 @@
 ---
-import Guestbook from "./Guestbook.astro";
+import Guestbook from "./Guestbook.svelte";
 import GuestbookSystemMessage from "./GuestbookSystemMessage.astro";
 import SectionCard from "../Section/SectionCard.svelte";
 import GuestbookForm from "./GuestbookForm.svelte";
 import { BackendAPI } from "../../lib/api";
 
-interface Props {
-  visibleCount?: number;
-  increment?: number;
-}
-
-const { visibleCount = 4, increment = 3 } = Astro.props;
-
-const { items: publicMessages } = await BackendAPI.guestbook.load();
+const { items: publicMessages, nextCursor } = await BackendAPI.guestbook.load();
 ---
 
 <div class="guestbook-page__content">
@@ -27,11 +20,7 @@ const { items: publicMessages } = await BackendAPI.guestbook.load();
 
     {
       publicMessages ? (
-        <Guestbook
-          messages={publicMessages}
-          visibleCount={visibleCount}
-          increment={increment}
-        />
+        <Guestbook messages={publicMessages} {nextCursor} client:load />
       ) : (
         <GuestbookSystemMessage
           title="Guestbook is offline"
