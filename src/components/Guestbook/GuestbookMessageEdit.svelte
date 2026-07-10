@@ -180,12 +180,13 @@
   }
 
   .message-avatar {
+    display: block;
+    overflow: hidden;
     width: 3rem;
     height: 3rem;
     border-radius: 0.5rem;
     object-fit: cover;
     user-select: none;
-    overflow: hidden;
   }
 
   .message-info {

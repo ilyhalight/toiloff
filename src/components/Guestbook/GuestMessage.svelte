@@ -1,14 +1,8 @@
 <script lang="ts">
-  import IncognitoIcon from "../Icones/IncognitoIcon.svelte";
-  import TelegramIcon from "../Icones/TelegramIcon.svelte";
-  import VKIcon from "../Icones/VKIcon.svelte";
-  import WebIcon from "../Icones/WebIcon.svelte";
-  import XIcon from "../Icones/XIcon.svelte";
-  import TwitchIcon from "../Icones/TwitchIcon.svelte";
-  import GithubIcon from "../Icones/GithubIcon.svelte";
   import GuestMessageReply from "./GuestMessageReply.svelte";
   import type { GuestbookEntry } from "../../lib/api/guestbook";
   import { BackendAPI } from "../../lib/api";
+  import GuestbookMessageIcon from "./GuestbookMessageIcon.svelte";
 
   interface Props {
     message: GuestbookEntry;
@@ -39,26 +33,8 @@
       return href;
     }
 
-    return !href.includes("://") ? `https://${href}` : "#";
-  });
-  const MessageIcon = $derived.by(() => {
-    if (!href) {
-      return IncognitoIcon;
-    }
-
-    if (/https?:\/\/t\.me\/.*/.exec(href)) {
-      return TelegramIcon;
-    } else if (/https?:\/\/x\.com\/.*/.exec(href)) {
-      return XIcon;
-    } else if (/https?:\/\/(m\.)?vk\.(com|ru)\/.*/.exec(href)) {
-      return VKIcon;
-    } else if (/https?:\/\/twitch\.tv\/.*/.exec(href)) {
-      return TwitchIcon;
-    } else if (/https?:\/\/github\.com\/.*/.exec(href)) {
-      return GithubIcon;
-    }
-
-    return WebIcon;
+    // Stop suspicious links if protocol isn't http(s)
+    return href.includes("://") ? "#" : `https://${href}`;
   });
 </script>
 
@@ -90,19 +66,10 @@
       </div>
     </div>
     <div class="guestbook-message__head-item">
-      {#if href}
-        <a
-          class="guestbook-message__icon guestbook-message__icon-link"
-          href={messageLink}
-          aria-label={`Open ${username}'s link`}
-        >
-          <MessageIcon />
-        </a>
-      {:else}
-        <span class="guestbook-message__icon">
-          <MessageIcon />
-        </span>
-      {/if}
+      <GuestbookMessageIcon
+        {messageLink}
+        ariaLabel={`Open ${username}'s link`}
+      />
     </div>
   </div>
   <div class="guestbook-message__content text-wrap">
