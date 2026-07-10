@@ -121,7 +121,7 @@
 {#if isLoading && !messages.length}
   <SectionLoading />
 {:else if error}
-  <SectionCard title="Error" description={error.message} />
+  <SectionCard title="Error">{error.message}</SectionCard>
 {:else}
   <ul class="message-list">
     {#each messages as message, idx (message.id)}
@@ -131,7 +131,7 @@
             <div class="message-avatar__wrapper">
               <img
                 class="message-avatar"
-                src={message.avatarUrl}
+                src={BackendAPI.guestbook.getAvatar(message.avatarUrl)}
                 alt="{message.username}'s avatar"
               />
             </div>

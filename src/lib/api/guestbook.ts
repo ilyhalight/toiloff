@@ -1,5 +1,6 @@
 import { z } from "astro/zod";
-import { fetchFromAPI } from "./internal";
+import { AVATAR_BASE_URL, fetchFromAPI } from "./internal";
+import { toFormData } from "../utils";
 
 const GuestbookEntryStatus = z.enum(["review", "public", "declined"]);
 export type GuestbookEntryStatus = z.infer<typeof GuestbookEntryStatus>;
@@ -43,20 +44,34 @@ export const NewGuestbook = GuestbookEntry.omit({
   id: true,
   status: true,
   replyText: true,
+  avatarUrl: true,
   createdAt: true,
   updatedAt: true,
+}).extend({
+  avatar: z.instanceof(File).optional(),
 });
 
 export type NewGuestbook = z.infer<typeof NewGuestbook>;
 
 export const GuestbookRouteAPI = {
+  getAvatar: (avatarId?: string | null) => {
+    // use raw for abs paths / null
+    if (!avatarId || avatarId.includes("://")) {
+      return avatarId;
+    }
+
+    return `${AVATAR_BASE_URL}${encodeURIComponent(avatarId)}`;
+  },
   load: async () => await fetchFromAPI<GuestbookData>("guestbook"),
-  createMessage: async (item: NewGuestbook, captchaPayload?: string) =>
-    await fetchFromAPI<GuestbookEntry>(
+  createMessage: async (item: NewGuestbook, captchaPayload?: string) => {
+    const body = toFormData(item);
+    console.log(body);
+    return await fetchFromAPI<GuestbookEntry>(
       "guestbook",
-      JSON.stringify(item),
+      body,
       captchaPayload,
-    ),
+    );
+  },
   loadAdmin: async (status?: string, cursor?: string | null) => {
     let query = new URLSearchParams();
     if (status) {

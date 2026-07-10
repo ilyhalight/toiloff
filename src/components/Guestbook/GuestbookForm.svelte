@@ -5,12 +5,16 @@
 
   import { BackendAPI } from "../../lib/api/";
   import Form from "../Form/Form.svelte";
+  import FormDropzone from "../Form/FormDropzone.svelte";
 
   let username = $state("");
   let content = $state("");
   let link: string | undefined = $state(undefined);
   let linkLabel: string | undefined = $state(undefined);
   let avatarUrl: string | undefined = $state(undefined);
+  let avatar: File | undefined = $state(undefined);
+
+  const MAX_AVATAR_SIZE = 1024 * 1024 * 5; // 5MB
 
   let status: Status = $state({
     isHidden: true,
@@ -25,10 +29,37 @@
         content,
         href: link,
         hrefText: linkLabel,
-        avatarUrl,
+        avatar,
       },
       captchaPayload,
     );
+  }
+
+  async function inputAvatarHandle(files: FileList | null) {
+    const file = files?.[0];
+    if (!file) {
+      return;
+    }
+
+    if (file.size > MAX_AVATAR_SIZE) {
+      // TODO: rewrite with toast
+      alert("Файл слишком большой. Максимальный размер 5MB.");
+      return;
+    }
+
+    // if (
+    //   !["image/png", "image/jpeg", "image/gif", "image/webp"].includes(
+    //     file.type,
+    //   )
+    // ) {
+    //   // TODO: rewrite with toast
+    //   alert(
+    //     "Неверный формат файла. Поддерживаемые форматы: PNG, JPEG, GIF, WEBP.",
+    //   );
+    //   return;
+    // }
+
+    avatar = file;
   }
 </script>
 
@@ -92,5 +123,12 @@
       placeholder="https://example.com/image.png"
       bind:value={avatarUrl}
     ></FormField>
+
+    <FormDropzone
+      infoText="Поддерживаемые форматы: PNG, JPEG, GIF, WEBP"
+      maxFileText="5MB"
+      accept="image/png, image/jpeg, image/gif, image/webp"
+      oninput={inputAvatarHandle}
+    />
   {/snippet}
 </Form>

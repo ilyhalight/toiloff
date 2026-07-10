@@ -1,5 +1,6 @@
 const API_BASE_URL = "http://localhost:4321/api/v1";
-const API_USER_AGENT = "toiloff-frontend/1.0.0";
+export const AVATAR_BASE_URL = `${API_BASE_URL}/public/avatars/`;
+const API_USER_CLIENT = "toiloff-frontend/1.0.0";
 
 type APIError = Record<"error", string>;
 type APIErrorDetail = Record<"detail", string>;
@@ -19,8 +20,10 @@ export async function fetchFromAPI<T extends object>(
     body,
     method: body ? "POST" : "GET",
     headers: {
-      "Content-Type": "application/json",
-      "x-client": API_USER_AGENT,
+      "x-client": API_USER_CLIENT,
+      ...(body instanceof FormData
+        ? {}
+        : { "Content-Type": "application/json" }),
       ...(captchaPayload ? { "x-captcha-payload": captchaPayload } : {}),
       ...headers,
     },

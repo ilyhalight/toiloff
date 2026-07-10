@@ -8,6 +8,7 @@ import TwitchIcon from "../Icones/TwitchIcon.astro";
 import GithubIcon from "../Icones/GithubIcon.astro";
 import GuestMessageReply from "./GuestMessageReply.astro";
 import type { GuestbookEntry } from "../../lib/api/guestbook";
+import { BackendAPI } from "../../lib/api";
 
 interface Props {
   message: GuestbookEntry;
@@ -61,6 +62,7 @@ const getMessageLink = () => {
 
 const MessageIcon = getIcon();
 const messageLink = getMessageLink();
+const messageAvatarUrl = BackendAPI.guestbook.getAvatar(avatarUrl);
 const hrefContent = hrefText ?? href;
 
 const dateFormatter = Intl.DateTimeFormat("en", {
@@ -79,12 +81,12 @@ const messageDate = dateFormatter.format(new Date(createdAt));
   <div class="guestbook-message__head">
     <div class="guestbook-message__head-item">
       {
-        avatarUrl && (
+        messageAvatarUrl && (
           <div class="guestbook-message__avatar" aria-hidden="true">
             <img
               class="guestbook-message__avatar-image"
               alt={`${username}'s avatar`}
-              src={avatarUrl}
+              src={messageAvatarUrl}
             />
           </div>
         )
