@@ -29,7 +29,6 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 - Global reset, design tokens, utility classes, and shared button styles live in `src/components/GlobalStyle.astro`.
 - Site title metadata comes from `getEntry("settings", "settings")`, backed by `src/data/settings.json` through `src/content.config.ts`.
 - `Layout.astro` includes `Header`, `Footer`, global styles, the Poppins font, Astro `ClientRouter`, and fade transitions for route changes.
-- Elements marked with `data-reveal` are animated by the `IntersectionObserver` initialized in `Layout.astro` on every `astro:page-load`.
 - Keep reusable section blocks in `src/components/<Group>/<Name>.astro` when a component belongs to a feature group.
 - The icon directory is currently named `src/components/Icones/`; use the existing spelling unless deliberately renaming the whole folder.
 
@@ -86,45 +85,45 @@ Manage the background server with `bun astro dev stop`, `bun astro dev status`, 
 
 ## Components
 
-| Component         | File                                               | Purpose                                                             |
-| ----------------- | -------------------------------------------------- | ------------------------------------------------------------------- |
-| GlobalStyle       | `src/components/GlobalStyle.astro`                 | Global reset, tokens, utilities, shared button styles               |
-| Header            | `src/components/Header.astro`                      | Fixed glass navigation, desktop preferences, and mobile nav trigger  |
-| Footer            | `src/components/Footer.astro`                      | Site footer                                                         |
-| Logo              | `src/components/Logo.astro`                        | Inline SVG logo                                                     |
-| MobileNav         | `src/components/MobileNav.astro`                   | Mobile sheet navigation and mobile preferences                      |
-| Preferences       | `src/components/Preferences.astro`                 | Details-based preferences popover                                   |
-| PreferenceRow     | `src/components/PreferenceRow.astro`               | Label/description row for preference controls                       |
-| ThemeSwitcher     | `src/components/ThemeSwitcher.astro`               | Dark/light theme toggle                                             |
-| Hero              | `src/components/Hero.astro`                        | Home hero with decorative shapes and actions                        |
-| PageSection       | `src/components/PageSection/PageSection.astro`     | Reusable revealed section wrapper with optional CTA link            |
-| SectionWrapper    | `src/components/Section/SectionWrapper.astro`      | Generic page/section stack wrapper                                  |
-| SectionHero       | `src/components/Section/SectionHero.astro`         | Shared section title, eyebrow, and description block                 |
-| Project           | `src/components/Project/Project.astro`             | Project grid wrapper                                                |
-| ProjectItem       | `src/components/Project/ProjectItem.astro`         | Project card                                                        |
-| Stats             | `src/components/Stats/Stats.astro`                 | Stats card grid                                                     |
-| StatsItem         | `src/components/Stats/StatsItem.astro`             | Stats card shell with decorative lines                              |
-| StatsContentCard  | `src/components/Stats/StatsContentCard.astro`      | Small stats content block                                           |
-| StatsContentDetail | `src/components/Stats/StatsContentDetail.astro`   | Label/value detail row for stats cards                              |
-| StatsLines        | `src/components/Stats/StatsLines.astro`            | Decorative SVG line background for stats cards                      |
-| Guestbook         | `src/components/Guestbook/Guestbook.astro`         | Guestbook message list with optional load-more placeholders         |
-| GuestbookContent  | `src/components/Guestbook/GuestbookContent.astro`  | Reusable guestbook form and message-list grid                       |
-| GuestbookForm     | `src/components/Guestbook/GuestbookForm.astro`     | Frontend mock create-message form with moderation success state      |
-| GuestbookPlaceholder | `src/components/Guestbook/GuestbookPlaceholder.astro` | Skeleton cards shown during guestbook load-more reveal           |
-| GuestMessage      | `src/components/Guestbook/GuestMessage.astro`      | Guestbook message card, link normalization, platform icon selection |
-| GuestMessageReply | `src/components/Guestbook/GuestMessageReply.astro` | Reply block inside a guestbook message                              |
-| AboutCard         | `src/components/About/AboutCard.astro`             | About profile detail card                                           |
-| AboutSocialItem   | `src/components/About/AboutSocialItem.astro`       | About page social link item                                         |
-| Dropdown          | `src/components/Dropdown/Dropdown.astro`           | Custom dropdown control                                             |
-| BlogHero          | `src/components/Blog/BlogHero.astro`               | Blog page title, search input, custom tag dropdown, and filter script |
-| BlogPostList      | `src/components/Blog/BlogPostList.astro`           | Blog post grid and empty search state                               |
-| BlogPostCard      | `src/components/Blog/BlogPostCard.astro`           | Blog post card with image, tag, title, description, date, and reading time |
-| BlogPostHero      | `src/components/Blog/BlogPostHero.astro`           | Blog detail hero with dark image background and post metadata        |
-| BlogPostLayout    | `src/components/Blog/BlogPostLayout.astro`         | Blog detail 70/30 content and sidebar grid                          |
-| BlogPostContent   | `src/components/Blog/BlogPostContent.astro`        | Blog detail article sections                                        |
-| BlogPostSidebar   | `src/components/Blog/BlogPostSidebar.astro`        | Blog detail authors and content anchor links                        |
-| BlogPostAuthorCard | `src/components/Blog/BlogPostAuthorCard.astro`    | Blog detail author/member card                                      |
-| Icones            | `src/components/Icones/*.astro`                    | Inline SVG icon components                                          |
+| Component            | File                                                  | Purpose                                                                    |
+| -------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------- |
+| GlobalStyle          | `src/components/GlobalStyle.astro`                    | Global reset, tokens, utilities, shared button styles                      |
+| Header               | `src/components/Header.astro`                         | Fixed glass navigation, desktop preferences, and mobile nav trigger        |
+| Footer               | `src/components/Footer.astro`                         | Site footer                                                                |
+| Logo                 | `src/components/Logo.astro`                           | Inline SVG logo                                                            |
+| MobileNav            | `src/components/MobileNav.astro`                      | Mobile sheet navigation and mobile preferences                             |
+| Preferences          | `src/components/Preferences.astro`                    | Details-based preferences popover                                          |
+| PreferenceRow        | `src/components/PreferenceRow.astro`                  | Label/description row for preference controls                              |
+| ThemeSwitcher        | `src/components/ThemeSwitcher.astro`                  | Dark/light theme toggle                                                    |
+| Hero                 | `src/components/Hero.astro`                           | Home hero with decorative shapes and actions                               |
+| PageSection          | `src/components/PageSection/PageSection.astro`        | Reusable revealed section wrapper with optional CTA link                   |
+| SectionWrapper       | `src/components/Section/SectionWrapper.astro`         | Generic page/section stack wrapper                                         |
+| SectionHero          | `src/components/Section/SectionHero.astro`            | Shared section title, eyebrow, and description block                       |
+| Project              | `src/components/Project/Project.astro`                | Project grid wrapper                                                       |
+| ProjectItem          | `src/components/Project/ProjectItem.astro`            | Project card                                                               |
+| Stats                | `src/components/Stats/Stats.astro`                    | Stats card grid                                                            |
+| StatsItem            | `src/components/Stats/StatsItem.astro`                | Stats card shell with decorative lines                                     |
+| StatsContentCard     | `src/components/Stats/StatsContentCard.astro`         | Small stats content block                                                  |
+| StatsContentDetail   | `src/components/Stats/StatsContentDetail.astro`       | Label/value detail row for stats cards                                     |
+| StatsLines           | `src/components/Stats/StatsLines.astro`               | Decorative SVG line background for stats cards                             |
+| Guestbook            | `src/components/Guestbook/Guestbook.astro`            | Guestbook message list with optional load-more placeholders                |
+| GuestbookContent     | `src/components/Guestbook/GuestbookContent.astro`     | Reusable guestbook form and message-list grid                              |
+| GuestbookForm        | `src/components/Guestbook/GuestbookForm.astro`        | Frontend mock create-message form with moderation success state            |
+| GuestbookPlaceholder | `src/components/Guestbook/GuestbookPlaceholder.astro` | Skeleton cards shown during guestbook load-more reveal                     |
+| GuestMessage         | `src/components/Guestbook/GuestMessage.astro`         | Guestbook message card, link normalization, platform icon selection        |
+| GuestMessageReply    | `src/components/Guestbook/GuestMessageReply.astro`    | Reply block inside a guestbook message                                     |
+| AboutCard            | `src/components/About/AboutCard.astro`                | About profile detail card                                                  |
+| AboutSocialItem      | `src/components/About/AboutSocialItem.astro`          | About page social link item                                                |
+| Dropdown             | `src/components/Dropdown/Dropdown.astro`              | Custom dropdown control                                                    |
+| BlogHero             | `src/components/Blog/BlogHero.astro`                  | Blog page title, search input, custom tag dropdown, and filter script      |
+| BlogPostList         | `src/components/Blog/BlogPostList.astro`              | Blog post grid and empty search state                                      |
+| BlogPostCard         | `src/components/Blog/BlogPostCard.astro`              | Blog post card with image, tag, title, description, date, and reading time |
+| BlogPostHero         | `src/components/Blog/BlogPostHero.astro`              | Blog detail hero with dark image background and post metadata              |
+| BlogPostLayout       | `src/components/Blog/BlogPostLayout.astro`            | Blog detail 70/30 content and sidebar grid                                 |
+| BlogPostContent      | `src/components/Blog/BlogPostContent.astro`           | Blog detail article sections                                               |
+| BlogPostSidebar      | `src/components/Blog/BlogPostSidebar.astro`           | Blog detail authors and content anchor links                               |
+| BlogPostAuthorCard   | `src/components/Blog/BlogPostAuthorCard.astro`        | Blog detail author/member card                                             |
+| Icones               | `src/components/Icones/*.astro`                       | Inline SVG icon components                                                 |
 
 ## Pages
 

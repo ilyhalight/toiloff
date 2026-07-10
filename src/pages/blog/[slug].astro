@@ -20,7 +20,7 @@ const { post } = Astro.props;
 ---
 
 <Layout title={post.title}>
-  <article class="blog-post-page" data-reveal>
+  <article class="blog-post-page">
     <BlogPostHero post={post} />
     <BlogPostLayout post={post} />
   </article>
