@@ -1,5 +1,4 @@
 ---
-import { getLiveCollection } from "astro:content";
 import Guestbook from "./Guestbook.astro";
 import GuestbookSystemMessage from "./GuestbookSystemMessage.astro";
 import SectionCard from "../Section/SectionCard.svelte";
@@ -22,10 +21,9 @@ const { items: publicMessages } = await BackendAPI.guestbook.load();
   </aside>
 
   <div class="guestbook-page__messages">
-    <SectionCard
-      title="Recent messages"
-      description="All guestbook messages are moderated before they appear here."
-    />
+    <SectionCard title="Recent messages"
+      >All guestbook messages are moderated before they appear here.
+    </SectionCard>
 
     {
       publicMessages ? (

@@ -1,15 +1,16 @@
 <script lang="ts">
   type Props = {
     title: string;
-    description: string;
+    compactText?: boolean;
+    children: any;
   };
-  const { title, description }: Props = $props();
+  const { title, children, compactText = true }: Props = $props();
 </script>
 
 <div class="section-card">
   <h2 class="section-card__title">{title}</h2>
-  <p class="section-card__description">
-    {description}
+  <p class="section-card__description" class:is-compact={compactText}>
+    {@render children()}
   </p>
 </div>
 
@@ -30,6 +31,9 @@
   .section-card__description {
     margin-top: 0.75rem;
     color: var(--text-muted);
+  }
+
+  .section-card__description.is-compact {
     max-width: 38rem;
   }
 </style>

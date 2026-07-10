@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import SectionHero from "../components/Section/SectionHero.astro";
+import SectionCard from "../components/Section/SectionCard.svelte";
+import SectionWrapper from "../components/Section/SectionWrapper.astro";
+---
+
+<Layout title="AI Disclosure">
+  <SectionWrapper>
+    <SectionHero
+      title={"AI Disclosure"}
+      description={"A brief overview of how AI relates to the content and development of this website."}
+      eyebrow={"INFO"}
+    />
+    <SectionCard title="Development" compactText={false}>
+      I use LLMs mostly <b>to get assistance with Design</b>. I generate some
+      frontend components using <b>GPT 5.5</b>, and then I manually review and
+      modify them to suit my needs.
+
+      <br />
+
+      <h3>Generated components (what I remembered)</h3>
+      <ol class="disclosure-list">
+        <li><strong>Section hero</strong> (100%)</li>
+        <li>
+          <strong>Stats section</strong> on Main Page (generated drafts with LLM and
+          made few layout changes)
+        </li>
+        <li><strong>Preferences panel</strong> in Header (100%)</li>
+        <li>
+          <strong>Theme switcher</strong> (1:1 port from my other SvelteKit project
+          without server logic)
+        </li>
+        <li>
+          <strong>Mobile menu</strong> in Header (~95%)
+        </li>
+        <li>
+          <strong>All components used on /blogs page</strong> (~80%, minor edits for
+          post item layout. Mostly inspired by my old blog post design made in Figma)
+        </li>
+        <li>
+          <strong>All components used on /blog/[slug] page</strong> (~99%. Mostly
+          inspired by my old blog post design made in Figma)
+        </li>
+        <li>
+          <strong>Background shapes & lines</strong> in Hero component on main page
+          (for beauty)
+        </li>
+      </ol>
+
+      <br />
+
+      <h3>Completely handwritten</h3>
+      <ol class="disclosure-list">
+        <li><strong>All backend logic</strong></li>
+        <li><strong>Full Admin frontend</strong></li>
+        <li><strong>API client logic</strong></li>
+        <li><strong>Captcha client logic</strong></li>
+        <li><strong>API docs for Voiden</strong></li>
+      </ol>
+    </SectionCard>
+    <SectionCard title="Content" compactText={false}>
+      I partially use LLMs (GPT 5.5, Gemini) and Machine Translation (Yandex
+      Translate) to translate and rephrase some small static texts on this
+      website.
+    </SectionCard>
+  </SectionWrapper>
+</Layout>
+
+<style>
+  .disclosure-list {
+    padding: 0 1rem;
+  }
+</style>
