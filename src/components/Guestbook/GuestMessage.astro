@@ -96,7 +96,12 @@ const messageDate = dateFormatter.format(new Date(createdAt));
         <h5 class="guestbook-message__info-title text-truncate">{username}</h5>
         {
           hrefContent && (
-            <a class="guestbook-message__info-link" href={messageLink}>
+            <a
+              class="guestbook-message__info-link"
+              href={messageLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {hrefContent}
             </a>
           )
