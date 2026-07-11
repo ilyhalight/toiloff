@@ -5,7 +5,15 @@ import SectionCard from "../Section/SectionCard.svelte";
 import GuestbookForm from "./GuestbookForm.svelte";
 import { BackendAPI } from "../../lib/api";
 
-const { items: publicMessages, nextCursor } = await BackendAPI.guestbook.load();
+const DEFAULT_ITEM = {
+  items: [],
+  nextCursor: null,
+  isOffline: true,
+};
+
+const data = await BackendAPI.guestbook.load().catch(() => DEFAULT_ITEM);
+const isOnline = !Object.hasOwn(data, "isOffline");
+const { items: publicMessages, nextCursor } = data;
 ---
 
 <div class="guestbook-page__content">
@@ -19,7 +27,7 @@ const { items: publicMessages, nextCursor } = await BackendAPI.guestbook.load();
     </SectionCard>
 
     {
-      publicMessages ? (
+      isOnline ? (
         <Guestbook messages={publicMessages} {nextCursor} client:load />
       ) : (
         <GuestbookSystemMessage
