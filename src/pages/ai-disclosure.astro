@@ -14,9 +14,11 @@ import SectionWrapper from "../components/Section/SectionWrapper.astro";
       eyebrow={"INFO"}
     />
     <SectionCard title="Development" compactText={false}>
-      I use LLMs mostly <b>to get assistance with Design</b>. I generate some
-      frontend components using <b>GPT 5.5</b>, and then I manually review and
-      modify them to suit my needs.
+      <p class="section-text">
+        I use LLMs mostly <b>to get assistance with Design</b>. I generate some
+        frontend components using <b>GPT 5.5</b>, and then I manually review and
+        modify them to suit my needs.
+      </p>
 
       <br />
 
@@ -32,12 +34,12 @@ import SectionWrapper from "../components/Section/SectionWrapper.astro";
           <strong>Mobile menu</strong> in Header (~95%)
         </li>
         <li>
-          <strong>All components used on /blogs page</strong> (~80%, minor edits for
-          post item layout. Mostly inspired by my old blog post design made in Figma)
+          <strong>/blogs page</strong> (~80%, minor edits for post item layout. Mostly
+          inspired by my old blog post design made in Figma)
         </li>
         <li>
-          <strong>All components used on /blog/[slug] page</strong> (~99%. Mostly
-          inspired by my old blog post design made in Figma)
+          <strong>/blog/[slug] page</strong> (~99%. Mostly inspired by my old blog
+          post design made in Figma)
         </li>
         <li>
           <strong>Layout of Guestbook section</strong> on Main page (saved just layout,
@@ -61,15 +63,26 @@ import SectionWrapper from "../components/Section/SectionWrapper.astro";
       </ol>
     </SectionCard>
     <SectionCard title="Content" compactText={false}>
-      I partially use LLMs (GPT 5.5, Gemini) and Machine Translation (Yandex
-      Translate) to translate and rephrase some small static texts on this
-      website.
+      <p class="section-text">
+        I partially use LLMs (GPT 5.5, Gemini) and Machine Translation (Yandex
+        Translate) to translate and rephrase some small static texts on this
+        website.
+      </p>
     </SectionCard>
   </SectionWrapper>
 </Layout>
 
 <style>
+  .section-text {
+    color: var(--text-muted);
+  }
+
   .disclosure-list {
     padding: 0 1rem;
+    color: var(--text-muted);
+  }
+
+  .disclosure-list strong {
+    color: var(--text-color);
   }
 </style>
