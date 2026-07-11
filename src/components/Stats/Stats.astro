@@ -6,22 +6,37 @@ import CloudsIcon from "../Icones/CloudsIcon.astro";
 import TypeScriptIcon from "../Icones/TypeScriptIcon.astro";
 import StatsItem from "./StatsItem.astro";
 import StatsItemContent from "./StatsItemContent.astro";
+import { BackendAPI } from "../../lib/api";
+
+const DEFUALT_DATA = {
+  github: {
+    stars: "-",
+    commits: "-",
+  },
+  tokens: {
+    total: "-",
+    month: "-",
+  },
+};
+const { github, tokens } = await BackendAPI.stats
+  .load()
+  .catch(() => DEFUALT_DATA);
 ---
 
 <ul class="stats">
   <StatsItem title="Github">
-    <StatsItemContent value="7k" label="Stars">
+    <StatsItemContent value={github.stars} label="Stars">
       <StarIcon />
     </StatsItemContent>
-    <StatsItemContent value="6.1k" label="Commits">
+    <StatsItemContent value={github.commits} label="Commits">
       <CodeCommitsIcon />
     </StatsItemContent>
   </StatsItem>
   <StatsItem title="Tokens wasted">
-    <StatsItemContent value="118.8M" label="Total">
+    <StatsItemContent value={tokens.total} label="Total">
       <FlameIcon />
     </StatsItemContent>
-    <StatsItemContent value="118.8M" label="30 days">
+    <StatsItemContent value={tokens.month} label="30 days">
       <CloudsIcon />
     </StatsItemContent>
   </StatsItem>
