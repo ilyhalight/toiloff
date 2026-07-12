@@ -6,13 +6,31 @@ import SectionHero from "../../components/Section/SectionHero.astro";
 import SectionWrapper from "../../components/Section/SectionWrapper.astro";
 import { AUTH_LOGIN_PAGE } from "../../lib/api/auth";
 import Stats from "../../components/Stats/Stats.astro";
-import PageSection from "../../components/PageSection/PageSection.astro";
+import SectionCard from "../../components/Section/SectionCard.svelte";
+import AdminActions, {
+  type Link,
+} from "../../components/Admin/AdminActions.svelte";
 
 const user = Astro.locals.user;
 
 if (!user) {
   return Astro.redirect(AUTH_LOGIN_PAGE);
 }
+
+const links: Link[] = [
+  {
+    href: "/admin/guestbook",
+    title: "Guestbook",
+  },
+  {
+    href: "/admin/projects",
+    title: "Projects",
+  },
+  {
+    href: "/admin/logout",
+    title: "Logout",
+  },
+];
 ---
 
 <Layout title="Admin">
@@ -23,37 +41,6 @@ if (!user) {
       eyebrow={"Admin"}
     />
     <Stats />
+    <AdminActions title="Available links" {links} />
   </SectionWrapper>
-  <PageSection title="Availabled links">
-    <ul class="admin-links">
-      <li class="admin-links__item-wrapper">
-        <a class="admin-links__item" href="/admin/guestbook">Guestbook</a>
-      </li>
-      <li class="admin-links__item-wrapper">
-        <a class="admin-links__item" href="/admin/logout">Logout</a>
-      </li>
-    </ul>
-  </PageSection>
 </Layout>
-
-<style>
-  .admin-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    list-style: none;
-  }
-
-  .admin-links__item-wrapper {
-    border-radius: 0.5rem;
-    background: var(--surface-bg);
-    user-select: none;
-  }
-
-  .admin-links__item {
-    display: flex;
-    padding: 0.5rem 1.25rem;
-    font-size: 1.125rem;
-    font-weight: 500;
-  }
-</style>

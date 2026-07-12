@@ -1,0 +1,33 @@
+---
+import ProjectsItem from "./ProjectsItem.astro";
+import { BackendAPI } from "../../lib/api";
+import ProjectEmpty from "./ProjectEmpty.astro";
+
+const projects = await BackendAPI.projects.load().catch(() => []);
+const isEmpty = projects.length === 0;
+---
+
+<ul class="projects">
+  {
+    isEmpty ? (
+      <ProjectEmpty />
+    ) : (
+      projects.map((project) => <ProjectsItem {project} />)
+    )
+  }
+</ul>
+
+<style>
+  .projects {
+    display: grid;
+    gap: 1rem;
+    list-style: none;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+
+  @media screen and (max-width: 500px) {
+    .projects {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+</style>

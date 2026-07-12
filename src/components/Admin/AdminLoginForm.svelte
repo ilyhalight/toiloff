@@ -3,15 +3,9 @@
   import Form from "../Form/Form.svelte";
   import FormField from "../Form/FormField.svelte";
   import FormHead from "../Form/FormHead.svelte";
-  import { type Status } from "../Form/FormStatus.svelte";
 
   let username = $state("");
   let password = $state("");
-  let status: Status = $state({
-    isHidden: true,
-    type: "success",
-    text: "",
-  });
 
   async function submitAction(captchaPayload?: string) {
     await BackendAPI.auth.getToken({ username, password }, captchaPayload);
@@ -24,7 +18,6 @@
 </script>
 
 <Form
-  {status}
   {submitAction}
   {onSuccess}
   successMessage="Login successful!"

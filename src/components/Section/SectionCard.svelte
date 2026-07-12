@@ -9,9 +9,9 @@
 
 <div class="section-card">
   <h2 class="section-card__title">{title}</h2>
-  <p class="section-card__description" class:is-compact={compactText}>
+  <div class="section-card__content" class:is-compact={compactText}>
     {@render children()}
-  </p>
+  </div>
 </div>
 
 <style>
@@ -28,12 +28,12 @@
     letter-spacing: -0.04em;
   }
 
-  .section-card__description {
+  .section-card__content {
     margin-top: 0.75rem;
     color: var(--text-muted);
   }
 
-  .section-card__description.is-compact {
+  .section-card__content.is-compact {
     max-width: 38rem;
   }
 </style>

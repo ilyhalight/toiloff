@@ -1,9 +1,9 @@
 ---
 import Guestbook from "./Guestbook.svelte";
-import GuestbookSystemMessage from "./GuestbookSystemMessage.astro";
 import SectionCard from "../Section/SectionCard.svelte";
 import GuestbookForm from "./GuestbookForm.svelte";
 import { BackendAPI } from "../../lib/api";
+import SystemMessage from "../SystemMessage.svelte";
 
 const DEFAULT_ITEM = {
   items: [],
@@ -30,7 +30,7 @@ const { items: publicMessages, nextCursor } = data;
       isOnline ? (
         <Guestbook messages={publicMessages} {nextCursor} client:load />
       ) : (
-        <GuestbookSystemMessage
+        <SystemMessage
           title="Guestbook is offline"
           description="The guestbook isn't available right now. Please try again in a few minutes."
           isError={true}

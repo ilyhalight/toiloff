@@ -9,7 +9,7 @@
   };
 
   type Props = {
-    status: Status;
+    status?: Status;
     successMessage: string;
     errorMessage: string;
     defaultSubmitText?: string;
@@ -20,7 +20,11 @@
   };
 
   let {
-    status = $bindable(),
+    status = $bindable({
+      isHidden: true,
+      type: "success",
+      text: "",
+    }),
     submitAction,
     onSuccess = () => void 0,
     successMessage,

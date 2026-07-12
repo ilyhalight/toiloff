@@ -1,16 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import ProjectItem from "../components/Project/ProjectItem.astro";
 import PageSection from "../components/PageSection/PageSection.astro";
-import Project from "../components/Project/Project.astro";
+import Projects from "../components/Projects/Projects.astro";
 import Stats from "../components/Stats/Stats.astro";
 import GuestbookContent from "../components/Guestbook/GuestbookContent.astro";
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
-import { projects } from "../data/projects";
-
-const featuredProjects = projects.slice(0, 6);
 ---
 
 <Layout title="Home">
@@ -22,9 +18,7 @@ const featuredProjects = projects.slice(0, 6);
       name: "View all",
     }}
   >
-    <Project>
-      {featuredProjects.map((project) => <ProjectItem {...project} />)}
-    </Project>
+    <Projects />
   </PageSection>
   <PageSection title="Stats">
     <Stats />
