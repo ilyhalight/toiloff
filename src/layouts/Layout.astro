@@ -1,7 +1,6 @@
 ---
 import { getEntry } from "astro:content";
 import { Font } from "astro:assets";
-import { ClientRouter } from "astro:transitions";
 
 import Header from "../components/Header.astro";
 import GlobalStyle from "../components/GlobalStyle.astro";
@@ -27,12 +26,11 @@ const title = `${Astro.props.title ?? "Main"}${settings?.data.defaultDelimiter}$
     <meta name="generator" content={Astro.generator} />
     <GlobalStyle />
     <Font cssVariable="--font-poppins" />
-    <ClientRouter />
   </head>
   <body>
     <div class="app">
       <Header />
-      <main transition:animate="fade">
+      <main>
         <slot />
       </main>
       <Footer />

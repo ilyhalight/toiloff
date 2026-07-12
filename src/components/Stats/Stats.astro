@@ -7,8 +7,9 @@ import TypeScriptIcon from "../Icones/TypeScriptIcon.astro";
 import StatsItem from "./StatsItem.astro";
 import StatsItemContent from "./StatsItemContent.astro";
 import { BackendAPI } from "../../lib/api";
+import type { StatsData } from "../../lib/api/stats";
 
-const DEFUALT_DATA = {
+const DEFUALT_DATA: StatsData = {
   github: {
     stars: "-",
     commits: "-",
