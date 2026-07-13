@@ -3,7 +3,7 @@ import ProjectsItem from "./ProjectsItem.astro";
 import { BackendAPI } from "../../lib/api";
 import ProjectEmpty from "./ProjectEmpty.astro";
 
-const projects = await BackendAPI.projects.load().catch(() => []);
+const projects = await BackendAPI.projects.loadMain().catch(() => []);
 const isEmpty = projects.length === 0;
 ---
 

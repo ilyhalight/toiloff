@@ -1,9 +1,16 @@
+import { z } from "astro/zod";
+
 const API_BASE_URL = "http://localhost:4321/api/v1";
 export const AVATAR_BASE_URL = `${API_BASE_URL}/public/avatars/`;
 const API_USER_CLIENT = "toiloff-frontend/1.0.0";
 
 type APIError = Record<"error", string>;
 type APIErrorDetail = Record<"detail", string>;
+
+export const CursorNav = z.object({
+  nextCursor: z.nullable(z.string()),
+  pageSize: z.number(),
+});
 
 export const isError = (data: unknown): data is APIError => {
   return typeof data === "object" && data !== null && "error" in data;

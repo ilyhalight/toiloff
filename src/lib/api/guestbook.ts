@@ -1,5 +1,5 @@
 import { z } from "astro/zod";
-import { AVATAR_BASE_URL, fetchFromAPI } from "./internal";
+import { AVATAR_BASE_URL, CursorNav, fetchFromAPI } from "./internal";
 import { toFormData } from "../utils";
 
 const GuestbookEntryStatus = z.enum(["review", "public", "declined"]);
@@ -20,10 +20,8 @@ export const GuestbookEntry = z.object({
 
 export type GuestbookEntry = z.infer<typeof GuestbookEntry>;
 
-export const GuestbookData = z.object({
+export const GuestbookData = CursorNav.extend({
   items: z.array(GuestbookEntry),
-  nextCursor: z.nullable(z.string()),
-  pageSize: z.number(),
 });
 
 export const GuestbookStats = z.object({

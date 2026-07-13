@@ -22,7 +22,7 @@
   {onSuccess}
   successMessage="Login successful!"
   errorMessage="Login failed!"
-  enabledCaptcha={false}
+  enabledCaptcha={true}
 >
   {#snippet children()}
     <FormHead
