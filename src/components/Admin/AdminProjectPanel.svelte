@@ -1,6 +1,8 @@
 <script lang="ts">
   import { BackendAPI } from "../../lib/api";
-  import type { Projects } from "../../lib/api/projects";
+  import type { Project, Projects } from "../../lib/api/projects";
+  import ProjectItem from "../Projects/ProjectItem.svelte";
+  import ProjectsComponent from "../Projects/Projects.svelte";
   import SectionCard from "../Section/SectionCard.svelte";
   import SectionLoading from "../Section/SectionLoading.svelte";
   import AdminActions, { type Link } from "./AdminActions.svelte";
@@ -56,11 +58,7 @@
 {:else if error}
   <SectionCard title="Error">{error.message}</SectionCard>
 {:else}
-  <ul class="projects-list">
-    {#each projects as project, idx (project.lexorank)}
-      <li>{project.title}</li>
-    {/each}
-  </ul>
+  <ProjectsComponent {projects} />
   {#if nextCursor}
     <button
       class="button"

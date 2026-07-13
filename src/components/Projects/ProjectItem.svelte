@@ -1,20 +1,19 @@
----
-import type { Project } from "../../lib/api/projects";
+<script lang="ts">
+  import type { Project } from "../../lib/api/projects";
 
-type Props = {
-  project: Project;
-};
+  type Props = {
+    project: Project;
+  };
 
-const {
-  project: { title, description, href, imageUrl, imageAlt },
-}: Props = Astro.props;
----
+  let { project }: Props = $props();
+  let { title, description, href, imageUrl, imageAlt } = $derived(project);
+</script>
 
 <li class="project-item">
-  <a class="project-item__image-wrapper" href={href} target="_blank">
+  <a class="project-item__image-wrapper" {href} target="_blank">
     <img class="project-item__image" src={imageUrl} alt={imageAlt} />
   </a>
-  <a class="project-item__link" href={href} target="_blank">
+  <a class="project-item__link" {href} target="_blank">
     <h3>{title}</h3>
     <span class="project-item__link-icon">
       <svg
@@ -63,10 +62,6 @@ const {
     width: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-  }
-
-  .project-item__top {
-    display: flex;
   }
 
   .project-item__link {
