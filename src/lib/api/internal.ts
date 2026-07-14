@@ -1,7 +1,7 @@
 import { z } from "astro/zod";
+import { PUBLIC_API_BASE_URL } from "astro:env/client";
 
-const API_BASE_URL = "http://localhost:4321/api/v1";
-export const AVATAR_BASE_URL = `${API_BASE_URL}/public/avatars/`;
+export const AVATAR_BASE_URL = `${PUBLIC_API_BASE_URL}/public/avatars/`;
 const API_USER_CLIENT = "toiloff-frontend/1.0.0";
 
 type APIError = Record<"error", string>;
@@ -23,7 +23,7 @@ export async function fetchFromAPI<T extends object>(
   options: RequestInit = {},
 ): Promise<T> {
   const { headers, ...otherOptions } = options;
-  const res = await fetch(`${API_BASE_URL}/${path}`, {
+  const res = await fetch(`${PUBLIC_API_BASE_URL}/${path}`, {
     body,
     method: body ? "POST" : "GET",
     headers: {

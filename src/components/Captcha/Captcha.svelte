@@ -1,5 +1,7 @@
 <script lang="ts">
   import "altcha";
+  // required for page routing
+  import "altcha/altcha.css";
   import type {} from "altcha/types/svelte";
   import type { Configuration, WidgetMethods } from "altcha/types";
   import captchaConfig from "../../data/captcha";

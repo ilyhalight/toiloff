@@ -50,6 +50,7 @@
       <div class="message-avatar__wrapper">
         <img
           class="message-avatar"
+          loading="lazy"
           src={BackendAPI.guestbook.getAvatar(message.avatarUrl)}
           alt="{message.username}'s avatar"
         />

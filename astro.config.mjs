@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 import bun from "@wyattjoh/astro-bun-adapter";
 import svelte from "@astrojs/svelte";
 
@@ -14,6 +14,15 @@ export default defineConfig({
       cssVariable: "--font-poppins",
     },
   ],
+  env: {
+    schema: {
+      PUBLIC_API_BASE_URL: envField.string({
+        context: "client",
+        access: "public",
+        default: "http://localhost:4321/api/v1",
+      }),
+    },
+  },
   integrations: [svelte()],
   vite: {
     server: {
