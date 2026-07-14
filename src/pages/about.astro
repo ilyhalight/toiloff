@@ -28,6 +28,8 @@ import MySQLIcon from "../components/Icones/MySQLColorIcon.astro";
 import NginxColorIcon from "../components/Icones/NginxColorIcon.astro";
 import DockerColorIcon from "../components/Icones/DockerColorIcon.astro";
 import NodeColorIcon from "../components/Icones/NodeColorIcon.astro";
+import BoostyIcon from "../components/Icones/BoostyIcon.svelte";
+import LolzteamIcon from "../components/Icones/LolzteamIcon.svelte";
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
 
@@ -75,7 +77,22 @@ const socials = [
     Icon: VKIcon,
   },
   { id: "email", label: "Email", href: "#", Icon: EmailIcon },
-];
+] as const;
+
+const donateLinks = [
+  {
+    id: "boosty",
+    label: "Boosty",
+    href: "https://boosty.to/toil",
+    Icon: BoostyIcon,
+  },
+  {
+    id: "lolzteam",
+    label: "Lolzteam",
+    href: "https://lzt.market/balance/transfer?user_id=667866",
+    Icon: LolzteamIcon,
+  },
+] as const;
 ---
 
 <Layout title="About">
@@ -137,6 +154,21 @@ const socials = [
         <li class="tech-stack__item"><WebpackIcon /> Webpack</li>
         <li class="tech-stack__item"><NodeColorIcon /> Node.js</li>
         <li class="tech-stack__item"><MySQLIcon /> MySQL</li>
+      </ul>
+    </section>
+    <section class="about-section" id="find-online">
+      <h3 class="about-section__title">Donate me</h3>
+      <ul class="about-socials">
+        {
+          donateLinks.map((donate) => (
+            <AboutSocialItem
+              id={donate.id}
+              label={donate.label}
+              href={donate.href}
+              Icon={donate.Icon}
+            />
+          ))
+        }
       </ul>
     </section>
   </SectionWrapper>

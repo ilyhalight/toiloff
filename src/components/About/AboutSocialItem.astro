@@ -63,12 +63,22 @@ const { id, label, href, Icon } = Astro.props;
     background: #d1170e;
   }
 
+  [data-social="boosty"] {
+    background: #ef7729;
+  }
+
+  [data-social="lolzteam"] {
+    background: #2bad72;
+  }
+
   :global([data-theme="light"]) [data-social="telegram"],
   :global([data-theme="light"]) [data-social="vk"],
   :global([data-theme="light"]) [data-social="steam"],
   :global([data-theme="light"]) [data-social="shikimori"],
   :global([data-theme="light"]) [data-social="mangalib"],
-  :global([data-theme="light"]) [data-social="scrobbles"] {
+  :global([data-theme="light"]) [data-social="scrobbles"],
+  :global([data-theme="light"]) [data-social="boosty"],
+  :global([data-theme="light"]) [data-social="lolzteam"] {
     color: #fff;
   }
 
@@ -94,6 +104,14 @@ const { id, label, href, Icon } = Astro.props;
 
   [data-social="scrobbles"]:hover {
     background: #e73930;
+  }
+
+  [data-social="boosty"]:hover {
+    background: #f7873d;
+  }
+
+  [data-social="lolzteam"]:hover {
+    background: #2ed88b;
   }
 
   .about-socials__item-link-icon {
