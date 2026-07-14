@@ -36,6 +36,7 @@
         <div class="guestbook-message__avatar" aria-hidden="true">
           <img
             class="guestbook-message__avatar-image"
+            loading="lazy"
             alt={`${username}'s avatar`}
             src={messageAvatarUrl}
           />

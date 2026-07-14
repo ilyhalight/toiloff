@@ -13,6 +13,7 @@ interface Props {
 
 const settings = await getEntry("settings", "settings");
 const title = `${Astro.props.title ?? "Main"}${settings?.data.defaultDelimiter}${settings?.data.defaultTitle}`;
+const theme = Astro.cookies.get("tf_theme")?.value;
 ---
 
 <!doctype html>
@@ -29,7 +30,7 @@ const title = `${Astro.props.title ?? "Main"}${settings?.data.defaultDelimiter}$
     <Font cssVariable="--font-poppins" />
     <ClientRouter />
   </head>
-  <body>
+  <body data-theme={theme}>
     <div class="app">
       <Header />
       <main>

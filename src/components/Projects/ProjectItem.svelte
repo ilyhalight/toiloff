@@ -11,7 +11,12 @@
 
 <li class="project-item">
   <a class="project-item__image-wrapper" {href} target="_blank">
-    <img class="project-item__image" src={imageUrl} alt={imageAlt} />
+    <img
+      class="project-item__image"
+      src={imageUrl}
+      alt={imageAlt}
+      loading="lazy"
+    />
   </a>
   <a class="project-item__link" {href} target="_blank">
     <h3>{title}</h3>
