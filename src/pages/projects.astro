@@ -1,0 +1,32 @@
+---
+export const prerender = false;
+
+import SectionHero from "../components/Section/SectionHero.astro";
+import SectionWrapper from "../components/Section/SectionWrapper.astro";
+import Layout from "../layouts/Layout.astro";
+import ProjectList from "../components/Projects/ProjectList.svelte";
+
+import { BackendAPI } from "../lib/api";
+
+const projectsData = await BackendAPI.projects.getAll().catch(() => ({
+  items: [],
+  nextCursor: null,
+  pageSize: 0,
+}));
+---
+
+<Layout title="Admin projects">
+  <SectionWrapper>
+    <SectionHero
+      eyebrow="List"
+      title="Projects"
+      description="List of all of my projects"
+    />
+
+    <ProjectList
+      projects={projectsData.items}
+      nextCursor={projectsData.nextCursor}
+      client:load
+    />
+  </SectionWrapper>
+</Layout>

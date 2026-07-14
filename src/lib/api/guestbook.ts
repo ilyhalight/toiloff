@@ -70,7 +70,6 @@ export const GuestbookRouteAPI = {
   },
   createMessage: async (item: NewGuestbook, captchaPayload?: string) => {
     const body = toFormData(item);
-    console.log(body);
     return await fetchFromAPI<GuestbookEntry>(
       "guestbook",
       body,

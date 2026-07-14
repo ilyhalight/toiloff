@@ -23,6 +23,12 @@
   });
 
   async function submitAction(captchaPayload?: string) {
+    username = username.trim();
+    content = content.trim();
+    if (!username || !content) {
+      throw new Error("Username or content is empty!");
+    }
+
     await BackendAPI.guestbook.createMessage(
       {
         username,
@@ -43,21 +49,19 @@
 
     if (file.size > MAX_AVATAR_SIZE) {
       // TODO: rewrite with toast
-      alert("Файл слишком большой. Максимальный размер 5MB.");
+      alert("File too large. Max size is 5MB.");
       return;
     }
 
-    // if (
-    //   !["image/png", "image/jpeg", "image/gif", "image/webp"].includes(
-    //     file.type,
-    //   )
-    // ) {
-    //   // TODO: rewrite with toast
-    //   alert(
-    //     "Неверный формат файла. Поддерживаемые форматы: PNG, JPEG, GIF, WEBP.",
-    //   );
-    //   return;
-    // }
+    if (
+      !["image/png", "image/jpeg", "image/gif", "image/webp"].includes(
+        file.type,
+      )
+    ) {
+      // TODO: rewrite with toast
+      alert("Invalid file format. Supported formats: PNG, JPEG, GIF, WEBP.");
+      return;
+    }
 
     avatar = file;
   }

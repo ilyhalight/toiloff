@@ -1,10 +1,14 @@
 ---
 export const prerender = false;
 
-import AdminProjectPanel from "../../../components/Admin/AdminProjectPanel.svelte";
+import AdminActions, {
+  type Link,
+} from "../../../components/Admin/AdminActions.svelte";
+import ProjectList from "../../../components/Projects/ProjectList.svelte";
 import SectionHero from "../../../components/Section/SectionHero.astro";
 import SectionWrapper from "../../../components/Section/SectionWrapper.astro";
 import Layout from "../../../layouts/Layout.astro";
+import { BackendAPI } from "../../../lib/api";
 
 import { AUTH_LOGIN_PAGE } from "../../../lib/api/auth";
 
@@ -13,6 +17,19 @@ const user = Astro.locals.user;
 if (!user) {
   return Astro.redirect(AUTH_LOGIN_PAGE);
 }
+
+const links: Link[] = [
+  {
+    title: "Create",
+    href: "/admin/projects/create",
+  },
+];
+
+const projectsData = await BackendAPI.projects.getAll().catch(() => ({
+  items: [],
+  nextCursor: null,
+  pageSize: 0,
+}));
 ---
 
 <Layout title="Admin projects">
@@ -23,6 +40,13 @@ if (!user) {
       description="Create and organize your projects!"
     />
 
-    <AdminProjectPanel client:load />
+    <AdminActions title="Actions" {links} />
+
+    <ProjectList
+      client:load
+      isAdmin={true}
+      projects={projectsData.items}
+      nextCursor={projectsData.nextCursor}
+    />
   </SectionWrapper>
 </Layout>

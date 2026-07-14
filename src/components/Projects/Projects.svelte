@@ -7,9 +7,10 @@
   type Props = {
     projects: Project[];
     isAdmin?: boolean;
+    children?: any;
   };
 
-  let { projects, isAdmin = false }: Props = $props();
+  let { projects, isAdmin = false, children }: Props = $props();
   let isEmpty = $derived(projects.length === 0);
   let ProjectComponent = $derived(isAdmin ? ProjectAdminItem : ProjectItem);
 </script>
@@ -22,6 +23,7 @@
       <ProjectComponent {project} />
     {/each}
   {/if}
+  {@render children?.()}
 </ul>
 
 <style>

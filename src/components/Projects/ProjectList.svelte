@@ -1,25 +1,29 @@
 <script lang="ts">
+  import { MediaQuery } from "svelte/reactivity";
+
   import { BackendAPI } from "../../lib/api";
-  import type { Project, Projects } from "../../lib/api/projects";
-  import ProjectItem from "../Projects/ProjectItem.svelte";
-  import ProjectsComponent from "../Projects/Projects.svelte";
+  import type { Projects } from "../../lib/api/projects";
+  import ProjectsComponent from "./Projects.svelte";
   import SectionCard from "../Section/SectionCard.svelte";
   import SectionLoading from "../Section/SectionLoading.svelte";
-  import AdminActions, { type Link } from "./AdminActions.svelte";
-
-  const links: Link[] = [
-    {
-      title: "Create",
-      href: "/admin/projects/create",
-    },
-  ];
 
   let error = $state<Error | null>(null);
   let isLoading = $state(true);
-  let nextCursor: string | null = $state(null);
-  let projects = $state<Projects>([]);
+  let isBigScreen = new MediaQuery("min-width: 1040px");
+
+  let {
+    projects = $bindable<Projects>([]),
+    nextCursor = $bindable<string | null>(null),
+    autoLoad = false,
+    isAdmin = false,
+  } = $props();
 
   $effect(() => {
+    if (!autoLoad) {
+      isLoading = false;
+      return;
+    }
+
     void (async () => {
       error = null;
       isLoading = true;
@@ -51,19 +55,27 @@
   }
 </script>
 
-<AdminActions title="Actions" {links} />
-
-{#if isLoading && !projects.length}
-  <SectionLoading />
-{:else if error}
-  <SectionCard title="Error">{error.message}</SectionCard>
-{:else}
-  <ProjectsComponent {projects} isAdmin={true} />
+{#snippet loadMoreBtn()}
   {#if nextCursor}
     <button
       class="button"
       disabled={isLoading}
       onclick={async () => await loadProjects(nextCursor)}>Load more</button
     >
+  {/if}
+{/snippet}
+
+{#if isLoading && !projects.length}
+  <SectionLoading />
+{:else if error}
+  <SectionCard title="Error">{error.message}</SectionCard>
+{:else}
+  <ProjectsComponent {projects} {isAdmin}>
+    {#if isBigScreen.current}
+      {@render loadMoreBtn()}
+    {/if}
+  </ProjectsComponent>
+  {#if !isBigScreen.current}
+    {@render loadMoreBtn()}
   {/if}
 {/if}
