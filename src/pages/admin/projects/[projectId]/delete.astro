@@ -1,0 +1,34 @@
+---
+export const prerender = false;
+
+import SectionHero from "../../../../components/Section/SectionHero.astro";
+import SectionWrapper from "../../../../components/Section/SectionWrapper.astro";
+import AdminDeleteProjectForm from "../../../../components/Admin/AdminDeleteProjectForm.svelte";
+import Layout from "../../../../layouts/Layout.astro";
+
+import { AUTH_LOGIN_PAGE } from "../../../../lib/api/auth";
+import { getPageProject } from "./index";
+
+const user = Astro.locals.user;
+
+if (!user) {
+  return Astro.redirect(AUTH_LOGIN_PAGE);
+}
+
+const { projectId } = Astro.params;
+const project = await getPageProject(projectId);
+if (project instanceof Response) {
+  return project;
+}
+---
+
+<Layout title="Admin projects">
+  <SectionWrapper>
+    <SectionHero
+      eyebrow="Admin"
+      title="Delete project"
+      description="Permanently remove a project"
+    />
+    <AdminDeleteProjectForm {project} client:load />
+  </SectionWrapper>
+</Layout>

@@ -29,8 +29,10 @@ export const NewProject = Project.omit({
   createdAt: true,
   updatedAt: true,
 });
-
 export type NewProject = z.infer<typeof NewProject>;
+
+export const UpdateProject = NewProject.partial();
+export type UpdateProject = z.infer<typeof UpdateProject>;
 
 export const ProjetsRouteAPI = {
   getAll: async (cursor?: string | null) => {
@@ -48,6 +50,25 @@ export const ProjetsRouteAPI = {
     return await fetchFromAPI<Project>(
       "admin/projects",
       JSON.stringify(project),
+    );
+  },
+  edit: async (id: string, project: UpdateProject) => {
+    return await fetchFromAPI<Project>(
+      `admin/projects/${id}`,
+      JSON.stringify(project),
+      undefined,
+      { method: "PATCH" },
+    );
+  },
+  getById: async (id: string) => {
+    return await fetchFromAPI<Project>(`projects/${id}`);
+  },
+  delete: async (id: string) => {
+    return await fetchFromAPI<Project>(
+      `admin/projects/${id}`,
+      undefined,
+      undefined,
+      { method: "DELETE" },
     );
   },
 };

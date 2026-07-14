@@ -58,7 +58,7 @@
 {:else if error}
   <SectionCard title="Error">{error.message}</SectionCard>
 {:else}
-  <ProjectsComponent {projects} />
+  <ProjectsComponent {projects} isAdmin={true} />
   {#if nextCursor}
     <button
       class="button"

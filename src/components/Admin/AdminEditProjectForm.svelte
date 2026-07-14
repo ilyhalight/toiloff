@@ -1,19 +1,21 @@
 <script lang="ts">
   import { BackendAPI } from "../../lib/api";
+  import type { Project } from "../../lib/api/projects";
   import Form from "../Form/Form.svelte";
   import FormField from "../Form/FormField.svelte";
   import FormHead from "../Form/FormHead.svelte";
   import FormSwitch from "../Form/FormSwitch.svelte";
 
-  let title = $state("");
-  let description = $state("");
-  let href = $state("");
-  let imageUrl = $state("");
-  let imageAlt = $state("");
-  let canShowOnMain = $state(true);
+  type Props = {
+    project: Project;
+  };
+
+  let { project }: Props = $props();
+  let { title, description, href, imageUrl, imageAlt, canShowOnMain } =
+    $derived(project);
 
   async function submitAction() {
-    await BackendAPI.projects.create({
+    await BackendAPI.projects.edit(project.id, {
       title,
       description,
       href,
@@ -25,7 +27,7 @@
 
   async function onSuccess() {
     console.log(
-      "Successfully added new project! Redirecting to projects list...",
+      "Successfully edited a project! Redirecting to projects list...",
     );
     window.location.assign("/admin/projects");
   }
@@ -34,16 +36,16 @@
 <Form
   {submitAction}
   {onSuccess}
-  successMessage="Successfully added new Project!"
-  errorMessage="Failed to create new Project!"
-  defaultSubmitText="Create"
+  successMessage="Successfully edited a Project!"
+  errorMessage="Failed to edit a Project!"
+  defaultSubmitText="Edit"
   enabledCaptcha={false}
 >
   {#snippet children()}
     <FormHead
-      eyebrow="Create project"
-      title="New project"
-      description="Create a new project and make it available on your website"
+      eyebrow="Edit"
+      title="Edit details"
+      description="Update the fields below and save your changes"
     />
 
     <FormField
