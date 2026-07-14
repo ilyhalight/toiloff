@@ -1,0 +1,253 @@
+---
+import AboutCard from "../components/About/AboutCard.astro";
+import AboutSocialItem from "../components/About/AboutSocialItem.astro";
+import Layout from "../layouts/Layout.astro";
+import TelegramIcon from "../components/Icones/TelegramIcon.svelte";
+import EmailIcon from "../components/Icones/EmailIcon.astro";
+import GithubFillIcon from "../components/Icones/GithubFillIcon.astro";
+import LastfmIcon from "../components/Icones/LastfmIcon.astro";
+import MangalibIcon from "../components/Icones/MangalibIcon.astro";
+import ShikimoriIcon from "../components/Icones/ShikimoriIcon.astro";
+import SteamIcon from "../components/Icones/SteamIcon.astro";
+import VKIcon from "../components/Icones/VKIcon.svelte";
+import TypeScriptColorIcon from "../components/Icones/TypeScriptColorIcon.astro";
+import JavaScriptColorIcon from "../components/Icones/JavaScriptColorIcon.astro";
+import PythonColorIcon from "../components/Icones/PythonColorIcon.astro";
+import AstroIcon from "../components/Icones/AstroColorIcon.astro";
+import ElysiaIcon from "../components/Icones/ElysiaColorIcon.astro";
+import SvelteIcon from "../components/Icones/SvelteColorIcon.astro";
+import NuxtIcon from "../components/Icones/NuxtColorIcon.astro";
+import VueIcon from "../components/Icones/VueColorIcon.astro";
+import PostgreSQLIcon from "../components/Icones/PostgreSQLColorIcon.astro";
+import RedisIcon from "../components/Icones/RedisColorIcon.astro";
+import S3Icon from "../components/Icones/S3ColorIcon.astro";
+import GitIcon from "../components/Icones/GitColorIcon.astro";
+import BunIcon from "../components/Icones/BunColorIcon.astro";
+import WebpackIcon from "../components/Icones/WebpackColorIcon.astro";
+import MySQLIcon from "../components/Icones/MySQLColorIcon.astro";
+import NginxColorIcon from "../components/Icones/NginxColorIcon.astro";
+import DockerColorIcon from "../components/Icones/DockerColorIcon.astro";
+import NodeColorIcon from "../components/Icones/NodeColorIcon.astro";
+import BoostyIcon from "../components/Icones/BoostyIcon.svelte";
+import LolzteamIcon from "../components/Icones/LolzteamIcon.svelte";
+import SectionHero from "../components/Section/SectionHero.astro";
+import SectionWrapper from "../components/Section/SectionWrapper.astro";
+
+const socials = [
+  {
+    id: "telegram",
+    label: "Telegram",
+    href: "https://t.me/cutecoder",
+    Icon: TelegramIcon,
+  },
+  {
+    id: "github",
+    label: "Github",
+    href: "https://github.com/ilyhalight",
+    Icon: GithubFillIcon,
+  },
+  {
+    id: "steam",
+    label: "Steam",
+    href: "https://steamcommunity.com/id/ToilOfficial/",
+    Icon: SteamIcon,
+  },
+  {
+    id: "shikimori",
+    label: "Shikimori",
+    href: "https://shikimori.io/Toil",
+    Icon: ShikimoriIcon,
+  },
+  {
+    id: "mangalib",
+    label: "Mangalib",
+    href: "https://mangalib.me/ru/user/679978?",
+    Icon: MangalibIcon,
+  },
+  {
+    id: "scrobbles",
+    label: "Scrobbles",
+    href: "https://scrobbles.nirel.cc/",
+    Icon: LastfmIcon,
+  },
+  {
+    id: "vk",
+    label: "VKONTAKTE",
+    href: "https://vk.com/toilofficial",
+    Icon: VKIcon,
+  },
+  { id: "email", label: "Email", href: "#", Icon: EmailIcon },
+] as const;
+
+const donateLinks = [
+  {
+    id: "boosty",
+    label: "Boosty",
+    href: "https://boosty.to/toil",
+    Icon: BoostyIcon,
+  },
+  {
+    id: "lolzteam",
+    label: "Lolzteam",
+    href: "https://lzt.market/balance/transfer?user_id=667866",
+    Icon: LolzteamIcon,
+  },
+] as const;
+---
+
+<Layout title="About">
+  <SectionWrapper>
+    <SectionHero
+      title={"About"}
+      description={"Small info about me"}
+      eyebrow={"Personal"}
+    />
+    <ul class="about-list">
+      <AboutCard title="WHOAMI" content="Ilya" subcontent="Fullstack dev" />
+      <AboutCard title="BIRTHDAY" content="Sep 14" subcontent="77 days away" />
+      <AboutCard title="LOCATION" content="Russia" subcontent="& web" />
+      <AboutCard
+        title="FAV MUSIC"
+        content="maybe hyperpop"
+        subcontent="& indie pop, idk"
+      />
+      <AboutCard title="FAV EDITOR" content="VS CODE" subcontent="since 2020" />
+      <AboutCard
+        title="FAV LANG"
+        content="TypeScript"
+        subcontent="since 2024"
+      />
+    </ul>
+    <section class="about-section" id="find-online">
+      <h3 class="about-section__title">Find me online</h3>
+      <ul class="about-socials">
+        {
+          socials.map((social) => (
+            <AboutSocialItem
+              id={social.id}
+              label={social.label}
+              href={social.href}
+              Icon={social.Icon}
+            />
+          ))
+        }
+      </ul>
+    </section>
+    <section class="about-section" id="find-online">
+      <h3 class="about-section__title">Tech stack</h3>
+      <ul class="tech-stack">
+        <li class="tech-stack__item"><TypeScriptColorIcon /> TypeScript</li>
+        <li class="tech-stack__item"><JavaScriptColorIcon /> JavaScript</li>
+        <li class="tech-stack__item"><BunIcon /> Bun</li>
+        <li class="tech-stack__item"><ElysiaIcon /> Elysia</li>
+        <li class="tech-stack__item"><SvelteIcon /> Svelte</li>
+        <li class="tech-stack__item"><PostgreSQLIcon /> PostgreSQL</li>
+        <li class="tech-stack__item"><RedisIcon /> Redis</li>
+        <li class="tech-stack__item"><NginxColorIcon /> Nginx</li>
+        <li class="tech-stack__item"><DockerColorIcon /> Docker</li>
+        <li class="tech-stack__item"><AstroIcon /> Astro</li>
+        <li class="tech-stack__item"><NuxtIcon /> Nuxt</li>
+        <li class="tech-stack__item"><VueIcon /> Vue</li>
+        <li class="tech-stack__item"><PythonColorIcon /> Python</li>
+        <li class="tech-stack__item"><S3Icon /> S3</li>
+        <li class="tech-stack__item"><GitIcon /> Git</li>
+        <li class="tech-stack__item"><WebpackIcon /> Webpack</li>
+        <li class="tech-stack__item"><NodeColorIcon /> Node.js</li>
+        <li class="tech-stack__item"><MySQLIcon /> MySQL</li>
+      </ul>
+    </section>
+    <section class="about-section" id="find-online">
+      <h3 class="about-section__title">Donate me</h3>
+      <ul class="about-socials">
+        {
+          donateLinks.map((donate) => (
+            <AboutSocialItem
+              id={donate.id}
+              label={donate.label}
+              href={donate.href}
+              Icon={donate.Icon}
+            />
+          ))
+        }
+      </ul>
+    </section>
+  </SectionWrapper>
+</Layout>
+
+<script>
+  // btoa("<your_email>")
+  const ENCODED_EMAIL = "dG9pbC5jb250YWN0QHlhbmRleC5jb20=";
+
+  function main() {
+    const emailItem = document.querySelector('[data-social="email"]');
+    if (!emailItem) {
+      return;
+    }
+
+    emailItem.addEventListener("click", (e) => {
+      e.preventDefault();
+      navigator.clipboard.writeText(atob(ENCODED_EMAIL));
+      // TODO: Replace with a toast
+      alert("Email address copied.");
+    });
+  }
+
+  main();
+</script>
+
+<style>
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 0.75rem;
+  }
+
+  .tech-stack__item {
+    background: var(--onsurface-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  :global(.tech-stack__item svg) {
+    width: 20px;
+    height: 20px;
+  }
+
+  .about-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .about-section {
+    background: var(--surface-bg);
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+  }
+
+  .about-section__title {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .about-socials {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 0.5rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    .about-section {
+      width: 100%;
+    }
+  }
+</style>

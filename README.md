@@ -1,62 +1,43 @@
-# Toiloff
+# Toiloff — Personal Website
 
-**Toiloff** - это мой персональный сайт, единственная цель которого рассказать немного обо мне и моих проектах. Сайт написан с помощью **Nuxt 3.16** и препроцессора **SASS**. На сайте имеется перевод на русский и английский языки, смена темы, а так же оптимизация изображений с помощью **NuxtImage**.
+My personal website, built with [Astro 7](https://astro.build) and [Bun](https://bun.sh).
 
----
+## Getting Started
 
-## Установка
+Also, you need [toiloff-backend](https://github.com/ilyhalight/toiloff-backend)!
 
-1. Установите зависимости
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
+```sh
+git clone https://github.com/ilyhalight/toiloff
+bun install
+bun dev
 ```
 
-2. Заполните порт сервера в .env
+Open [localhost:4321](http://localhost:4321).
 
-## Разработка
+## Admin
 
-Запустите сервер разработки на http://localhost:3000
+To use the admin panel, you need to log in. You can do this by visiting the `/admin/login` page and entering your credentials.
 
-```bash
-npm run dev
-```
+If you open the admin panel without being logged in, you will be redirected to the login page.
 
-## Продакшен
+## Setup
 
-Создайте приложение для продакшена:
-
-```bash
-npm run build
-```
-
-Локальный предварительный просмотр продакшен сборки:
+1. Install [Bun](https://bun.sh/)
+2. Install depends
 
 ```bash
-npm run preview
+bun i
 ```
 
-Запуск с помощью PM2:
-
-1. Установите зависимости:
+3. Set a `PUBLIC_API_BASE_URL` in .env
+4. Build it
 
 ```bash
-npm install pm2 -g && pm2 install pm2-logrotate
+bun run build
 ```
 
-2. Запустите сервер
+5. Run it
 
 ```bash
-pm2 start ecosystem.config.js
+bun ./dist/server/entry.mjs
 ```
-
-3. [Если пользуетесь Cloudflare] Отключить Minify HTML в Cloudflare для избежания ошибок
-
-Ознакомьтесь с [документацией по развертыванию](https://nuxt.com/docs/getting-started/deployment) для получения дополнительной информации.

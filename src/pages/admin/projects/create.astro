@@ -1,0 +1,29 @@
+---
+export const prerender = false;
+
+import AdminCreateProjectForm from "../../../components/Admin/AdminCreateProjectForm.svelte";
+import AdminProjectPanel from "../../../components/Admin/AdminProjectPanel.svelte";
+import SectionHero from "../../../components/Section/SectionHero.astro";
+import SectionWrapper from "../../../components/Section/SectionWrapper.astro";
+import Layout from "../../../layouts/Layout.astro";
+
+import { AUTH_LOGIN_PAGE } from "../../../lib/api/auth";
+
+const user = Astro.locals.user;
+
+if (!user) {
+  return Astro.redirect(AUTH_LOGIN_PAGE);
+}
+---
+
+<Layout title="Admin projects">
+  <SectionWrapper>
+    <SectionHero
+      eyebrow="Admin"
+      title="Projects"
+      description="Create and organize your projects!"
+    />
+
+    <AdminCreateProjectForm client:load />
+  </SectionWrapper>
+</Layout>

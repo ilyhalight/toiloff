@@ -1,0 +1,67 @@
+---
+import StarIcon from "../Icones/StarIcon.astro";
+import CodeCommitsIcon from "../Icones/CodeCommitsIcon.astro";
+import FlameIcon from "../Icones/FlameIcon.astro";
+import CloudsIcon from "../Icones/CloudsIcon.astro";
+import TypeScriptIcon from "../Icones/TypeScriptIcon.astro";
+import StatsItem from "./StatsItem.astro";
+import StatsItemContent from "./StatsItemContent.astro";
+import { BackendAPI } from "../../lib/api";
+import type { StatsData } from "../../lib/api/stats";
+
+const DEFUALT_DATA: StatsData = {
+  github: {
+    stars: "-",
+    commits: "-",
+  },
+  tokens: {
+    total: "-",
+    month: "-",
+  },
+};
+const { github, tokens } = await BackendAPI.stats
+  .load()
+  .catch(() => DEFUALT_DATA);
+---
+
+<ul class="stats">
+  <StatsItem title="Github">
+    <StatsItemContent value={github.stars} label="Stars">
+      <StarIcon />
+    </StatsItemContent>
+    <StatsItemContent value={github.commits} label="Commits">
+      <CodeCommitsIcon />
+    </StatsItemContent>
+  </StatsItem>
+  <StatsItem title="Tokens wasted">
+    <StatsItemContent value={tokens.total} label="Total">
+      <FlameIcon />
+    </StatsItemContent>
+    <StatsItemContent value={tokens.month} label="30 days">
+      <CloudsIcon />
+    </StatsItemContent>
+  </StatsItem>
+  <StatsItem title="Favorite language">
+    <StatsItemContent
+      value="TypeScript"
+      label="Fell in love"
+      dataItem="typescript"
+    >
+      <TypeScriptIcon />
+    </StatsItemContent>
+  </StatsItem>
+</ul>
+
+<style>
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  @media screen and (max-width: 450px) {
+    .stats {
+      flex-direction: column;
+    }
+  }
+</style>

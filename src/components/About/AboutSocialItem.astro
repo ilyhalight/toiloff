@@ -1,0 +1,132 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  href: string;
+  Icon: any;
+}
+
+const { id, label, href, Icon } = Astro.props;
+---
+
+<li class="about-socials__item" data-social={id}>
+  <a class="about-socials__item-link text-truncate" href={href}>
+    <span class="about-socials__item-link-icon">
+      <Icon />
+    </span>
+    {label}
+  </a>
+</li>
+
+<style>
+  .about-socials__item {
+    border-radius: 0.75rem;
+    background: var(--onsurface-bg);
+    user-select: none;
+    transition: background 0.25s ease;
+  }
+
+  .about-socials__item-link {
+    display: flex;
+    padding: 0.5rem 1.25rem;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .about-socials__item:hover {
+    background: var(--onsurface-hover-bg);
+  }
+
+  [data-social="telegram"] {
+    background: #24a1de;
+  }
+
+  [data-social="vk"] {
+    background: #0077ff;
+  }
+
+  [data-social="steam"] {
+    background: #2c2e35;
+  }
+
+  [data-social="shikimori"] {
+    background: #343434;
+  }
+
+  [data-social="mangalib"] {
+    background: #ef6c00;
+  }
+
+  [data-social="scrobbles"] {
+    background: #d1170e;
+  }
+
+  [data-social="boosty"] {
+    background: #ef7729;
+  }
+
+  [data-social="lolzteam"] {
+    background: #2bad72;
+  }
+
+  :global([data-theme="light"]) [data-social="telegram"],
+  :global([data-theme="light"]) [data-social="vk"],
+  :global([data-theme="light"]) [data-social="steam"],
+  :global([data-theme="light"]) [data-social="shikimori"],
+  :global([data-theme="light"]) [data-social="mangalib"],
+  :global([data-theme="light"]) [data-social="scrobbles"],
+  :global([data-theme="light"]) [data-social="boosty"],
+  :global([data-theme="light"]) [data-social="lolzteam"] {
+    color: #fff;
+  }
+
+  [data-social="telegram"]:hover {
+    background: #4290b8;
+  }
+
+  [data-social="vk"]:hover {
+    background: #348bee;
+  }
+
+  [data-social="steam"]:hover {
+    background: #3e4047;
+  }
+
+  [data-social="shikimori"]:hover {
+    background: #494848;
+  }
+
+  [data-social="mangalib"]:hover {
+    background: #ec7c1f;
+  }
+
+  [data-social="scrobbles"]:hover {
+    background: #e73930;
+  }
+
+  [data-social="boosty"]:hover {
+    background: #f7873d;
+  }
+
+  [data-social="lolzteam"]:hover {
+    background: #2ed88b;
+  }
+
+  .about-socials__item-link-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  :global(.about-socials__item-link-icon svg) {
+    width: 28px;
+    height: 28px;
+  }
+
+  @media screen and (max-width: 500px) {
+    .about-socials__item {
+      width: 100%;
+    }
+  }
+</style>

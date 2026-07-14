@@ -1,0 +1,42 @@
+<script lang="ts">
+  import ReplyIcon from "../Icones/ReplyIcon.svelte";
+
+  interface Props {
+    content: string;
+  }
+
+  const { content } = $props();
+</script>
+
+<div class="guestbook-message__reply">
+  <div class="guestbook-message__reply-title">Replied:</div>
+  <div class="guestbook-message__reply-data">
+    <span class="guestbook-message__reply-icon">
+      <ReplyIcon />
+    </span>
+    <p class="guestbook-message__reply-content text-wrap">{content}</p>
+  </div>
+</div>
+
+<style>
+  .guestbook-message__reply {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-muted);
+  }
+
+  .guestbook-message__reply-icon {
+    transform: rotate(180deg);
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  :global(.guestbook-message__reply-icon svg) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .guestbook-message__reply-data {
+    display: flex;
+  }
+</style>

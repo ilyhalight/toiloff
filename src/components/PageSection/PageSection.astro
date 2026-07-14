@@ -1,0 +1,62 @@
+---
+type LinkItem = {
+  href: string;
+  name: string;
+};
+
+interface Props {
+  title: string;
+  link?: LinkItem;
+}
+
+const { title, link } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-head">
+    <h2 class="section-head__title">{title}</h2>
+    {
+      link && (
+        <a class="section-head__link button button_outline" href={link.href}>
+          {link.name}
+        </a>
+      )
+    }
+  </div>
+  <slot />
+</section>
+
+<style>
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    user-select: none;
+  }
+
+  .section-head__title {
+    font-size: 2.75rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    .section-head {
+      flex-direction: column;
+    }
+
+    .section-head__title {
+      font-size: 3.25rem;
+    }
+
+    .section-head__link {
+      width: 100%;
+    }
+  }
+</style>

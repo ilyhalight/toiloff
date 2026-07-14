@@ -1,0 +1,72 @@
+---
+import Guestbook from "./Guestbook.svelte";
+import SectionCard from "../Section/SectionCard.svelte";
+import GuestbookForm from "./GuestbookForm.svelte";
+import { BackendAPI } from "../../lib/api";
+import SystemMessage from "../SystemMessage.svelte";
+
+const DEFAULT_ITEM = {
+  items: [],
+  nextCursor: null,
+  isOffline: true,
+};
+
+const data = await BackendAPI.guestbook.load().catch(() => DEFAULT_ITEM);
+const isOnline = !Object.hasOwn(data, "isOffline");
+const { items: publicMessages, nextCursor } = data;
+---
+
+<div class="guestbook-page__content">
+  <aside class="guestbook-page__form" aria-label="Create guestbook message">
+    <GuestbookForm client:load />
+  </aside>
+
+  <div class="guestbook-page__messages">
+    <SectionCard title="Recent messages"
+      >All guestbook messages are moderated before they appear here.
+    </SectionCard>
+
+    {
+      isOnline ? (
+        <Guestbook messages={publicMessages} {nextCursor} client:load />
+      ) : (
+        <SystemMessage
+          title="Guestbook is offline"
+          description="The guestbook isn't available right now. Please try again in a few minutes."
+          isError={true}
+        />
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .guestbook-page__content {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.22fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .guestbook-page__form {
+    position: sticky;
+    top: 7rem;
+  }
+
+  .guestbook-page__messages {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  @media screen and (max-width: 860px) {
+    .guestbook-page__content {
+      grid-template-columns: 1fr;
+    }
+
+    .guestbook-page__form {
+      position: static;
+    }
+  }
+</style>

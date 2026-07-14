@@ -1,0 +1,85 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+}
+
+const { eyebrow, title, description } = Astro.props;
+---
+
+<header class="section-hero">
+  <div class="section-hero__content">
+    <p class="section-hero__eyebrow">{eyebrow}</p>
+    <h2 class="section-hero__title">{title}</h2>
+    <p class="section-hero__description">
+      {description}
+    </p>
+  </div>
+</header>
+
+<style>
+  .section-hero {
+    position: relative;
+    display: flex;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border-radius: 1.5rem;
+    background:
+      radial-gradient(
+        circle at 12% 20%,
+        color-mix(in srgb, var(--primary-color), transparent 72%),
+        transparent 28rem
+      ),
+      linear-gradient(
+        135deg,
+        var(--surface-bg),
+        color-mix(in srgb, var(--surface-bg), var(--background) 35%)
+      );
+  }
+
+  .section-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        115deg,
+        transparent 0 45%,
+        color-mix(in srgb, var(--stroke-color), transparent 35%) 45% 45.2%,
+        transparent 45.2% 100%
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 5rem,
+        color-mix(in srgb, var(--stroke-color), transparent 72%) 5rem 5.05rem
+      );
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  .section-hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    z-index: 1;
+  }
+
+  .section-hero__eyebrow {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .section-hero__title {
+    font-size: clamp(3.5rem, 12vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: -0.08em;
+  }
+
+  .section-hero__description {
+    max-width: 44rem;
+    color: var(--text-muted);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+</style>

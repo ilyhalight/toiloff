@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import PageSection from "../components/PageSection/PageSection.astro";
+import Projects from "../components/Projects/Projects.svelte";
+import Stats from "../components/Stats/Stats.astro";
+import GuestbookContent from "../components/Guestbook/GuestbookContent.astro";
+import SectionHero from "../components/Section/SectionHero.astro";
+import SectionWrapper from "../components/Section/SectionWrapper.astro";
+import { BackendAPI } from "../lib/api";
+
+const projects = await BackendAPI.projects.loadMain().catch(() => []);
+---
+
+<Layout title="Home">
+  <Hero />
+  <PageSection
+    title="Projects"
+    link={{
+      href: "/projects",
+      name: "View all",
+    }}
+  >
+    <Projects {projects} />
+  </PageSection>
+  <PageSection title="Stats">
+    <Stats />
+  </PageSection>
+
+  <SectionWrapper>
+    <SectionHero
+      eyebrow={"Public notes"}
+      title={"Guestbook"}
+      description={"Leave a small message, or just say hi."}
+    />
+    <GuestbookContent />
+  </SectionWrapper>
+</Layout>

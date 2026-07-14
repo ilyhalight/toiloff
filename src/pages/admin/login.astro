@@ -1,0 +1,27 @@
+---
+export const prerender = false;
+
+import { ADMIN_DASHBOARD_PAGE } from "../../lib/api/auth";
+
+import AdminLoginForm from "../../components/Admin/AdminLoginForm.svelte";
+import SectionHero from "../../components/Section/SectionHero.astro";
+import SectionWrapper from "../../components/Section/SectionWrapper.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const user = Astro.locals.user;
+
+if (user) {
+  return Astro.redirect(ADMIN_DASHBOARD_PAGE);
+}
+---
+
+<Layout title="Admin login">
+  <SectionWrapper>
+    <SectionHero
+      eyebrow="Admin"
+      title="Login"
+      description="Set the admin token used by private dashboard pages."
+    />
+    <AdminLoginForm client:load />
+  </SectionWrapper>
+</Layout>
