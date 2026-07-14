@@ -15,7 +15,7 @@
   ];
 
   let error = $state<Error | null>(null);
-  let isLoading = $state(false);
+  let isLoading = $state(true);
   let nextCursor: string | null = $state(null);
   let projects = $state<Projects>([]);
 

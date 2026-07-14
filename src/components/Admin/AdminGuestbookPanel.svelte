@@ -8,7 +8,6 @@
     GuestbookEntry,
     GuestbookEntryStatus,
   } from "../../lib/api/guestbook";
-  import FormField from "../Form/FormField.svelte";
   import GuestbookMessageEdit from "../Guestbook/GuestbookMessageEdit.svelte";
 
   let filters = $state([
@@ -18,7 +17,7 @@
     { title: "All", count: 0, value: "" },
   ]);
   let selectedId = $state(0);
-  let isLoading = $state(false);
+  let isLoading = $state(true);
   let nextCursor: string | null = $state(null);
   let error = $state<Error | null>(null);
   let messages = $state<GuestbookEntry[]>([]);
