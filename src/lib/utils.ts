@@ -1,3 +1,5 @@
+const MS_IN_DAY = 24 * 60 * 60 * 1000;
+
 export const toFormData = (obj: Record<string, unknown>): FormData => {
   const formData = new FormData();
   for (const [key, value] of Object.entries(obj)) {
@@ -19,3 +21,7 @@ export const dateFormatter = Intl.DateTimeFormat("en", {
   month: "long",
   year: "numeric",
 });
+
+export function daysBetween(a: number, b: number) {
+  return Math.floor(Math.abs(b - a) / MS_IN_DAY);
+}

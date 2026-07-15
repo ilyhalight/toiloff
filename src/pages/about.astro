@@ -32,6 +32,7 @@ import BoostyIcon from "../components/Icones/BoostyIcon.svelte";
 import LolzteamIcon from "../components/Icones/LolzteamIcon.svelte";
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
+import { daysBetween } from "../lib/utils";
 
 const socials = [
   {
@@ -93,6 +94,14 @@ const donateLinks = [
     Icon: LolzteamIcon,
   },
 ] as const;
+
+const currentDate = new Date()
+const currentYear = currentDate.getFullYear()
+const birthdayDate = new Date(`${currentYear}-09-14T23:59:59`)
+if (currentDate > birthdayDate) {
+  birthdayDate.setFullYear(currentYear+1)
+}
+const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime())
 ---
 
 <Layout title="About">
@@ -104,7 +113,7 @@ const donateLinks = [
     />
     <ul class="about-list">
       <AboutCard title="WHOAMI" content="Ilya" subcontent="Fullstack dev" />
-      <AboutCard title="BIRTHDAY" content="Sep 14" subcontent="77 days away" />
+      <AboutCard title="BIRTHDAY" content="Sep 14" subcontent={birthdayIn ? `${birthdayIn} days away` : "today"} />
       <AboutCard title="LOCATION" content="Russia" subcontent="& web" />
       <AboutCard
         title="FAV MUSIC"
