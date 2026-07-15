@@ -6,15 +6,13 @@
   import { BackendAPI } from "../../lib/api/";
   import Form from "../Form/Form.svelte";
   import FormDropzone from "../Form/FormDropzone.svelte";
-  import FormLabel from "../Form/FormLabel.svelte";
+  import FormDropzoneWrapper from "../Form/FormDropzoneWrapper.svelte";
 
   let username = $state("");
   let content = $state("");
   let link: string | undefined = $state(undefined);
   let linkLabel: string | undefined = $state(undefined);
   let avatar: File | undefined = $state(undefined);
-
-  const MAX_AVATAR_SIZE = 1024 * 1024 * 5; // 5MB
 
   let status: Status = $state({
     isHidden: true,
@@ -42,24 +40,8 @@
   }
 
   async function inputAvatarHandle(files: FileList | null) {
-    const file = files?.[0];
+    const file = files?.item(0);
     if (!file) {
-      return;
-    }
-
-    if (file.size > MAX_AVATAR_SIZE) {
-      // TODO: rewrite with toast
-      alert("File too large. Max size is 5MB.");
-      return;
-    }
-
-    if (
-      !["image/png", "image/jpeg", "image/gif", "image/webp"].includes(
-        file.type,
-      )
-    ) {
-      // TODO: rewrite with toast
-      alert("Invalid file format. Supported formats: PNG, JPEG, GIF, WEBP.");
       return;
     }
 
@@ -118,22 +100,13 @@
       bind:value={linkLabel}
     ></FormField>
 
-    <div class="form-dropzone__wrapper">
-      <FormLabel title="Avatar" />
+    <FormDropzoneWrapper title="Avatar">
       <FormDropzone
         infoText="Поддерживаемые форматы: PNG, JPEG, GIF, WEBP"
         maxFileText="5MB"
         accept="image/png, image/jpeg, image/gif, image/webp"
         oninput={inputAvatarHandle}
       />
-    </div>
+    </FormDropzoneWrapper>
   {/snippet}
 </Form>
-
-<style>
-  .form-dropzone__wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-</style>

@@ -1,34 +1,90 @@
 <script lang="ts">
+  type ValidationErrorStatus = {
+    msg: string;
+    success: false;
+  };
+  type ValidationSuccessStatus = {
+    msg: null;
+    success: true;
+  };
+
+  type ValidationStatus = ValidationErrorStatus | ValidationSuccessStatus;
+
   type Props = {
     loading?: boolean;
+    shouldValidate?: boolean;
     infoText: string;
     maxFileText?: string;
+    maxFileSize?: number;
     accept: string | null | undefined;
     oninput: (files: FileList | null) => Promise<void>;
+    onerror?: (err: ValidationErrorStatus) => Promise<void>;
   };
+
+  const MAX_FILE_SIZE = 1024 * 1024 * 5; // 5MB
 
   let {
     loading = false,
+    shouldValidate = true,
     infoText,
     maxFileText,
     accept,
     oninput,
+    onerror = () => new Promise((resolve) => resolve()),
   }: Props = $props();
 
   const uid = $props.id();
   let inputElement: HTMLInputElement;
   let fileDragging = $state(false);
   let hasFile = $state(false);
+  let acceptTypes = $derived(accept?.split(", "));
+  let acceptTypeNames = $derived(
+    acceptTypes?.map((acceptType) => acceptType.split("/")?.[1]?.toUpperCase()),
+  );
 
   async function inputFileHandle() {
     if (loading) {
       return;
     }
 
-    console.log(inputElement.files);
     hasFile = true;
+    if (!shouldValidate || !inputElement.files) {
+      return await oninput(inputElement.files);
+    }
+
+    const error = Array.from(inputElement.files)
+      .map((file) => validateFile(file))
+      .find((result) => !result.success);
+    if (error) {
+      // TODO: rewrite with toast
+      alert(error.msg);
+      return await onerror(error);
+    }
 
     return await oninput(inputElement.files);
+  }
+
+  export function validateFile(file: File | null): ValidationStatus {
+    if (!file) {
+      return { msg: "File not found", success: false };
+    }
+
+    // make it as variable
+    if (file.size > MAX_FILE_SIZE) {
+      return { msg: "File too large. Max size is 5MB.", success: false };
+    }
+
+    if (acceptTypes && !acceptTypes.includes(file.type)) {
+      return {
+        msg: `Invalid file format. Supported formats: ${acceptTypeNames}.`,
+        success: false,
+      };
+    }
+
+    return {
+      msg: null,
+      success: true,
+    };
   }
 </script>
 
