@@ -14,7 +14,7 @@
   const { title, links }: Props = $props();
 </script>
 
-<SectionCard {title}>
+<SectionCard {title} compactText={false}>
   <ul class="admin-actions">
     {#each links as link}
       <li class="admin-actions__item-wrapper">
