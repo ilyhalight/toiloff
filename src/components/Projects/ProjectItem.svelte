@@ -60,11 +60,17 @@
     cursor: pointer;
     user-select: none;
     border-radius: 0.85rem;
-    aspect-ratio: 16 / 9;
+  }
+
+  @media screen and (min-width: 704px) {
+    .project-item__image-wrapper {
+      max-height: 170px;
+    }
   }
 
   .project-item__image {
     width: 100%;
+    border-radius: 0.85rem;
     object-fit: cover;
     transition: transform 0.3s ease;
   }
