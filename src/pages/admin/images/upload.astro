@@ -1,0 +1,28 @@
+---
+export const prerender = false;
+
+import AdminsImagesUpload from "../../../components/Admin/AdminsImagesUpload.svelte";
+import SectionHero from "../../../components/Section/SectionHero.astro";
+import SectionWrapper from "../../../components/Section/SectionWrapper.astro";
+import Layout from "../../../layouts/Layout.astro";
+
+import { AUTH_LOGIN_PAGE } from "../../../lib/api/auth";
+
+const user = Astro.locals.user;
+
+if (!user) {
+  return Astro.redirect(AUTH_LOGIN_PAGE);
+}
+---
+
+<Layout title="Admin images">
+  <SectionWrapper>
+    <SectionHero
+      eyebrow="Admin"
+      title="Images"
+      description="Upload a new image!"
+    />
+
+    <AdminsImagesUpload client:load />
+  </SectionWrapper>
+</Layout>

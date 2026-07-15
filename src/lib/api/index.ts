@@ -1,3 +1,4 @@
+import { AdminImagesRouteAPI } from "./adminImages";
 import { AuthRouteAPI } from "./auth";
 import { GuestbookRouteAPI } from "./guestbook";
 import { ProjetsRouteAPI } from "./projects";
@@ -8,4 +9,5 @@ export const BackendAPI = {
   auth: AuthRouteAPI,
   stats: StatsRouteAPI,
   projects: ProjetsRouteAPI,
+  adminImages: AdminImagesRouteAPI,
 };

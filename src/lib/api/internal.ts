@@ -1,7 +1,9 @@
 import { z } from "astro/zod";
 import { PUBLIC_API_BASE_URL } from "astro:env/client";
 
-export const AVATAR_BASE_URL = `${PUBLIC_API_BASE_URL}/public/avatars/`;
+export const BASE_PUBLIC_URL = `${PUBLIC_API_BASE_URL}/public`;
+export const AVATAR_BASE_URL = `${BASE_PUBLIC_URL}/avatars/`;
+export const IMAGES_BASE_URL = `${BASE_PUBLIC_URL}/images/`;
 const API_USER_CLIENT = "toiloff-frontend/1.0.0";
 
 type APIError = Record<"error", string>;
