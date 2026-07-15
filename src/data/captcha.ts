@@ -1,3 +1,5 @@
+import { PUBLIC_API_BASE_URL } from "astro:env/client";
+
 export default {
-  challengeUrl: "http://127.0.0.1:3001/v1/captcha/challenge",
+  challengeUrl: `${PUBLIC_API_BASE_URL}/captcha/challenge`,
 } as const;
