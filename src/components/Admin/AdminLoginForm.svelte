@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { tmAlert } from "../../lib/alert";
   import { BackendAPI } from "../../lib/api";
   import Form from "../Form/Form.svelte";
   import FormField from "../Form/FormField.svelte";
@@ -11,8 +12,8 @@
     await BackendAPI.auth.getToken({ username, password }, captchaPayload);
   }
 
-  const onSuccess = () => {
-    console.log("Login successful! Redirecting to admin panel...");
+  const onSuccess = async () => {
+    await tmAlert("Login successful!");
     window.location.assign("/admin");
   };
 </script>

@@ -4,6 +4,7 @@
   import Form from "../Form/Form.svelte";
   import FormField from "../Form/FormField.svelte";
   import FormHead from "../Form/FormHead.svelte";
+  import { tmAlert } from "../../lib/alert";
 
   type Props = {
     project: Project;
@@ -16,9 +17,7 @@
   }
 
   async function onSuccess() {
-    console.log(
-      "Successfully deleted project! Redirecting to projects list...",
-    );
+    await tmAlert("Successfully deleted project!");
     window.location.assign("/admin/projects");
   }
 </script>

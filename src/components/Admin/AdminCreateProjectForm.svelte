@@ -4,6 +4,7 @@
   import FormField from "../Form/FormField.svelte";
   import FormHead from "../Form/FormHead.svelte";
   import FormSwitch from "../Form/FormSwitch.svelte";
+  import { tmAlert } from "../../lib/alert";
 
   let title = $state("");
   let description = $state("");
@@ -24,9 +25,7 @@
   }
 
   async function onSuccess() {
-    console.log(
-      "Successfully added new project! Redirecting to projects list...",
-    );
+    await tmAlert("Successfully added new project!");
     window.location.assign("/admin/projects");
   }
 </script>

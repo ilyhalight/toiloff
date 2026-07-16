@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { tmAlert } from "../../lib/alert";
   import { BackendAPI } from "../../lib/api";
   import Form from "../Form/Form.svelte";
   import FormDropzone from "../Form/FormDropzone.svelte";
@@ -15,8 +16,8 @@
     await BackendAPI.adminImages.upload(image);
   }
 
-  const onSuccess = () => {
-    console.log("Uploaded successful! Redirecting to images admin panel...");
+  const onSuccess = async () => {
+    await tmAlert("Upload image successful!");
     window.location.assign("/admin/images");
   };
 
@@ -46,7 +47,7 @@
 
     <FormDropzoneWrapper title="Image" required={true}>
       <FormDropzone
-        infoText="Поддерживаемые форматы: PNG, JPEG, GIF, WEBP"
+        infoText="Supported formats: PNG, JPEG, GIF, WEBP"
         maxFileText="5MB"
         accept="image/png, image/jpeg, image/gif, image/webp"
         oninput={inputFileHandle}

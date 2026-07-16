@@ -95,13 +95,13 @@ const donateLinks = [
   },
 ] as const;
 
-const currentDate = new Date()
-const currentYear = currentDate.getFullYear()
-const birthdayDate = new Date(`${currentYear}-09-14T23:59:59`)
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const birthdayDate = new Date(`${currentYear}-09-14T23:59:59`);
 if (currentDate > birthdayDate) {
-  birthdayDate.setFullYear(currentYear+1)
+  birthdayDate.setFullYear(currentYear + 1);
 }
-const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime())
+const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime());
 ---
 
 <Layout title="About">
@@ -113,7 +113,11 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime())
     />
     <ul class="about-list">
       <AboutCard title="WHOAMI" content="Ilya" subcontent="Fullstack dev" />
-      <AboutCard title="BIRTHDAY" content="Sep 14" subcontent={birthdayIn ? `${birthdayIn} days away` : "today"} />
+      <AboutCard
+        title="BIRTHDAY"
+        content="Sep 14"
+        subcontent={birthdayIn ? `${birthdayIn} days away` : "today"}
+      />
       <AboutCard title="LOCATION" content="Russia" subcontent="& web" />
       <AboutCard
         title="FAV MUSIC"
@@ -184,6 +188,8 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime())
 </Layout>
 
 <script>
+  import { tmAlert } from "../lib/alert";
+
   // btoa("<your_email>")
   const ENCODED_EMAIL = "dG9pbC5jb250YWN0QHlhbmRleC5jb20=";
 
@@ -193,11 +199,12 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime())
       return;
     }
 
-    emailItem.addEventListener("click", (e) => {
+    emailItem.addEventListener("click", async (e) => {
       e.preventDefault();
-      navigator.clipboard.writeText(atob(ENCODED_EMAIL));
-      // TODO: Replace with a toast
-      alert("Email address copied.");
+      await Promise.all([
+        navigator.clipboard.writeText(atob(ENCODED_EMAIL)),
+        tmAlert("Email address copied!"),
+      ]);
     });
   }
 
