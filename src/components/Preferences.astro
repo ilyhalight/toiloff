@@ -27,7 +27,9 @@ const { title = "Preferences" } = Astro.props;
 
 <script>
   function initPreferences() {
-    if (document.documentElement.dataset.preferencesOutsideClickBound === "true") {
+    if (
+      document.documentElement.dataset.preferencesOutsideClickBound === "true"
+    ) {
       return;
     }
 
@@ -44,9 +46,8 @@ const { title = "Preferences" } = Astro.props;
         return;
       }
 
-      const preferencesList = document.querySelectorAll<HTMLDetailsElement>(
-        "[data-preferences]"
-      );
+      const preferencesList =
+        document.querySelectorAll<HTMLDetailsElement>("[data-preferences]");
       for (const preferences of preferencesList) {
         preferences.open = false;
       }
@@ -112,7 +113,7 @@ const { title = "Preferences" } = Astro.props;
     border: 1px solid var(--stroke-color);
     border-radius: 1.25rem;
     background: var(--header-bg);
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.26);
+    box-shadow: var(--overlay-shadow);
     backdrop-filter: blur(48px);
   }
 
