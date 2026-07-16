@@ -102,7 +102,7 @@
 
     <FormDropzoneWrapper title="Avatar">
       <FormDropzone
-        infoText="Поддерживаемые форматы: PNG, JPEG, GIF, WEBP"
+        infoText="Supported formats: PNG, JPEG, GIF, WEBP"
         maxFileText="5MB"
         accept="image/png, image/jpeg, image/gif, image/webp"
         oninput={inputAvatarHandle}

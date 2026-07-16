@@ -80,7 +80,6 @@
       return form.reportValidity();
     }
 
-    console.log(captchaWidget);
     if (!enabledCaptcha || !captchaWidget) {
       buttonText = "Sending...";
       return await submitForm();

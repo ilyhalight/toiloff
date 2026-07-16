@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { tmAlert } from "../../lib/alert";
+
   type ValidationErrorStatus = {
     msg: string;
     success: false;
@@ -38,17 +40,14 @@
   let fileDragging = $state(false);
   let hasFile = $state(false);
   let acceptTypes = $derived(accept?.split(", "));
-  let acceptTypeNames = $derived(
-    acceptTypes?.map((acceptType) => acceptType.split("/")?.[1]?.toUpperCase()),
-  );
 
   async function inputFileHandle() {
     if (loading) {
       return;
     }
 
-    hasFile = true;
     if (!shouldValidate || !inputElement.files) {
+      hasFile = true;
       return await oninput(inputElement.files);
     }
 
@@ -56,11 +55,12 @@
       .map((file) => validateFile(file))
       .find((result) => !result.success);
     if (error) {
-      // TODO: rewrite with toast
-      alert(error.msg);
+      inputElement.files = null;
+      await tmAlert(error.msg);
       return await onerror(error);
     }
 
+    hasFile = true;
     return await oninput(inputElement.files);
   }
 
@@ -71,12 +71,12 @@
 
     // make it as variable
     if (file.size > MAX_FILE_SIZE) {
-      return { msg: "File too large. Max size is 5MB.", success: false };
+      return { msg: "File too large!", success: false };
     }
 
     if (acceptTypes && !acceptTypes.includes(file.type)) {
       return {
-        msg: `Invalid file format. Supported formats: ${acceptTypeNames}.`,
+        msg: `Invalid file format!`,
         success: false,
       };
     }
@@ -102,7 +102,6 @@
   }}
   ondragenter={(e) => {
     e.preventDefault();
-    console.log("ondragenter", e);
     fileDragging = true;
   }}
   ondragleave={(e) => {
@@ -111,26 +110,25 @@
   }}
   ondragover={(e) => {
     e.preventDefault();
-    console.log("ondragover", e);
     fileDragging = true;
   }}
 >
   <p class="drop-zone__desc">
     {#if fileDragging}
-      Отпустите, чтобы добавить выбранные файлы
+      Drop to add selected files
     {:else if loading}
-      Загрузка...
+      Uploading...
     {:else if hasFile}
-      Файл выбран
+      File selected
     {:else}
-      Нажмите или перетащите файл
+      Click or drag a file here
     {/if}
   </p>
   <p class="drop-zone__info text-wrap">
     {infoText}
     {#if maxFileText}
       <br />
-      (макс. размер {maxFileText})
+      (max. size {maxFileText})
     {/if}
   </p>
   <input
