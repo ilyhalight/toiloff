@@ -18,11 +18,11 @@
     display: flex;
     padding: 0.5rem;
     outline: none;
-    border: none;
+    border: none !important;
     border-radius: 0.25rem;
   }
 
   .form__actions-item:focus {
-    box-shadow: none;
+    box-shadow: none !important;
   }
 </style>
