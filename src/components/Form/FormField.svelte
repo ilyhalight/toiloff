@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { Snippet } from "svelte";
   import FormLabel from "./FormLabel.svelte";
 
   interface Props {
@@ -21,6 +22,7 @@
       | null;
     value?: string | null;
     disabled?: boolean;
+    children?: Snippet;
   }
 
   let {
@@ -34,6 +36,7 @@
     isTextarea = false,
     disabled = false,
     inputmode,
+    children,
   }: Props = $props();
 </script>
 
@@ -67,12 +70,16 @@
       bind:value
     />
   {/if}
+  {#if children}
+    {@render children()}
+  {/if}
 </label>
 
 <style>
   .form__field {
     display: flex;
     flex-direction: column;
+    position: relative;
     gap: 0.5rem;
   }
 

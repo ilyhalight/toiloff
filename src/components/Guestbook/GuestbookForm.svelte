@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { humanId } from "human-id";
+
   import FormField from "../Form/FormField.svelte";
   import FormHead from "../Form/FormHead.svelte";
   import { type Status } from "../Form/FormStatus.svelte";
@@ -7,6 +9,9 @@
   import Form from "../Form/Form.svelte";
   import FormDropzone from "../Form/FormDropzone.svelte";
   import FormDropzoneWrapper from "../Form/FormDropzoneWrapper.svelte";
+  import RandomIcon from "../Icones/RandomIcon.svelte";
+  import FormActions from "../Form/FormActions.svelte";
+  import FormActionItem from "../Form/FormActionItem.svelte";
 
   let username = $state("");
   let content = $state("");
@@ -47,6 +52,16 @@
 
     avatar = file;
   }
+
+  function randomUsername(e: Event) {
+    e.preventDefault();
+    username = humanId({
+      separator: "-",
+      capitalize: false,
+    })
+      .split("-", 2)
+      ?.join("-");
+  }
 </script>
 
 <Form
@@ -63,6 +78,7 @@
       title="Write smth"
       description="This can be anything, within reason"
     />
+
     <FormField
       title="Name"
       name="username"
@@ -70,7 +86,13 @@
       placeholder="Anonymous"
       required
       bind:value={username}
-    ></FormField>
+    >
+      <FormActions>
+        <FormActionItem onclick={randomUsername}>
+          <RandomIcon />
+        </FormActionItem>
+      </FormActions>
+    </FormField>
 
     <FormField
       title="Message"
