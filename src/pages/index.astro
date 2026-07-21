@@ -7,9 +7,11 @@ import Stats from "../components/Stats/Stats.astro";
 import GuestbookContent from "../components/Guestbook/GuestbookContent.astro";
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
+import Webring from "../components/Webring/Webring.svelte";
 import { BackendAPI } from "../lib/api";
 
 const projects = await BackendAPI.projects.loadMain().catch(() => []);
+const webringData = await BackendAPI.webring.get().catch(() => null);
 ---
 
 <Layout title="Home">
@@ -34,5 +36,8 @@ const projects = await BackendAPI.projects.loadMain().catch(() => []);
       description={"Leave a small message, or just say hi."}
     />
     <GuestbookContent />
+  </SectionWrapper>
+  <SectionWrapper>
+    <Webring {webringData} />
   </SectionWrapper>
 </Layout>

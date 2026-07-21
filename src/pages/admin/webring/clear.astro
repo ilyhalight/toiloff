@@ -1,0 +1,32 @@
+---
+export const prerender = false;
+
+import SectionHero from "../../../components/Section/SectionHero.astro";
+import SectionWrapper from "../../../components/Section/SectionWrapper.astro";
+import AdminConfirmClearCacheForm from "../../../components/Admin/AdminConfirmClearCacheForm.svelte";
+import Layout from "../../../layouts/Layout.astro";
+
+import { AUTH_LOGIN_PAGE } from "../../../lib/api/auth";
+import { BackendAPI } from "../../../lib/api";
+
+const user = Astro.locals.user;
+
+if (!user) {
+  return Astro.redirect(AUTH_LOGIN_PAGE);
+}
+
+async function submitAction() {
+  await BackendAPI.webring.clearCache();
+}
+---
+
+<Layout title="Admin webring">
+  <SectionWrapper>
+    <SectionHero
+      eyebrow="Admin"
+      title="Clear cache"
+      description="Remove cached webring data from the server"
+    />
+    <AdminConfirmClearCacheForm client:load />
+  </SectionWrapper>
+</Layout>
