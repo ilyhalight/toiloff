@@ -20,7 +20,7 @@
         />
       </span>
     {/if}
-    <span class="webring-item__name">
+    <span class="webring-item__name text-wrap">
       {webringItem.name}
     </span>
   </a>
@@ -76,5 +76,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .webring-item__name {
+    width: 100%;
   }
 </style>
