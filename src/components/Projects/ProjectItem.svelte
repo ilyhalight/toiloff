@@ -9,7 +9,7 @@
   let { title, description, href, imageUrl, imageAlt } = $derived(project);
 </script>
 
-<li class="project-item">
+<li class="project-item" data-id={project.id}>
   <a class="project-item__image-wrapper" {href} target="_blank">
     <img
       class="project-item__image"

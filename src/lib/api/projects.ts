@@ -71,4 +71,16 @@ export const ProjetsRouteAPI = {
       { method: "DELETE" },
     );
   },
+  changePosition: async (
+    id: string,
+    afterId: string | null = null,
+    beforeId: string | null = null,
+  ) => {
+    return await fetchFromAPI<Project>(
+      `admin/projects/${id}/position`,
+      JSON.stringify({ afterId, beforeId }),
+      undefined,
+      { method: "PATCH" },
+    );
+  },
 };

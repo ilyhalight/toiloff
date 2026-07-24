@@ -4,18 +4,25 @@
   import ProjectEmpty from "./ProjectEmpty.svelte";
   import ProjectItem from "./ProjectItem.svelte";
 
-  type Props = {
+  export type Props = {
     projects: Project[];
     isAdmin?: boolean;
     children?: any;
+    rootRef?: HTMLElement | null;
   };
 
-  let { projects, isAdmin = false, children }: Props = $props();
+  let {
+    projects,
+    isAdmin = false,
+    children,
+    rootRef = $bindable(),
+  }: Props = $props();
+
   let isEmpty = $derived(projects.length === 0);
   let ProjectComponent = $derived(isAdmin ? ProjectAdminItem : ProjectItem);
 </script>
 
-<ul class="projects" class:projects_admin={isAdmin}>
+<ul class="projects" class:projects_admin={isAdmin} bind:this={rootRef}>
   {#if isEmpty}
     <ProjectEmpty />
   {:else}

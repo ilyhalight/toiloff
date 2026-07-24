@@ -15,7 +15,7 @@ const projectsData = await BackendAPI.projects.getAll().catch(() => ({
 }));
 ---
 
-<Layout title="Admin projects">
+<Layout title="Projects">
   <SectionWrapper>
     <SectionHero
       eyebrow="List"
@@ -24,9 +24,9 @@ const projectsData = await BackendAPI.projects.getAll().catch(() => ({
     />
 
     <ProjectList
+      client:load
       projects={projectsData.items}
       nextCursor={projectsData.nextCursor}
-      client:load
     />
   </SectionWrapper>
 </Layout>

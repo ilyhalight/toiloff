@@ -3,20 +3,33 @@
 
   import { BackendAPI } from "../../lib/api";
   import type { Projects } from "../../lib/api/projects";
-  import ProjectsComponent from "./Projects.svelte";
+  import ProjectsWrapper, {
+    type Props as WrapperProps,
+  } from "./ProjectsWrapper.svelte";
+  import type { Props as SortableWrapperProps } from "./SortableProjectsWrapper.svelte";
   import SectionCard from "../Section/SectionCard.svelte";
   import SectionLoading from "../Section/SectionLoading.svelte";
+  import type { Component } from "svelte";
+
+  type Props = {
+    projects?: Projects;
+    nextCursor?: string | null;
+    autoLoad?: boolean;
+    isAdmin?: boolean;
+    WrapperComponent?: Component<WrapperProps | SortableWrapperProps>;
+  };
+
+  let {
+    projects = $bindable([]),
+    nextCursor = $bindable(null),
+    autoLoad = false,
+    isAdmin = false,
+    WrapperComponent = ProjectsWrapper,
+  }: Props = $props();
 
   let error = $state<Error | null>(null);
   let isLoading = $state(true);
   let isBigScreen = new MediaQuery("min-width: 1040px");
-
-  let {
-    projects = $bindable<Projects>([]),
-    nextCursor = $bindable<string | null>(null),
-    autoLoad = false,
-    isAdmin = false,
-  } = $props();
 
   $effect(() => {
     if (!autoLoad) {
@@ -70,11 +83,11 @@
 {:else if error}
   <SectionCard title="Error">{error.message}</SectionCard>
 {:else}
-  <ProjectsComponent {projects} {isAdmin}>
+  <WrapperComponent {projects} {isAdmin}>
     {#if isBigScreen.current}
       {@render loadMoreBtn()}
     {/if}
-  </ProjectsComponent>
+  </WrapperComponent>
   {#if !isBigScreen.current}
     {@render loadMoreBtn()}
   {/if}

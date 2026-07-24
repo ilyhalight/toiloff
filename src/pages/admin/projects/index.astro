@@ -4,7 +4,7 @@ export const prerender = false;
 import AdminActions, {
   type Link,
 } from "../../../components/Admin/AdminActions.svelte";
-import ProjectList from "../../../components/Projects/ProjectList.svelte";
+import SortableProjectList from "../../../components/Projects/SortableProjectList.svelte";
 import SectionHero from "../../../components/Section/SectionHero.astro";
 import SectionWrapper from "../../../components/Section/SectionWrapper.astro";
 import Layout from "../../../layouts/Layout.astro";
@@ -42,7 +42,7 @@ const projectsData = await BackendAPI.projects.getAll().catch(() => ({
 
     <AdminActions title="Actions" {links} />
 
-    <ProjectList
+    <SortableProjectList
       client:load
       isAdmin={true}
       projects={projectsData.items}

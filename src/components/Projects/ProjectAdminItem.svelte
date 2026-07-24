@@ -2,7 +2,7 @@
   import type { Project } from "../../lib/api/projects";
   import DeleteIcon from "../Icones/DeleteIcon.svelte";
   import EditIcon from "../Icones/EditIcon.svelte";
-  // import GripIcon from "../Icones/GripIcon.svelte";
+  import GripIcon from "../Icones/GripIcon.svelte";
 
   type Props = {
     project: Project;
@@ -11,10 +11,10 @@
   let { project }: Props = $props();
 </script>
 
-<li class="project">
-  <!-- <div class="project-grip">
+<li class="project" data-id={project.id}>
+  <div class="project-grip">
     <GripIcon />
-  </div> -->
+  </div>
   <div class="project-content">
     <h4 class="project-content__title">{project.title}</h4>
     <p class="project-content__desc">{project.description}</p>
@@ -54,13 +54,13 @@
     }
   }
 
-  /* .project-grip {
+  .project-grip {
     display: flex;
     font-size: 1.5rem;
     height: fit-content;
-    cursor: pointer;
+    cursor: grab;
     color: var(--text-muted);
-  } */
+  }
 
   .project-content {
     flex: 1;
