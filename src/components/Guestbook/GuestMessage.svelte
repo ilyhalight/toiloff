@@ -11,10 +11,10 @@
   }
 
   const { hidden = false, message }: Props = $props();
-  const { username, content, href, hrefText, replyText, createdAt, avatarUrl } =
+  const { username, content, href, subText, replyText, createdAt, avatarUrl } =
     $derived(message);
   const messageAvatarUrl = $derived(BackendAPI.guestbook.getAvatar(avatarUrl));
-  const hrefContent = $derived(hrefText ?? href);
+  const subContent = $derived(subText ?? href);
   const messageLink = $derived.by(() => {
     if (!href) {
       return "#";
@@ -27,6 +27,7 @@
     // Stop suspicious links if protocol isn't http(s)
     return href.includes("://") ? "#" : `https://${href}`;
   });
+  const isAllowedMessageLink = $derived(messageLink !== "#");
 </script>
 
 <li class="guestbook-message" {hidden}>
@@ -45,15 +46,17 @@
 
       <div class="guestbook-message__info">
         <h5 class="guestbook-message__info-title text-truncate">{username}</h5>
-        {#if hrefContent}
+        {#if subContent && isAllowedMessageLink}
           <a
-            class="guestbook-message__info-link"
+            class="guestbook-message__info-subtext guestbook-message__info-link"
             href={messageLink}
             target="_blank"
             rel="noopener noreferrer"
           >
-            {hrefContent}
+            {subContent}
           </a>
+        {:else if subContent}
+          <span class="guestbook-message__info-subtext">{subContent}</span>
         {/if}
       </div>
     </div>
@@ -124,7 +127,7 @@
     font-size: 1.25rem;
   }
 
-  .guestbook-message__info:not(:has(.guestbook-message__info-link))
+  .guestbook-message__info:not(:has(.guestbook-message__info-subtext))
     .guestbook-message__info-title {
     font-size: 1.5rem;
   }
@@ -134,14 +137,17 @@
       font-size: 1rem;
     }
 
-    .guestbook-message__info:not(:has(.guestbook-message__info-link))
+    .guestbook-message__info:not(:has(.guestbook-message__info-subtext))
       .guestbook-message__info-title {
       font-size: 1.25rem;
     }
   }
 
-  .guestbook-message__info-link {
+  .guestbook-message__info-subtext {
     color: var(--text-muted);
+  }
+
+  .guestbook-message__info-link {
     transition: color 0.25s ease;
   }
 

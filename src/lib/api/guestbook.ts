@@ -11,7 +11,7 @@ export const GuestbookEntry = z.object({
   content: z.string(),
   status: GuestbookEntryStatus,
   href: z.string().nullable().optional(),
-  hrefText: z.string().nullable().optional(),
+  subText: z.string().nullable().optional(),
   avatarUrl: z.string().nullable().optional(),
   replyText: z.string().nullable().optional(),
   createdAt: z.string(),

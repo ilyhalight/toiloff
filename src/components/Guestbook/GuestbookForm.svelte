@@ -16,7 +16,7 @@
   let username = $state("");
   let content = $state("");
   let link: string | undefined = $state(undefined);
-  let linkLabel: string | undefined = $state(undefined);
+  let subText: string | undefined = $state(undefined);
   let avatar: File | undefined = $state(undefined);
 
   let status: Status = $state({
@@ -37,7 +37,7 @@
         username,
         content,
         href: link,
-        hrefText: linkLabel,
+        subText,
         avatar,
       },
       captchaPayload,
@@ -105,21 +105,21 @@
     ></FormField>
 
     <FormField
-      title="Link"
+      title="Subtext"
+      name="subText"
+      maxLength={32}
+      placeholder="me --> @username"
+      bind:value={subText}
+    ></FormField>
+
+    <FormField
+      title="Subtext link"
       name="href"
       type="url"
       inputmode="url"
       maxLength={512}
       placeholder="https://example.com"
       bind:value={link}
-    ></FormField>
-
-    <FormField
-      title="Link label"
-      name="hrefText"
-      maxLength={32}
-      placeholder="@username"
-      bind:value={linkLabel}
     ></FormField>
 
     <FormDropzoneWrapper title="Avatar">

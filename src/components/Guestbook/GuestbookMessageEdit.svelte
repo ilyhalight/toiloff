@@ -28,6 +28,9 @@
   }: Props = $props();
 
   let isLoading = $state(false);
+  let hasEmptySubText = $derived(!message.href && !message.subText);
+  let subTextContent = $derived(message.subText ?? message.href);
+
   async function loadingWrapper<T>(factory: () => Promise<T>) {
     if (isLoading) {
       return;
@@ -58,26 +61,19 @@
     {/if}
     <div class="message-info">
       <h5 class="message-username text-wrap">{message.username}</h5>
-      <p class="message-link text-wrap" class:is-empty={!message.href}>
-        {#if !message.href}
-          <no link></no>
-        {:else if message.hrefText}
-          {message.hrefText} (<a
-            class="message-link__url"
-            href={message.href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {message.href}
-          </a>)
+      <p class="message-subtext text-wrap" class:is-empty={hasEmptySubText}>
+        {#if hasEmptySubText}
+          {"<without subtext>"}
+        {:else if message.subText && !message.href}
+          {message.subText}
         {:else}
           <a
-            class="message-link__url"
+            class="message-subtext__url"
             href={message.href}
             target="_blank"
             rel="noopener noreferrer"
           >
-            {message.href}
+            {subTextContent}
           </a>
         {/if}
       </p>
@@ -180,8 +176,11 @@
     font-size: 1.25rem;
   }
 
-  .message-link.is-empty {
+  .message-subtext {
     color: var(--text-muted);
+  }
+
+  .message-subtext.is-empty {
     font-size: 0.9rem;
   }
 
@@ -199,7 +198,7 @@
     margin-top: -0.25rem;
   }
 
-  .message-link__url {
+  .message-subtext__url {
     font-weight: 600;
     font-size: 0.85rem;
     color: var(--primary-color);
