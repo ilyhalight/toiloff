@@ -5,6 +5,9 @@ import AdminsImagesUpload from "../../../components/Admin/AdminsImagesUpload.sve
 import SectionHero from "../../../components/Section/SectionHero.astro";
 import SectionWrapper from "../../../components/Section/SectionWrapper.astro";
 import Layout from "../../../layouts/Layout.astro";
+import Breadcrumbs, {
+  type Breadcrumb,
+} from "../../../components/Breadcrumbs/Breadcrumbs.svelte";
 
 import { AUTH_LOGIN_PAGE } from "../../../lib/api/auth";
 
@@ -13,9 +16,25 @@ const user = Astro.locals.user;
 if (!user) {
   return Astro.redirect(AUTH_LOGIN_PAGE);
 }
+
+const breadcrumbs: Breadcrumb[] = [
+  {
+    title: "Admin",
+    href: "/admin",
+  },
+  {
+    title: "Images",
+    href: "/admin/images",
+  },
+  {
+    title: "Upload",
+    href: `/admin/images/upload`,
+  },
+];
 ---
 
 <Layout title="Admin images">
+  <Breadcrumbs {breadcrumbs} />
   <SectionWrapper>
     <SectionHero
       eyebrow="Admin"

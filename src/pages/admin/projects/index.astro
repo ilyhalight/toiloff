@@ -7,6 +7,9 @@ import AdminActions, {
 import SortableProjectList from "../../../components/Projects/SortableProjectList.svelte";
 import SectionHero from "../../../components/Section/SectionHero.astro";
 import SectionWrapper from "../../../components/Section/SectionWrapper.astro";
+import Breadcrumbs, {
+  type Breadcrumb,
+} from "../../../components/Breadcrumbs/Breadcrumbs.svelte";
 import Layout from "../../../layouts/Layout.astro";
 import { BackendAPI } from "../../../lib/api";
 
@@ -25,6 +28,17 @@ const links: Link[] = [
   },
 ];
 
+const breadcrumbs: Breadcrumb[] = [
+  {
+    title: "Admin",
+    href: "/admin",
+  },
+  {
+    title: "Projects",
+    href: "/admin/projects",
+  },
+];
+
 const projectsData = await BackendAPI.projects.getAll().catch(() => ({
   items: [],
   nextCursor: null,
@@ -33,6 +47,8 @@ const projectsData = await BackendAPI.projects.getAll().catch(() => ({
 ---
 
 <Layout title="Admin projects">
+  <Breadcrumbs {breadcrumbs} />
+
   <SectionWrapper>
     <SectionHero
       eyebrow="Admin"

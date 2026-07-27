@@ -5,6 +5,9 @@ import SectionHero from "../../../../components/Section/SectionHero.astro";
 import SectionWrapper from "../../../../components/Section/SectionWrapper.astro";
 import AdminEditProjectForm from "../../../../components/Admin/AdminEditProjectForm.svelte";
 import Layout from "../../../../layouts/Layout.astro";
+import Breadcrumbs, {
+  type Breadcrumb,
+} from "../../../../components/Breadcrumbs/Breadcrumbs.svelte";
 
 import { AUTH_LOGIN_PAGE } from "../../../../lib/api/auth";
 import { getPageProject } from "./index";
@@ -20,9 +23,25 @@ const project = await getPageProject(projectId);
 if (project instanceof Response) {
   return project;
 }
+
+const breadcrumbs: Breadcrumb[] = [
+  {
+    title: "Admin",
+    href: "/admin",
+  },
+  {
+    title: "Projects",
+    href: "/admin/projects",
+  },
+  {
+    title: "Edit",
+    href: `/admin/projects/${projectId}/edit`,
+  },
+];
 ---
 
 <Layout title="Admin projects">
+  <Breadcrumbs {breadcrumbs} />
   <SectionWrapper>
     <SectionHero
       eyebrow="Admin"

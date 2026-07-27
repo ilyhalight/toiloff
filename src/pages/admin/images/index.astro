@@ -8,6 +8,9 @@ import SectionHero from "../../../components/Section/SectionHero.astro";
 import SectionWrapper from "../../../components/Section/SectionWrapper.astro";
 import Layout from "../../../layouts/Layout.astro";
 import AdminsImagesList from "../../../components/Admin/AdminsImagesList.svelte";
+import Breadcrumbs, {
+  type Breadcrumb,
+} from "../../../components/Breadcrumbs/Breadcrumbs.svelte";
 
 import { AUTH_LOGIN_PAGE } from "../../../lib/api/auth";
 
@@ -23,9 +26,21 @@ const links: Link[] = [
     href: "/admin/images/upload",
   },
 ];
+
+const breadcrumbs: Breadcrumb[] = [
+  {
+    title: "Admin",
+    href: "/admin",
+  },
+  {
+    title: "Images",
+    href: "/admin/images",
+  },
+];
 ---
 
 <Layout title="Admin projects">
+  <Breadcrumbs {breadcrumbs} />
   <SectionWrapper>
     <SectionHero
       eyebrow="Admin"

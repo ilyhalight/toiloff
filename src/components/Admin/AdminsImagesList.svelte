@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { tmAlert } from "../../lib/alert";
   import { BackendAPI } from "../../lib/api";
   import SegmentedControl, {
     type Item,
@@ -88,6 +89,7 @@
               usedFilter == "avatars" ? `avatars/${image}` : image;
             await BackendAPI.adminImages.delete(imageId);
             images = images.filter((img) => img !== image);
+            await tmAlert("Image deleted successfully");
           }}
         >
           <DeleteIcon />
