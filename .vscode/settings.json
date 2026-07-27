@@ -1,5 +1,6 @@
 {
     "biome.enabled": false,
     "editor.tabSize": 2,
-    "eslint.enable": false
+    "eslint.enable": false,
+    "oxc.enable.oxlint": false
 }
