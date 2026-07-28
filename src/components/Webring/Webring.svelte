@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { WebringData } from "../../lib/api/webring";
+  import SystemMessage from "../SystemMessage.svelte";
   import WebringItem from "./WebringItem.svelte";
 
   type Props = {
@@ -9,8 +10,8 @@
   let { webringData }: Props = $props();
 </script>
 
-{#if webringData}
-  <section class="webring">
+<section class="webring">
+  {#if webringData}
     <WebringItem webringItem={webringData.prev} pos="left" />
     <div class="webring-middle">
       <span
@@ -20,8 +21,12 @@
       >
     </div>
     <WebringItem webringItem={webringData.next} pos="right" />
-  </section>
-{/if}
+  {:else}
+    <div class="webring-middle webring-is_down">
+      <span>Webring is down (μ_μ)</span>
+    </div>
+  {/if}
+</section>
 
 <style>
   .webring {
@@ -35,6 +40,11 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+  }
+
+  .webring-middle.webring-is_down {
+    color: var(--text-muted);
+    width: 100%;
   }
 
   @media screen and (max-width: 768px) {

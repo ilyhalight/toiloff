@@ -5,7 +5,7 @@
     isError?: boolean;
   }
 
-  const { title, description, isError = false } = $props();
+  const { title, description, isError = false }: Props = $props();
 </script>
 
 <li class={`system-message ${isError ? "system-message_error" : ""}`}>
