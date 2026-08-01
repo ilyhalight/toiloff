@@ -21,6 +21,17 @@ export default defineConfig({
         access: "public",
         default: "http://localhost:4321/api/v1",
       }),
+      PUBLIC_WEBRING_BASE: envField.string({
+        context: "client",
+        access: "public",
+        default: "https://webring.otomir23.me",
+        startsWith: "https://",
+      }),
+      PUBLIC_MY_WEBRING_SLUG: envField.string({
+        context: "client",
+        access: "public",
+        default: "toil",
+      }),
     },
   },
   integrations: [svelte()],

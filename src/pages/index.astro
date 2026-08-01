@@ -38,6 +38,6 @@ const webringData = await BackendAPI.webring.get().catch(() => null);
     <GuestbookContent />
   </SectionWrapper>
   <SectionWrapper>
-    <Webring {webringData} />
+    <Webring {webringData} client:load />
   </SectionWrapper>
 </Layout>

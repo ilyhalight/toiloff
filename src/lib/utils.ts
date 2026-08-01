@@ -25,3 +25,6 @@ export const dateFormatter = Intl.DateTimeFormat("en", {
 export function daysBetween(a: number, b: number) {
   return Math.floor(Math.abs(b - a) / MS_IN_DAY);
 }
+
+export const returnError = (error: unknown) =>
+  Error.isError(error) ? error : new Error((error as string).toString());

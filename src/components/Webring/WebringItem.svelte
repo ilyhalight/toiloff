@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { WebringData, WebringSiteItem } from "../../lib/api/webring";
+  import type { WebringSiteItem } from "../../lib/api/webring";
 
   type Props = {
     webringItem: WebringSiteItem;

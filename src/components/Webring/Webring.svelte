@@ -1,13 +1,29 @@
 <script lang="ts">
-  import type { WebringData } from "../../lib/api/webring";
-  import SystemMessage from "../SystemMessage.svelte";
+  import { onMount } from "svelte";
+
   import WebringItem from "./WebringItem.svelte";
+  import type { WebringData } from "../../lib/api/webring";
+  import { ExternalWebringAPI } from "../../lib/external-api/webring";
 
   type Props = {
     webringData: WebringData | null;
   };
 
   let { webringData }: Props = $props();
+
+  async function updateWebringData() {
+    const data = await ExternalWebringAPI.getData();
+    if (!data) {
+      console.error("Failed to update webring data");
+      return;
+    }
+
+    webringData = data;
+  }
+
+  onMount(() => {
+    void updateWebringData();
+  });
 </script>
 
 <section class="webring">

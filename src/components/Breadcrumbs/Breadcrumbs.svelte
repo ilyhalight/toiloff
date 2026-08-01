@@ -1,5 +1,4 @@
 <script lang="ts">
-  import ChevronRightIcon from "../Icones/ChevronRightIcon.svelte";
   import BreadcrumbsItem from "./BreadcrumbsItem.svelte";
 
   export type Breadcrumb = {
