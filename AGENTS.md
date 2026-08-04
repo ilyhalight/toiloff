@@ -13,7 +13,7 @@ Personal website frontend for Toiloff, built with Astro 7 and Bun.
 When starting the dev server, use Astro background mode:
 
 ```sh
-bun astro dev --background
+bun astro dev --background --host
 ```
 
 Manage the background server with `bun astro dev stop`, `bun astro dev status`, and `bun astro dev logs`.
