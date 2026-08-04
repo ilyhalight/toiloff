@@ -39,11 +39,7 @@
   enabledCaptcha={false}
 >
   {#snippet children()}
-    <FormHead
-      eyebrow="Images"
-      title="Upload image"
-      description="Upload a image to server"
-    />
+    <FormHead title="Upload image" description="Upload a image to server" />
 
     <FormDropzoneWrapper title="Image" required={true}>
       <FormDropzone

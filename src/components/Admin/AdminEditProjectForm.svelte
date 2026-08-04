@@ -42,7 +42,6 @@
 >
   {#snippet children()}
     <FormHead
-      eyebrow="Edit"
       title="Edit details"
       description="Update the fields below and save your changes"
     />

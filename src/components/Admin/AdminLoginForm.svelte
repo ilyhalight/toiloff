@@ -27,7 +27,6 @@
 >
   {#snippet children()}
     <FormHead
-      eyebrow="Provide creds"
       title="Admin auth"
       description="Enter your admin credentials to access protected tools"
     />

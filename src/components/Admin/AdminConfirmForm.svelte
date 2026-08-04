@@ -36,6 +36,6 @@
   enabledCaptcha={false}
 >
   {#snippet children()}
-    <FormHead eyebrow="Admin" {title} {description} />
+    <FormHead {title} {description} />
   {/snippet}
 </Form>

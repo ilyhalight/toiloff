@@ -32,7 +32,6 @@
 >
   {#snippet children()}
     <FormHead
-      eyebrow="Delete"
       title="Confirm deletion"
       description="This action can't be undone"
     />

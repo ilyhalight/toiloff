@@ -40,7 +40,6 @@
 >
   {#snippet children()}
     <FormHead
-      eyebrow="Create project"
       title="New project"
       description="Create a new project and make it available on your website"
     />

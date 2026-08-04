@@ -74,7 +74,6 @@
 >
   {#snippet children()}
     <FormHead
-      eyebrow="Create message"
       title="Write smth"
       description="This can be anything, within reason"
     />
