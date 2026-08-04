@@ -66,7 +66,7 @@
     background-color: var(--onsurface-bg);
     transition: transform 0.35s ease;
     z-index: 0;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
   }
 
   .segmented-button__item-wrapper {
