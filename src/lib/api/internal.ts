@@ -1,4 +1,3 @@
-import { z } from "astro/zod";
 import { PUBLIC_API_BASE_URL } from "astro:env/client";
 
 export const BASE_PUBLIC_URL = `${PUBLIC_API_BASE_URL}/public`;
@@ -9,10 +8,10 @@ const API_USER_CLIENT = "toiloff-frontend/1.0.0";
 type APIError = Record<"error", string>;
 type APIErrorDetail = Record<"detail", string>;
 
-export const CursorNav = z.object({
-  nextCursor: z.nullable(z.string()),
-  pageSize: z.number(),
-});
+export type CursorNav = {
+  nextCursor: string | null;
+  pageSize: number;
+};
 
 export const isError = (data: unknown): data is APIError => {
   return typeof data === "object" && data !== null && "error" in data;

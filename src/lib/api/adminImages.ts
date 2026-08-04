@@ -1,14 +1,10 @@
-import { z } from "astro/zod";
 import { AVATAR_BASE_URL, fetchFromAPI, IMAGES_BASE_URL } from "./internal";
 
-export const ImageEntry = z.object({
-  id: z.string(),
-});
+export type ImageEntry = {
+  id: string;
+};
 
-export type ImageEntry = z.infer<typeof ImageEntry>;
-
-export const ImageList = z.array(z.string());
-export type ImageList = z.infer<typeof ImageList>;
+export type ImageList = string[];
 
 export const AdminImagesRouteAPI = {
   upload: async (image: File) => {

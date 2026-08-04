@@ -1,38 +1,30 @@
-import { z } from "astro/zod";
-import { CursorNav, fetchFromAPI } from "./internal";
+import { type CursorNav, fetchFromAPI } from "./internal";
 
-export const Project = z.object({
-  id: z.string(),
-  title: z.string(),
-  description: z.string(),
-  href: z.string(),
-  imageUrl: z.string(),
-  imageAlt: z.string(),
-  canShowOnMain: z.boolean(),
-  lexorank: z.string(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-});
-export type Project = z.infer<typeof Project>;
+export type Project = {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  imageUrl: string;
+  imageAlt: string;
+  canShowOnMain: boolean;
+  lexorank: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
-export const Projects = z.array(Project);
-export type Projects = z.infer<typeof Projects>;
+export type Projects = Project[];
 
-export const ProjectListData = CursorNav.extend({
-  items: z.array(Project),
-});
-export type ProjectListData = z.infer<typeof ProjectListData>;
+export type ProjectListData = CursorNav & {
+  items: Projects;
+};
 
-export const NewProject = Project.omit({
-  id: true,
-  lexorank: true,
-  createdAt: true,
-  updatedAt: true,
-});
-export type NewProject = z.infer<typeof NewProject>;
+export type NewProject = Omit<
+  Project,
+  "id" | "lexorank" | "createdAt" | "updatedAt"
+>;
 
-export const UpdateProject = NewProject.partial();
-export type UpdateProject = z.infer<typeof UpdateProject>;
+export type UpdateProject = Partial<NewProject>;
 
 export const ProjetsRouteAPI = {
   getAll: async (cursor?: string | null) => {

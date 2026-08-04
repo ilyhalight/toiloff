@@ -1,55 +1,42 @@
-import { z } from "astro/zod";
-import { AVATAR_BASE_URL, CursorNav, fetchFromAPI } from "./internal";
+import { AVATAR_BASE_URL, type CursorNav, fetchFromAPI } from "./internal";
 import { toFormData } from "../utils";
 
-const GuestbookEntryStatus = z.enum(["review", "public", "declined"]);
-export type GuestbookEntryStatus = z.infer<typeof GuestbookEntryStatus>;
+export type GuestbookEntryStatus = "review" | "public" | "declined";
 
-export const GuestbookEntry = z.object({
-  id: z.string(),
-  username: z.string(),
-  content: z.string(),
-  status: GuestbookEntryStatus,
-  href: z.string().nullable().optional(),
-  subText: z.string().nullable().optional(),
-  avatarUrl: z.string().nullable().optional(),
-  replyText: z.string().nullable().optional(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-});
+export type GuestbookEntry = {
+  id: string;
+  username: string;
+  content: string;
+  status: GuestbookEntryStatus;
+  href?: string | null;
+  subText?: string | null;
+  avatarUrl?: string | null;
+  replyText?: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
 
-export type GuestbookEntry = z.infer<typeof GuestbookEntry>;
+export type GuestbookStats = {
+  review: number;
+  public: number;
+  declined: number;
+  all: number;
+};
 
-export const GuestbookData = CursorNav.extend({
-  items: z.array(GuestbookEntry),
-});
+export type GuestbookData = CursorNav & {
+  items: GuestbookEntry[];
+};
 
-export const GuestbookStats = z.object({
-  review: z.number(),
-  public: z.number(),
-  declined: z.number(),
-  all: z.number(),
-});
+export type GuestbookAdminData = GuestbookData & {
+  stats: GuestbookStats;
+};
 
-export type GuestbookData = z.infer<typeof GuestbookData>;
-
-export const GuestbookAdminData = GuestbookData.extend({
-  stats: GuestbookStats,
-});
-export type GuestbookAdminData = z.infer<typeof GuestbookAdminData>;
-
-export const NewGuestbook = GuestbookEntry.omit({
-  id: true,
-  status: true,
-  replyText: true,
-  avatarUrl: true,
-  createdAt: true,
-  updatedAt: true,
-}).extend({
-  avatar: z.instanceof(File).optional(),
-});
-
-export type NewGuestbook = z.infer<typeof NewGuestbook>;
+export type NewGuestbook = Omit<
+  GuestbookEntry,
+  "id" | "status" | "replyText" | "avatarUrl" | "createdAt" | "updatedAt"
+> & {
+  avatar?: File;
+};
 
 export const GuestbookRouteAPI = {
   getAvatar: (avatarId?: string | null) => {
