@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.svelte";
 
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionCard from "../components/Section/SectionCard.svelte";
@@ -7,6 +8,12 @@ import SectionWrapper from "../components/Section/SectionWrapper.astro";
 ---
 
 <Layout title="AI Disclosure">
+  <Breadcrumbs
+    breadcrumbs={[
+      { title: "Home", href: "/" },
+      { title: "AI Disclosure", href: "/ai-disclosure" },
+    ]}
+  />
   <SectionWrapper>
     <SectionHero
       title={"AI Disclosure"}
@@ -15,8 +22,8 @@ import SectionWrapper from "../components/Section/SectionWrapper.astro";
     <SectionCard title="Development" compactText={false}>
       <p class="section-text">
         I use LLMs mostly <b>to get assistance with Design</b>. I generate some
-        frontend components using <b>GPT 5.5</b>, and then I manually review and
-        modify them to suit my needs.
+        frontend components using <b>GPT 5.5</b>/<b>5.6 Sol</b>, and then I
+        manually review and modify them to suit my needs.
       </p>
 
       <br />
@@ -58,9 +65,9 @@ import SectionWrapper from "../components/Section/SectionWrapper.astro";
     </SectionCard>
     <SectionCard title="Content" compactText={false}>
       <p class="section-text">
-        I partially use LLMs (GPT 5.5, Gemini) and Machine Translation (Yandex
-        Translate) to translate and rephrase some small static texts on this
-        website.
+        I partially use LLMs (<b>GPT 5.5</b>/<b>5.6 Sol</b>, <b>Gemini</b>) and
+        Machine Translation (<b>Yandex Translate</b>) to translate and rephrase
+        some small static texts on this website.
       </p>
     </SectionCard>
   </SectionWrapper>

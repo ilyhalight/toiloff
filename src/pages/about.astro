@@ -32,6 +32,7 @@ import BoostyIcon from "../components/Icones/BoostyIcon.svelte";
 import LolzteamIcon from "../components/Icones/LolzteamIcon.svelte";
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.svelte";
 import { daysBetween } from "../lib/utils";
 
 const socials = [
@@ -105,11 +106,14 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime());
 ---
 
 <Layout title="About">
+  <Breadcrumbs
+    breadcrumbs={[
+      { title: "Home", href: "/" },
+      { title: "About", href: "/about" },
+    ]}
+  />
   <SectionWrapper>
-    <SectionHero
-      title={"About"}
-      description={"Small info about me"}
-    />
+    <SectionHero title={"About"} description={"Small info about me"} />
     <ul class="about-list">
       <AboutCard title="WHOAMI" content="Ilya" subcontent="Fullstack dev" />
       <AboutCard

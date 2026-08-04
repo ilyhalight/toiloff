@@ -4,6 +4,7 @@ export const prerender = false;
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
 import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.svelte";
 import ProjectList from "../components/Projects/ProjectList.svelte";
 
 import { BackendAPI } from "../lib/api";
@@ -16,11 +17,14 @@ const projectsData = await BackendAPI.projects.getAll().catch(() => ({
 ---
 
 <Layout title="Projects">
+  <Breadcrumbs
+    breadcrumbs={[
+      { title: "Home", href: "/" },
+      { title: "Projects", href: "/projects" },
+    ]}
+  />
   <SectionWrapper>
-    <SectionHero
-      title="Projects"
-      description="List of all of my projects"
-    />
+    <SectionHero title="Projects" description="List of all of my projects" />
 
     <ProjectList
       client:load
