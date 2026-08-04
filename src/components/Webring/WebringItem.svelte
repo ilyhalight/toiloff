@@ -10,7 +10,7 @@
 </script>
 
 <div class="webring-item" data-pos={pos}>
-  <a class="webring-item__link link" href={webringItem.url}>
+  <a class="webring-item__link link link_boxed" href={webringItem.url}>
     {#if webringItem.favicon}
       <span class="webring-item__favicon">
         <img
@@ -47,18 +47,22 @@
     flex: 1;
   }
 
-  @media screen and (max-width: 768px) {
-    .webring-item {
-      justify-content: center !important;
-    }
-  }
-
   .webring-item__link {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
     max-width: 33vw;
+  }
+
+  @media screen and (max-width: 768px) {
+    .webring-item {
+      justify-content: center !important;
+    }
+
+    .webring-item__link {
+      max-width: 100%;
+    }
   }
 
   .webring-item[data-pos="right"] .webring-item__link {

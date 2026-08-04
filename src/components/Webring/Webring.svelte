@@ -4,6 +4,7 @@
   import WebringItem from "./WebringItem.svelte";
   import type { WebringData } from "../../lib/api/webring";
   import { ExternalWebringAPI } from "../../lib/external-api/webring";
+  import RandomIcon from "../Icones/RandomIcon.svelte";
 
   type Props = {
     webringData: WebringData | null;
@@ -30,10 +31,15 @@
   {#if webringData}
     <WebringItem webringItem={webringData.prev} pos="left" />
     <div class="webring-middle">
-      <span
-        ><a class="link" href={webringData.info} target="_blank">Otoring</a>
-        |
-        <a class="link" href={webringData.random}>random</a></span
+      <span class="webring-middle__links"
+        ><a class="link link_boxed" href={webringData.info} target="_blank"
+          >Otoring</a
+        >
+        <a
+          class="webring-random link link_boxed"
+          href={webringData.random}
+          aria-label="random website"><RandomIcon /></a
+        ></span
       >
     </div>
     <WebringItem webringItem={webringData.next} pos="right" />
@@ -68,5 +74,15 @@
       flex-direction: column;
       align-items: stretch;
     }
+  }
+
+  .webring-middle__links {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .webring-random {
+    display: flex;
+    align-items: center;
   }
 </style>
