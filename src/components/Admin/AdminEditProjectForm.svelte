@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { tmAlert } from "../../lib/alert";
   import { BackendAPI } from "../../lib/api";
   import type { Project } from "../../lib/api/projects";
   import Form from "../Form/Form.svelte";
@@ -27,7 +26,6 @@
   }
 
   async function onSuccess() {
-    await tmAlert("Successfully edited a project!");
     window.location.assign("/admin/projects");
   }
 </script>

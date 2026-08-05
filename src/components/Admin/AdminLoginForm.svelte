@@ -13,7 +13,6 @@
   }
 
   const onSuccess = async () => {
-    await tmAlert("Login successful!");
     window.location.assign("/admin");
   };
 </script>

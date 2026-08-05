@@ -22,7 +22,6 @@
   }: Props = $props();
 
   async function onSuccess() {
-    await tmAlert(successMessage);
     window.location.assign(redirectUrl);
   }
 </script>

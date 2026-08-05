@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { tmAlert } from "../../lib/alert";
   import { BackendAPI } from "../../lib/api";
   import Form from "../Form/Form.svelte";
   import FormDropzone from "../Form/FormDropzone.svelte";
@@ -17,7 +16,6 @@
   }
 
   const onSuccess = async () => {
-    await tmAlert("Upload image successful!");
     window.location.assign("/admin/images");
   };
 
