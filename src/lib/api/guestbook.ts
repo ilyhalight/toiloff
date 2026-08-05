@@ -1,20 +1,39 @@
 import { AVATAR_BASE_URL, type CursorNav, fetchFromAPI } from "./internal";
 import { toFormData } from "../utils";
+import { z } from "astro/zod";
 
-export type GuestbookEntryStatus = "review" | "public" | "declined";
+export const GuestbookEntryStatus = z.union([
+  z.literal("review"),
+  z.literal("public"),
+  z.literal("declined"),
+]);
 
-export type GuestbookEntry = {
-  id: string;
-  username: string;
-  content: string;
-  status: GuestbookEntryStatus;
-  href?: string | null;
-  subText?: string | null;
-  avatarUrl?: string | null;
-  replyText?: string | null;
-  createdAt: string;
-  updatedAt: string;
-};
+export type GuestbookEntryStatus = z.infer<typeof GuestbookEntryStatus>;
+
+export const GuestbookEntrySchema = z.object({
+  id: z.string(),
+  username: z.string(),
+  content: z.string(),
+  status: GuestbookEntryStatus,
+  href: z.optional(z.string().nullable()),
+  subText: z.optional(z.string().nullable()),
+  avatarUrl: z.optional(z.string().nullable()),
+  replyText: z.optional(z.string().nullable()),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+
+export type GuestbookEntry = z.infer<typeof GuestbookEntrySchema>;
+
+export const GuestbookLocalEntrySchema = GuestbookEntrySchema.extend({
+  local: z.literal(true),
+});
+
+export type GuestbookLocalEntry = z.infer<typeof GuestbookLocalEntrySchema>;
+
+export const GuestbookLocalEntrySchemaArray = z.array(
+  GuestbookLocalEntrySchema,
+);
 
 export type GuestbookStats = {
   review: number;

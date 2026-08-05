@@ -30,7 +30,12 @@
   const isAllowedMessageLink = $derived(messageLink !== "#");
 </script>
 
-<li class="guestbook-message" {hidden}>
+<li class="guestbook-message" {hidden} data-status={message.status}>
+  {#if message.status === "review"}
+    <div class="guestbook-message__status">
+      <p class="guestbook-message__status-detail">Waiting review...</p>
+    </div>
+  {/if}
   <div class="guestbook-message__head">
     <div class="guestbook-message__head-item">
       {#if messageAvatarUrl}
@@ -88,6 +93,14 @@
 
   .guestbook-message[hidden] {
     display: none;
+  }
+
+  .guestbook-message[data-status="review"] {
+    opacity: 0.5;
+  }
+
+  .guestbook-message__status-detail {
+    color: var(--text-muted);
   }
 
   .guestbook-message__head {

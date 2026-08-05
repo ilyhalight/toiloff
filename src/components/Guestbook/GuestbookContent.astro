@@ -40,6 +40,36 @@ const { items: publicMessages, nextCursor } = data;
   </div>
 </div>
 
+<script>
+  import type { GuestbookEntry } from "../../lib/api/guestbook";
+
+  function initLocalUpdater() {
+    const guetbookForms = document.querySelectorAll<HTMLElement>(
+      ".guestbook-page__form .form",
+    );
+
+    for (const form of guetbookForms) {
+      form.addEventListener("message-created", (e) => {
+        const message = (e as any).detail;
+        const guestbook = form
+          .closest(".guestbook-page__content")
+          ?.querySelector<HTMLElement>(".guestbook");
+        if (!guestbook) {
+          return;
+        }
+
+        guestbook.dispatchEvent(
+          new CustomEvent<GuestbookEntry>("message-created", {
+            detail: message,
+          }),
+        );
+      });
+    }
+  }
+
+  document.addEventListener("astro:page-load", initLocalUpdater);
+</script>
+
 <style>
   .guestbook-page__content {
     display: grid;

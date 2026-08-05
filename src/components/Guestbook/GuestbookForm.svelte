@@ -12,7 +12,11 @@
   import RandomIcon from "../Icones/RandomIcon.svelte";
   import FormActions from "../Form/FormActions.svelte";
   import FormActionItem from "../Form/FormActionItem.svelte";
+  import { updateLocalMessages } from "../../lib/local-storage/guestbook";
+  import type { GuestbookEntry } from "../../lib/api/guestbook";
+  import { tmAlert } from "../../lib/alert";
 
+  let form: HTMLFormElement | null = $state(null);
   let username = $state("");
   let content = $state("");
   let link: string | undefined = $state(undefined);
@@ -32,7 +36,7 @@
       throw new Error("Username or content is empty!");
     }
 
-    await BackendAPI.guestbook.createMessage(
+    const result = await BackendAPI.guestbook.createMessage(
       {
         username,
         content,
@@ -41,6 +45,11 @@
         avatar,
       },
       captchaPayload,
+    );
+
+    updateLocalMessages({ ...result, local: true });
+    form?.dispatchEvent(
+      new CustomEvent<GuestbookEntry>("message-created", { detail: result }),
     );
   }
 
@@ -65,12 +74,13 @@
 </script>
 
 <Form
-  successMessage="Thanks! Your message is awaiting moderation."
-  errorMessage="Failed to send message! Please try again."
+  successMessage="Thanks! Your message is awaiting moderation"
+  errorMessage="Failed to send message! Please try again"
   defaultSubmitText="Send for moderation"
   enabledCaptcha={true}
   {submitAction}
   {status}
+  bind:form
 >
   {#snippet children()}
     <FormHead

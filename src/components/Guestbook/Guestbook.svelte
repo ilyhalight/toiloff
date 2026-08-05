@@ -1,9 +1,12 @@
 <script lang="ts">
-  import type { GuestbookEntry } from "../../lib/api/guestbook";
+  import { onMount } from "svelte";
+
+  import { type GuestbookEntry } from "../../lib/api/guestbook";
   import GuestMessage from "./GuestMessage.svelte";
   import GuestZeroMessage from "./GuestbookZeroMessage.svelte";
   import GuestbookSkeletonMessage from "./GuestbookSkeletonMessage.svelte";
   import { BackendAPI } from "../../lib/api";
+  import { getLocalMessages } from "../../lib/local-storage/guestbook";
 
   interface Props {
     messages: GuestbookEntry[];
@@ -12,6 +15,9 @@
 
   let { messages, nextCursor }: Props = $props();
   let isLoading = $state(false);
+  let firstMessageId = $derived(
+    messages.find((message) => message.status === "public")?.id ?? "",
+  );
 
   async function loadMessages() {
     isLoading = true;
@@ -29,9 +35,54 @@
       isLoading = false;
     }
   }
+
+  export function loadLocalMessages() {
+    if (!messages.length) {
+      return;
+    }
+
+    const localMessages = getLocalMessages();
+    if (!localMessages) {
+      return;
+    }
+
+    // if there are new messages (firstMessageId > message.id), it means that the message has been declined
+    const filteredMessages = localMessages.filter(
+      (message) => message.id > firstMessageId,
+    );
+    if (filteredMessages.length !== localMessages.length) {
+      localStorage.setItem(
+        "guestbook-messages",
+        JSON.stringify(filteredMessages),
+      );
+    }
+
+    messages = [
+      ...filteredMessages,
+      ...messages.filter((message) => message.status === "public"),
+    ];
+  }
+
+  function handleMessageCreated() {
+    loadLocalMessages();
+  }
+
+  function listenMessageCreated(node: HTMLElement) {
+    node.addEventListener("message-created", handleMessageCreated);
+
+    return {
+      destroy() {
+        node.removeEventListener("message-created", handleMessageCreated);
+      },
+    };
+  }
+
+  onMount(() => {
+    loadLocalMessages();
+  });
 </script>
 
-<div class="guestbook">
+<div class="guestbook" use:listenMessageCreated>
   <ul class="guestbook-list">
     {#each messages as message}
       <GuestMessage {message} />
