@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { tmAlert } from "../../lib/alert";
   import Captcha from "../Captcha/Captcha.svelte";
   import FormStatus from "./FormStatus.svelte";
 
@@ -17,6 +18,7 @@
     onSuccess?: () => void;
     children: any;
     enabledCaptcha?: boolean;
+    form?: HTMLFormElement | null;
   };
 
   let {
@@ -32,9 +34,9 @@
     defaultSubmitText = "Submit",
     children,
     enabledCaptcha = false,
+    form = $bindable(null),
   }: Props = $props();
 
-  let form: HTMLFormElement | null = null;
   let captchaWidget: Captcha | null = $state(null);
 
   // svelte-ignore state_referenced_locally
@@ -52,13 +54,16 @@
       };
 
       form?.reset();
+      await tmAlert(successMessage);
       onSuccess();
     } catch (err) {
+      const text = (err as Error).message ?? errorMessage;
       status = {
         isHidden: false,
         type: "error",
-        text: (err as Error).message ?? errorMessage,
+        text,
       };
+      await tmAlert(text);
     } finally {
       buttonText = defaultSubmitText;
       isDisabledButton = false;
@@ -88,13 +93,15 @@
     buttonText = "Calculating...";
     const captchaPayload = await captchaWidget?.run();
     if (typeof captchaPayload !== "string") {
+      const text = "Captcha verification failed. Please try again.";
       status = {
         isHidden: false,
         type: "error",
-        text: "Captcha verification failed. Please try again.",
+        text,
       };
       buttonText = defaultSubmitText;
       isDisabledButton = false;
+      await tmAlert(text);
       return;
     }
 
