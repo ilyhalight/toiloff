@@ -21,6 +21,7 @@ export const GuestbookEntrySchema = z.object({
   replyText: z.optional(z.string().nullable()),
   createdAt: z.string(),
   updatedAt: z.string(),
+  reviewedAt: z.string().nullable(),
 });
 
 export type GuestbookEntry = z.infer<typeof GuestbookEntrySchema>;
@@ -44,6 +45,7 @@ export type GuestbookStats = {
 
 export type GuestbookData = CursorNav & {
   items: GuestbookEntry[];
+  avgReviewTime: number | null;
 };
 
 export type GuestbookAdminData = GuestbookData & {
@@ -52,7 +54,13 @@ export type GuestbookAdminData = GuestbookData & {
 
 export type NewGuestbook = Omit<
   GuestbookEntry,
-  "id" | "status" | "replyText" | "avatarUrl" | "createdAt" | "updatedAt"
+  | "id"
+  | "status"
+  | "replyText"
+  | "avatarUrl"
+  | "createdAt"
+  | "updatedAt"
+  | "reviewedAt"
 > & {
   avatar?: File;
 };

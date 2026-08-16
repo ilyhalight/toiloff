@@ -22,6 +22,20 @@ export const dateFormatter = Intl.DateTimeFormat("en", {
   year: "numeric",
 });
 
+export const formatSeconds = (seconds: number) => {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = hours > 0 ? 0 : Math.round(seconds % 60);
+
+  return new Intl.DurationFormat("en", {
+    style: "short",
+  }).format({
+    hours,
+    minutes,
+    seconds: secs,
+  });
+};
+
 export function daysBetween(a: number, b: number) {
   return Math.floor(Math.abs(b - a) / MS_IN_DAY);
 }

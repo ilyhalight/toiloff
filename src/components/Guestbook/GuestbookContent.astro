@@ -4,15 +4,20 @@ import SectionCard from "../Section/SectionCard.svelte";
 import GuestbookForm from "./GuestbookForm.svelte";
 import { BackendAPI } from "../../lib/api";
 import SystemMessage from "../SystemMessage.svelte";
+import { formatSeconds } from "../../lib/utils";
 
 const DEFAULT_ITEM = {
   items: [],
   nextCursor: null,
+  avgReviewTime: null,
   isOffline: true,
 };
 
 const data = await BackendAPI.guestbook.load().catch(() => DEFAULT_ITEM);
 const isOnline = !Object.hasOwn(data, "isOffline");
+const avgReviewTime = data.avgReviewTime
+  ? formatSeconds(data.avgReviewTime)
+  : "N/A";
 const { items: publicMessages, nextCursor } = data;
 ---
 
@@ -23,7 +28,8 @@ const { items: publicMessages, nextCursor } = data;
 
   <div class="guestbook-page__messages">
     <SectionCard title="Recent messages"
-      >All guestbook messages are moderated before they appear here.
+      >All guestbook messages are reviewed before they appear here
+      <br />(avg. review time: <strong>{avgReviewTime}</strong>)
     </SectionCard>
 
     {
@@ -32,7 +38,7 @@ const { items: publicMessages, nextCursor } = data;
       ) : (
         <SystemMessage
           title="Guestbook is offline"
-          description="The guestbook isn't available right now. Please try again in a few minutes."
+          description="The guestbook isn't available right now. Please try again in a few minutes"
           isError={true}
         />
       )
