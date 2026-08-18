@@ -9,6 +9,7 @@
     GuestbookEntryStatus,
   } from "../../lib/api/guestbook";
   import GuestbookMessageEdit from "../Guestbook/GuestbookMessageEdit.svelte";
+  import InfinityScroll from "../Utils/InfinityScroll.svelte";
 
   let filters = $state([
     { title: "Review", count: 0, value: "review" },
@@ -119,15 +120,21 @@
         }}
       />
     {/each}
+    {#if isLoading}
+      <SectionLoading />
+    {/if}
   </ul>
-  {#if nextCursor}
-    <button
-      class="button"
-      disabled={isLoading}
-      onclick={async () => await loadMessages(usedFilter, nextCursor)}
-      >Load more</button
-    >
-  {/if}
+  <InfinityScroll
+    condition={() => !!nextCursor && !isLoading}
+    onIntersect={async () => {
+      isLoading = true;
+      try {
+        await loadMessages(usedFilter, nextCursor);
+      } finally {
+        isLoading = false;
+      }
+    }}
+  />
 {/if}
 
 <style>

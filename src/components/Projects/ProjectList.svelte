@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { MediaQuery } from "svelte/reactivity";
-
   import { BackendAPI } from "../../lib/api";
   import type { Projects } from "../../lib/api/projects";
   import ProjectsWrapper, {
@@ -9,7 +7,8 @@
   import type { Props as SortableWrapperProps } from "./SortableProjectsWrapper.svelte";
   import SectionCard from "../Section/SectionCard.svelte";
   import SectionLoading from "../Section/SectionLoading.svelte";
-  import type { Component } from "svelte";
+  import { type Component } from "svelte";
+  import InfinityScroll from "../Utils/InfinityScroll.svelte";
 
   type Props = {
     projects?: Projects;
@@ -29,7 +28,6 @@
 
   let error = $state<Error | null>(null);
   let isLoading = $state(true);
-  let isBigScreen = new MediaQuery("min-width: 1040px");
 
   $effect(() => {
     if (!autoLoad) {
@@ -68,27 +66,25 @@
   }
 </script>
 
-{#snippet loadMoreBtn()}
-  {#if nextCursor}
-    <button
-      class="button"
-      disabled={isLoading}
-      onclick={async () => await loadProjects(nextCursor)}>Load more</button
-    >
-  {/if}
-{/snippet}
-
 {#if isLoading && !projects.length}
   <SectionLoading />
 {:else if error}
   <SectionCard title="Error">{error.message}</SectionCard>
 {:else}
   <WrapperComponent {projects} {isAdmin}>
-    {#if isBigScreen.current}
-      {@render loadMoreBtn()}
+    {#if isLoading}
+      <SectionLoading />
     {/if}
   </WrapperComponent>
-  {#if !isBigScreen.current}
-    {@render loadMoreBtn()}
-  {/if}
+  <InfinityScroll
+    condition={() => !!nextCursor && !isLoading}
+    onIntersect={async () => {
+      isLoading = true;
+      try {
+        await loadProjects(nextCursor);
+      } finally {
+        isLoading = false;
+      }
+    }}
+  />
 {/if}
