@@ -118,6 +118,16 @@
         onDecline={(updatedMessage, oldStatus) => {
           onMessageEdit(idx, updatedMessage, oldStatus);
         }}
+        onDelete={(deletedMessage) => {
+          messages = messages.filter((msg) => msg.id !== deletedMessage.id);
+          filters = filters.map((filter) => {
+            if (filter.value === "" || filter.value === deletedMessage.status) {
+              return { ...filter, count: filter.count - 1 };
+            }
+
+            return filter;
+          });
+        }}
       />
     {/each}
     {#if isLoading}

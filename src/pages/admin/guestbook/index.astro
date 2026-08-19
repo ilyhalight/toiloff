@@ -1,15 +1,15 @@
 ---
 export const prerender = false;
 
-import AdminGuestbookPanel from "../../components/Admin/AdminGuestbookPanel.svelte";
-import SectionHero from "../../components/Section/SectionHero.astro";
-import SectionWrapper from "../../components/Section/SectionWrapper.astro";
+import AdminGuestbookPanel from "../../../components/Admin/AdminGuestbookPanel.svelte";
+import SectionHero from "../../../components/Section/SectionHero.astro";
+import SectionWrapper from "../../../components/Section/SectionWrapper.astro";
 import Breadcrumbs, {
   type Breadcrumb,
-} from "../../components/Breadcrumbs/Breadcrumbs.svelte";
-import Layout from "../../layouts/Layout.astro";
+} from "../../../components/Breadcrumbs/Breadcrumbs.svelte";
+import Layout from "../../../layouts/Layout.astro";
 
-import { AUTH_LOGIN_PAGE } from "../../lib/api/auth";
+import { AUTH_LOGIN_PAGE } from "../../../lib/api/auth";
 
 const user = Astro.locals.user;
 

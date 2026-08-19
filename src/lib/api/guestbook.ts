@@ -114,4 +114,13 @@ export const GuestbookRouteAPI = {
       `admin/guestbook/${encodeURIComponent(id)}/decline`,
       JSON.stringify({ replyText }),
     ),
+  forceDelete: async (id: string) =>
+    await fetchFromAPI<GuestbookEntry>(
+      `admin/guestbook/${encodeURIComponent(id)}`,
+      undefined,
+      undefined,
+      {
+        method: "DELETE",
+      },
+    ),
 };

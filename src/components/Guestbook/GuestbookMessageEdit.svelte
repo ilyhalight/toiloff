@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { tmAlert } from "../../lib/alert";
   import { BackendAPI } from "../../lib/api";
 
   import type {
@@ -19,12 +20,14 @@
       updatedMessage: GuestbookEntry,
       oldStatus: GuestbookEntryStatus,
     ) => void;
+    onDelete: (deletedMessage: GuestbookEntry) => void;
   };
 
   let {
     message,
     onApprove = () => void 0,
     onDecline = () => void 0,
+    onDelete = () => void 0,
   }: Props = $props();
 
   let isLoading = $state(false);
@@ -124,6 +127,7 @@
             );
             if (updatedMessage) {
               onApprove(updatedMessage, oldStatus);
+              await tmAlert("Message approved");
             }
           }}>Approve</button
         >
@@ -132,7 +136,7 @@
     {#if message.status !== "declined"}
       <li class="message-action">
         <button
-          class="message-actions__decline button button_outline"
+          class="message-actions__danger button button_outline"
           disabled={isLoading}
           onclick={async () => {
             const oldStatus = message.status;
@@ -144,11 +148,34 @@
             );
             if (updatedMessage) {
               onDecline(updatedMessage, oldStatus);
+              await tmAlert("Message declined");
             }
           }}>Decline</button
         >
       </li>
     {/if}
+    <li class="message-action" data-action="force-delete">
+      <button
+        class="message-actions__danger button button_outline"
+        disabled={isLoading}
+        onclick={async () => {
+          const isConfirmed = confirm(
+            "Are you sure you want to force delete this message? This action can't be undone",
+          );
+          if (!isConfirmed) {
+            return;
+          }
+
+          const updatedMessage = await loadingWrapper(() =>
+            BackendAPI.guestbook.forceDelete(message.id),
+          );
+          if (updatedMessage) {
+            onDelete(updatedMessage);
+            await tmAlert("Message deleted");
+          }
+        }}>FORCE DELETE</button
+      >
+    </li>
   </ul>
 </li>
 
@@ -229,12 +256,16 @@
     gap: 0.5rem;
   }
 
-  .message-actions__decline {
+  .message-actions__danger {
     background: color-mix(
       in srgb,
       var(--primary-color),
       transparent 80%
     ) !important;
+  }
+
+  .message-action[data-action="force-delete"] {
+    margin-left: auto;
   }
 
   @media screen and (max-width: 500px) {
