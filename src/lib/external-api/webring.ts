@@ -46,7 +46,7 @@ export abstract class ExternalWebringAPI {
         favicon: this.getFaviconUrl(nextFavicon),
         ...next,
       },
-      info: `${this.MY_SLUG_HOST}/info`,
+      info: PUBLIC_WEBRING_BASE,
       random: `${this.MY_SLUG_HOST}/random`,
     };
   }
