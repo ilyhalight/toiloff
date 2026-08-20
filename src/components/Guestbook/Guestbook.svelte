@@ -95,6 +95,7 @@
 
   <button
     class="button button_outline guestbook__load-more"
+    class:button_loading={isLoading}
     hidden={!nextCursor}
     disabled={isLoading}
     onclick={async () => {

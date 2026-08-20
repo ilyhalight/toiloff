@@ -1,10 +1,15 @@
 <script lang="ts">
   import SectionCard from "../Section/SectionCard.svelte";
 
-  export type Link = {
-    href: string;
-    title: string;
-  };
+  export type Link =
+    | {
+        href: string;
+        title: string;
+      }
+    | {
+        title: string;
+        onclick: (event: MouseEvent) => Promise<void> | void;
+      };
 
   type Props = {
     title: string;
@@ -18,7 +23,14 @@
   <ul class="admin-actions">
     {#each links as link}
       <li class="admin-actions__item-wrapper">
-        <a class="admin-actions__item button" href={link.href}>{link.title}</a>
+        {#if "onclick" in link}
+          <button class="admin-actions__item button" onclick={link.onclick}
+            >{link.title}</button
+          >
+        {:else}
+          <a class="admin-actions__item button" href={link.href}>{link.title}</a
+          >
+        {/if}
       </li>
     {/each}
   </ul>

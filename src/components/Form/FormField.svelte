@@ -44,7 +44,7 @@
   <FormLabel {title} {required} />
   {#if isTextarea}
     <textarea
-      class="form__control form__control_textarea"
+      class="textfield form__control form__control_textarea"
       id="form-{name}"
       {name}
       {inputmode}
@@ -57,7 +57,7 @@
     ></textarea>
   {:else}
     <input
-      class="form__control"
+      class="textfield form__control"
       id="form-{name}"
       {name}
       {inputmode}
@@ -85,31 +85,6 @@
 
   .form__control {
     width: 100%;
-    padding: 1rem 1.1rem;
-    border: 1px solid transparent;
-    border-radius: 1rem;
-    background: var(--onsurface-bg);
-    transition:
-      border-color 0.2s ease,
-      background-color 0.2s ease,
-      box-shadow 0.2s ease,
-      color 0.2s ease;
-  }
-
-  .form__control:disabled {
-    cursor: not-allowed;
-    opacity: 0.7;
-    color: var(--text-muted);
-  }
-
-  .form__control:not([disabled]):hover,
-  .form__control:not([disabled]):focus {
-    background: var(--onsurface-hover-bg);
-  }
-
-  .form__control:not([disabled]):focus {
-    border-color: var(--stroke-color);
-    box-shadow: 0 0 0 0.2rem var(--onsurface-bg);
   }
 
   .form__control_textarea {

@@ -1,8 +1,12 @@
 <script lang="ts">
+  import { tmAlert } from "../../lib/alert";
+  import { BackendAPI } from "../../lib/api";
   import type { Project } from "../../lib/api/projects";
+  import { showModal } from "../../lib/modal";
   import DeleteIcon from "../Icones/DeleteIcon.svelte";
   import EditIcon from "../Icones/EditIcon.svelte";
   import GripIcon from "../Icones/GripIcon.svelte";
+  import ModalConfirmContent from "../Modal/ModalConfirmContent.svelte";
 
   type Props = {
     project: Project;
@@ -29,11 +33,30 @@
       >
     </li>
     <li class="project-action">
-      <a
-        class="project-action__link"
-        href="/admin/projects/{project.id}/delete"
+      {#snippet deleteModalContent()}
+        <p class="text-danger">This action can't be undone!</p>
+        <ModalConfirmContent
+          buttonText="Delete"
+          requiredText="DELETE"
+          loadingText="Deleting..."
+          onClick={async () => {
+            await BackendAPI.projects.delete(project.id);
+            await tmAlert("Successfully deleted project!");
+          }}
+          onError={async () => {
+            await tmAlert("Failed to delete a project!");
+          }}
+        />
+      {/snippet}
+      <!-- svelte-ignore a11y_invalid_attribute -->
+      <button
+        class="button-text project-action__link"
+        onclick={(e) => {
+          e.preventDefault();
+          showModal(deleteModalContent, "Delete project");
+        }}
         data-action="delete"
-        aria-label="Delete project"><DeleteIcon /></a
+        aria-label="Delete project"><DeleteIcon /></button
       >
     </li>
   </ul>

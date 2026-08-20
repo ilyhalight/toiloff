@@ -1,10 +1,12 @@
 <script lang="ts">
   import { tmAlert } from "../../lib/alert";
   import { BackendAPI } from "../../lib/api";
+  import { showModal } from "../../lib/modal";
   import SegmentedControl, {
     type Item,
   } from "../Control/SegmentedControl.svelte";
   import DeleteIcon from "../Icones/DeleteIcon.svelte";
+  import ModalConfirmContent from "../Modal/ModalConfirmContent.svelte";
   import SectionCard from "../Section/SectionCard.svelte";
   import SectionLoading from "../Section/SectionLoading.svelte";
 
@@ -56,6 +58,13 @@
 
     return BackendAPI.adminImages.get(imageId);
   };
+
+  const handleDelete = async (image: string) => {
+    const imageId = usedFilter == "avatars" ? `avatars/${image}` : image;
+    await BackendAPI.adminImages.delete(imageId);
+    images = images.filter((img) => img !== image);
+    await tmAlert("Image deleted successfully");
+  };
 </script>
 
 <SegmentedControl
@@ -82,14 +91,19 @@
           alt={image}
           loading="lazy"
         />
+        {#snippet deleteModalContent()}
+          <p class="text-danger">This action can't be undone!</p>
+          <ModalConfirmContent
+            buttonText="Delete"
+            requiredText="DELETE"
+            onClick={async () => await handleDelete(image)}
+          />
+        {/snippet}
+
         <button
           class="image-list__actions button button_outline"
           onclick={async () => {
-            const imageId =
-              usedFilter == "avatars" ? `avatars/${image}` : image;
-            await BackendAPI.adminImages.delete(imageId);
-            images = images.filter((img) => img !== image);
-            await tmAlert("Image deleted successfully");
+            showModal(deleteModalContent, "Delete Image");
           }}
         >
           <DeleteIcon />

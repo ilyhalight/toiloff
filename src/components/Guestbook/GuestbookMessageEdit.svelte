@@ -6,7 +6,9 @@
     GuestbookEntry,
     GuestbookEntryStatus,
   } from "../../lib/api/guestbook";
+  import { showModal } from "../../lib/modal";
   import FormField from "../Form/FormField.svelte";
+  import ModalConfirmContent from "../Modal/ModalConfirmContent.svelte";
   import GuestbookMessageStatus from "./GuestbookMessageStatus.svelte";
   import GuestMessageDate from "./GuestMessageDate.svelte";
 
@@ -116,6 +118,7 @@
       <li class="message-action">
         <button
           class="button"
+          class:button_loading={isLoading}
           disabled={isLoading}
           onclick={async () => {
             const oldStatus = message.status;
@@ -137,6 +140,7 @@
       <li class="message-action">
         <button
           class="message-actions__danger button button_outline"
+          class:button_loading={isLoading}
           disabled={isLoading}
           onclick={async () => {
             const oldStatus = message.status;
@@ -155,24 +159,28 @@
       </li>
     {/if}
     <li class="message-action" data-action="force-delete">
+      {#snippet deleteModalContent()}
+        <p class="text-danger">This action can't be undone!</p>
+        <ModalConfirmContent
+          buttonText="Delete"
+          requiredText="DELETE"
+          onClick={async () => {
+            const updatedMessage = await loadingWrapper(() =>
+              BackendAPI.guestbook.forceDelete(message.id),
+            );
+            if (updatedMessage) {
+              onDelete(updatedMessage);
+              await tmAlert("Message deleted");
+            }
+          }}
+        />
+      {/snippet}
       <button
         class="message-actions__danger button button_outline"
+        class:button_loading={isLoading}
         disabled={isLoading}
-        onclick={async () => {
-          const isConfirmed = confirm(
-            "Are you sure you want to force delete this message? This action can't be undone",
-          );
-          if (!isConfirmed) {
-            return;
-          }
-
-          const updatedMessage = await loadingWrapper(() =>
-            BackendAPI.guestbook.forceDelete(message.id),
-          );
-          if (updatedMessage) {
-            onDelete(updatedMessage);
-            await tmAlert("Message deleted");
-          }
+        onclick={() => {
+          showModal(deleteModalContent, "Delete message");
         }}>FORCE DELETE</button
       >
     </li>

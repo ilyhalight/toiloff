@@ -120,6 +120,7 @@
 
   <button
     class="button form__submit"
+    class:button_loading={isDisabledButton}
     type="submit"
     disabled={isDisabledButton}
     onclick={onSubmit}

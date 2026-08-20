@@ -6,39 +6,13 @@ import SectionHero from "../../components/Section/SectionHero.astro";
 import SectionWrapper from "../../components/Section/SectionWrapper.astro";
 import { AUTH_LOGIN_PAGE } from "../../lib/api/auth";
 import Stats from "../../components/Stats/Stats.astro";
-import SectionCard from "../../components/Section/SectionCard.svelte";
-import AdminActions, {
-  type Link,
-} from "../../components/Admin/AdminActions.svelte";
+import AdminIndexActions from "../../components/Admin/AdminIndexActions.svelte";
 
 const user = Astro.locals.user;
 
 if (!user) {
   return Astro.redirect(AUTH_LOGIN_PAGE);
 }
-
-const links: Link[] = [
-  {
-    href: "/admin/guestbook",
-    title: "Guestbook",
-  },
-  {
-    href: "/admin/projects",
-    title: "Projects",
-  },
-  {
-    href: "/admin/images",
-    title: "Images",
-  },
-  {
-    href: "/admin/webring/clear",
-    title: "Clear webring cache",
-  },
-  {
-    href: "/admin/logout",
-    title: "Logout",
-  },
-];
 ---
 
 <Layout title="Admin">
@@ -48,6 +22,6 @@ const links: Link[] = [
       description={`Welcome back, ${user.username}!`}
     />
     <Stats />
-    <AdminActions title="Available links" {links} />
+    <AdminIndexActions client:load />
   </SectionWrapper>
 </Layout>
