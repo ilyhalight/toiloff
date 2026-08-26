@@ -84,12 +84,12 @@
       width: 100%;
     }
 
-    .webring-middle__links > .webring-info {
+    .webring-middle__links > .webring-info.link.link_boxed {
       width: 100%;
       padding: 0.75rem 1.25rem;
     }
 
-    .webring-random {
+    .webring-random.link.link_boxed {
       font-size: 1.5rem;
       padding: 0.75rem;
     }
@@ -100,11 +100,11 @@
       font-size: 0.875rem;
     }
 
-    .webring-middle__links > .webring-info {
+    .webring-middle__links > .webring-info.link.link_boxed {
       padding: 0.5rem 1rem;
     }
 
-    .webring-random {
+    .webring-random.link.link_boxed {
       font-size: 1.25rem;
       padding: 0.5rem;
     }

@@ -60,7 +60,7 @@
       justify-content: center !important;
     }
 
-    .webring-item__link {
+    .webring-item__link.link.link_boxed {
       max-width: 100%;
       width: 100%;
       padding: 0.75rem 1.25rem;
@@ -72,7 +72,7 @@
       font-size: 0.875rem;
     }
 
-    .webring-item__link {
+    .webring-item__link.link.link_boxed {
       padding: 0.5rem 1rem;
     }
   }
