@@ -32,8 +32,10 @@
     <WebringItem webringItem={webringData.prev} pos="left" />
     <div class="webring-middle">
       <span class="webring-middle__links"
-        ><a class="link link_boxed" href={webringData.info} target="_blank"
-          >Otoring</a
+        ><a
+          class="webring-info link link_boxed"
+          href={webringData.info}
+          target="_blank">Otoring</a
         >
         <a
           class="webring-random link link_boxed"
@@ -71,8 +73,46 @@
 
   @media screen and (max-width: 768px) {
     .webring {
-      flex-direction: column;
-      align-items: stretch;
+      flex-wrap: wrap;
+    }
+
+    .webring-middle {
+      width: 100%;
+    }
+
+    .webring-middle__links {
+      width: 100%;
+    }
+
+    .webring-middle__links > .webring-info {
+      width: 100%;
+      padding: 0.75rem 1.25rem;
+    }
+
+    .webring-random {
+      font-size: 1.5rem;
+      padding: 0.75rem;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .webring-middle {
+      font-size: 0.875rem;
+    }
+
+    .webring-middle__links > .webring-info {
+      padding: 0.5rem 1rem;
+    }
+
+    .webring-random {
+      font-size: 1.25rem;
+      padding: 0.5rem;
+    }
+  }
+
+  @media screen and (min-width: 376px) and (max-width: 768px) {
+    .webring-middle {
+      order: 999;
     }
   }
 

@@ -62,6 +62,24 @@
 
     .webring-item__link {
       max-width: 100%;
+      width: 100%;
+      padding: 0.75rem 1.25rem;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .webring-item {
+      font-size: 0.875rem;
+    }
+
+    .webring-item__link {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    .webring-item {
+      flex-basis: 100%;
     }
   }
 
