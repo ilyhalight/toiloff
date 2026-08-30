@@ -25,6 +25,7 @@ jobs:
 
             export BUN_INSTALL="$HOME/.bun"
             export PATH="$BUN_INSTALL/bin:$PATH"
+            export PUBLIC_API_BASE_URL="https://toil.cc/api/v1"
 
             ROOT="/var/www/toiloff-frontend"
             REPO="$ROOT/repo"
