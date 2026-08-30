@@ -23,6 +23,9 @@ jobs:
           script: |
             set -Eeuo pipefail
 
+            export BUN_INSTALL="$HOME/.bun"
+            export PATH="$BUN_INSTALL/bin:$PATH"
+
             ROOT="/var/www/toiloff-frontend"
             REPO="$ROOT/repo"
             RELEASES="$ROOT/releases"
