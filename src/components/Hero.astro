@@ -1,5 +1,4 @@
 ---
-import { fade } from "astro:transitions";
 import Webring from "./Webring/Webring.svelte";
 import type { WebringData } from "../lib/api/webring";
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
 const { webringData } = Astro.props;
 ---
 
-<section class="hero" transition:animate="fade">
+<section class="hero">
   <div class="hero-shapes" aria-hidden="true">
     <div class="hero-shape hero-shape--1"></div>
     <div class="hero-shape hero-shape--2"></div>

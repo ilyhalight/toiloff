@@ -1,7 +1,6 @@
 ---
 import { getEntry } from "astro:content";
 import { Font } from "astro:assets";
-import { ClientRouter } from "astro:transitions";
 
 import Header from "../components/Header.astro";
 import GlobalStyle from "../components/GlobalStyle.astro";
@@ -28,7 +27,6 @@ const theme = Astro.cookies.get("tf_theme")?.value;
     <meta name="generator" content={Astro.generator} />
     <GlobalStyle />
     <Font cssVariable="--font-poppins" />
-    <ClientRouter />
   </head>
   <body data-theme={theme}>
     <div class="app">
