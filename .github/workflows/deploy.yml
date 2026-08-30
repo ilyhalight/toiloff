@@ -1,0 +1,66 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            set -Eeuo pipefail
+
+            ROOT="/var/www/toiloff-frontend"
+            REPO="$ROOT/repo"
+            RELEASES="$ROOT/releases"
+            RELEASE="$RELEASES/${{ github.sha }}"
+
+            mkdir -p "$RELEASES"
+
+            cd "$REPO"
+
+            git fetch origin main
+
+            if [ -d "$RELEASE" ]; then
+              git worktree remove --force "$RELEASE"
+            fi
+
+            git worktree add \
+              --detach \
+              "$RELEASE" \
+              "${{ github.sha }}"
+
+            cd "$RELEASE"
+
+            bun install --frozen-lockfile
+            bun run build
+
+            ln -sfn "$RELEASE" "$ROOT/current"
+
+            sudo systemctl restart toiloff-frontend
+
+            cd "$RELEASES"
+
+            # save only 3 commits includes current
+            ls -1dt */ \
+              | tail -n +4 \
+              | while read -r dir; do
+                  git -C "$REPO" worktree remove \
+                    --force \
+                    "$RELEASES/${dir%/}"
+                done
+
+            git -C "$REPO" worktree prune
