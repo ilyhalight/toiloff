@@ -46,6 +46,7 @@
               onclick={(e) => {
                 e.preventDefault();
                 onDelete?.();
+                close();
               }}
               aria-label="Delete"><DeleteIcon /></button
             >
