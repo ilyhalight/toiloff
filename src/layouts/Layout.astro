@@ -45,7 +45,7 @@ const theme = Astro.cookies.get("tf_theme")?.value;
     flex-direction: column;
     margin: 0 auto;
     min-height: 100svh;
-    max-width: 1280px;
+    max-width: var(--container-max-width);
   }
 
   main {

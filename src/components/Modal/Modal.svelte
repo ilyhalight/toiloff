@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
   import CloseIcon from "../Icones/CloseIcon.svelte";
+  import Overlay from "../Utils/Overlay.svelte";
 
   type Props = {
     children: Snippet;
@@ -18,10 +19,7 @@
 </script>
 
 {#if isOpen}
-  <!-- svelte-ignore a11y_click_events_have_key_events -->
-  <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div
-    class="modal-wrapper"
+  <Overlay
     onclick={(event) => {
       const path = event.composedPath();
       if (path.includes(modalEl)) {
@@ -48,21 +46,10 @@
         {@render children()}
       </div>
     </div>
-  </div>
+  </Overlay>
 {/if}
 
 <style>
-  .modal-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    z-index: 7777;
-    width: 100%;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-  }
-
   .modal {
     display: flex;
     flex-direction: column;

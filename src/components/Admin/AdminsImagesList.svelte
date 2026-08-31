@@ -1,7 +1,7 @@
 <script lang="ts">
   import { tmAlert } from "../../lib/alert";
   import { BackendAPI } from "../../lib/api";
-  import { showModal } from "../../lib/modal";
+  import { showImageOverlay, showModal } from "../../lib/modal";
   import SegmentedControl, {
     type Item,
   } from "../Control/SegmentedControl.svelte";
@@ -84,13 +84,22 @@
 {:else}
   <ul class="image-list">
     {#each images as image}
-      <li class="image-list__item">
-        <img
-          class="image-list__item-img"
-          src={getImage(image)}
-          alt={image}
-          loading="lazy"
-        />
+      {@const imageSrc = getImage(image)}
+      <li class="image-list__item-wrapper">
+        <button
+          class="image-list__item"
+          onclick={() =>
+            showImageOverlay(imageSrc, image, () =>
+              showModal(deleteModalContent, "Delete image"),
+            )}
+        >
+          <img
+            class="image-list__item-image"
+            src={imageSrc}
+            alt={image}
+            loading="lazy"
+          />
+        </button>
         {#snippet deleteModalContent()}
           <p class="text-danger">This action can't be undone!</p>
           <ModalConfirmContent
@@ -99,16 +108,6 @@
             onClick={async () => await handleDelete(image)}
           />
         {/snippet}
-
-        <button
-          class="image-list__actions button button_outline"
-          onclick={async () => {
-            showModal(deleteModalContent, "Delete Image");
-          }}
-        >
-          <DeleteIcon />
-          Delete
-        </button>
       </li>
     {/each}
   </ul>
@@ -117,40 +116,46 @@
 <style>
   .image-list {
     list-style: none;
-    columns: 4 250px;
-    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
   }
 
   .image-list__item {
     display: flex;
-    flex-direction: column;
     gap: 1rem;
     border-radius: 1rem;
     padding: 1rem;
-    max-width: 450px;
-    height: fit-content;
     background: var(--onsurface-bg);
-    break-inside: avoid;
-    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    cursor: zoom-in;
+    transition: background-color 0.25s ease;
   }
 
-  @media screen and (max-width: 564px) {
-    .image-list__item {
-      max-width: 100%;
-    }
+  .image-list__item:hover {
+    background: var(--onsurface-hover-bg);
   }
 
-  .image-list__item-img {
+  .image-list__item-image {
     display: block;
     overflow: hidden;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 300px;
+
     border-radius: 0.5rem;
     user-select: none;
     object-fit: cover;
+    transition: transform 0.25s ease;
   }
 
-  .image-list__actions {
+  .image-list__item:hover .image-list__item-image {
+    transform: scale(1.035);
+  }
+
+  /* .image-list__actions {
     display: flex;
     gap: 0.5rem;
     justify-content: center;
@@ -162,5 +167,5 @@
 
   .image-list__actions:hover {
     background: var(--primary-color);
-  }
+  } */
 </style>
