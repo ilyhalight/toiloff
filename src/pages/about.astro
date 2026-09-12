@@ -116,11 +116,29 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime());
     <SectionHero title={"About"} description={"Small info about me"} />
     <ul class="about-list">
       <AboutCard title="WHOAMI" content="Ilya" subcontent="Fullstack dev" />
-      <AboutCard
-        title="BIRTHDAY"
-        content="Sep 14"
-        subcontent={birthdayIn ? `${birthdayIn} days away` : "today"}
-      />
+      {
+        birthdayIn ? (
+          <AboutCard
+            title="BIRTHDAY"
+            content="Sep 14"
+            subcontent={`${birthdayIn} days away`}
+          />
+        ) : (
+          <AboutCard
+            title={
+              <span class="birthday-today">
+                <img
+                  src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B1F382_1.webp"
+                  alt=""
+                />
+                BIRTHDAY
+              </span>
+            }
+            content="TODAY"
+            subcontent="sep 14"
+          />
+        )
+      }
       <AboutCard title="LOCATION" content="Russia" subcontent="& web" />
       <AboutCard
         title="FAV MUSIC"
@@ -133,6 +151,13 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime());
         content="TypeScript"
         subcontent="since 2024"
       />
+      {
+        birthdayIn === 0 && (
+          <div class="birthday-effect">
+            <img src="" alt="" />
+          </div>
+        )
+      }
     </ul>
     <section class="about-section" id="find-online">
       <h3 class="about-section__title">Find me online</h3>
@@ -244,6 +269,30 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime());
     gap: 1rem;
   }
 
+  .birthday-effect {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    left: -5%;
+    top: 0;
+  }
+
+  .birthday-today {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .birthday-today img {
+    max-width: 32px;
+    width: 32px;
+    max-height: 32px;
+    height: 32px;
+    object-fit: cover;
+  }
+
   .about-section {
     background: var(--surface-bg);
     padding: 1rem 1.25rem;
@@ -268,5 +317,56 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime());
     .about-section {
       width: 100%;
     }
+    .about-list {
+      overflow: hidden;
+    }
   }
 </style>
+
+<script>
+  const BIRTHDAY_EFFECT_URL =
+    "https://media.githubusercontent.com/media/ilyhalight/telegram-emoji-effects/master/webp/U+31_U+20E3/2.webp";
+
+  let isInitedEffect = false;
+
+  function initEffect(imageEl: HTMLImageElement) {
+    if (isInitedEffect || !imageEl) {
+      return;
+    }
+
+    isInitedEffect = true;
+    imageEl.src = `${BIRTHDAY_EFFECT_URL}?t=${Date.now()}`;
+    imageEl.addEventListener(
+      "load",
+      () => {
+        setTimeout(() => {
+          if (!imageEl) {
+            return;
+          }
+
+          imageEl.src = "";
+          isInitedEffect = false;
+        }, 2800);
+      },
+      { once: true },
+    );
+  }
+
+  function main() {
+    const birthdayEffectImg = document.querySelector<HTMLImageElement>(
+      ".birthday-effect img",
+    );
+    const birthdayToday = document.querySelector(".birthday-today");
+    if (!birthdayEffectImg) {
+      return;
+    }
+
+    birthdayToday?.addEventListener("click", () => {
+      initEffect(birthdayEffectImg);
+    });
+
+    initEffect(birthdayEffectImg);
+  }
+
+  main();
+</script>
