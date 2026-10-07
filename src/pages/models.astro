@@ -1,0 +1,41 @@
+---
+export const prerender = false;
+
+import SectionHero from "../components/Section/SectionHero.astro";
+import SectionWrapper from "../components/Section/SectionWrapper.astro";
+import Layout from "../layouts/Layout.astro";
+
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.svelte";
+import ModelsList from "../components/Models/ModelsList.svelte";
+
+import { getModelsPage } from "../lib/api/bff";
+import { DEFUALT_DATA } from "../lib/api/stats";
+import ModelsHeroContent from "../components/Models/ModelsHeroContent.astro";
+
+const modelsPageData = await getModelsPage().catch(() => {
+  return { stats: DEFUALT_DATA, models: [] };
+});
+---
+
+<Layout title="Models">
+  <Breadcrumbs
+    breadcrumbs={[
+      { title: "Home", href: "/" },
+      { title: "Models", href: "/models" },
+    ]}
+  />
+  <SectionWrapper>
+    <SectionHero
+      title="Models"
+      description="My top models by usage"
+      extraContent={(
+        <ModelsHeroContent
+          total={modelsPageData.stats.tokens.total}
+          month={modelsPageData.stats.tokens.month}
+        />
+      )}
+    />
+
+    <ModelsList client:load models={modelsPageData.models} />
+  </SectionWrapper>
+</Layout>

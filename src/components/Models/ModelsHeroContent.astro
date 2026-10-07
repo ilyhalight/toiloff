@@ -1,0 +1,44 @@
+---
+type Props = {
+  total: string;
+  month: string;
+};
+
+const { total, month } = Astro.props;
+---
+
+<div class="hero-models">
+  <p class="models-metric">
+    TOTAL <b class="models-metric__value">{total}</b>
+  </p>
+  <p class="models-metric">
+    MONTH <b class="models-metric__value">{month}</b>
+  </p>
+</div>
+
+<style>
+  .hero-models {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  .models-metric {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+  }
+
+  .models-metric__value {
+    font-size: clamp(2.75rem, 9vw, 4.25rem);
+    line-height: 1;
+    color: var(--text-color);
+  }
+
+  @media screen and (max-width: 600px) {
+    .hero-models {
+      gap: 1.5rem;
+    }
+  }
+</style>

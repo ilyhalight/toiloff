@@ -6,22 +6,16 @@ import CloudsIcon from "../Icones/CloudsIcon.astro";
 import TypeScriptIcon from "../Icones/TypeScriptIcon.astro";
 import StatsItem from "./StatsItem.astro";
 import StatsItemContent from "./StatsItemContent.astro";
-import { BackendAPI } from "../../lib/api";
+
 import type { StatsData } from "../../lib/api/stats";
 
-const DEFUALT_DATA: StatsData = {
-  github: {
-    stars: "-",
-    commits: "-",
-  },
-  tokens: {
-    total: "-",
-    month: "-",
-  },
-};
-const { github, tokens } = await BackendAPI.stats
-  .load()
-  .catch(() => DEFUALT_DATA);
+interface Props {
+  statsData: StatsData;
+}
+
+const {
+  statsData: { github, tokens },
+} = Astro.props;
 ---
 
 <ul class="stats">
@@ -33,7 +27,7 @@ const { github, tokens } = await BackendAPI.stats
       <CodeCommitsIcon />
     </StatsItemContent>
   </StatsItem>
-  <StatsItem title="Tokens wasted">
+  <StatsItem title="Tokens wasted" href="/models">
     <StatsItemContent value={tokens.total} label="Total">
       <FlameIcon />
     </StatsItemContent>
@@ -57,6 +51,7 @@ const { github, tokens } = await BackendAPI.stats
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    list-style: none;
   }
 
   @media screen and (max-width: 450px) {

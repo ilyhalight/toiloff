@@ -2,9 +2,10 @@
 interface Props {
   title: string;
   description: string;
+  extraContent?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, extraContent } = Astro.props;
 ---
 
 <header class="section-hero">
@@ -14,11 +15,13 @@ const { title, description } = Astro.props;
       {description}
     </p>
   </div>
+  {extraContent && <div class="section-hero__extra">{extraContent}</div>}
 </header>
 
 <style>
   .section-hero {
     display: flex;
+    flex-wrap: wrap;
     padding: clamp(1.5rem, 4vw, 2.5rem);
     border-radius: 1.5rem;
     background: var(--surface-bg);
@@ -28,6 +31,7 @@ const { title, description } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    flex: 1;
   }
 
   .section-hero__title {

@@ -8,13 +8,17 @@ import GuestbookContent from "../components/Guestbook/GuestbookContent.astro";
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
 import { BackendAPI } from "../lib/api";
+import { DEFUALT_DATA } from "../lib/api/stats";
 
-const projects = await BackendAPI.projects.loadMain().catch(() => []);
-const webringData = await BackendAPI.webring.get().catch(() => null);
+const mainPageData = await BackendAPI.bff.getMainPage().catch(() => ({
+  stats: DEFUALT_DATA,
+  webring: null,
+  projects: [],
+}));
 ---
 
 <Layout title="Home">
-  <Hero {webringData} />
+  <Hero webringData={mainPageData.webring} />
   <PageSection
     title="Projects"
     link={{
@@ -22,10 +26,10 @@ const webringData = await BackendAPI.webring.get().catch(() => null);
       name: "View all",
     }}
   >
-    <ProjectsWrapper {projects} />
+    <ProjectsWrapper projects={mainPageData.projects} />
   </PageSection>
   <PageSection title="Stats">
-    <Stats />
+    <Stats statsData={mainPageData.stats} />
   </PageSection>
 
   <SectionWrapper>

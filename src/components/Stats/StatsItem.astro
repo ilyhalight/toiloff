@@ -1,27 +1,45 @@
 ---
 type Props = {
   title: string;
+  href?: string;
 };
 
-const { title } = Astro.props;
+const { title, href = "#" } = Astro.props;
 ---
 
-<li class="stats-item">
-  <h3 class="stats-item__title">{title}</h3>
-  <div class="stats-content">
-    <slot />
-  </div>
+<li class="stats-item__wrapper">
+  <a href={href} class="stats-item" data-static={href === "#"}>
+    <h3 class="stats-item__title">{title}</h3>
+    <div class="stats-content">
+      <slot />
+    </div>
+  </a>
 </li>
 
 <style>
-  .stats-item {
+  .stats-item__wrapper {
     flex: 1;
+  }
+
+  .stats-item {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     background: var(--surface-bg);
     border-radius: 1rem;
     padding: 1rem 1.25rem;
+  }
+
+  .stats-item[data-static="true"] {
+    pointer-events: none;
+  }
+
+  .stats-item[data-static="false"] {
+    transition: background-color 0.25s ease;
+  }
+
+  .stats-item[data-static="false"]:hover {
+    background: var(--onsurface-bg);
   }
 
   .stats-content {
