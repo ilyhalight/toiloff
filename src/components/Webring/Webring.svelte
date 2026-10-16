@@ -3,7 +3,7 @@
 
   import WebringItem from "./WebringItem.svelte";
   import type { WebringData } from "../../lib/api/webring";
-  import { ExternalWebringAPI } from "../../lib/external-api/webring";
+  import * as ExternalWebringAPI from "../../lib/external-api/webring";
   import RandomIcon from "../Icones/RandomIcon.svelte";
 
   type Props = {
