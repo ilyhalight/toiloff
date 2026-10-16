@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { BackendAPI } from "../../lib/api";
-
   import SegmentedControl from "../Control/SegmentedControl.svelte";
   import SectionCard from "../../components/Section/SectionCard.svelte";
   import SectionLoading from "../Section/SectionLoading.svelte";
@@ -8,6 +6,7 @@
     GuestbookEntry,
     GuestbookEntryStatus,
   } from "../../lib/api/guestbook";
+  import * as GuestbookAPI from "../../lib/api/guestbook";
   import GuestbookMessageEdit from "../Guestbook/GuestbookMessageEdit.svelte";
   import InfinityScroll from "../Utils/InfinityScroll.svelte";
 
@@ -42,7 +41,7 @@
   });
 
   async function loadMessages(status?: string, cursor?: string | null) {
-    const result = await BackendAPI.guestbook.loadAdmin(status, cursor);
+    const result = await GuestbookAPI.loadAdmin(status, cursor);
     filters = filters.map((filter) => {
       if (filter.value === "") {
         return { ...filter, count: result.stats.all };

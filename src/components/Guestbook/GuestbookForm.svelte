@@ -5,7 +5,7 @@
   import FormHead from "../Form/FormHead.svelte";
   import { type Status } from "../Form/FormStatus.svelte";
 
-  import { BackendAPI } from "../../lib/api/";
+  import * as GuestbookAPI from "../../lib/api/guestbook";
   import Form from "../Form/Form.svelte";
   import FormDropzone from "../Form/FormDropzone.svelte";
   import FormDropzoneWrapper from "../Form/FormDropzoneWrapper.svelte";
@@ -36,7 +36,7 @@
       throw new Error("Username or content is empty!");
     }
 
-    const result = await BackendAPI.guestbook.createMessage(
+    const result = await GuestbookAPI.createMessage(
       {
         username,
         content,

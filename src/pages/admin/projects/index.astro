@@ -11,7 +11,7 @@ import Breadcrumbs, {
   type Breadcrumb,
 } from "../../../components/Breadcrumbs/Breadcrumbs.svelte";
 import Layout from "../../../layouts/Layout.astro";
-import { BackendAPI } from "../../../lib/api";
+import * as ProjectsAPI from "../../../lib/api/projects";
 
 import { AUTH_LOGIN_PAGE } from "../../../lib/api/auth";
 
@@ -39,7 +39,7 @@ const breadcrumbs: Breadcrumb[] = [
   },
 ];
 
-const projectsData = await BackendAPI.projects.getAll().catch(() => ({
+const projectsData = await ProjectsAPI.getAll().catch(() => ({
   items: [],
   nextCursor: null,
   pageSize: 0,

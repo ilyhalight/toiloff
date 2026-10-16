@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { tmAlert } from "../../lib/alert";
-  import { BackendAPI } from "../../lib/api";
+  import { getToken } from "../../lib/api/auth";
   import Form from "../Form/Form.svelte";
   import FormField from "../Form/FormField.svelte";
   import FormHead from "../Form/FormHead.svelte";
@@ -9,7 +8,7 @@
   let password = $state("");
 
   async function submitAction(captchaPayload?: string) {
-    await BackendAPI.auth.getToken({ username, password }, captchaPayload);
+    await getToken({ username, password }, captchaPayload);
   }
 
   const onSuccess = async () => {

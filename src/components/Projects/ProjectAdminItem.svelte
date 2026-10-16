@@ -1,6 +1,6 @@
 <script lang="ts">
   import { tmAlert } from "../../lib/alert";
-  import { BackendAPI } from "../../lib/api";
+  import * as ProjectsAPI from "../../lib/api/projects";
   import type { Project } from "../../lib/api/projects";
   import { showModal } from "../../lib/modal";
   import DeleteIcon from "../Icones/DeleteIcon.svelte";
@@ -40,7 +40,7 @@
           requiredText="DELETE"
           loadingText="Deleting..."
           onClick={async () => {
-            await BackendAPI.projects.delete(project.id);
+            await ProjectsAPI.deleteById(project.id);
             await tmAlert("Successfully deleted project!");
           }}
           onError={async () => {

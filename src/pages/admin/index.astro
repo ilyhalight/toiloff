@@ -7,8 +7,7 @@ import SectionWrapper from "../../components/Section/SectionWrapper.astro";
 import { AUTH_LOGIN_PAGE } from "../../lib/api/auth";
 import Stats from "../../components/Stats/Stats.astro";
 import AdminIndexActions from "../../components/Admin/AdminIndexActions.svelte";
-import { BackendAPI } from "../../lib/api";
-import { DEFUALT_DATA } from "../../lib/api/stats";
+import * as StatsAPI from "../../lib/api/stats";
 
 const user = Astro.locals.user;
 
@@ -16,7 +15,7 @@ if (!user) {
   return Astro.redirect(AUTH_LOGIN_PAGE);
 }
 
-const statsData = await BackendAPI.stats.load().catch(() => DEFUALT_DATA);
+const statsData = await StatsAPI.load().catch(() => StatsAPI.DEFUALT_DATA);
 ---
 
 <Layout title="Admin">

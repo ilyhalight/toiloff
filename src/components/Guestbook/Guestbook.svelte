@@ -2,10 +2,10 @@
   import { onMount } from "svelte";
 
   import { type GuestbookEntry } from "../../lib/api/guestbook";
+  import * as GuestbookAPI from "../../lib/api/guestbook";
   import GuestMessage from "./GuestMessage.svelte";
   import GuestZeroMessage from "./GuestbookZeroMessage.svelte";
   import GuestbookSkeletonMessage from "./GuestbookSkeletonMessage.svelte";
-  import { BackendAPI } from "../../lib/api";
   import { getLocalMessages } from "../../lib/local-storage/guestbook";
 
   interface Props {
@@ -22,7 +22,7 @@
   async function loadMessages() {
     isLoading = true;
     try {
-      const result = await BackendAPI.guestbook.load(nextCursor);
+      const result = await GuestbookAPI.load(nextCursor);
       if (!result.items.length) {
         throw new Error("No messages found");
       }

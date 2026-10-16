@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BackendAPI } from "../../lib/api";
+  import * as ProjectsAPI from "../../lib/api/projects";
   import type { Projects } from "../../lib/api/projects";
   import ProjectsWrapper, {
     type Props as WrapperProps,
@@ -50,7 +50,7 @@
   });
 
   async function loadProjects(cursor?: string | null) {
-    const result = await BackendAPI.projects.getAll(cursor);
+    const result = await ProjectsAPI.getAll(cursor);
     if (!result.items.length) {
       throw new Error("No projects found");
     }

@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { BackendAPI } from "../../lib/api";
+  import * as AdminImagesAPI from "../../lib/api/adminImages";
+
   import Form from "../Form/Form.svelte";
   import FormDropzone from "../Form/FormDropzone.svelte";
   import FormDropzoneWrapper from "../Form/FormDropzoneWrapper.svelte";
@@ -12,7 +13,7 @@
       throw new Error("Image not found. Try again, idk...");
     }
 
-    await BackendAPI.adminImages.upload(image);
+    await AdminImagesAPI.upload(image);
   }
 
   const onSuccess = async () => {

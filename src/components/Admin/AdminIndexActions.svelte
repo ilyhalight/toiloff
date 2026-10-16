@@ -3,7 +3,7 @@
   import AdminActions from "./AdminActions.svelte";
 
   import { tmAlert } from "../../lib/alert";
-  import { BackendAPI } from "../../lib/api";
+  import * as WebringAPI from "../../lib/api/webring";
   import ModalConfirmContent from "../Modal/ModalConfirmContent.svelte";
 
   const links = [
@@ -38,7 +38,7 @@
     requiredText="CLEAR"
     loadingText="Clearing..."
     onClick={async () => {
-      await BackendAPI.webring.clearCache();
+      await WebringAPI.clearCache();
       await tmAlert("Successfully cleared webring cache!");
     }}
     onError={async () => {

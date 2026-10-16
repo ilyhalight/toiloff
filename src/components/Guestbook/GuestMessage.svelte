@@ -1,7 +1,7 @@
 <script lang="ts">
   import GuestMessageReply from "./GuestMessageReply.svelte";
   import type { GuestbookEntry } from "../../lib/api/guestbook";
-  import { BackendAPI } from "../../lib/api";
+  import * as GuestbookAPI from "../../lib/api/guestbook";
   import GuestbookMessageIcon from "./GuestbookMessageIcon.svelte";
   import GuestMessageDate from "./GuestMessageDate.svelte";
 
@@ -13,7 +13,7 @@
   const { hidden = false, message }: Props = $props();
   const { username, content, href, subText, replyText, createdAt, avatarUrl } =
     $derived(message);
-  const messageAvatarUrl = $derived(BackendAPI.guestbook.getAvatar(avatarUrl));
+  const messageAvatarUrl = $derived(GuestbookAPI.getAvatar(avatarUrl));
   const subContent = $derived(subText ?? href);
   const messageLink = $derived.by(() => {
     if (!href) {

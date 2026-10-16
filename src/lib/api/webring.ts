@@ -17,16 +17,12 @@ export type WebringClearCacheData = {
   status: true;
 };
 
-export const WebringRouteAPI = {
-  get: async () => {
-    return await fetchFromAPI<WebringData>("webring");
-  },
-  clearCache: async () => {
-    return await fetchFromAPI<WebringClearCacheData>(
-      "admin/webring/cache",
-      undefined,
-      undefined,
-      { method: "DELETE" },
-    );
-  },
+export const get = async () => {
+  return await fetchFromAPI<WebringData>("webring");
+};
+
+export const clearCache = async () => {
+  return await fetchFromAPI<WebringClearCacheData>("admin/webring/cache", undefined, undefined, {
+    method: "DELETE",
+  });
 };

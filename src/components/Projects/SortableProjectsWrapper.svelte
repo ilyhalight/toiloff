@@ -5,7 +5,7 @@
 
   import ProjectsWrapper from "./ProjectsWrapper.svelte";
   import type { Project } from "../../lib/api/projects";
-  import { BackendAPI } from "../../lib/api";
+  import * as ProjectsAPI from "../../lib/api/projects";
 
   export type Props = {
     projects: Project[];
@@ -44,7 +44,7 @@
           ?.dataset.id;
         const beforeId = (currentEl.nextElementSibling as HTMLElement)?.dataset
           .id;
-        await BackendAPI.projects.changePosition(currentId, afterId, beforeId);
+        await ProjectsAPI.changePosition(currentId, afterId, beforeId);
       },
       animation: 200,
     });

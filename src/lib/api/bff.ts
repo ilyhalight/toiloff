@@ -15,10 +15,8 @@ export type BFFModelsPage = {
   models: TopModelItem[];
 };
 
-export const BffRouteAPI = {
-  getMainPage: async () => {
-    return await fetchFromAPI<BFFMainPage>("bff");
-  },
+export const getMainPage = async () => {
+  return await fetchFromAPI<BFFMainPage>("bff");
 };
 
 export const getModelsPage = async () => {

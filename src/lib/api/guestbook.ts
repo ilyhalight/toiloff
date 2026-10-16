@@ -32,9 +32,7 @@ export const GuestbookLocalEntrySchema = GuestbookEntrySchema.extend({
 
 export type GuestbookLocalEntry = z.infer<typeof GuestbookLocalEntrySchema>;
 
-export const GuestbookLocalEntrySchemaArray = z.array(
-  GuestbookLocalEntrySchema,
-);
+export const GuestbookLocalEntrySchemaArray = z.array(GuestbookLocalEntrySchema);
 
 export type GuestbookStats = {
   review: number;
@@ -54,73 +52,65 @@ export type GuestbookAdminData = GuestbookData & {
 
 export type NewGuestbook = Omit<
   GuestbookEntry,
-  | "id"
-  | "status"
-  | "replyText"
-  | "avatarUrl"
-  | "createdAt"
-  | "updatedAt"
-  | "reviewedAt"
+  "id" | "status" | "replyText" | "avatarUrl" | "createdAt" | "updatedAt" | "reviewedAt"
 > & {
   avatar?: File;
 };
 
-export const GuestbookRouteAPI = {
-  getAvatar: (avatarId?: string | null) => {
-    // use raw for abs paths / null
-    if (!avatarId || avatarId.includes("://")) {
-      return avatarId;
-    }
+export const getAvatar = (avatarId?: string | null) => {
+  // use raw for abs paths / null
+  if (!avatarId || avatarId.includes("://")) {
+    return avatarId;
+  }
 
-    return `${AVATAR_BASE_URL}${encodeURIComponent(avatarId)}`;
-  },
-  load: async (cursor?: string | null) => {
-    const query = new URLSearchParams();
-    if (cursor) {
-      query.append("cursor", cursor);
-    }
-
-    return await fetchFromAPI<GuestbookData>(`guestbook?${query.toString()}`);
-  },
-  createMessage: async (item: NewGuestbook, captchaPayload?: string) => {
-    const body = toFormData(item);
-    return await fetchFromAPI<GuestbookEntry>(
-      "guestbook",
-      body,
-      captchaPayload,
-    );
-  },
-  loadAdmin: async (status?: string, cursor?: string | null) => {
-    let query = new URLSearchParams();
-    if (status) {
-      query.append("status", status);
-    }
-
-    if (cursor) {
-      query.append("cursor", cursor);
-    }
-
-    return await fetchFromAPI<GuestbookAdminData>(
-      `admin/guestbook?${query.toString()}`,
-    );
-  },
-  approveMessage: async (id: string, replyText?: string | null) =>
-    await fetchFromAPI<GuestbookEntry>(
-      `admin/guestbook/${encodeURIComponent(id)}/approve`,
-      JSON.stringify({ replyText }),
-    ),
-  declineMessage: async (id: string, replyText?: string | null) =>
-    await fetchFromAPI<GuestbookEntry>(
-      `admin/guestbook/${encodeURIComponent(id)}/decline`,
-      JSON.stringify({ replyText }),
-    ),
-  forceDelete: async (id: string) =>
-    await fetchFromAPI<GuestbookEntry>(
-      `admin/guestbook/${encodeURIComponent(id)}`,
-      undefined,
-      undefined,
-      {
-        method: "DELETE",
-      },
-    ),
+  return `${AVATAR_BASE_URL}${encodeURIComponent(avatarId)}`;
 };
+
+export const load = async (cursor?: string | null) => {
+  const query = new URLSearchParams();
+  if (cursor) {
+    query.append("cursor", cursor);
+  }
+
+  return await fetchFromAPI<GuestbookData>(`guestbook?${query.toString()}`);
+};
+
+export const createMessage = async (item: NewGuestbook, captchaPayload?: string) => {
+  const body = toFormData(item);
+  return await fetchFromAPI<GuestbookEntry>("guestbook", body, captchaPayload);
+};
+
+export const loadAdmin = async (status?: string, cursor?: string | null) => {
+  let query = new URLSearchParams();
+  if (status) {
+    query.append("status", status);
+  }
+
+  if (cursor) {
+    query.append("cursor", cursor);
+  }
+
+  return await fetchFromAPI<GuestbookAdminData>(`admin/guestbook?${query.toString()}`);
+};
+
+export const approveMessage = async (id: string, replyText?: string | null) =>
+  await fetchFromAPI<GuestbookEntry>(
+    `admin/guestbook/${encodeURIComponent(id)}/approve`,
+    JSON.stringify({ replyText }),
+  );
+
+export const declineMessage = async (id: string, replyText?: string | null) =>
+  await fetchFromAPI<GuestbookEntry>(
+    `admin/guestbook/${encodeURIComponent(id)}/decline`,
+    JSON.stringify({ replyText }),
+  );
+
+export const forceDelete = async (id: string) =>
+  await fetchFromAPI<GuestbookEntry>(
+    `admin/guestbook/${encodeURIComponent(id)}`,
+    undefined,
+    undefined,
+    {
+      method: "DELETE",
+    },
+  );

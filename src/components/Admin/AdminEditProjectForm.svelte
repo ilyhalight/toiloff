@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BackendAPI } from "../../lib/api";
+  import * as ProjectsAPI from "../../lib/api/projects";
   import type { Project } from "../../lib/api/projects";
   import Form from "../Form/Form.svelte";
   import FormField from "../Form/FormField.svelte";
@@ -15,7 +15,7 @@
     $derived(project);
 
   async function submitAction() {
-    await BackendAPI.projects.edit(project.id, {
+    await ProjectsAPI.edit(project.id, {
       title,
       description,
       href,

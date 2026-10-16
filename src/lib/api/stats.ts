@@ -46,10 +46,8 @@ export type TopModelItem = {
   monthTokens: TopModelTokens;
 };
 
-export const StatsRouteAPI = {
-  load: async () => {
-    return await fetchFromAPI<StatsData>("stats");
-  },
+export const load = async () => {
+  return await fetchFromAPI<StatsData>("stats");
 };
 
 export const getModels = async () => {

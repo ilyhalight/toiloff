@@ -8,11 +8,11 @@ import Layout from "../layouts/Layout.astro";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.svelte";
 import ModelsList from "../components/Models/ModelsList.svelte";
 
-import { getModelsPage } from "../lib/api/bff";
+import * as BFF from "../lib/api/bff";
 import { DEFUALT_DATA } from "../lib/api/stats";
 import ModelsHeroContent from "../components/Models/ModelsHeroContent.astro";
 
-const modelsPageData = await getModelsPage().catch(() => {
+const modelsPageData = await BFF.getModelsPage().catch(() => {
   return { stats: DEFUALT_DATA, models: [] };
 });
 ---

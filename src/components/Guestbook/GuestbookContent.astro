@@ -2,7 +2,7 @@
 import Guestbook from "./Guestbook.svelte";
 import SectionCard from "../Section/SectionCard.svelte";
 import GuestbookForm from "./GuestbookForm.svelte";
-import { BackendAPI } from "../../lib/api";
+import * as GuestbookAPI from "../../lib/api/guestbook";
 import SystemMessage from "../SystemMessage.svelte";
 import { formatSeconds } from "../../lib/utils";
 
@@ -13,7 +13,7 @@ const DEFAULT_ITEM = {
   isOffline: true,
 };
 
-const data = await BackendAPI.guestbook.load().catch(() => DEFAULT_ITEM);
+const data = await GuestbookAPI.load().catch(() => DEFAULT_ITEM);
 const isOnline = !Object.hasOwn(data, "isOffline");
 const avgReviewTime = data.avgReviewTime
   ? formatSeconds(data.avgReviewTime)

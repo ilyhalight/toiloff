@@ -1,11 +1,10 @@
 <script lang="ts">
   import { tmAlert } from "../../lib/alert";
-  import { BackendAPI } from "../../lib/api";
+  import * as AdminImagesAPI from "../../lib/api/adminImages";
   import { showImageOverlay, showModal } from "../../lib/modal";
   import SegmentedControl, {
     type Item,
   } from "../Control/SegmentedControl.svelte";
-  import DeleteIcon from "../Icones/DeleteIcon.svelte";
   import ModalConfirmContent from "../Modal/ModalConfirmContent.svelte";
   import SectionCard from "../Section/SectionCard.svelte";
   import SectionLoading from "../Section/SectionLoading.svelte";
@@ -41,8 +40,8 @@
   async function loadImages() {
     const result =
       usedFilter === "avatars"
-        ? await BackendAPI.adminImages.getAvatars()
-        : await BackendAPI.adminImages.getAll();
+        ? await AdminImagesAPI.getAvatars()
+        : await AdminImagesAPI.getAll();
     if (!result.length) {
       throw new Error("No images found");
     }
@@ -53,15 +52,15 @@
 
   const getImage = (imageId: string) => {
     if (usedFilter === "avatars") {
-      return BackendAPI.adminImages.getAvatar(imageId);
+      return AdminImagesAPI.getAvatar(imageId);
     }
 
-    return BackendAPI.adminImages.get(imageId);
+    return AdminImagesAPI.get(imageId);
   };
 
   const handleDelete = async (image: string) => {
     const imageId = usedFilter == "avatars" ? `avatars/${image}` : image;
-    await BackendAPI.adminImages.delete(imageId);
+    await AdminImagesAPI.deleteImage(imageId);
     images = images.filter((img) => img !== image);
     await tmAlert("Image deleted successfully");
   };

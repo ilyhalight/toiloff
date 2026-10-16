@@ -2,7 +2,7 @@
   "name": "toiloff-frontend",
   "private": true,
   "type": "module",
-  "version": "3.0.21",
+  "version": "3.0.22",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -13,11 +13,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/svelte": "^9.0.1",
+    "@astrojs/svelte": "^9.1.0",
     "@wyattjoh/astro-bun-adapter": "^2.1.1",
-    "altcha": "^3.2.2",
-    "astro": "^7.3.2",
-    "human-id": "^4.2.1",
+    "altcha": "^3.4.0",
+    "astro": "^7.4.0",
+    "human-id": "^4.2.2",
     "sortablejs": "^1.15.7"
   },
   "devDependencies": {

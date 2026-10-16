@@ -1,8 +1,7 @@
 import type { APIContext } from "astro";
 import { defineMiddleware } from "astro:middleware";
 
-import { BackendAPI } from "./lib/api";
-import { AUTH_COOKIE_NAME } from "./lib/api/auth";
+import { AUTH_COOKIE_NAME, verify } from "./lib/api/auth";
 
 const getUser = async (context: APIContext) => {
   const token = context.cookies.get(AUTH_COOKIE_NAME);
@@ -11,7 +10,7 @@ const getUser = async (context: APIContext) => {
   }
 
   try {
-    return await BackendAPI.auth.verify(token.value);
+    return await verify(token.value);
   } catch {
     return null;
   }

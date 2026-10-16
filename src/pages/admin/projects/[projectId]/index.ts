@@ -1,4 +1,4 @@
-import { BackendAPI } from "../../../../lib/api";
+import * as ProjectsAPI from "../../../../lib/api/projects";
 
 export const getPageProject = async (projectId?: string) => {
   if (!projectId) {
@@ -8,9 +8,7 @@ export const getPageProject = async (projectId?: string) => {
     });
   }
 
-  const project = await BackendAPI.projects
-    .getById(projectId)
-    .catch(() => undefined);
+  const project = await ProjectsAPI.getById(projectId).catch(() => undefined);
   if (!project) {
     return new Response(null, {
       status: 404,

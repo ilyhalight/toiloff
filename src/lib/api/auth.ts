@@ -18,18 +18,17 @@ export type UserEntry = {
   username: string;
 };
 
-export const AuthRouteAPI = {
-  getToken: async (creds: AuthCredsEntry, captchaPayload?: string) =>
-    await fetchFromAPI<AuthTokenResponseEntry>(
-      "admin/auth/token",
-      JSON.stringify(creds),
-      captchaPayload,
-    ),
-  verify: async (token: string) =>
-    await fetchFromAPI<UserEntry>("admin/auth/verify", undefined, undefined, {
-      method: "POST",
-      headers: {
-        Cookie: `${AUTH_COOKIE_NAME}=${token}`,
-      },
-    }),
-};
+export const getToken = async (creds: AuthCredsEntry, captchaPayload?: string) =>
+  await fetchFromAPI<AuthTokenResponseEntry>(
+    "admin/auth/token",
+    JSON.stringify(creds),
+    captchaPayload,
+  );
+
+export const verify = async (token: string) =>
+  await fetchFromAPI<UserEntry>("admin/auth/verify", undefined, undefined, {
+    method: "POST",
+    headers: {
+      Cookie: `${AUTH_COOKIE_NAME}=${token}`,
+    },
+  });

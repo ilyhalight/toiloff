@@ -7,9 +7,9 @@ import Layout from "../layouts/Layout.astro";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.svelte";
 import ProjectList from "../components/Projects/ProjectList.svelte";
 
-import { BackendAPI } from "../lib/api";
+import * as ProjectsAPI from "../lib/api/projects";
 
-const projectsData = await BackendAPI.projects.getAll().catch(() => ({
+const projectsData = await ProjectsAPI.getAll().catch(() => ({
   items: [],
   nextCursor: null,
   pageSize: 0,

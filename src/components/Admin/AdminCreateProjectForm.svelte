@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BackendAPI } from "../../lib/api";
+  import * as ProjectsAPI from "../../lib/api/projects";
   import Form from "../Form/Form.svelte";
   import FormField from "../Form/FormField.svelte";
   import FormHead from "../Form/FormHead.svelte";
@@ -13,7 +13,7 @@
   let canShowOnMain = $state(true);
 
   async function submitAction() {
-    await BackendAPI.projects.create({
+    await ProjectsAPI.create({
       title,
       description,
       href,

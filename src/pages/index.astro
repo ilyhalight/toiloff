@@ -7,10 +7,10 @@ import Stats from "../components/Stats/Stats.astro";
 import GuestbookContent from "../components/Guestbook/GuestbookContent.astro";
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
-import { BackendAPI } from "../lib/api";
 import { DEFUALT_DATA } from "../lib/api/stats";
+import * as BFF from "../lib/api/bff";
 
-const mainPageData = await BackendAPI.bff.getMainPage().catch(() => ({
+const mainPageData = await BFF.getMainPage().catch(() => ({
   stats: DEFUALT_DATA,
   webring: null,
   projects: [],

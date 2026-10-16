@@ -1,6 +1,6 @@
 <script lang="ts">
   import { tmAlert } from "../../lib/alert";
-  import { BackendAPI } from "../../lib/api";
+  import * as GuestbookAPI from "../../lib/api/guestbook";
 
   import type {
     GuestbookEntry,
@@ -59,7 +59,7 @@
         <img
           class="message-avatar"
           loading="lazy"
-          src={BackendAPI.guestbook.getAvatar(message.avatarUrl)}
+          src={GuestbookAPI.getAvatar(message.avatarUrl)}
           alt="{message.username}'s avatar"
         />
       </div>
@@ -123,10 +123,7 @@
           onclick={async () => {
             const oldStatus = message.status;
             const updatedMessage = await loadingWrapper(() =>
-              BackendAPI.guestbook.approveMessage(
-                message.id,
-                message.replyText,
-              ),
+              GuestbookAPI.approveMessage(message.id, message.replyText),
             );
             if (updatedMessage) {
               onApprove(updatedMessage, oldStatus);
@@ -145,10 +142,7 @@
           onclick={async () => {
             const oldStatus = message.status;
             const updatedMessage = await loadingWrapper(() =>
-              BackendAPI.guestbook.declineMessage(
-                message.id,
-                message.replyText,
-              ),
+              GuestbookAPI.declineMessage(message.id, message.replyText),
             );
             if (updatedMessage) {
               onDecline(updatedMessage, oldStatus);
@@ -166,7 +160,7 @@
           requiredText="DELETE"
           onClick={async () => {
             const updatedMessage = await loadingWrapper(() =>
-              BackendAPI.guestbook.forceDelete(message.id),
+              GuestbookAPI.forceDelete(message.id),
             );
             if (updatedMessage) {
               onDelete(updatedMessage);
