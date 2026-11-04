@@ -1,6 +1,4 @@
-import { styleText } from "node:util";
-
-import { calcTableGaps, orange, title } from "../utils";
+import { calcTableGaps, gray, orange, title } from "../utils";
 import { footer } from "../components/footer.ts";
 import { getCollection } from "astro:content";
 
@@ -14,7 +12,7 @@ export default async (): Promise<string> => {
 
   const socialsTable = socials.map((social) => [
     orange(social.label.toLowerCase()),
-    styleText("gray", social.href === "#" ? "only in browser" : social.href),
+    gray(social.href === "#" ? "only in browser" : social.href),
   ]);
   const socialsGaps = calcTableGaps(socialsTable);
 

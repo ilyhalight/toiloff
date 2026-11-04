@@ -1,4 +1,3 @@
-import { styleText } from "node:util";
 import type { APIContext } from "astro";
 
 // 30 secs in ms
@@ -21,7 +20,7 @@ export const cached = async (
     cache.set(pathname, { content, cachedAt: Date.now() });
     return content;
   } catch {
-    return `looks like i broke something ${styleText("red", "><")}\n\n${styleText("gray", "Please check it later or try to use browser...")}\n`;
+    return `looks like i broke something ${primary("><")}\n\n${gray("Please check it later or try to use browser...")}\n`;
   }
 };
 
@@ -35,7 +34,9 @@ export const hex = (h: string) => {
 
 export const primary = hex("#ff6363");
 export const orange = hex("#FDBF07");
+export const gray = hex("#808080");
 
+export const bold = (text: string) => `\x1b[1m${text}\x1b[22m`;
 export const title = (text: string) =>
   `${primary("≪ ")}${hex("#FFD1FB")("✿")} ${text} ${primary("≫")}`;
 

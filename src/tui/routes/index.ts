@@ -1,9 +1,7 @@
-import { styleText } from "node:util";
-
 import { getMainPage } from "#lib/api/bff.ts";
 import * as GuestbookAPI from "#lib/api/guestbook.ts";
 import { dateFormatter } from "#lib/utils.ts";
-import { orange, primary, title } from "../utils";
+import { bold, gray, orange, primary, title } from "../utils";
 import { projectList } from "../components/projectList.ts";
 import { footer } from "../components/footer.ts";
 
@@ -21,9 +19,9 @@ const getGuestbookContent = (guestbook: GuestbookAPI.GuestbookData | null) => {
       .map((message) => {
         let subContent = "";
         if (message.href && message.subText) {
-          subContent = `${message.subText} (${styleText("gray", message.href)})`;
+          subContent = `${message.subText} (${gray(message.href)})`;
         } else if (message.href) {
-          subContent = styleText("gray", message.href);
+          subContent = gray(message.href);
         } else if (message.subText) {
           subContent = message.subText;
         }
@@ -31,15 +29,13 @@ const getGuestbookContent = (guestbook: GuestbookAPI.GuestbookData | null) => {
           subContent = `\n  ${subContent}`;
         }
 
-        const date = styleText("gray", dateFormatter.format(new Date(message.createdAt)));
-        const replied = message.replyText
-          ? styleText("gray", `\n  replied: ${message.replyText}`)
-          : "";
+        const date = gray(dateFormatter.format(new Date(message.createdAt)));
+        const replied = message.replyText ? gray(`\n  replied: ${message.replyText}`) : "";
 
-        return `${styleText("bold", orange(message.username))}${subContent}\n  ${styleText("gray", "›")} ${message.content}${replied}\n  ${date}`;
+        return `${bold(orange(message.username))}${subContent}\n  ${gray("›")} ${message.content}${replied}\n  ${date}`;
       })
       .join("\n\n  ") +
-    (guestbook.nextCursor ? `\n\n  ${styleText("gray", `[ See more messages in browser! ]`)}` : "")
+    (guestbook.nextCursor ? `\n\n  ${gray(`[ See more messages in browser! ]`)}` : "")
   );
 };
 
@@ -48,18 +44,18 @@ export default async (): Promise<string> => {
   const guestbook = await GuestbookAPI.load().catch(() => null);
 
   return `
-${styleText("bold", primary("Make yourself at home"))}
+${bold(primary("Make yourself at home"))}
 A quiet place on the web where I keep my projects and ideas
 
 ${title("Webring")}
-Check out other cool websites ${styleText("gray", "(use your browser)")}:
+Check out other cool websites ${gray("(use your browser)")}:
 
-  ${primary("← prev")}    ${webring.prev.name} ${styleText("gray", `(${webring.prev.url})`)}
-  ${primary("- info")}    about Otoring ${styleText("gray", `(${webring.info})`)}
-  ${primary("→ next")}    ${webring.next.name} ${styleText("gray", `(${webring.next.url})`)}
+  ${primary("← prev")}    ${webring.prev.name} ${gray(`(${webring.prev.url})`)}
+  ${primary("- info")}    about Otoring ${gray(`(${webring.info})`)}
+  ${primary("→ next")}    ${webring.next.name} ${gray(`(${webring.next.url})`)}
 
 ${title("Projects")}
-Some of my projects. See ${styleText("gray", "/projects")} for more.
+Some of my projects. See ${gray("/projects")} for more.
 
   ${projectList(projects)}
 

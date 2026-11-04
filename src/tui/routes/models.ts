@@ -1,23 +1,20 @@
-import { styleText } from "node:util";
-
 import { getModelsPage } from "#lib/api/bff.ts";
-import { calcTableGaps, orange, title } from "../utils";
-import { projectList } from "../components/projectList.ts";
+import { calcTableGaps, gray, hex, orange, title } from "../utils";
 import { footer } from "../components/footer.ts";
 
 const tablePlaceColor = (idx: number) => {
   switch (idx) {
     case 0: {
-      return (text: string) => styleText("gray", text);
+      return (text: string) => gray(text);
     }
     case 1: {
       return orange;
     }
     case 2: {
-      return (text: string) => styleText("blueBright", text);
+      return (text: string) => hex("#b8bec9")(text);
     }
     case 3: {
-      return (text: string) => styleText("yellow", text);
+      return (text: string) => hex("#c77b48")(text);
     }
     default: {
       return (text: string) => text;
@@ -55,10 +52,7 @@ ${table
   .map((row, idx) => {
     let prepend = "";
     if (idx === 1) {
-      prepend += styleText(
-        "gray",
-        "  " + tableGaps.map((gap) => "-".repeat(gap)).join("  |  ") + "\n",
-      );
+      prepend += gray("  " + tableGaps.map((gap) => "-".repeat(gap)).join("  |  ") + "\n");
     }
 
     return (
