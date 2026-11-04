@@ -3,6 +3,7 @@ import AboutCard from "../components/About/AboutCard.astro";
 import AboutSocialItem from "../components/About/AboutSocialItem.astro";
 import Layout from "../layouts/Layout.astro";
 import TelegramIcon from "../components/Icones/TelegramIcon.svelte";
+import XIcon from "../components/Icones/XIcon.astro";
 import EmailIcon from "../components/Icones/EmailIcon.astro";
 import GithubFillIcon from "../components/Icones/GithubFillIcon.astro";
 import LastfmIcon from "../components/Icones/LastfmIcon.astro";
@@ -30,56 +31,54 @@ import DockerColorIcon from "../components/Icones/DockerColorIcon.astro";
 import NodeColorIcon from "../components/Icones/NodeColorIcon.astro";
 import BoostyIcon from "../components/Icones/BoostyIcon.svelte";
 import LolzteamIcon from "../components/Icones/LolzteamIcon.svelte";
+import GenericIcon from "../components/Icones/GenericIcon.astro";
+
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.svelte";
 import { daysBetween } from "../lib/utils";
+import { getCollection } from "astro:content";
 
-const socials = [
-  {
-    id: "telegram",
-    label: "Telegram",
-    href: "https://t.me/cutecoder",
-    Icon: TelegramIcon,
-  },
-  {
-    id: "github",
-    label: "Github",
-    href: "https://github.com/ilyhalight",
-    Icon: GithubFillIcon,
-  },
-  {
-    id: "steam",
-    label: "Steam",
-    href: "https://steamcommunity.com/id/ToilOfficial/",
-    Icon: SteamIcon,
-  },
-  {
-    id: "shikimori",
-    label: "Shikimori",
-    href: "https://shikimori.io/Toil",
-    Icon: ShikimoriIcon,
-  },
-  {
-    id: "mangalib",
-    label: "Mangalib",
-    href: "https://mangalib.me/ru/user/679978?",
-    Icon: MangalibIcon,
-  },
-  {
-    id: "scrobbles",
-    label: "Scrobbles",
-    href: "https://scrobbles.nirel.cc/",
-    Icon: LastfmIcon,
-  },
-  {
-    id: "vk",
-    label: "VKONTAKTE",
-    href: "https://vk.com/toilofficial",
-    Icon: VKIcon,
-  },
-  { id: "email", label: "Email", href: "#", Icon: EmailIcon },
-] as const;
+const socialIcons = {
+  "telegram": TelegramIcon,
+  "github": GithubFillIcon,
+  "x": XIcon,
+  "steam": SteamIcon,
+  "shikimori": ShikimoriIcon,
+  "mangalib": MangalibIcon,
+  "lastfm": LastfmIcon,
+  "vk": VKIcon,
+  "email": EmailIcon,
+  "other": GenericIcon
+} as const
+
+const skillIcons = {
+  typescript: TypeScriptColorIcon,
+  javascript: JavaScriptColorIcon,
+  bun: BunIcon,
+  elysia: ElysiaIcon,
+  svelte: SvelteIcon,
+  postgresql: PostgreSQLIcon,
+  redis: RedisIcon,
+  nginx: NginxColorIcon,
+  docker: DockerColorIcon,
+  astro: AstroIcon,
+  nuxt: NuxtIcon,
+  vue: VueIcon,
+  python: PythonColorIcon,
+  s3: S3Icon,
+  git: GitIcon,
+  webpack: WebpackIcon,
+  node: NodeColorIcon,
+  mysql: MySQLIcon,
+} as const;
+
+const socials = (await getCollection("socials"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((entry) => entry.data)
+const skills = (await getCollection("skills"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((entry) => entry.data)
 
 const donateLinks = [
   {
@@ -159,7 +158,7 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime());
         )
       }
     </ul>
-    <section class="about-section" id="find-online">
+    <section class="about-section">
       <h3 class="about-section__title">Find me online</h3>
       <ul class="about-socials">
         {
@@ -168,36 +167,28 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime());
               id={social.id}
               label={social.label}
               href={social.href}
-              Icon={social.Icon}
+              Icon={social.icon in socialIcons ? socialIcons[social.icon as keyof typeof socialIcons] : socialIcons["other"]}
             />
           ))
         }
       </ul>
     </section>
-    <section class="about-section" id="find-online">
+    <section class="about-section">
       <h3 class="about-section__title">Tech stack</h3>
       <ul class="tech-stack">
-        <li class="tech-stack__item"><TypeScriptColorIcon /> TypeScript</li>
-        <li class="tech-stack__item"><JavaScriptColorIcon /> JavaScript</li>
-        <li class="tech-stack__item"><BunIcon /> Bun</li>
-        <li class="tech-stack__item"><ElysiaIcon /> Elysia</li>
-        <li class="tech-stack__item"><SvelteIcon /> Svelte</li>
-        <li class="tech-stack__item"><PostgreSQLIcon /> PostgreSQL</li>
-        <li class="tech-stack__item"><RedisIcon /> Redis</li>
-        <li class="tech-stack__item"><NginxColorIcon /> Nginx</li>
-        <li class="tech-stack__item"><DockerColorIcon /> Docker</li>
-        <li class="tech-stack__item"><AstroIcon /> Astro</li>
-        <li class="tech-stack__item"><NuxtIcon /> Nuxt</li>
-        <li class="tech-stack__item"><VueIcon /> Vue</li>
-        <li class="tech-stack__item"><PythonColorIcon /> Python</li>
-        <li class="tech-stack__item"><S3Icon /> S3</li>
-        <li class="tech-stack__item"><GitIcon /> Git</li>
-        <li class="tech-stack__item"><WebpackIcon /> Webpack</li>
-        <li class="tech-stack__item"><NodeColorIcon /> Node.js</li>
-        <li class="tech-stack__item"><MySQLIcon /> MySQL</li>
+        {skills.map((skill) => {
+          const Icon = skill.icon in skillIcons
+            ? skillIcons[skill.icon as keyof typeof skillIcons]
+            : undefined;
+          return (
+            <li class="tech-stack__item">
+              {Icon && <Icon />} {skill.slug}
+            </li>
+          );
+        })}
       </ul>
     </section>
-    <section class="about-section" id="find-online">
+    <section class="about-section">
       <h3 class="about-section__title">Donate me</h3>
       <ul class="about-socials">
         {

@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "TypeScript",
+    "icon": "typescript",
+    "order": 1
+  },
+  {
+    "slug": "JavaScript",
+    "icon": "javascript",
+    "order": 2
+  },
+  {
+    "slug": "Bun",
+    "icon": "bun",
+    "order": 3
+  },
+  {
+    "slug": "Elysia",
+    "icon": "elysia",
+    "order": 4
+  },
+  {
+    "slug": "Svelte",
+    "icon": "svelte",
+    "order": 5
+  },
+  {
+    "slug": "PostgreSQL",
+    "icon": "postgresql",
+    "order": 6
+  },
+  {
+    "slug": "Redis",
+    "icon": "redis",
+    "order": 7
+  },
+  {
+    "slug": "Nginx",
+    "icon": "nginx",
+    "order": 8
+  },
+  {
+    "slug": "Docker",
+    "icon": "docker",
+    "order": 9
+  },
+  {
+    "slug": "Astro",
+    "icon": "astro",
+    "order": 10
+  },
+  {
+    "slug": "Nuxt",
+    "icon": "nuxt",
+    "order": 11
+  },
+  {
+    "slug": "Vue",
+    "icon": "vue",
+    "order": 12
+  },
+  {
+    "slug": "Python",
+    "icon": "python",
+    "order": 13
+  },
+  {
+    "slug": "S3",
+    "icon": "s3",
+    "order": 14
+  },
+  {
+    "slug": "Git",
+    "icon": "git",
+    "order": 15
+  },
+  {
+    "slug": "Webpack",
+    "icon": "webpack",
+    "order": 16
+  },
+  {
+    "slug": "Node.js",
+    "icon": "node",
+    "order": 17
+  },
+  {
+    "slug": "MySQL",
+    "icon": "mysql",
+    "order": 18
+  }
+]

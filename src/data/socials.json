@@ -1,0 +1,59 @@
+[
+  {
+    "id": "telegram",
+    "label": "Telegram",
+    "href": "https://t.me/cutecoder",
+    "icon": "telegram",
+    "order": 1
+  },
+  {
+    "id": "github",
+    "label": "Github",
+    "href": "https://github.com/ilyhalight",
+    "icon": "github",
+    "order": 2
+  },
+  {
+    "id": "steam",
+    "label": "Steam",
+    "href": "https://steamcommunity.com/id/ToilOfficial/",
+    "icon": "steam",
+    "order": 3
+  },
+  {
+    "id": "x",
+    "label": "Twitter",
+    "href": "https://x.com/toil_dev",
+    "icon": "x",
+    "order": 4
+  },
+  {
+    "id": "shikimori",
+    "label": "Shikimori",
+    "href": "https://shikimori.io/Toil",
+    "icon": "shikimori",
+    "order": 5
+  },
+  {
+    "id": "mangalib",
+    "label": "Mangalib",
+    "href": "https://mangalib.me/ru/user/679978",
+    "icon": "mangalib",
+    "order": 6
+  },
+  {
+    "id": "scrobbles",
+    "label": "Scrobbles",
+    "href": "https://scrobbles.nirel.cc/",
+    "icon": "lastfm",
+    "order": 7
+  },
+  {
+    "id": "vk",
+    "label": "VKONTAKTE",
+    "href": "https://vk.com/toilofficial",
+    "icon": "vk",
+    "order": 8
+  },
+  { "id": "email", "label": "Email", "href": "#", "icon": "email", "order": 9 }
+]

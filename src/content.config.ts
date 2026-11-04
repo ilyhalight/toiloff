@@ -22,5 +22,25 @@ const settings = defineCollection({
     defaultDelimiter: z.string(),
   }),
 });
-// 5. Export a single `collections` object to register your collection(s)
-export const collections = { settings };
+
+const socials = defineCollection({
+  loader: file("src/data/socials.json"),
+  schema: z.object({
+    id: z.string(),
+    label: z.string(),
+    href: z.string(),
+    icon: z.string(),
+    order: z.number(),
+  }),
+});
+
+const skills = defineCollection({
+  loader: file("src/data/skills.json"),
+  schema: z.object({
+    slug: z.string(),
+    icon: z.string(),
+    order: z.number(),
+  }),
+});
+
+export const collections = { settings, socials, skills };
