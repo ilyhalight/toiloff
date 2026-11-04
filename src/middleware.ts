@@ -1,6 +1,8 @@
 import type { APIContext } from "astro";
 import { defineMiddleware } from "astro:middleware";
 
+import routerTUI from "./tui";
+
 import { AUTH_COOKIE_NAME, verify } from "./lib/api/auth";
 
 const getUser = async (context: APIContext) => {
@@ -16,7 +18,14 @@ const getUser = async (context: APIContext) => {
   }
 };
 
+const isCurl = (userAgent: string | null) => userAgent === "curl" || userAgent?.startsWith("curl/");
+
 export const onRequest = defineMiddleware(async (context, next) => {
+  const headers = context.request.headers;
+  if (isCurl(headers.get("user-agent")) && headers.get("x-original") !== "true") {
+    return await routerTUI(context);
+  }
+
   if (!context.url.pathname.startsWith("/admin")) {
     return next();
   }

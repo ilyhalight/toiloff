@@ -12,6 +12,9 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "imports": {
+    "#lib/*": "./src/lib/*"
+  },
   "dependencies": {
     "@astrojs/svelte": "^9.1.0",
     "@wyattjoh/astro-bun-adapter": "^2.1.1",

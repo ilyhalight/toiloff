@@ -20,6 +20,20 @@ To use the admin panel, you need to log in. You can do this by visiting the `/ad
 
 If you open the admin panel without being logged in, you will be redirected to the login page.
 
+## Static TUI
+
+You can access the static TUI version with curl:
+
+```bash
+curl https://toil.cc
+```
+
+To view html instead of TUI with curl add `x-original: true` header:
+
+```sh
+curl -H "x-original: true" https://toil.cc
+```
+
 ## Setup
 
 1. Install [Bun](https://bun.sh/)
