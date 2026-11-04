@@ -1,8 +1,7 @@
 import type { APIContext } from "astro";
 
-// 30 secs in ms
-// const cacheTTL = 30_000;
-const cacheTTL = 1_000;
+// 10 secs in ms
+const cacheTTL = 10_000;
 const cache = new Map<string, { content: string; cachedAt: number }>();
 
 export const cached = async (
