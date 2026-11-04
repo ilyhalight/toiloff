@@ -153,6 +153,10 @@ const gradientId = `theme-switcher-gradient-${safeId}`;
 
         document.body.dataset.theme = nextTheme;
         document.cookie = `tf_theme=${nextTheme}; Max-Age=31536000; Path=/;`;
+        let meta = document.querySelector('meta[name="color-scheme"]');
+        if (meta) {
+          meta.setAttribute("content", nextTheme);
+        }
       });
     }
   }

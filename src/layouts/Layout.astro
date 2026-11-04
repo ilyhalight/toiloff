@@ -25,6 +25,7 @@ const theme = Astro.cookies.get("tf_theme")?.value;
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content={theme ?? "light dark"}>
     <GlobalStyle />
     <Font cssVariable="--font-poppins" />
   </head>
