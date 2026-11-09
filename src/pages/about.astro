@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
 
 import AboutCard from "../components/About/AboutCard.astro";
 import AboutSocialItem from "../components/About/AboutSocialItem.astro";
@@ -178,7 +177,15 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime());
     </section>
     <a href="/donate" class="about-section donate-cta">
       <span class="donate-cta__text">
-        <Image src={EyesEmojiImage} alt="" class="donate-cta__emoji" />
+        <img
+          src={EyesEmojiImage.src}
+          width={EyesEmojiImage.width}
+          height={EyesEmojiImage.height}
+          alt=""
+          class="donate-cta__emoji"
+          loading="lazy"
+          decoding="async"
+        />
         Hi!! Want to support me?
       </span>
       <span class="donate-cta__chevron"><ChevronRightIcon /></span>
