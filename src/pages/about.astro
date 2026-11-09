@@ -1,4 +1,7 @@
 ---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
 import AboutCard from "../components/About/AboutCard.astro";
 import AboutSocialItem from "../components/About/AboutSocialItem.astro";
 import Layout from "../layouts/Layout.astro";
@@ -32,12 +35,14 @@ import NodeColorIcon from "../components/Icones/NodeColorIcon.astro";
 import BoostyIcon from "../components/Icones/BoostyIcon.svelte";
 import LolzteamIcon from "../components/Icones/LolzteamIcon.svelte";
 import GenericIcon from "../components/Icones/GenericIcon.astro";
+import ChevronRightIcon from "../components/Icones/ChevronRightIcon.svelte";
 
 import SectionHero from "../components/Section/SectionHero.astro";
 import SectionWrapper from "../components/Section/SectionWrapper.astro";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.svelte";
+
 import { daysBetween } from "../lib/utils";
-import { getCollection } from "astro:content";
+import EyesEmojiImage from "../assets/emojis/U+1F440_1.webp";
 
 const socialIcons = {
   "telegram": TelegramIcon,
@@ -79,21 +84,6 @@ const socials = (await getCollection("socials"))
 const skills = (await getCollection("skills"))
   .sort((a, b) => a.data.order - b.data.order)
   .map((entry) => entry.data)
-
-const donateLinks = [
-  {
-    id: "boosty",
-    label: "Boosty",
-    href: "https://boosty.to/toil",
-    Icon: BoostyIcon,
-  },
-  {
-    id: "lolzteam",
-    label: "Lolzteam",
-    href: "https://lzt.market/balance/transfer?user_id=667866",
-    Icon: LolzteamIcon,
-  },
-] as const;
 
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
@@ -188,21 +178,13 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime());
         })}
       </ul>
     </section>
-    <section class="about-section">
-      <h3 class="about-section__title">Donate me</h3>
-      <ul class="about-socials">
-        {
-          donateLinks.map((donate) => (
-            <AboutSocialItem
-              id={donate.id}
-              label={donate.label}
-              href={donate.href}
-              Icon={donate.Icon}
-            />
-          ))
-        }
-      </ul>
-    </section>
+    <a href="/donate" class="about-section donate-cta">
+      <span class="donate-cta__text">
+        <Image src={EyesEmojiImage} alt="" class="donate-cta__emoji" />
+        Hi!! Want to support me?
+      </span>
+      <span class="donate-cta__chevron"><ChevronRightIcon /></span>
+    </a>
   </SectionWrapper>
 </Layout>
 
@@ -306,6 +288,38 @@ const birthdayIn = daysBetween(currentDate.getTime(), birthdayDate.getTime());
     flex-wrap: wrap;
     list-style: none;
     gap: 0.5rem;
+  }
+
+  .donate-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    transition: background 0.25s ease;
+  }
+
+  .donate-cta:hover {
+    background: var(--onsurface-hover-bg);
+  }
+
+  .donate-cta__emoji {
+    width: 2.25rem;
+    height: 2.25rem;
+    object-fit: cover;
+    display: inline-block;
+    vertical-align: middle;
+    top: -0.125rem;
+    position: relative;
+    margin-right: 0.5rem;
+  }
+
+  .donate-cta__text {
+    flex: 1;
+  }
+
+  .donate-cta__chevron {
+    display: flex;
   }
 
   @media screen and (max-width: 500px) {

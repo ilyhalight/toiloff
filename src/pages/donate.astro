@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionHero from "../components/Section/SectionHero.astro";
+import SectionWrapper from "../components/Section/SectionWrapper.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.svelte";
+import DonateList from "../components/Donate/DonateList.svelte";
+
+---
+
+<Layout title="Donate">
+  <Breadcrumbs
+    breadcrumbs={[
+      { title: "Home", href: "/" },
+      { title: "Donate", href: "/donate" },
+    ]}
+  />
+  <SectionWrapper>
+    <SectionHero title="Donate" description="Have some extra cash? You’re in the right place to spend it" />
+    <DonateList client:load />
+  </SectionWrapper>
+</Layout>

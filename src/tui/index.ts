@@ -5,6 +5,7 @@ import index from "./routes/index.ts";
 import projects from "./routes/projects.ts";
 import models from "./routes/models.ts";
 import about from "./routes/about.ts";
+import donate from "./routes/donate.ts";
 
 const getHandler = (pathname: string) => {
   switch (pathname) {
@@ -16,6 +17,8 @@ const getHandler = (pathname: string) => {
       return models;
     case "/about":
       return about;
+    case "/donate":
+      return donate;
     default:
       return null;
   }

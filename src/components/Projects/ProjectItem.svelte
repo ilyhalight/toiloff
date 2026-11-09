@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Project } from "../../lib/api/projects";
+  import ArrowIcon from "../Icones/ArrowIcon.svelte";
 
   type Props = {
     project: Project;
@@ -21,17 +22,7 @@
   <a class="project-item__link" {href} target="_blank">
     <h3>{title}</h3>
     <span class="project-item__link-icon">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
-        viewBox="0 0 24 24"
-        ><!-- Icon from Stash Icons by Pingback LLC - https://github.com/stash-ui/icons/blob/master/LICENSE -->
-        <path
-          fill="currentColor"
-          d="M12.884 5.116a1.253 1.253 0 0 0-1.768 0l-5 5a1.25 1.25 0 0 0 1.768 1.768l2.866-2.866V18a1.25 1.25 0 1 0 2.5 0V9.018l2.866 2.866a1.25 1.25 0 1 0 1.768-1.768z"
-        ></path></svg
-      >
+      <ArrowIcon />
     </span>
   </a>
   <p class="project-item__desc text-wrap">
@@ -83,7 +74,8 @@
     transition: color 0.25s ease;
   }
 
-  .project-item__link-icon svg {
+  .project-item__link-icon :global(svg) {
+    font-size: 2rem;
     transform: rotate(45deg);
     will-change: transform;
     transition: transform 0.25s ease;
@@ -94,10 +86,10 @@
     color: var(--primary-color);
   }
 
-  .project-item__link:hover .project-item__link-icon svg,
+  .project-item__link:hover .project-item__link-icon :global(svg),
   .project-item:has(.project-item__image-wrapper:hover)
     .project-item__link-icon
-    svg {
+    :global(svg) {
     transform: rotate(90deg);
   }
 

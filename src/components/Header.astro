@@ -6,8 +6,8 @@ import PreferenceRow from "./PreferenceRow.astro";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 
 const navItems = [
-  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
+  { href: "/donate", label: "Donate" },
 ];
 ---
 
@@ -30,12 +30,6 @@ const navItems = [
             </li>
           ))
         }
-        <!-- <li class="nav-list__item">
-          <a class="nav-list__item-link" href="/">Donate</a>
-        </li> -->
-        <!-- <li class="nav-list__item">
-          <a class="nav-list__item-link" href="/">Tools</a>
-        </li> -->
         <li class="nav-list__item">
           <Preferences>
             <PreferenceRow
